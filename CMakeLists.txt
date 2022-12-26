@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.24)
-project(AED_Airport)
+project(AirportAED)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(AED_Airport
-        src/main.cpp)
+add_executable(AirportAED
+        src/main.cpp src/Reader.cpp src/Reader.h)
