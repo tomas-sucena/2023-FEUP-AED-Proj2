@@ -34,6 +34,7 @@ class Graph {
         bool removeEdge(int src, int dest);
 
         void addNode(T val);
+        bool setValue(int node, T val);
 
         char areConnected(int n1, int n2);
 };
@@ -98,6 +99,16 @@ void Graph<T, U>::addNode(T val){
 }
 
 template <typename T, typename U>
+bool Graph<T, U>::setValue(int num, T val){
+    if (num < 1 || num > n){
+        return false;
+    }
+
+    nodes[num].val = val;
+    return true;
+}
+
+template <typename T, typename U>
 char Graph<T, U>::areConnected(int n1, int n2){
     if (n1 < 1 || n1 > n || n2 < 1 || n2 > n){
         return 0;
@@ -111,6 +122,10 @@ char Graph<T, U>::areConnected(int n1, int n2){
             res++;
             break;
         }
+    }
+
+    if (!hasDir){
+        return res;
     }
 
     // check if the second node reaches the first
