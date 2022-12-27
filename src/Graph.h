@@ -6,12 +6,12 @@
 
 using namespace std;
 
-template <typename T>
+template <typename T, typename U> // T -> stored type, U -> weight
 class Graph {
     private:
         struct Edge {
             int dest;
-            int weight;
+            U weight;
         };
 
         struct Node {
@@ -30,7 +30,7 @@ class Graph {
         Graph(int n, bool hasDir = false);
 
         // methods
-        bool addEdge(int src, int dest, int weight = 1);
+        bool addEdge(int src, int dest, U weight);
         bool removeEdge(int src, int dest);
 
         void addNode(T val);
@@ -39,14 +39,18 @@ class Graph {
 };
 
 
-template <typename T>
-Graph<T>::Graph(bool hasDir){
+template <typename T, typename U>
+Graph<T, U>::Graph(bool hasDir){
     n = 0;
     this->hasDir = hasDir;
+
+    // initialize the node vector with an empty node
+    Node node;
+    nodes.push_back(node);
 }
 
-template <typename T>
-Graph<T>::Graph(int n, bool hasDir){
+template <typename T, typename U>
+Graph<T, U>::Graph(int n, bool hasDir){
     this->n = n;
     this->hasDir = hasDir;
 
@@ -57,8 +61,8 @@ Graph<T>::Graph(int n, bool hasDir){
     }
 }
 
-template <typename T>
-bool Graph<T>::addEdge(int src, int dest, int weight) {
+template <typename T, typename U>
+bool Graph<T, U>::addEdge(int src, int dest, U weight) {
     if (src < 1 || src > n){
         return false;
     }
@@ -69,8 +73,8 @@ bool Graph<T>::addEdge(int src, int dest, int weight) {
     return true;
 }
 
-template <typename T>
-bool Graph<T>::removeEdge(int src, int dest) {
+template <typename T, typename U>
+bool Graph<T, U>::removeEdge(int src, int dest) {
     if (src < 1 || src > n){
         return false;
     }
@@ -85,16 +89,16 @@ bool Graph<T>::removeEdge(int src, int dest) {
     return false;
 }
 
-template <typename T>
-void Graph<T>::addNode(T val){
+template <typename T, typename U>
+void Graph<T, U>::addNode(T val){
     n++;
 
     Node node; node.val = val;
     nodes.push_back(node);
 }
 
-template <typename T>
-char Graph<T>::areConnected(int n1, int n2){
+template <typename T, typename U>
+char Graph<T, U>::areConnected(int n1, int n2){
     if (n1 < 1 || n1 > n || n2 < 1 || n2 > n){
         return 0;
     }
