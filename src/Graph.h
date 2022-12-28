@@ -2,18 +2,18 @@
 #define AIRPORTAED_GRAPH_H
 
 #include <list>
-#include <unordered_set>
+#include <vector>
 
 using namespace std;
 
-template <typename T, typename U = int>
+template <typename T, typename U = int> // T -> stored type, U -> weight
 class Graph {
     private:
         struct Edge {
-            T dest;
+            int dest;
             U weight;
 
-            Edge(T dest, U weight) : dest(dest), weight(weight) {}
+            Edge(int dest, U weight) : dest(dest), weight(weight) {}
         };
 
         struct Node {
@@ -21,22 +21,11 @@ class Graph {
             list<Edge> adj;
             bool visited;
 
-            Node(T val) : val(val) {}
-            Node(T val, list<Edge> adj) : val(val), adj(adj) {}
-
-            bool operator==(const Node& n) const{
-                return (val == n.val);
-            }
+            Node(T val) : val(val), visited(false) {}
         };
 
-        struct NodeHash {
-            size_t operator()(const Node& n) const{
-                return hash<T>()(n.val);
-            }
-        };
-
-        unordered_set<Node, NodeHash> nodes;
         bool hasDir;
+        vector<Node> nodes;
 
     public:
         // constructor
@@ -45,62 +34,45 @@ class Graph {
         // methods
         void addNode(T val);
 
-        bool addEdge(T src, T dest, U weight);
-        bool removeEdge(T src, T dest);
+        bool addEdge(int src, int dest, U weight);
+        bool removeEdge(int src, int dest);
 };
 
 
-template<typename T, typename U>
+template <typename T, typename U>
 Graph<T, U>::Graph(bool hasDir) : hasDir(hasDir) {}
 
-template<typename T, typename U>
+template <typename T, typename U>
 void Graph<T, U>::addNode(T val){
-    nodes.insert(Node(val));
+    nodes.push_back(Node(val));
 }
 
-template<typename T, typename U>
-bool Graph<T, U>::addEdge(T src, T dest, U weight){
-    auto nodeIt = nodes.find(src);
-
-    // verify if the node exists
-    if (nodeIt == nodes.end()){
+template <typename T, typename U>
+bool Graph<T, U>::addEdge(int src, int dest, U weight) {
+    // verify if the nodes exist
+    if (src < 1 || src > nodes.size() || dest < 1 || dest > nodes.size()){
         return false;
     }
 
-    Node n(nodeIt->val, nodeIt->adj);
-    n.adj.push_back(Edge(dest, weight));
-
-    nodes.erase(nodeIt);
-    nodes.insert(n);
-
+    nodes[src].adj.push_back(Edge(dest, weight));
     return true;
 }
 
-template<typename T, typename U>
-bool Graph<T, U>::removeEdge(T src, T dest){
-    auto nodeIt = nodes.find(src);
-
-    // verify if the node exists
-    if (nodeIt == nodes.end()){
+template <typename T, typename U>
+bool Graph<T, U>::removeEdge(int src, int dest) {
+    // verify if the nodes exist
+    if (src < 1 || src > nodes.size() || dest < 1 || dest > nodes.size()){
         return false;
     }
 
-    Node n(nodeIt->val, nodeIt->adj);
-
-    bool found = false;
-    for (auto it = n.adj.begin(); it != n.adj.end(); it++){
+    for (auto it = nodes[src].adj.begin(); it != nodes[src].adj.end(); it++){
         if (it->dest == dest){
-            n.adj.erase(it);
-            found = true;
-
-            break;
+            nodes[src].adj.erase(it);
+            return true;
         }
     }
 
-    nodes.erase(nodeIt);
-    nodes.insert(n);
-
-    return found;
+    return false;
 }
 
 #endif //AIRPORTAED_GRAPH_H

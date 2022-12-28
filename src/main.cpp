@@ -16,4 +16,9 @@ int main(){
     Airport b("CDB","Charles De Bruh","Paris","France",0, 2);
 
     cout << a.getDistance(b) << endl;
+
+    Graph<int> g;
+    g.addNode(3);
+    g.addNode(1);
+    g.addEdge(1, 2, 1);
 }
