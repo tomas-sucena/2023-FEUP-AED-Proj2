@@ -33,6 +33,7 @@ class Graph {
 
         // methods
         void addNode(T val);
+        bool setValue(int n, T val);
 
         bool addEdge(int src, int dest, U weight);
         bool removeEdge(int src, int dest);
@@ -45,6 +46,17 @@ Graph<T, U>::Graph(bool hasDir) : hasDir(hasDir) {}
 template <typename T, typename U>
 void Graph<T, U>::addNode(T val){
     nodes.push_back(Node(val));
+}
+
+template <typename T, typename U>
+bool Graph<T, U>::setValue(int n, T val){
+    // verify if the node exists
+    if (n < 1 || n > nodes.size()){
+        return false;
+    }
+
+    nodes[n].val = val;
+    return true;
 }
 
 template <typename T, typename U>
