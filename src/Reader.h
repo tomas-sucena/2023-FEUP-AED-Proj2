@@ -1,8 +1,6 @@
 #ifndef AIRPORTAED_READER_H
 #define AIRPORTAED_READER_H
 
-#include <iostream>
-
 #include <fstream>
 #include <sstream>
 #include <string>

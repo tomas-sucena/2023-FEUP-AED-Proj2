@@ -3,6 +3,7 @@
 
 #include "Reader.h"
 #include "Graph.h"
+#include "Airport.h"
 
 using namespace std;
 
@@ -11,11 +12,8 @@ int main(){
     reader.read();
 
     // TESTE
-    Graph<int, int> g(true);
-    g.addNode(5);
-    g.addNode(42);
-    g.addEdge(1, 2, 1);
-    g.addNode(9);
-    g.addEdge(1, 3, 1);
-    g.removeEdge(1, 3);
+    Airport a("CDG","Charles De Gaulle","Paris","France",0, 0);
+    Airport b("CDB","Charles De Bruh","Paris","France",0, 2);
+
+    cout << a.getDistance(b) << endl;
 }

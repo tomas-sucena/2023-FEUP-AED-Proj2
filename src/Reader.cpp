@@ -1,15 +1,38 @@
 #include "Reader.h"
 
 Reader::Reader(string path){
-    airlines.open(path + "/airlines.csv");
-    airports.open(path + "/airports.csv");
-    flights.open(path + "/flights.csv");
+    if (path[path.size() - 1] != '/'){
+        path += '/';
+    }
+
+    airlines.open(path + "airlines.csv");
+    airports.open(path + "airports.csv");
+    flights.open(path + "flights.csv");
 }
 
 void Reader::read(){
     // TESTE
-    string temp;
-    getline(airlines, temp);
+    string line;
+    getline(airlines, line);
 
-    cout << temp << endl;
+    while (getline(airlines, line)){
+        istringstream line_(line);
+
+        // read the code
+        string code;
+        getline(line_, code, ',');
+
+        // read the name
+        string name;
+        getline(line_, name, ',');
+
+        // read the call sign
+        string callSign;
+        getline(line_, callSign, ',');
+
+        // read the country
+        string country;
+        getline(line_, country, '\r');
+    }
+
 }
