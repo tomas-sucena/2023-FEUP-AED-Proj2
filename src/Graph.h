@@ -2,141 +2,105 @@
 #define AIRPORTAED_GRAPH_H
 
 #include <list>
-#include <vector>
+#include <unordered_set>
 
 using namespace std;
 
-template <typename T, typename U> // T -> stored type, U -> weight
+template <typename T, typename U = int>
 class Graph {
     private:
         struct Edge {
-            int dest;
+            T dest;
             U weight;
+
+            Edge(T dest, U weight) : dest(dest), weight(weight) {}
         };
 
         struct Node {
             T val;
             list<Edge> adj;
             bool visited;
+
+            Node(T val) : val(val) {}
+            Node(T val, list<Edge> adj) : val(val), adj(adj) {}
+
+            bool operator==(const Node& n) const{
+                return (val == n.val);
+            }
         };
 
-        int n;
+        struct NodeHash {
+            size_t operator()(const Node& n) const{
+                return hash<T>()(n.val);
+            }
+        };
+
+        unordered_set<Node, NodeHash> nodes;
         bool hasDir;
-        vector<Node> nodes;
 
     public:
         // constructor
         explicit Graph(bool hasDir = false);
-        Graph(int n, bool hasDir = false);
 
         // methods
-        bool addEdge(int src, int dest, U weight);
-        bool removeEdge(int src, int dest);
-
         void addNode(T val);
-        bool setValue(int node, T val);
 
-        char areConnected(int n1, int n2);
+        bool addEdge(T src, T dest, U weight);
+        bool removeEdge(T src, T dest);
 };
 
 
-template <typename T, typename U>
-Graph<T, U>::Graph(bool hasDir){
-    n = 0;
-    this->hasDir = hasDir;
+template<typename T, typename U>
+Graph<T, U>::Graph(bool hasDir) : hasDir(hasDir) {}
 
-    // initialize the node vector with an empty node
-    Node node;
-    nodes.push_back(node);
-}
-
-template <typename T, typename U>
-Graph<T, U>::Graph(int n, bool hasDir){
-    this->n = n;
-    this->hasDir = hasDir;
-
-    // fill the vector with empty nodes
-    Node node;
-    for (int i = 1; i <= n; i++){
-        nodes.push_back(node);
-    }
-}
-
-template <typename T, typename U>
-bool Graph<T, U>::addEdge(int src, int dest, U weight) {
-    if (src < 1 || src > n){
-        return false;
-    }
-
-    Edge e; e.dest = dest; e.weight = weight;
-    nodes[src].adj.push_back(e);
-
-    return true;
-}
-
-template <typename T, typename U>
-bool Graph<T, U>::removeEdge(int src, int dest) {
-    if (src < 1 || src > n){
-        return false;
-    }
-
-    for (auto it = nodes[src].adj.begin(); it != nodes[src].adj.end(); it++){
-        if (it->dest == dest){
-            nodes[src].adj.erase(it);
-            return true;
-        }
-    }
-
-    return false;
-}
-
-template <typename T, typename U>
+template<typename T, typename U>
 void Graph<T, U>::addNode(T val){
-    n++;
-
-    Node node; node.val = val;
-    nodes.push_back(node);
+    nodes.insert(Node(val));
 }
 
-template <typename T, typename U>
-bool Graph<T, U>::setValue(int num, T val){
-    if (num < 1 || num > n){
+template<typename T, typename U>
+bool Graph<T, U>::addEdge(T src, T dest, U weight){
+    auto nodeIt = nodes.find(src);
+
+    // verify if the node exists
+    if (nodeIt == nodes.end()){
         return false;
     }
 
-    nodes[num].val = val;
+    Node n(nodeIt->val, nodeIt->adj);
+    n.adj.push_back(Edge(dest, weight));
+
+    nodes.erase(nodeIt);
+    nodes.insert(n);
+
     return true;
 }
 
-template <typename T, typename U>
-char Graph<T, U>::areConnected(int n1, int n2){
-    if (n1 < 1 || n1 > n || n2 < 1 || n2 > n){
-        return 0;
+template<typename T, typename U>
+bool Graph<T, U>::removeEdge(T src, T dest){
+    auto nodeIt = nodes.find(src);
+
+    // verify if the node exists
+    if (nodeIt == nodes.end()){
+        return false;
     }
 
-    char res = 0;
+    Node n(nodeIt->val, nodeIt->adj);
 
-    // check if the first node reaches the second
-    for (auto it = nodes[n1].adj.begin(); it != nodes[n1].adj.end(); it++){
-        if (it->dest == n2){
-            res++;
+    bool found = false;
+    for (auto it = n.adj.begin(); it != n.adj.end(); it++){
+        if (it->dest == dest){
+            n.adj.erase(it);
+            found = true;
+
             break;
         }
     }
 
-    if (!hasDir){
-        return res;
-    }
+    nodes.erase(nodeIt);
+    nodes.insert(n);
 
-    // check if the second node reaches the first
-    for (auto it = nodes[n2].adj.begin(); it != nodes[n2].adj.end(); it++){
-        if (it->dest == n1){
-            res = (!res) ? 2 : 3;
-            break;
-        }
-    }
-
-    return res;
+    return found;
 }
 
 #endif //AIRPORTAED_GRAPH_H

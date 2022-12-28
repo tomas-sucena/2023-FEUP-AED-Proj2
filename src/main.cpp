@@ -17,7 +17,5 @@ int main(){
     g.addEdge(1, 2, 1);
     g.addNode(9);
     g.addEdge(1, 3, 1);
-
-    cout << (bool) g.areConnected(2, 3) << endl;
-    cout << (bool) g.areConnected(1, 3) << endl;
+    g.removeEdge(1, 3);
 }

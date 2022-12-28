@@ -8,4 +8,4 @@ include_directories(src)
 add_executable(AirportAED
         src/main.cpp
         src/Reader.cpp
-        src/Reader.h src/Graph.h src/graphs/Node.h src/graphs/Edge.h)
+        src/Reader.h src/Graph.h)
