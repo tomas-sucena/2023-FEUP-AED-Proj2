@@ -10,6 +10,7 @@ add_executable(AirportAED
         src/Airline.h
         src/Airport.cpp
         src/Airport.h
+        src/Graph.h
         src/main.cpp
         src/Reader.cpp
-        src/Reader.h src/Graph.h)
+        src/Reader.h)

@@ -9,7 +9,15 @@ using namespace std;
 
 int main(){
     Reader reader("../csv");
-    reader.read();
+    reader.readAll();
+
+    unordered_map<Airport, int> airports = reader.getAirports();
+
+    cout << airports.empty() << endl;
+
+    for (const auto& p : airports){
+        cout << p.first.getCode() << ' ' << p.first.getName() << endl;
+    }
 
     // TESTE
     Airport a("CDG","Charles De Gaulle","Paris","France",0, 0);

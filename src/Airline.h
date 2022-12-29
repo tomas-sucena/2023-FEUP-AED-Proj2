@@ -13,14 +13,26 @@ class Airline {
         string country;
 
     public:
-        // constructor
+        // constructors
         Airline(string code, string name, string callSign, string country);
+        Airline(const Airline& a);
 
         // methods
         string getCode() const;
         string getName() const;
         string getCallSign() const;
         string getCountry() const;
+
+        bool operator==(const Airline& a) const;
 };
+
+namespace std {
+    template <>
+    struct hash<Airline> {
+        size_t operator()(const Airline& a) const{
+            return hash<string>()(a.getCode());
+        }
+    };
+}
 
 #endif //AIRPORTAED_AIRLINE_H

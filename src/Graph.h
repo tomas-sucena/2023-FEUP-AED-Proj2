@@ -33,7 +33,7 @@ class Graph {
 
         // methods
         void addNode(T val);
-        bool setValue(int n, T val);
+        bool setNodeValue(int n, T val);
 
         bool addEdge(int src, int dest, U weight);
         bool removeEdge(int src, int dest);
@@ -49,13 +49,13 @@ void Graph<T, U>::addNode(T val){
 }
 
 template <typename T, typename U>
-bool Graph<T, U>::setValue(int n, T val){
+bool Graph<T, U>::setNodeValue(int n, T val){
     // verify if the node exists
     if (n < 1 || n > nodes.size()){
         return false;
     }
 
-    nodes[n].val = val;
+    nodes[n - 1].val = val;
     return true;
 }
 
@@ -66,7 +66,7 @@ bool Graph<T, U>::addEdge(int src, int dest, U weight) {
         return false;
     }
 
-    nodes[src].adj.push_back(Edge(dest, weight));
+    nodes[src - 1].adj.push_back(Edge(dest, weight));
     return true;
 }
 
@@ -79,7 +79,7 @@ bool Graph<T, U>::removeEdge(int src, int dest) {
 
     for (auto it = nodes[src].adj.begin(); it != nodes[src].adj.end(); it++){
         if (it->dest == dest){
-            nodes[src].adj.erase(it);
+            nodes[src - 1].adj.erase(it);
             return true;
         }
     }

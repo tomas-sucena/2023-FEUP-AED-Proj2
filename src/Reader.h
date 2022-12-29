@@ -4,21 +4,40 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <list>
+#include <unordered_set>
+#include <unordered_map>
+
+#include "Airline.h"
+#include "Airport.h"
+#include "Graph.h"
 
 using namespace std;
 
 class Reader {
     private:
-        ifstream airlines;
-        ifstream airports;
-        ifstream flights;
+        string path;
+        ifstream reader;
+        unordered_map<string, int> airportCodes;
+        unordered_map<string, Airline> airlineCodes;
+
+        unordered_set<Airline> airlines;
+        unordered_map<Airport, int> airports;
+        Graph<Airport, list<Airline>> flights;
 
     public:
         // constructor
-        Reader(string path);
+        explicit Reader(string path);
 
         // methods
-        void read();
+        void readAll();
+        void readAirlines();
+        void readAirports();
+        void readFlights();
+
+        unordered_set<Airline> getAirlines() const;
+        unordered_map<Airport, int> getAirports() const;
+        Graph<Airport, list<Airline>> getFlights() const;
 };
 
 

@@ -28,6 +28,16 @@ class Airport {
         double getLong() const;
 
         double getDistance(const Airport& a) const;
+        bool operator==(const Airport& a) const;
 };
+
+namespace std {
+    template <>
+    struct hash<Airport> {
+        size_t operator()(const Airport& a) const{
+            return hash<string>()(a.getCode());
+        }
+    };
+}
 
 #endif //AIRPORTAED_AIRPORT_H
