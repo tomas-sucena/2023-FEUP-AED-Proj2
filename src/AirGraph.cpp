@@ -9,6 +9,7 @@ bool AirGraph::addVertex(Airport &a){
 void AirGraph::addEdge(string airportA, string airportB, string airline){
     Airport& dest = vertices[airportB].value;
     Airline& a = airlineCodes[airline];
+    double distance = vertices[airportA].value.getDistance(dest);
 
-    vertices[airportA].adj.insert(Edge(dest, a));
+    vertices[airportA].adj.insert(Edge(dest, a, distance));
 }

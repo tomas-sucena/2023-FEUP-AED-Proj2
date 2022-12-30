@@ -15,7 +15,7 @@ class AirGraph {
             unordered_set<Airline> airlines;
             double distance; // weight
 
-            Edge(Airport& dest, Airline& airline) : dest(dest) {
+            Edge(Airport& dest, Airline& airline, double distance) : dest(dest), distance(distance) {
                 airlines.insert(airline);
             }
 
