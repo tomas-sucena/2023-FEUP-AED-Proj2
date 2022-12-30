@@ -44,6 +44,8 @@ class AirGraph {
         // methods
         bool addVertex(Airport& a);
         void addEdge(string airportA, string airportB, string airline);
+
+        bool addAirline(Airline& a);
 };
 
 

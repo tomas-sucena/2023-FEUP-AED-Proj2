@@ -13,3 +13,7 @@ void AirGraph::addEdge(string airportA, string airportB, string airline){
 
     vertices[airportA].adj.insert(Edge(dest, a, distance));
 }
+
+bool AirGraph::addAirline(Airline &a){
+    return airlineCodes.insert({a.getCode(), a}).second;
+}

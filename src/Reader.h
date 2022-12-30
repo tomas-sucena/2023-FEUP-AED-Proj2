@@ -4,10 +4,9 @@
 #include <fstream>
 #include <sstream>
 #include <string>
-#include <list>
-#include <unordered_set>
 #include <unordered_map>
 
+#include "AirGraph.h"
 #include "data/Airline.h"
 #include "data/Airport.h"
 
@@ -17,12 +16,11 @@ class Reader {
     private:
         string path;
         ifstream reader;
-        unordered_map<string, int> airportCodes;
-        unordered_map<string, Airline> airlineCodes;
 
-        unordered_set<Airline> airlines;
-        unordered_map<Airport, int> airports;
-        Graph<Airport, list<Airline>> flights;
+        AirGraph g;
+
+        // for search purposes
+        unordered_map<string, Airport> airportCodes;
 
     public:
         // constructor
@@ -36,7 +34,7 @@ class Reader {
 
         unordered_set<Airline> getAirlines() const;
         unordered_map<Airport, int> getAirports() const;
-        Graph<Airport, list<Airline>> getFlights() const;
+        AirGraph getGraph() const;
 };
 
 

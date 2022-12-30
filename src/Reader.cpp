@@ -39,11 +39,9 @@ void Reader::readAirlines(){
         string country;
         getline(line_, country, '\r');
 
-        // create the Airline
+        // add the Airline to the graph
         Airline a(code, name, callSign, country);
-
-        airlines.insert(a);
-        //airlineCodes[code] = a;
+        g.addAirline(a);
     }
 
     reader.close();
@@ -88,11 +86,11 @@ void Reader::readAirports() {
 
         double longitude = stof(lon);
 
-        // create the airport
+        // add the Airport to the graph
         Airport a(code, name, city, country, latitude, longitude);
+        g.addVertex(a);
 
-        flights.addNode(a);
-        airports[a] = airportCodes[code] = i++;
+        airportCodes[code] = a;
     }
 
     reader.close();
@@ -109,33 +107,24 @@ void Reader::readFlights() {
         istringstream line_(line);
 
         // read the source
-        string temp;
-        getline(line_, temp, ',');
-
-        int src = airportCodes[temp];
+        string airportA;
+        getline(line_, airportA, ',');
 
         // read the target
-        getline(line_, temp, ',');
-
-        int target = airportCodes[temp];
+        string airportB;
+        getline(line_, airportB, ',');
 
         // read the airline
+        string airline;
+        getline(line_, airline, '\r');
 
-
+        g.addEdge(airportA, airportB, airline);
     }
 
     reader.close();
     reader.clear();
 }
 
-unordered_set<Airline> Reader::getAirlines() const{
-    return airlines;
-}
-
-unordered_map<Airport, int> Reader::getAirports() const{
-    return airports;
-}
-
-Graph<Airport, list<Airline>> Reader::getFlights() const{
-    return flights;
+AirGraph Reader::getGraph() const{
+    return g;
 }
