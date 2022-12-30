@@ -1,7 +1,13 @@
 #include "Airport.h"
 
+Airport::Airport() {}
+
 Airport::Airport(string code, string name, string city, string country, double latitude, double longitude) :
     code(code), name(name), city(city), country(country), latitude(latitude), longitude(longitude) {}
+
+Airport::Airport(const Airport &a) :
+    code(a.getCode()), name(a.getName()), city(a.getCity()), country(a.getCountry()),
+    latitude(a.getLat()), longitude(a.getLong()) {}
 
 string Airport::getCode() const{
     return code;

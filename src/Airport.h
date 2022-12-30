@@ -17,7 +17,9 @@ class Airport {
 
     public:
         // constructor
+        Airport();
         Airport(string code, string name, string city, string country, double latitude, double longitude);
+        Airport(const Airport& a);
 
         // methods
         string getCode() const;

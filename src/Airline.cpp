@@ -1,14 +1,12 @@
 #include "Airline.h"
 
+Airline::Airline() {}
+
 Airline::Airline(string code, string name, string callSign, string country) :
     code(code), name(name), callSign(callSign), country(country) {}
 
-Airline::Airline(const Airline& a){
-    this->code = a.getCode();
-    this->name = a.getName();
-    this->callSign = a.getCallSign();
-    this->country = a.getCountry();
-}
+Airline::Airline(const Airline& a) :
+    code(a.getCode()), name(a.getName()), callSign(a.getCallSign()), country(a.getCountry()) {}
 
 string Airline::getCode() const{
     return code;

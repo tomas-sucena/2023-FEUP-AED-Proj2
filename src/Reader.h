@@ -10,7 +10,7 @@
 
 #include "Airline.h"
 #include "Airport.h"
-#include "Graph.h"
+#include "graphs/Graph.h"
 
 using namespace std;
 

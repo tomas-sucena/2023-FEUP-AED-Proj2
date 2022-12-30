@@ -6,11 +6,12 @@ set(CMAKE_CXX_STANDARD 17)
 include_directories(src)
 
 add_executable(AirportAED
+        src/AirGraph.cpp
+        src/AirGraph.h
         src/Airline.cpp
         src/Airline.h
         src/Airport.cpp
         src/Airport.h
-        src/Graph.h
         src/main.cpp
         src/Reader.cpp
         src/Reader.h)
