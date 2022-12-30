@@ -1,15 +1,14 @@
 #include "AirGraph.h"
 
-AirGraph::AirGraph(list<Airport>* airports){
-    for (Airport& a : *airports){
-        nodes[a];
-    }
+AirGraph::AirGraph() {}
+
+bool AirGraph::addVertex(Airport &a){
+    return vertices.insert({a.getCode(), a}).second;
 }
 
-void AirGraph::addFlight(string src, string dest, string airline){
-    Airport& source = airportCodes[src];
-    Airport& destination = airportCodes[dest];
+void AirGraph::addEdge(string airportA, string airportB, string airline){
+    Airport& dest = vertices[airportB].value;
     Airline& a = airlineCodes[airline];
 
-    nodes[source].insert(Flight(destination, a));
+    vertices[airportA].adj.insert(Edge(dest, a));
 }

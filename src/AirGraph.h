@@ -1,45 +1,50 @@
 #ifndef AIRPORTAED_AIRGRAPH_H
 #define AIRPORTAED_AIRGRAPH_H
 
-#include <string>
-#include <list>
 #include <set>
 #include <unordered_map>
 #include <unordered_set>
 
-#include "Airline.h"
-#include "Airport.h"
-
-using namespace std;
+#include "data/Airline.h"
+#include "data/Airport.h"
 
 class AirGraph {
     private:
-        struct Flight {
+        struct Edge {
             Airport dest;
             unordered_set<Airline> airlines;
             double distance; // weight
 
-            Flight(Airport dest, Airline airline) : dest(dest) {
+            Edge(Airport& dest, Airline& airline) : dest(dest) {
                 airlines.insert(airline);
             }
 
-            bool operator<(const Flight& f) const{
-                return (distance < f.distance);
+            bool operator<(const Edge& e) const{
+                return (distance < e.distance);
             }
         };
 
-        unordered_map<Airport, set<Flight>> nodes;
+        struct Vertex {
+            Airport value;
+            set<Edge> adj;
+
+            Vertex() {};
+            Vertex(Airport& value) : value(value) {}
+        };
+
+        unordered_map<string, Vertex> vertices;
 
         // for search purposes
-        unordered_map<string, Airport> airportCodes;
         unordered_map<string, Airline> airlineCodes;
 
     public:
         // constructor
-        AirGraph(list<Airport>* airports = nullptr);
+        AirGraph();
 
         // methods
-        void addFlight(string src, string dest, string airline);
+        bool addVertex(Airport& a);
+        void addEdge(string airportA, string airportB, string airline);
 };
+
 
 #endif //AIRPORTAED_AIRGRAPH_H

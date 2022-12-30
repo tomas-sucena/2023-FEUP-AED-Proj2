@@ -2,7 +2,7 @@
 #include <string>
 
 #include "Reader.h"
-#include "Airport.h"
+#include "data/Airport.h"
 
 using namespace std;
 

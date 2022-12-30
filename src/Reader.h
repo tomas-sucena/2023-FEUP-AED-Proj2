@@ -8,8 +8,8 @@
 #include <unordered_set>
 #include <unordered_map>
 
-#include "Airline.h"
-#include "Airport.h"
+#include "data/Airline.h"
+#include "data/Airport.h"
 #include "graphs/Graph.h"
 
 using namespace std;
