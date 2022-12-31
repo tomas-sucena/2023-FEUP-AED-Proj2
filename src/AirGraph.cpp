@@ -17,3 +17,14 @@ void AirGraph::addEdge(string airportA, string airportB, string airline){
 bool AirGraph::addAirline(Airline &a){
     return airlineCodes.insert({a.getCode(), a}).second;
 }
+
+void AirGraph::dfs(string airport){
+    Vertex v = vertices[airport];
+    v.visited = true;
+
+    for (Edge e : v.adj){
+        Vertex w = vertices[e.dest.getCode()];
+
+        if (!w.visited) dfs(w.value.getCode());
+    }
+}

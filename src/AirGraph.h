@@ -27,8 +27,9 @@ class AirGraph {
         struct Vertex {
             Airport value;
             set<Edge> adj;
+            bool visited;
 
-            Vertex() {};
+            Vertex() = default;
             Vertex(Airport& value) : value(value) {}
         };
 
@@ -44,8 +45,9 @@ class AirGraph {
         // methods
         bool addVertex(Airport& a);
         void addEdge(string airportA, string airportB, string airline);
-
         bool addAirline(Airline& a);
+
+        void dfs(string start);
 };
 
 

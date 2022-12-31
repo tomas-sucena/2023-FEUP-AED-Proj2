@@ -1,8 +1,8 @@
 #include <iostream>
 #include <string>
 
+#include "AirGraph.h"
 #include "Reader.h"
-#include "data/Airport.h"
 
 using namespace std;
 
@@ -11,5 +11,5 @@ int main(){
     reader.readAll();
 
     // TESTE
-    Airport a;
+    AirGraph g = reader.getGraph();
 }
