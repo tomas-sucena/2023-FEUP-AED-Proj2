@@ -2,6 +2,7 @@
 #define AIRPORTAED_HELPY_H
 
 #include "Airgraph.h"
+#include <string>
 #include <queue>
 
 class Helpy {

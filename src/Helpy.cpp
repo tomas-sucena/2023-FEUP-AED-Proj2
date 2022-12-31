@@ -227,7 +227,11 @@ e2: cout << endl << YELLOW << BREAK << RESET << endl << endl;
 bool Helpy::process_command(string& s1, string& s2, string& s3){
     switch (command[s1] + target[s2] + what[s3]){
         case(31) : {
-            display_airport_information();
+            string airport;
+            cout<<"Please type airport code: ";
+            cin >> airport;
+            cout<<endl;
+            display_airport_information(airport);
             break;
         }
         case(36) : {
