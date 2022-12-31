@@ -3,6 +3,7 @@
 
 #include "AirGraph.h"
 #include "Reader.h"
+#include "Helpy.h"
 
 using namespace std;
 
@@ -12,4 +13,6 @@ int main(){
 
     // TESTE
     AirGraph g = reader.getGraph();
+    Helpy helpy = Helpy(g);
+    helpy.terminal();
 }
