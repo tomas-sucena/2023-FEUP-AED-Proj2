@@ -168,12 +168,12 @@ b2: cout << endl << YELLOW << BREAK << RESET << endl;
 
     cin >> s2; lowercase(s2);
 
-    if (s2 == "Airport"){
+    if (s2 == "airport"){
         cout << endl << YELLOW << BREAK << RESET << endl << endl;
         cout << "* Information" << endl;
         cout << endl;
     }
-    else if (s2 == "Fastest"){
+    else if (s2 == "fastest"){
         cout << endl << YELLOW << BREAK << RESET << endl << endl;
         cout << "* Flight" << endl;
         cout << endl;
@@ -251,6 +251,11 @@ bool Helpy::process_command(string& s1, string& s2, string& s3){
 
 /*-----FUNÇÕES DE IMPRESSÃO-----*/
 void Helpy::display_airport_information(string airport){
+    Airport a = graph.getAirport(airport);
+    cout << GREEN << "The airport " << a.getName() << " is situated in " << a.getCity() << ", " << a.getCountry() << endl;
+    cout << GREEN << "This airport has the following flights:" << endl;
+    graph.printFlights(airport);
+    
 
 };
 
