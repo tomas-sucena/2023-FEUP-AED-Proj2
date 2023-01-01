@@ -1,8 +1,10 @@
 #include "Helpy.h"
+
 #include <fstream>
-#include <sstream>
 #include <iostream>
 #include <map>
+#include <sstream>
+#include <string>
 
 // cores para o output
 #define RESET   "\033[0;m"
@@ -231,11 +233,11 @@ bool Helpy::process_command(string& s1, string& s2, string& s3){
             cout<<"Please type airport code: ";
             cin >> airport;
             cout<<endl;
-            display_airport_information(airport);
+            displayAirportInformation(airport);
             break;
         }
         case(36) : {
-            get_fastest_course();
+            getShortestRoute();
             break;
         }
         default : {
@@ -250,11 +252,11 @@ bool Helpy::process_command(string& s1, string& s2, string& s3){
 
 
 /*-----FUNÇÕES DE IMPRESSÃO-----*/
-void Helpy::display_airport_information(string airport){
+void Helpy::displayAirportInformation(string airport) const{
 
 };
 
 /*-----FUNÇÕES DE DOR E SOFRIMENTO-----*/
-void Helpy::get_fastest_course(){
+void Helpy::getFastestRoute() const{
 
 };
