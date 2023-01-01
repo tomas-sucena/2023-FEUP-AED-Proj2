@@ -1,10 +1,13 @@
 #ifndef AIRPORTAED_HELPY_H
 #define AIRPORTAED_HELPY_H
 
-#include "Airgraph.h"
+#include <map>
 #include <string>
 #include <queue>
 #include <map>
+
+#include "Airgraph.h"
+
 
 class Helpy {
     private:
@@ -23,9 +26,8 @@ class Helpy {
         void guided_mode();
         bool process_command(string& s1, string& s2, string& s3);
 
-        void display_airport_information(string airport);
-        //por agora meti assim, later i will change it
-        void get_fastest_course();
+        void displayAirportInformation(string airport);
+        void getShortestRoute() const;
 
 };
 

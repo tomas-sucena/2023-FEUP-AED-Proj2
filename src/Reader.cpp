@@ -1,5 +1,11 @@
 #include "Reader.h"
 
+#include <string>
+
+#include "AirGraph.h"
+#include "data/Airline.h"
+#include "data/Airport.h"
+
 Reader::Reader(string path){
     if (path[path.size() - 1] != '/'){
         path += '/';

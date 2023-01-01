@@ -14,6 +14,8 @@ add_executable(AirportAED
         src/data/Airline.h
         src/data/Airport.cpp
         src/data/Airport.h
+        src/Helpy.cpp
+        src/Helpy.h
         src/main.cpp
         src/Reader.cpp
         src/Reader.h)
