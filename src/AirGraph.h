@@ -49,8 +49,8 @@ class AirGraph {
         void addEdge(string airportA, string airportB, string airline);
         bool addAirline(Airline& a);
 
-        Airport getAirport(string code);
-        void printFlights(string code);
+        Airport getAirport(const string& code);
+        set<Edge> getFlights(const string& code);
 
         void reset(const list<string>* visited_airports = nullptr);
         void dfs(string start);

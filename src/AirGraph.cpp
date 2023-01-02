@@ -43,16 +43,12 @@ bool AirGraph::addAirline(Airline &a){
     return airlineCodes.insert({a.getCode(), a}).second;
 }
 
-Airport AirGraph::getAirport(string code){
+Airport AirGraph::getAirport(const string& code){
     return vertices[code].value;
 }
 
-void AirGraph::printFlights(string code){
-    for(Edge e: vertices[code].adj){
-        for(auto it = e.airlines.begin(); it!= e.airlines.end(); it++){
-            cout << "From " << vertices[code].value.getName() << " to " << e.dest.getName() << " with " << it->getName() << endl;
-        }
-    }
+set<AirGraph::Edge> AirGraph::getFlights(const string& code){
+    return vertices[code].adj;
 }
 
 void AirGraph::reset(const list<string>* visited_airports){

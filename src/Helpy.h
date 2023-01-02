@@ -17,7 +17,7 @@ class Helpy {
                
     public:
         // constructor
-        Helpy(AirGraph airGraph);
+        Helpy(AirGraph& airGraph);
 
         // methods
         void terminal();
@@ -25,8 +25,8 @@ class Helpy {
         void guided_mode();
         bool process_command(string& s1, string& s2, string& s3);
 
-        void displayAirportInformation(string airport);
-        void getShortestRoute() const;
+        void displayAirportInformation(string& airport);
+        void getShortestRoute();
 
 };
 
