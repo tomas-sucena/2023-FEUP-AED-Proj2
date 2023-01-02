@@ -1,5 +1,8 @@
 #include "AirGraph.h"
 
+#include <list>
+#include <queue>
+
 #include "data/Airline.h"
 #include "data/Airport.h"
 
@@ -52,6 +55,19 @@ void AirGraph::printFlights(string code){
     }
 }
 
+void AirGraph::reset(const list<string>* visited_airports){
+    if (visited_airports == nullptr){
+        for (auto& p : vertices){
+            p.second.visited = false;
+        }
+
+        return;
+    }
+
+    for (const string& code : *visited_airports){
+        vertices[code].visited = false;
+    }
+}
 
 /**
  * @brief
@@ -70,9 +86,12 @@ void AirGraph::dfs(string airport){
 }
 
 void AirGraph::bfs(string start, int y){
-    queue<string> q; // queue of unvisited nodes
-    visited_airports.push_back(start);
+    queue<string> q; // unvisited vertices
     q.push(start);
+
+    list<string>* visited_airports; // visited vertices
+    visited_airports->push_back(start);
+
     while (!q.empty ()){ // while there are still unprocessed nodes
         string u = q.front(); q.pop (); // remove first element of q
         cout << u << " "; // show node order
@@ -80,14 +99,12 @@ void AirGraph::bfs(string start, int y){
             string w = e.dest.getCode();
             if (!vertices[w].visited) { // new node!
                 q.push(w);
-                visited_airports.push_back(w);
+                visited_airports->push_back(w);
                 vertices[w].visited = true;
             }
         }
     }
-    for(string airport: visited_airports){
-        vertices[airport].visited = false;
-        visited_airports.clear();
-    }
+
+    reset(visited_airports);
 }
 

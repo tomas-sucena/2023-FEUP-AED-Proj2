@@ -1,11 +1,11 @@
 #ifndef AIRPORTAED_AIRGRAPH_H
 #define AIRPORTAED_AIRGRAPH_H
 
+#include <iostream>
+#include <list>
 #include <set>
 #include <unordered_map>
 #include <unordered_set>
-#include <iostream>
-#include <queue>
 
 #include "data/Airline.h"
 #include "data/Airport.h"
@@ -40,8 +40,6 @@ class AirGraph {
         // for search purposes
         unordered_map<string, Airline> airlineCodes;
 
-        vector<string> visited_airports;
-
     public:
         // constructor
         AirGraph();
@@ -50,10 +48,11 @@ class AirGraph {
         bool addVertex(Airport& a);
         void addEdge(string airportA, string airportB, string airline);
         bool addAirline(Airline& a);
-        Airport getAirport(string code);
 
+        Airport getAirport(string code);
         void printFlights(string code);
 
+        void reset(const list<string>* visited_airports = nullptr);
         void dfs(string start);
         void bfs(string start, int y);
 };
