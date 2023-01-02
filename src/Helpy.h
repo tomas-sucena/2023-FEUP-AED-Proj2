@@ -26,6 +26,7 @@ class Helpy {
         bool process_command(string& s1, string& s2, string& s3);
 
         void displayAirportInformation(string& airport);
+        void displayReachableAirports(string& start, int flights);
         void getShortestRoute();
 
 };

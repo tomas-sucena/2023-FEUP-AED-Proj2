@@ -1,6 +1,3 @@
-#include <iostream>
-#include <string>
-
 #include "AirGraph.h"
 #include "Reader.h"
 #include "Helpy.h"

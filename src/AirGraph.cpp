@@ -2,6 +2,7 @@
 
 #include <list>
 #include <queue>
+#include <stack>
 
 #include "data/Airline.h"
 #include "data/Airport.h"
@@ -51,56 +52,103 @@ set<AirGraph::Edge> AirGraph::getFlights(const string& code){
     return vertices[code].adj;
 }
 
-void AirGraph::reset(const list<string>* visited_airports){
-    if (visited_airports == nullptr){
-        for (auto& p : vertices){
-            p.second.visited = false;
-        }
-
-        return;
+/**
+ * @brief sets to 'false' the 'visited' parameter of all vertices
+ * @complexity O(|V|)
+ */
+void AirGraph::reset(){
+    for (auto& p : vertices){
+        p.second.visited = false;
     }
+}
 
-    for (const string& code : *visited_airports){
+/**
+ * @brief sets to 'false' the 'visited' parameter of some vertices
+ * @complexity O(|V|)
+ * @param visited_airports list of the codes of the visited Airports
+ */
+void AirGraph::reset(const list<string>& visited_airports){
+    for (const string& code : visited_airports){
         vertices[code].visited = false;
     }
 }
 
 /**
  * @brief
- * @complexity O(|V|+|E|)
+ * @complexity O(|V| + |E|)
  * @param airport code of the Airport that is stored in the initial vertex
  */
-void AirGraph::dfs(string airport){
-    Vertex v = vertices[airport];
-    v.visited = true;
+void AirGraph::dfs(string& airport){
+    stack<string> unvisitedV;
+    unvisitedV.push(airport);
 
-    for (Edge e : v.adj){
-        Vertex w = vertices[e.dest.getCode()];
+    list<string> visitedV; // visited vertices
 
-        if (!w.visited) dfs(w.value.getCode());
-    }
-}
+    while (!unvisitedV.empty()){
+        string currV = unvisitedV.top();
 
-void AirGraph::bfs(string start, int y){
-    queue<string> q; // unvisited vertices
-    q.push(start);
+        unvisitedV.pop();
+        visitedV.push_back(currV);
 
-    list<string>* visited_airports; // visited vertices
-    visited_airports->push_back(start);
+        Vertex& v = vertices[currV];
+        if (!v.visited){
+            v.visited = true;
 
-    while (!q.empty ()){ // while there are still unprocessed nodes
-        string u = q.front(); q.pop (); // remove first element of q
-        cout << u << " "; // show node order
-        for (auto e : vertices[u].adj) {
-            string w = e.dest.getCode();
-            if (!vertices[w].visited) { // new node!
-                q.push(w);
-                visited_airports->push_back(w);
-                vertices[w].visited = true;
+            for (const Edge& e : v.adj){
+                unvisitedV.push(e.dest.getCode());
             }
         }
     }
 
-    reset(visited_airports);
+    // reset all the visited vertices
+    reset(visitedV);
+}
+
+/**
+ * @brief
+ * @complexity O(|V| + |E|)
+ * @param airport code of the Airport that is stored in the initial vertex
+ */
+list<Airport> AirGraph::bfs(string& start, int flights){
+    list<Airport> res;
+
+    queue<string> unvisitedV; // unvisited vertices
+    unvisitedV.push(start);
+
+    list<string> visitedV = {start};
+
+    int currNeighbors = 1, nextNeighbors = 0;
+
+    while (flights > 0 && !unvisitedV.empty()){
+        string currV = unvisitedV.front(); // current vertex
+        unvisitedV.pop ();
+
+        //cout << currV << " "; // show vertex order
+        for (const Edge& e : vertices[currV].adj) {
+            string w = e.dest.getCode();
+
+            if (!vertices[w].visited) { // new vertex!
+                unvisitedV.push(w);
+                visitedV.push_back(w);
+
+                vertices[w].visited = true;
+                res.push_back(vertices[w].value);
+
+                nextNeighbors++;
+            }
+        }
+
+        if (!--currNeighbors){
+            flights--;
+
+            currNeighbors = nextNeighbors;
+            nextNeighbors = 0;
+        }
+    }
+
+    // reset all the visited vertices
+    reset(visitedV);
+
+    return res;
 }
 

@@ -52,9 +52,12 @@ class AirGraph {
         Airport getAirport(const string& code);
         set<Edge> getFlights(const string& code);
 
-        void reset(const list<string>* visited_airports = nullptr);
-        void dfs(string start);
-        void bfs(string start, int y);
+        void reset();
+        void reset(const list<string>& visited_airports);
+
+        void dfs(string& start);
+
+        list<Airport> bfs(string& start, int flights);
 };
 
 

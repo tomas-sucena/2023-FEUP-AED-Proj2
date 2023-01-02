@@ -2,6 +2,7 @@
 
 #include <fstream>
 #include <iostream>
+#include <list>
 #include <map>
 #include <sstream>
 #include <string>
@@ -15,8 +16,8 @@
 #define BREAK   "- - - - - - - - - - - - - - - - - - - - -"
 
 map<string, int> Helpy::command = {{"display", 1}, {"print", 1}, {"show", 1}};
-map<string, int> Helpy::target = {{"airport", 6}, {"fastest", 8}};
-map<string, int> Helpy::what = {{"information", 24}, {"flight", 27}, {"flights", 27}};
+map<string, int> Helpy::target = {{"airport", 6}, {"fastest", 8}, {"reachable", 10}};
+map<string, int> Helpy::what = {{"information", 24}, {"flight", 27}, {"flights", 27}, {"airports", 29}};
 
 /**
  * @brief turns the characters of a string all into lowercase or uppercase
@@ -148,6 +149,7 @@ b2: cout << endl << YELLOW << BREAK << RESET << endl;
         cout << endl << YELLOW << BREAK << RESET << endl << endl;
         cout << "* Airport" << endl;
         cout << "* Fastest" << endl;
+        cout << "* Reachable";
         cout << endl;
     }
     else if (s1 == "quit"){
@@ -170,6 +172,11 @@ b2: cout << endl << YELLOW << BREAK << RESET << endl;
         cout << "* Flight" << endl;
         cout << endl;
     }
+    else if (s2 == "reachable"){
+        cout << endl << YELLOW << BREAK << RESET << endl << endl;
+        cout << "* Airports" << endl;
+        cout << endl;
+    }
     else if (s2 == "quit"){
         goto e2;
     }
@@ -185,7 +192,7 @@ b2: cout << endl << YELLOW << BREAK << RESET << endl;
     }
 
     // processar o comando
-    if(!process_command(s1, s2, s3)){
+    if (!process_command(s1, s2, s3)){
         goto b2;
     }
 
@@ -231,6 +238,21 @@ bool Helpy::process_command(string& s1, string& s2, string& s3){
             getShortestRoute();
             break;
         }
+        case (40) : {
+            string airport;
+            cout<<"Please type airport code: ";
+            cin >> airport;
+            lowercase(airport, true);
+            cout << endl;
+
+            int flights;
+            cout << "Please type number of flights: ";
+            cin >> flights;
+            cout << endl;
+
+            displayReachableAirports(airport, flights);
+            break;
+        }
         default : {
             cout << endl << YELLOW << BREAK << RESET << endl;
             cout << endl << RED << "Invalid command! Please, type another command." << RESET << endl;
@@ -261,7 +283,15 @@ void Helpy::displayAirportInformation(string& airport){
     }
 }
 
+void Helpy::displayReachableAirports(string& start, int flights){
+    list<Airport> reached = graph.bfs(start, flights);
+
+    for (const Airport& a : reached){
+        cout << a.getCode() << ' ' << a.getName() << endl;
+    }
+}
+
 /*-----FUNÇÕES DE DOR E SOFRIMENTO-----*/
 void Helpy::getShortestRoute(){
 
-};
+}
