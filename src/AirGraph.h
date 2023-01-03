@@ -29,7 +29,7 @@ class AirGraph {
         struct Vertex {
             Airport value;
             set<Edge> adj;
-            bool visited;
+            bool visited = false;
 
             Vertex() = default;
             Vertex(Airport& value) : value(value) {}
@@ -57,7 +57,7 @@ class AirGraph {
 
         void dfs(string& start);
 
-        list<Airport> bfs(string& start, int flights);
+        list<Airport> bfs(string& airport, int flights);
 };
 
 

@@ -105,17 +105,18 @@ void AirGraph::dfs(string& airport){
 }
 
 /**
- * @brief
  * @complexity O(|V| + |E|)
  * @param airport code of the Airport that is stored in the initial vertex
+ * @param flights
+ * @return
  */
-list<Airport> AirGraph::bfs(string& start, int flights){
+list<Airport> AirGraph::bfs(string& airport, int flights){
     list<Airport> res;
 
     queue<string> unvisitedV; // unvisited vertices
-    unvisitedV.push(start);
+    unvisitedV.push(airport);
 
-    list<string> visitedV = {start};
+    list<string> visitedV = {airport};
 
     int currNeighbors = 1, nextNeighbors = 0;
 
