@@ -1,8 +1,7 @@
 .idea/
-cmake-build-debug*/
+cmake-build-debug/
 
 # para os mac users
 .vscode/
 build/
-docs/.DS_Store
 .DS_Store
