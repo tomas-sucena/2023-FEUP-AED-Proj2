@@ -1,0 +1,40 @@
+\hypertarget{_helpy_8h_source}{}\doxysection{Helpy.\+h}
+\label{_helpy_8h_source}\index{/Users/BrunoDrumond/Documents/GitHub/AED\_Airport/src/Helpy.h@{/Users/BrunoDrumond/Documents/GitHub/AED\_Airport/src/Helpy.h}}
+\mbox{\hyperlink{_helpy_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef AIRPORTAED\_HELPY\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define AIRPORTAED\_HELPY\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <map>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <queue>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <map>}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_air_graph_8h}{AirGraph.h}}"{}}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{keyword}{class }\mbox{\hyperlink{class_helpy}{Helpy}} \{}
+\DoxyCodeLine{12     \textcolor{keyword}{private}:}
+\DoxyCodeLine{13         \mbox{\hyperlink{class_air_graph}{AirGraph}} graph;}
+\DoxyCodeLine{14         }
+\DoxyCodeLine{15         \textcolor{comment}{// mapas usados para processar comandos}}
+\DoxyCodeLine{16         \textcolor{keyword}{static} map<string, int> command, target, what;}
+\DoxyCodeLine{17                }
+\DoxyCodeLine{18     \textcolor{keyword}{public}:}
+\DoxyCodeLine{19         \textcolor{comment}{// constructor}}
+\DoxyCodeLine{20         \mbox{\hyperlink{class_helpy}{Helpy}}(\mbox{\hyperlink{class_air_graph}{AirGraph}}\& airGraph);}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22         \textcolor{comment}{// methods}}
+\DoxyCodeLine{23         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_helpy_aaa754efec4177b0c763859b5847d10d3}{terminal}}();}
+\DoxyCodeLine{24         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_helpy_a8fa3cfb126e6423475a34637b50d8334}{advanced\_mode}}();}
+\DoxyCodeLine{25         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_helpy_af5932f8789f41f033f894cd659aff329}{guided\_mode}}();}
+\DoxyCodeLine{26         \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_helpy_ac18c8353d0a7f41c9363433f826988fe}{process\_command}}(\textcolor{keywordtype}{string}\& s1, \textcolor{keywordtype}{string}\& s2, \textcolor{keywordtype}{string}\& s3);}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_helpy_ababa14751d855f90c112ce9958623f60}{displayAirportInformation}}(\textcolor{keywordtype}{string}\& airport);}
+\DoxyCodeLine{29         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_helpy_aab6c12ff66f6a5bee4cb872fb65ed5ad}{displayReachableAirports}}(\textcolor{keywordtype}{string}\& start, \textcolor{keywordtype}{int} flights);}
+\DoxyCodeLine{30         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_helpy_ac96fdcc7fc0c3b0111237b51cae304e7}{getShortestRoute}}();}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 \};}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
