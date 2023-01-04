@@ -1,0 +1,242 @@
+\hypertarget{class_air_graph}{}\doxysection{Air\+Graph Class Reference}
+\label{class_air_graph}\index{AirGraph@{AirGraph}}
+
+
+{\ttfamily \#include $<$Air\+Graph.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_air_graph_acf275c0cfd8e7e290e267e7209bd91f4}{Air\+Graph}} ()
+\item 
+bool \mbox{\hyperlink{class_air_graph_af7e011d7be89114000fd3b63288c7df7}{add\+Vertex}} (Airport \&a)
+\begin{DoxyCompactList}\small\item\em adds a vertex to the \mbox{\hyperlink{class_air_graph}{Air\+Graph}} @complexity O(1) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_air_graph_a197bd7d2a8d8edf917b659574de3f155}{add\+Edge}} (string airportA, string airportB, string airline)
+\begin{DoxyCompactList}\small\item\em adds an edge to a vertex of the \mbox{\hyperlink{class_air_graph}{Air\+Graph}} @complexity O(1) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_air_graph_a6c508d2ce15c4333d46dd1749bef5008}{add\+Airline}} (Airline \&a)
+\begin{DoxyCompactList}\small\item\em adds an Airline to the \mbox{\hyperlink{class_air_graph}{Air\+Graph}} @complexity O(1) \end{DoxyCompactList}\item 
+Airport \mbox{\hyperlink{class_air_graph_a769168714ae9dd7ed5403b5deb2d8a64}{get\+Airport}} (const string \&code)
+\item 
+set$<$ Edge $>$ \mbox{\hyperlink{class_air_graph_a600d6c620828e3cb975ae8d34b95752d}{get\+Flights}} (const string \&code)
+\item 
+void \mbox{\hyperlink{class_air_graph_a32ba540038b3bda18388f4ad5f12f89d}{reset}} ()
+\begin{DoxyCompactList}\small\item\em sets to \textquotesingle{}false\textquotesingle{} the \textquotesingle{}visited\textquotesingle{} parameter of all vertices @complexity O($\vert$\+V$\vert$) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_air_graph_ab98d2f507e4c5363235a6441963cd7b8}{reset}} (const list$<$ string $>$ \&visited\+\_\+airports)
+\begin{DoxyCompactList}\small\item\em sets to \textquotesingle{}false\textquotesingle{} the \textquotesingle{}visited\textquotesingle{} parameter of some vertices @complexity O($\vert$\+V$\vert$) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_air_graph_a5fad3ae02f5ebfa0e11a17bb8b4dbb1e}{dfs}} (string \&start)
+\begin{DoxyCompactList}\small\item\em @complexity O($\vert$\+V$\vert$ + $\vert$\+E$\vert$) \end{DoxyCompactList}\item 
+list$<$ Airport $>$ \mbox{\hyperlink{class_air_graph_a839ce60c3449b38e0eddc46ff305891d}{bfs}} (string \&airport, int flights)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_air_graph_acf275c0cfd8e7e290e267e7209bd91f4}\label{class_air_graph_acf275c0cfd8e7e290e267e7209bd91f4}} 
+\index{AirGraph@{AirGraph}!AirGraph@{AirGraph}}
+\index{AirGraph@{AirGraph}!AirGraph@{AirGraph}}
+\doxysubsubsection{\texorpdfstring{AirGraph()}{AirGraph()}}
+{\footnotesize\ttfamily Air\+Graph\+::\+Air\+Graph (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_air_graph_a6c508d2ce15c4333d46dd1749bef5008}\label{class_air_graph_a6c508d2ce15c4333d46dd1749bef5008}} 
+\index{AirGraph@{AirGraph}!addAirline@{addAirline}}
+\index{addAirline@{addAirline}!AirGraph@{AirGraph}}
+\doxysubsubsection{\texorpdfstring{addAirline()}{addAirline()}}
+{\footnotesize\ttfamily bool Air\+Graph\+::add\+Airline (\begin{DoxyParamCaption}\item[{Airline \&}]{a }\end{DoxyParamCaption})}
+
+
+
+adds an Airline to the \mbox{\hyperlink{class_air_graph}{Air\+Graph}} @complexity O(1) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Airline that will be added \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if insertion occurs, otherwise false 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_air_graph_a6c508d2ce15c4333d46dd1749bef5008_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_air_graph_a197bd7d2a8d8edf917b659574de3f155}\label{class_air_graph_a197bd7d2a8d8edf917b659574de3f155}} 
+\index{AirGraph@{AirGraph}!addEdge@{addEdge}}
+\index{addEdge@{addEdge}!AirGraph@{AirGraph}}
+\doxysubsubsection{\texorpdfstring{addEdge()}{addEdge()}}
+{\footnotesize\ttfamily void Air\+Graph\+::add\+Edge (\begin{DoxyParamCaption}\item[{string}]{airportA,  }\item[{string}]{airportB,  }\item[{string}]{airline }\end{DoxyParamCaption})}
+
+
+
+adds an edge to a vertex of the \mbox{\hyperlink{class_air_graph}{Air\+Graph}} @complexity O(1) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em airportA} & code of the Airport which is stored in the source vertex \\
+\hline
+{\em airportB} & code of the Airport which is stored in the destination vertex \\
+\hline
+{\em airline} & Airline that establishes the connection between the Airports \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_air_graph_a197bd7d2a8d8edf917b659574de3f155_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_air_graph_af7e011d7be89114000fd3b63288c7df7}\label{class_air_graph_af7e011d7be89114000fd3b63288c7df7}} 
+\index{AirGraph@{AirGraph}!addVertex@{addVertex}}
+\index{addVertex@{addVertex}!AirGraph@{AirGraph}}
+\doxysubsubsection{\texorpdfstring{addVertex()}{addVertex()}}
+{\footnotesize\ttfamily bool Air\+Graph\+::add\+Vertex (\begin{DoxyParamCaption}\item[{Airport \&}]{a }\end{DoxyParamCaption})}
+
+
+
+adds a vertex to the \mbox{\hyperlink{class_air_graph}{Air\+Graph}} @complexity O(1) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Airport that will be stored in the vertex \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if insertion occurs, otherwise false 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_air_graph_af7e011d7be89114000fd3b63288c7df7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_air_graph_a839ce60c3449b38e0eddc46ff305891d}\label{class_air_graph_a839ce60c3449b38e0eddc46ff305891d}} 
+\index{AirGraph@{AirGraph}!bfs@{bfs}}
+\index{bfs@{bfs}!AirGraph@{AirGraph}}
+\doxysubsubsection{\texorpdfstring{bfs()}{bfs()}}
+{\footnotesize\ttfamily list$<$ Airport $>$ Air\+Graph\+::bfs (\begin{DoxyParamCaption}\item[{string \&}]{airport,  }\item[{int}]{flights }\end{DoxyParamCaption})}
+
+@complexity O($\vert$\+V$\vert$ + $\vert$\+E$\vert$) 
+\begin{DoxyParams}{Parameters}
+{\em airport} & code of the Airport that is stored in the initial vertex \\
+\hline
+{\em flights} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=273pt]{class_air_graph_a839ce60c3449b38e0eddc46ff305891d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_air_graph_a839ce60c3449b38e0eddc46ff305891d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_air_graph_a5fad3ae02f5ebfa0e11a17bb8b4dbb1e}\label{class_air_graph_a5fad3ae02f5ebfa0e11a17bb8b4dbb1e}} 
+\index{AirGraph@{AirGraph}!dfs@{dfs}}
+\index{dfs@{dfs}!AirGraph@{AirGraph}}
+\doxysubsubsection{\texorpdfstring{dfs()}{dfs()}}
+{\footnotesize\ttfamily void Air\+Graph\+::dfs (\begin{DoxyParamCaption}\item[{string \&}]{airport }\end{DoxyParamCaption})}
+
+
+
+@complexity O($\vert$\+V$\vert$ + $\vert$\+E$\vert$) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em airport} & code of the Airport that is stored in the initial vertex \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=273pt]{class_air_graph_a5fad3ae02f5ebfa0e11a17bb8b4dbb1e_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_air_graph_a769168714ae9dd7ed5403b5deb2d8a64}\label{class_air_graph_a769168714ae9dd7ed5403b5deb2d8a64}} 
+\index{AirGraph@{AirGraph}!getAirport@{getAirport}}
+\index{getAirport@{getAirport}!AirGraph@{AirGraph}}
+\doxysubsubsection{\texorpdfstring{getAirport()}{getAirport()}}
+{\footnotesize\ttfamily Airport Air\+Graph\+::get\+Airport (\begin{DoxyParamCaption}\item[{const string \&}]{code }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_air_graph_a769168714ae9dd7ed5403b5deb2d8a64_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_air_graph_a600d6c620828e3cb975ae8d34b95752d}\label{class_air_graph_a600d6c620828e3cb975ae8d34b95752d}} 
+\index{AirGraph@{AirGraph}!getFlights@{getFlights}}
+\index{getFlights@{getFlights}!AirGraph@{AirGraph}}
+\doxysubsubsection{\texorpdfstring{getFlights()}{getFlights()}}
+{\footnotesize\ttfamily set$<$ Air\+Graph\+::\+Edge $>$ Air\+Graph\+::get\+Flights (\begin{DoxyParamCaption}\item[{const string \&}]{code }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_air_graph_a600d6c620828e3cb975ae8d34b95752d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_air_graph_a32ba540038b3bda18388f4ad5f12f89d}\label{class_air_graph_a32ba540038b3bda18388f4ad5f12f89d}} 
+\index{AirGraph@{AirGraph}!reset@{reset}}
+\index{reset@{reset}!AirGraph@{AirGraph}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Air\+Graph\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+sets to \textquotesingle{}false\textquotesingle{} the \textquotesingle{}visited\textquotesingle{} parameter of all vertices @complexity O($\vert$\+V$\vert$) 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_air_graph_a32ba540038b3bda18388f4ad5f12f89d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_air_graph_ab98d2f507e4c5363235a6441963cd7b8}\label{class_air_graph_ab98d2f507e4c5363235a6441963cd7b8}} 
+\index{AirGraph@{AirGraph}!reset@{reset}}
+\index{reset@{reset}!AirGraph@{AirGraph}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Air\+Graph\+::reset (\begin{DoxyParamCaption}\item[{const list$<$ string $>$ \&}]{visited\+\_\+airports }\end{DoxyParamCaption})}
+
+
+
+sets to \textquotesingle{}false\textquotesingle{} the \textquotesingle{}visited\textquotesingle{} parameter of some vertices @complexity O($\vert$\+V$\vert$) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em visited\+\_\+airports} & list of the codes of the visited Airports \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Bruno\+Drumond/\+Documents/\+Git\+Hub/\+AED\+\_\+\+Airport/src/\mbox{\hyperlink{_air_graph_8h}{Air\+Graph.\+h}}\item 
+/\+Users/\+Bruno\+Drumond/\+Documents/\+Git\+Hub/\+AED\+\_\+\+Airport/src/\mbox{\hyperlink{_air_graph_8cpp}{Air\+Graph.\+cpp}}\end{DoxyCompactItemize}

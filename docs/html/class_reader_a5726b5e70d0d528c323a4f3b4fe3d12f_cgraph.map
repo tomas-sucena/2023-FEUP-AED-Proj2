@@ -1,0 +1,9 @@
+<map id="Reader::readAll" name="Reader::readAll">
+<area shape="rect" id="node1" title=" " coords="5,55,117,80"/>
+<area shape="rect" id="node2" href="$class_reader.html#af068ec20958e324c4f5a5634297c84a8" title=" " coords="167,5,307,31"/>
+<area shape="rect" id="node4" href="$class_reader.html#a73a93ec23a010e773d42bb0ac96a23f1" title=" " coords="165,55,308,80"/>
+<area shape="rect" id="node6" href="$class_reader.html#a66c9460b5ed5a1969cefebc02b3bed77" title=" " coords="169,104,305,129"/>
+<area shape="rect" id="node3" href="$class_air_graph.html#a6c508d2ce15c4333d46dd1749bef5008" title="adds an Airline to the AirGraph @complexity O(1)" coords="357,5,495,31"/>
+<area shape="rect" id="node5" href="$class_air_graph.html#af7e011d7be89114000fd3b63288c7df7" title="adds a vertex to the AirGraph @complexity O(1)" coords="356,55,496,80"/>
+<area shape="rect" id="node7" href="$class_air_graph.html#a197bd7d2a8d8edf917b659574de3f155" title="adds an edge to a vertex of the AirGraph @complexity O(1)" coords="360,104,492,129"/>
+</map>
