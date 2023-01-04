@@ -56,8 +56,9 @@ class AirGraph {
         void reset(const list<string>& visited_airports);
 
         void dfs(string& start);
+        unordered_set<Airport> dfs(const string& airport, double distance);
 
-        list<Airport> bfs(string& airport, int flights);
+        list<Airport> bfs(const string& airport, int flights);
 };
 
 

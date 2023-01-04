@@ -105,12 +105,36 @@ void AirGraph::dfs(string& airport){
 }
 
 /**
+ * @brief
+ * @complexity O(|V| + |E|)
+ * @param airport code of the Airport that is stored in the initial vertex
+ * @param distance radius
+ * @return container with all of the reachable Airports
+ */
+unordered_set<Airport> AirGraph::dfs(const string& airport, double distance){
+    unordered_set<Airport> reached;
+    if (distance <= 0) return reached;
+
+    vertices[airport].visited = true;
+
+    for (const Edge& e : vertices[airport].adj){
+        if (vertices[e.dest.getCode()].visited){
+            continue;
+        }
+
+        reached.merge(dfs(e.dest.getCode(), distance - e.distance));
+    }
+
+    return reached;
+}
+
+/**
  * @complexity O(|V| + |E|)
  * @param airport code of the Airport that is stored in the initial vertex
  * @param flights
  * @return
  */
-list<Airport> AirGraph::bfs(string& airport, int flights){
+list<Airport> AirGraph::bfs(const string& airport, int flights){
     list<Airport> res;
 
     queue<string> unvisitedV; // unvisited vertices
@@ -152,4 +176,3 @@ list<Airport> AirGraph::bfs(string& airport, int flights){
 
     return res;
 }
-
