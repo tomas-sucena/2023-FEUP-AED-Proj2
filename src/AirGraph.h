@@ -10,6 +10,8 @@
 #include "data/Airline.h"
 #include "data/Airport.h"
 
+#define Path list<Airport>
+
 class AirGraph {
     private:
         struct Edge {
@@ -55,10 +57,12 @@ class AirGraph {
         void reset();
         void reset(const list<string>& visited_airports);
 
-        void dfs(string& start);
+        void dfs(const string& airportA, const string& airportB, Path currPath, list<Path>& allPaths);
         unordered_set<Airport> dfs(const string& airport, double distance);
 
         list<Airport> bfs(const string& airport, int flights);
+
+        list<list<Airport>> getPaths(const string& airportA, const string& airportB);
 };
 
 

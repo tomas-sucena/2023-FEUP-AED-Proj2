@@ -27,8 +27,7 @@ class Helpy {
 
         void displayAirportInformation(string& airport);
         void displayReachableAirports(string& start, int flights);
-        void getShortestRoute();
-
+        void getShortestRoute(const string& airportA, const string& airportB);
 };
 
 #endif

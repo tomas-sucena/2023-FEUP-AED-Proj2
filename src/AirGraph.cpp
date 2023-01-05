@@ -2,12 +2,11 @@
 
 #include <list>
 #include <queue>
-#include <stack>
 
 #include "data/Airline.h"
 #include "data/Airport.h"
 
-AirGraph::AirGraph() {}
+AirGraph::AirGraph() = default;
 
 /**
  * @brief adds a vertex to the AirGraph
@@ -78,30 +77,34 @@ void AirGraph::reset(const list<string>& visited_airports){
  * @complexity O(|V| + |E|)
  * @param airport code of the Airport that is stored in the initial vertex
  */
-void AirGraph::dfs(string& airport){
-    stack<string> unvisitedV;
-    unvisitedV.push(airport);
+void AirGraph::dfs(const string& airportA, const string& airportB, Path currPath, list<Path>& allPaths){
+    Vertex& currV = vertices[airportA];
+    currV.visited = true;
 
-    list<string> visitedV; // visited vertices
+    currPath.push_back(currV.value);
 
-    while (!unvisitedV.empty()){
-        string currV = unvisitedV.top();
+    // target found
+    if (airportA == airportB){
+        bool insert = (allPaths.empty() || allPaths.front().size() <= currPath.size());
+        bool clear = (insert && currPath.size() < allPaths.front().size());
 
-        unvisitedV.pop();
-        visitedV.push_back(currV);
+        if (clear){
+            allPaths.clear();
+        }
 
-        Vertex& v = vertices[currV];
-        if (!v.visited){
-            v.visited = true;
+        if (insert){
+            allPaths.push_back(currPath);
+        }
 
-            for (const Edge& e : v.adj){
-                unvisitedV.push(e.dest.getCode());
-            }
+        return;
+    }
+
+    for (const Edge& e : currV.adj){
+        if (!vertices[e.dest.getCode()].visited){
+            dfs(e.dest.getCode(), airportB, currPath, allPaths);
         }
     }
 
-    // reset all the visited vertices
-    reset(visitedV);
 }
 
 /**
@@ -175,4 +178,14 @@ list<Airport> AirGraph::bfs(const string& airport, int flights){
     reset(visitedV);
 
     return res;
+}
+
+list<list<Airport>> AirGraph::getPaths(const string& airportA, const string& airportB){
+    list<list<Airport>> allPaths;
+    list<Airport> currPath;
+
+    dfs(airportA, airportB, currPath, allPaths);
+    reset();
+
+    return allPaths;
 }

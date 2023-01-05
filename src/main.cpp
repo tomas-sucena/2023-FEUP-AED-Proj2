@@ -11,5 +11,7 @@ int main(){
     // TESTE
     AirGraph g = reader.getGraph();
     Helpy helpy = Helpy(g);
-    helpy.terminal();
+    //helpy.terminal();
+
+    helpy.getShortestRoute("CIY","CIA");
 }

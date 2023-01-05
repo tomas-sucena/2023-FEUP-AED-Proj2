@@ -235,7 +235,7 @@ bool Helpy::process_command(string& s1, string& s2, string& s3){
             break;
         }
         case(36) : {
-            getShortestRoute();
+            //getShortestRoute();
             break;
         }
         case (40) : {
@@ -292,6 +292,13 @@ void Helpy::displayReachableAirports(string& start, int flights){
 }
 
 /*-----FUNÇÕES DE DOR E SOFRIMENTO-----*/
-void Helpy::getShortestRoute(){
+void Helpy::getShortestRoute(const string& airportA, const string& airportB){
+    list<Path> allPaths = graph.getPaths(airportA, airportB);
 
+    for (Path p : allPaths){
+        for (const Airport& a : p){
+            cout << a.getCode() << ' ';
+        }
+        cout << endl;
+    }
 }
