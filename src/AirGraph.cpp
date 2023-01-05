@@ -25,7 +25,7 @@ bool AirGraph::addVertex(Airport &a){
  * @param airportB code of the Airport which is stored in the destination vertex
  * @param airline Airline that establishes the connection between the Airports
  */
-void AirGraph::addEdge(string airportA, string airportB, string airline){
+void AirGraph::addEdge(const string& airportA, const string& airportB, const string& airline){
     Airport& dest = vertices[airportB].value;
     Airline& a = airlineCodes[airline];
     double distance = vertices[airportA].value.getDistance(dest);
@@ -62,7 +62,18 @@ void AirGraph::reset(){
 }
 
 /**
- * @brief sets to 'false' the 'visited' parameter of some vertices
+ * @brief sets to 'false' the 'visited' parameter of the vertices whose Airport is in visited_airports
+ * @complexity O(|V|)
+ * @param visited_airports list of the visited Airports
+ */
+void AirGraph::reset(const list<Airport>& visited_airports){
+    for (const Airport& a : visited_airports){
+        vertices[a.getCode()].visited = false;
+    }
+}
+
+/**
+ * @brief sets to 'false' the 'visited' parameter of the vertices whose Airport code is in visited_airports
  * @complexity O(|V|)
  * @param visited_airports list of the codes of the visited Airports
  */
@@ -85,7 +96,7 @@ void AirGraph::dfs(const string& airportA, const string& airportB, Path currPath
 
     // target found
     if (airportA == airportB){
-        bool insert = (allPaths.empty() || allPaths.front().size() <= currPath.size());
+        bool insert = (allPaths.empty() || currPath.size() <= allPaths.front().size());
         bool clear = (insert && currPath.size() < allPaths.front().size());
 
         if (clear){
@@ -96,6 +107,7 @@ void AirGraph::dfs(const string& airportA, const string& airportB, Path currPath
             allPaths.push_back(currPath);
         }
 
+        currV.visited = false;
         return;
     }
 
@@ -104,7 +116,6 @@ void AirGraph::dfs(const string& airportA, const string& airportB, Path currPath
             dfs(e.dest.getCode(), airportB, currPath, allPaths);
         }
     }
-
 }
 
 /**
@@ -185,7 +196,6 @@ list<list<Airport>> AirGraph::getPaths(const string& airportA, const string& air
     list<Airport> currPath;
 
     dfs(airportA, airportB, currPath, allPaths);
-    reset();
 
     return allPaths;
 }

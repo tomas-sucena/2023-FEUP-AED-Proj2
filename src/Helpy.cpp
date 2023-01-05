@@ -292,7 +292,7 @@ void Helpy::displayReachableAirports(string& start, int flights){
 }
 
 /*-----FUNÇÕES DE DOR E SOFRIMENTO-----*/
-void Helpy::getShortestRoute(const string& airportA, const string& airportB){
+void Helpy::getShortestRoutes(const string& airportA, const string& airportB){
     list<Path> allPaths = graph.getPaths(airportA, airportB);
 
     for (Path p : allPaths){

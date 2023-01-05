@@ -48,13 +48,14 @@ class AirGraph {
 
         // methods
         bool addVertex(Airport& a);
-        void addEdge(string airportA, string airportB, string airline);
+        void addEdge(const string& airportA, const string& airportB, const string& airline);
         bool addAirline(Airline& a);
 
         Airport getAirport(const string& code);
         set<Edge> getFlights(const string& code);
 
         void reset();
+        void reset(const list<Airport>& visited_airports);
         void reset(const list<string>& visited_airports);
 
         void dfs(const string& airportA, const string& airportB, Path currPath, list<Path>& allPaths);
