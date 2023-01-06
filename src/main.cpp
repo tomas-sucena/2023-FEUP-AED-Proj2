@@ -35,6 +35,7 @@ int main(){
     g.addEdge("A5", "A1", "TAP");
     g.addEdge("A5", "A4", "RYN");
 
-    Helpy helpy = Helpy(g);
+    AirGraph graph = reader.getGraph();
+    Helpy helpy(graph, reader.getAirports());
     helpy.terminal();
 }

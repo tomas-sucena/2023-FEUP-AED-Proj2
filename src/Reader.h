@@ -22,8 +22,7 @@ class Reader {
         AirGraph g;
 
         // for search purposes
-        uMap<string, Airport> airportCodes;
-        uMap<string, Airport> airportNames;
+        uMap<string, Airport> airports;
 
     public:
         // constructor
@@ -36,8 +35,7 @@ class Reader {
         void readFlights();
 
         AirGraph getGraph() const;
-        uMap<string, Airport> getAirportCodes() const;
-        uMap<string, Airport> getAirportNames() const;
+        uMap<string, Airport> getAirports() const;
 };
 
 

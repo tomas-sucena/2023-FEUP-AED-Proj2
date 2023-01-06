@@ -13,29 +13,28 @@
 class Helpy {
     private:
         AirGraph graph;
-        uMap<string, Airport> airportCodes;
-        uMap<string, Airport> airportNames;
+
+        // for search purposes
+        uSet<string> airportCodes;
+        uMap<string, string> airportNames;
         
-        // mapas usados para processar comandos
+        // maps used to process commands
         static map<string, int> command, target, what;
                
     public:
         // constructor
-        Helpy(AirGraph& airGraph);
+        Helpy(AirGraph& airGraph, const uMap<string, Airport>& airports);
 
         // methods
-        void setAirports(uMap<string, Airport>& codes, uMap<string, Airport>& names);
-
         string readInput(string& instruction, uSet<string>& options);
+        string readAirport();
 
         void terminal();
         void advanced_mode();
         void guided_mode();
         bool process_command(string& s1, string& s2, string& s3);
 
-        string readAirport();
-
-        void displayAirportInformation(string& airport);
+        void displayAirportInformation();
         void displayReachableAirports(string& start, int flights);
         void getShortestRoutes();
 };

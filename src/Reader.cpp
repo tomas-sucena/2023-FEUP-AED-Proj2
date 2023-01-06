@@ -97,7 +97,7 @@ void Reader::readAirports() {
         Airport a(code, name, city, country, latitude, longitude);
         g.addVertex(a);
 
-        airportCodes[code] = a;
+        airports[code] = a;
     }
 
     reader.close();
@@ -136,10 +136,6 @@ AirGraph Reader::getGraph() const{
     return g;
 }
 
-uMap<string, Airport> Reader::getAirportCodes() const{
-    return airportCodes;
-}
-
-uMap<string, Airport> Reader::getAirportNames() const{
-    return airportNames;
+uMap<string, Airport> Reader::getAirports() const{
+    return airports;
 }
