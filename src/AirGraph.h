@@ -10,13 +10,15 @@
 #include "data/Airline.h"
 #include "data/Airport.h"
 
+#define uSet unordered_set
+#define uMap unordered_map
 #define Path list<Airport>
 
 class AirGraph {
     private:
         struct Edge {
             Airport dest;
-            unordered_set<Airline> airlines;
+            uSet<Airline> airlines;
             double distance; // weight
 
             Edge(Airport& dest, Airline& airline, double distance) : dest(dest), distance(distance) {
@@ -37,10 +39,8 @@ class AirGraph {
             Vertex(Airport& value) : value(value) {}
         };
 
-        unordered_map<string, Vertex> vertices;
-
-        // for search purposes
-        unordered_map<string, Airline> airlineCodes;
+        uMap<string, Vertex> vertices;
+        uMap<string, Airline> airlineCodes; // for search purposes
 
     public:
         // constructor
@@ -53,17 +53,19 @@ class AirGraph {
 
         Airport getAirport(const string& code);
         set<Edge> getFlights(const string& code);
+        list<Path> getPaths(const string& airportA, const string& airportB, uSet<string>* avoid = nullptr);
 
         void reset();
         void reset(const list<Airport>& visited_airports);
         void reset(const list<string>& visited_airports);
 
-        void dfs(const string& airportA, const string& airportB, Path currPath, list<Path>& allPaths);
-        unordered_set<Airport> dfs(const string& airport, double distance);
+        bool validPath(const Edge& e, uSet<string>* avoid = nullptr);
+
+        void dfs(const string& airportA, const string& airportB, Path currPath, list<Path>& allPaths,
+                 uSet<string>* avoid = nullptr);
+        uSet<Airport> dfs(const string& airport, double distance);
 
         list<Airport> bfs(const string& airport, int flights);
-
-        list<list<Airport>> getPaths(const string& airportA, const string& airportB);
 };
 
 

@@ -33,10 +33,11 @@ int main(){
     Airport e("A5", "a", "a", "a", 20, 0);
     g.addVertex(e);
     g.addEdge("A5", "A1", "TAP");
-    g.addEdge("A5", "A4", "TAP");
+    g.addEdge("A5", "A4", "RYN");
 
     Helpy helpy = Helpy(g);
     //helpy.terminal();
 
-    helpy.getShortestRoutes("A5","A4");
+    auto* pain = new uSet<string>; pain->insert("TAP");
+    helpy.getShortestRoutes("A5", "A4", pain);
 }

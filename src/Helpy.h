@@ -3,10 +3,10 @@
 
 #include <map>
 #include <string>
-#include <queue>
-#include <map>
 
 #include "AirGraph.h"
+
+#define uSet unordered_set
 
 class Helpy {
     private:
@@ -27,7 +27,7 @@ class Helpy {
 
         void displayAirportInformation(string& airport);
         void displayReachableAirports(string& start, int flights);
-        void getShortestRoutes(const string& airportA, const string& airportB);
+        void getShortestRoutes(const string& airportA, const string& airportB, uSet<string>* avoid);
 };
 
 #endif

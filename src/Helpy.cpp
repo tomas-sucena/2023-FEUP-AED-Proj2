@@ -7,6 +7,10 @@
 #include <sstream>
 #include <string>
 
+#include "AirGraph.h"
+
+#define uSet unordered_set
+
 // cores para o output
 #define RESET   "\033[0;m"
 #define RED     "\033[1;31m"
@@ -20,8 +24,8 @@ map<string, int> Helpy::target = {{"airport", 6}, {"fastest", 8}, {"reachable", 
 map<string, int> Helpy::what = {{"information", 24}, {"flight", 27}, {"flights", 27}, {"airports", 29}};
 
 /**
- * @brief turns the characters of a string all into lowercase or uppercase
- * ;complexity = O(n)
+ * @brief turns all the characters of a string into lowercase or uppercase
+ * @complexity O(n)
  * @param s string to be modified
  * @param uppercase if true turns all the characters of the string to uppercase; if false turns all the characters of the string to lowercase
  */
@@ -292,8 +296,8 @@ void Helpy::displayReachableAirports(string& start, int flights){
 }
 
 /*-----FUNÇÕES DE DOR E SOFRIMENTO-----*/
-void Helpy::getShortestRoutes(const string& airportA, const string& airportB){
-    list<Path> allPaths = graph.getPaths(airportA, airportB);
+void Helpy::getShortestRoutes(const string& airportA, const string& airportB, uSet<string>* avoid){
+    list<Path> allPaths = graph.getPaths(airportA, airportB, avoid);
 
     for (Path p : allPaths){
         for (const Airport& a : p){

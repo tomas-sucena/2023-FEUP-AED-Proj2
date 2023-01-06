@@ -2,9 +2,13 @@
 
 #include <list>
 #include <queue>
+#include <unordered_set>
 
 #include "data/Airline.h"
 #include "data/Airport.h"
+
+#define uSet unordered_set
+#define Path list<Airport>
 
 AirGraph::AirGraph() = default;
 
@@ -83,12 +87,25 @@ void AirGraph::reset(const list<string>& visited_airports){
     }
 }
 
+bool AirGraph::validPath(const Edge& e, uSet<string>* avoid){
+    if (avoid == nullptr) return true;
+
+    for (const Airline& a : e.airlines){
+        if (avoid->find(a.getCode()) == avoid->end()){
+            return true;
+        }
+    }
+
+    return false;
+}
+
 /**
  * @brief
  * @complexity O(|V| + |E|)
  * @param airport code of the Airport that is stored in the initial vertex
  */
-void AirGraph::dfs(const string& airportA, const string& airportB, Path currPath, list<Path>& allPaths){
+void AirGraph::dfs(const string& airportA, const string& airportB, Path currPath, list<Path>& allPaths,
+                   uSet<string>* avoid){
     Vertex& currV = vertices[airportA];
     currV.visited = true;
 
@@ -112,8 +129,8 @@ void AirGraph::dfs(const string& airportA, const string& airportB, Path currPath
     }
 
     for (const Edge& e : currV.adj){
-        if (!vertices[e.dest.getCode()].visited){
-            dfs(e.dest.getCode(), airportB, currPath, allPaths);
+        if (!vertices[e.dest.getCode()].visited && validPath(e, avoid)){
+            dfs(e.dest.getCode(), airportB, currPath, allPaths, avoid);
         }
     }
 }
@@ -125,8 +142,8 @@ void AirGraph::dfs(const string& airportA, const string& airportB, Path currPath
  * @param distance radius
  * @return container with all of the reachable Airports
  */
-unordered_set<Airport> AirGraph::dfs(const string& airport, double distance){
-    unordered_set<Airport> reached;
+uSet<Airport> AirGraph::dfs(const string& airport, double distance){
+    uSet<Airport> reached;
     if (distance <= 0) return reached;
 
     vertices[airport].visited = true;
@@ -144,7 +161,7 @@ unordered_set<Airport> AirGraph::dfs(const string& airport, double distance){
 
 /**
  * @complexity O(|V| + |E|)
- * @param airport code of the Airport that is stored in the initial vertex
+ * @param airport code of the Airport which constitutes the starting point
  * @param flights
  * @return
  */
@@ -191,11 +208,18 @@ list<Airport> AirGraph::bfs(const string& airport, int flights){
     return res;
 }
 
-list<list<Airport>> AirGraph::getPaths(const string& airportA, const string& airportB){
-    list<list<Airport>> allPaths;
-    list<Airport> currPath;
+/**
+ * @brief gets all the shortest paths from one Airport to another
+ * @complexity O(|V| + |E|)
+ * @param airportA code of the Airport which constitutes the starting point
+ * @param airportB code of the Airport which constitutes the destination
+ * @return list with the shortest paths
+ */
+list<Path> AirGraph::getPaths(const string& airportA, const string& airportB, uSet<string>* avoid){
+    list<Path> allPaths;
+    Path currPath;
 
-    dfs(airportA, airportB, currPath, allPaths);
+    dfs(airportA, airportB, currPath, allPaths, avoid);
 
     return allPaths;
 }
