@@ -12,6 +12,8 @@
 
 using namespace std;
 
+#define uMap unordered_map
+
 class Reader {
     private:
         string path;
@@ -20,7 +22,8 @@ class Reader {
         AirGraph g;
 
         // for search purposes
-        unordered_map<string, Airport> airportCodes;
+        uMap<string, Airport> airportCodes;
+        uMap<string, Airport> airportNames;
 
     public:
         // constructor
@@ -32,9 +35,9 @@ class Reader {
         void readAirports();
         void readFlights();
 
-        unordered_set<Airline> getAirlines() const;
-        unordered_map<Airport, int> getAirports() const;
         AirGraph getGraph() const;
+        uMap<string, Airport> getAirportCodes() const;
+        uMap<string, Airport> getAirportNames() const;
 };
 
 

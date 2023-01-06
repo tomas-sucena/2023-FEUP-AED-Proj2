@@ -41,43 +41,56 @@ void lowercase(string& s, bool uppercase = false){
  */
 Helpy::Helpy(AirGraph& airgraph) : graph(airgraph) {}
 
+void Helpy::setAirports(uMap<string, Airport>& codes, uMap<string, Airport>& names){
+    this->airportCodes = codes;
+    this->airportNames = names;
+}
+
+string Helpy::readInput(string& instruction, uSet<string>& options){
+    string res;
+    bool valid = false;
+
+    while (!valid){
+        cout << endl << YELLOW << BREAK << RESET << endl << endl;
+        cout << instruction << endl << endl;
+
+        string line; getline(cin >> ws, line);
+        lowercase(line);
+
+        istringstream line_(line);
+
+        while (line_ >> res){
+            if (options.find(res) != options.end()){
+                valid = true;
+                break;
+            }
+        }
+
+        if (!valid){
+            cout << endl << YELLOW << BREAK << RESET << endl << endl;
+            cout << RED << "Invalid command! Please, try again." << RESET << endl;
+        }
+    }
+
+    return res;
+}
+
 /**
  * @brief allows to choose the mode of the UI
  * @complexity O(n^2)
  */
 void Helpy::terminal(){
-a0: cout << endl << YELLOW << BREAK << RESET << endl << endl;
-    cout << "Which mode would you prefer?" << endl << endl;
-    cout << "* Guided" << endl;
-    cout << "* Advanced" << endl << endl;
+    string instruction = "Which mode would you prefer?\n\n"
+                         "* Guided\n"
+                         "* Advanced";
+    uSet<string> options = {"guided", "advanced"};
 
-    string line; getline(cin, line);
-    lowercase(line);
-
-    istringstream line_(line);
-    string temp;
-
-    bool valid = false;
-    while (line_ >> temp){  
-        if (temp == "guided"){
-            guided_mode();
-
-            valid = true;
-            break;
-        }
-        else if (temp == "advanced"){
-            advanced_mode();
-
-            valid = true;
-            break;
-        }
-    }     
-
-    if (!valid){
-        cout << endl << YELLOW << BREAK << RESET << endl << endl;
-        cout << RED << "Invalid command! Please, try again." << RESET << endl;
-        goto a0;
-    }       
+    if (readInput(instruction, options) == "guided"){
+        guided_mode();
+    }
+    else{
+        advanced_mode();
+    }
 }
 
 /**
@@ -239,7 +252,7 @@ bool Helpy::process_command(string& s1, string& s2, string& s3){
             break;
         }
         case(36) : {
-            //getShortestRoute();
+            getShortestRoutes();
             break;
         }
         case (40) : {
@@ -279,9 +292,9 @@ void Helpy::displayAirportInformation(string& airport){
     cout << GREEN << "The airport " << a.getName() << " is situated in " << a.getCity() << ", " << a.getCountry() << endl;
     cout << GREEN << "This airport has the following flights:" << endl;
 
-    for (const auto& e : graph.getFlights(airport)){
-        for (const Airline& airline : e.airlines){
-            cout << "From " << a.getName() << " to " << e.dest.getName()
+    for (const auto e : graph.getFlights(airport)){
+        for (const Airline& airline : e->airlines){
+            cout << "From " << a.getName() << " to " << e->dest.getName()
             << " with " << airline.getName() << endl;
         }
     }
@@ -296,13 +309,24 @@ void Helpy::displayReachableAirports(string& start, int flights){
 }
 
 /*-----FUNÇÕES DE DOR E SOFRIMENTO-----*/
-void Helpy::getShortestRoutes(const string& airportA, const string& airportB, uSet<string>* avoid){
-    list<Path> allPaths = graph.getPaths(airportA, airportB, avoid);
+void Helpy::getShortestRoutes(){
+    cout << endl << YELLOW << BREAK << RESET << endl << endl;
+    cout << "Which of the following would you like to use to define the starting point?" << endl << endl;
+
+    cout << "* Airport" << endl;
+    cout << "* City" << endl;
+
+    string line; getline(cin >> ws, line);
+    lowercase(line);
+
+    istringstream line_;
+    /*
+    list<Path> allPaths = graph.getPaths(airportA, airportB, airlines);
 
     for (Path p : allPaths){
         for (const Airport& a : p){
             cout << a.getCode() << ' ';
         }
         cout << endl;
-    }
+    }*/
 }

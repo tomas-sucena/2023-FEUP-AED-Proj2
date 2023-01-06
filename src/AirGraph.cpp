@@ -34,7 +34,11 @@ void AirGraph::addEdge(const string& airportA, const string& airportB, const str
     Airline& a = airlineCodes[airline];
     double distance = vertices[airportA].value.getDistance(dest);
 
-    vertices[airportA].adj.insert(Edge(dest, a, distance));
+    // create the edge
+    Edge* e = new Edge(dest, a, distance);
+
+    vertices[airportA].adj.insert(e);
+    edges.insert(e);
 }
 
 /**
@@ -51,7 +55,7 @@ Airport AirGraph::getAirport(const string& code){
     return vertices[code].value;
 }
 
-set<AirGraph::Edge> AirGraph::getFlights(const string& code){
+set<AirGraph::Edge*> AirGraph::getFlights(const string& code){
     return vertices[code].adj;
 }
 
@@ -62,6 +66,10 @@ set<AirGraph::Edge> AirGraph::getFlights(const string& code){
 void AirGraph::reset(){
     for (auto& p : vertices){
         p.second.visited = false;
+    }
+
+    for (Edge* e : edges){
+        e->valid = true;
     }
 }
 
@@ -87,16 +95,32 @@ void AirGraph::reset(const list<string>& visited_airports){
     }
 }
 
-bool AirGraph::validPath(const Edge& e, uSet<string>* avoid){
-    if (avoid == nullptr) return true;
-
-    for (const Airline& a : e.airlines){
-        if (avoid->find(a.getCode()) == avoid->end()){
-            return true;
+/**
+ * @brief checks if an edge contains at least one Airline that the user wants to use
+ * @param airlines codes of the Airlines that the user would like to use
+ * @return 'true' if the edge is valid or 'false' otherwise
+ */
+void AirGraph::validateEdges(uSet<string>* airlines){
+    // no restrictions
+    if (airlines == nullptr){
+        for (Edge* e : edges){
+            e->valid = true;
         }
+
+        return;
     }
 
-    return false;
+    for (Edge* e : edges){
+        e->valid = false;
+
+        for (const Airline& a : e->airlines){
+            // if an airline is found
+            if (airlines->find(a.getCode()) != airlines->end()){
+                e->valid = true;
+                break;
+            }
+        }
+    }
 }
 
 /**
@@ -104,8 +128,7 @@ bool AirGraph::validPath(const Edge& e, uSet<string>* avoid){
  * @complexity O(|V| + |E|)
  * @param airport code of the Airport that is stored in the initial vertex
  */
-void AirGraph::dfs(const string& airportA, const string& airportB, Path currPath, list<Path>& allPaths,
-                   uSet<string>* avoid){
+void AirGraph::dfs(const string& airportA, const string& airportB, Path currPath, list<Path>& allPaths){
     Vertex& currV = vertices[airportA];
     currV.visited = true;
 
@@ -128,9 +151,9 @@ void AirGraph::dfs(const string& airportA, const string& airportB, Path currPath
         return;
     }
 
-    for (const Edge& e : currV.adj){
-        if (!vertices[e.dest.getCode()].visited && validPath(e, avoid)){
-            dfs(e.dest.getCode(), airportB, currPath, allPaths, avoid);
+    for (const Edge* e : currV.adj){
+        if (!vertices[e->dest.getCode()].visited && e->valid){
+            dfs(e->dest.getCode(), airportB, currPath, allPaths);
         }
     }
 }
@@ -148,12 +171,12 @@ uSet<Airport> AirGraph::dfs(const string& airport, double distance){
 
     vertices[airport].visited = true;
 
-    for (const Edge& e : vertices[airport].adj){
-        if (vertices[e.dest.getCode()].visited){
+    for (const Edge* e : vertices[airport].adj){
+        if (vertices[e->dest.getCode()].visited){
             continue;
         }
 
-        reached.merge(dfs(e.dest.getCode(), distance - e.distance));
+        reached.merge(dfs(e->dest.getCode(), distance - e->distance));
     }
 
     return reached;
@@ -180,8 +203,8 @@ list<Airport> AirGraph::bfs(const string& airport, int flights){
         unvisitedV.pop ();
 
         //cout << currV << " "; // show vertex order
-        for (const Edge& e : vertices[currV].adj) {
-            string w = e.dest.getCode();
+        for (const Edge* e : vertices[currV].adj) {
+            string w = e->dest.getCode();
 
             if (!vertices[w].visited) { // new vertex!
                 unvisitedV.push(w);
@@ -215,11 +238,13 @@ list<Airport> AirGraph::bfs(const string& airport, int flights){
  * @param airportB code of the Airport which constitutes the destination
  * @return list with the shortest paths
  */
-list<Path> AirGraph::getPaths(const string& airportA, const string& airportB, uSet<string>* avoid){
+list<Path> AirGraph::getPaths(const string& airportA, const string& airportB, uSet<string>* airlines){
     list<Path> allPaths;
     Path currPath;
 
-    dfs(airportA, airportB, currPath, allPaths, avoid);
+    validateEdges(airlines);
+    dfs(airportA, airportB, currPath, allPaths);
+    reset();
 
     return allPaths;
 }

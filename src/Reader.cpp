@@ -6,6 +6,8 @@
 #include "data/Airline.h"
 #include "data/Airport.h"
 
+#define uMap unordered_map
+
 Reader::Reader(string path){
     if (path[path.size() - 1] != '/'){
         path += '/';
@@ -60,7 +62,6 @@ void Reader::readAirports() {
     string line;
     getline(reader, line);
 
-    int i = 1;
     while (getline(reader, line)){
         istringstream line_(line);
 
@@ -133,4 +134,12 @@ void Reader::readFlights() {
 
 AirGraph Reader::getGraph() const{
     return g;
+}
+
+uMap<string, Airport> Reader::getAirportCodes() const{
+    return airportCodes;
+}
+
+uMap<string, Airport> Reader::getAirportNames() const{
+    return airportNames;
 }

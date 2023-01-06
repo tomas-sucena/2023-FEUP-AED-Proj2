@@ -36,8 +36,5 @@ int main(){
     g.addEdge("A5", "A4", "RYN");
 
     Helpy helpy = Helpy(g);
-    //helpy.terminal();
-
-    auto* pain = new uSet<string>; pain->insert("TAP");
-    helpy.getShortestRoutes("A5", "A4", pain);
+    helpy.terminal();
 }

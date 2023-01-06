@@ -20,6 +20,7 @@ class AirGraph {
             Airport dest;
             uSet<Airline> airlines;
             double distance; // weight
+            bool valid = true;
 
             Edge(Airport& dest, Airline& airline, double distance) : dest(dest), distance(distance) {
                 airlines.insert(airline);
@@ -32,7 +33,7 @@ class AirGraph {
 
         struct Vertex {
             Airport value;
-            set<Edge> adj;
+            set<Edge*> adj;
             bool visited = false;
 
             Vertex() = default;
@@ -40,6 +41,7 @@ class AirGraph {
         };
 
         uMap<string, Vertex> vertices;
+        uSet<Edge*> edges;
         uMap<string, Airline> airlineCodes; // for search purposes
 
     public:
@@ -52,17 +54,16 @@ class AirGraph {
         bool addAirline(Airline& a);
 
         Airport getAirport(const string& code);
-        set<Edge> getFlights(const string& code);
-        list<Path> getPaths(const string& airportA, const string& airportB, uSet<string>* avoid = nullptr);
+        set<Edge*> getFlights(const string& code);
+        list<Path> getPaths(const string& airportA, const string& airportB, uSet<string>* airlines = nullptr);
 
         void reset();
         void reset(const list<Airport>& visited_airports);
         void reset(const list<string>& visited_airports);
 
-        bool validPath(const Edge& e, uSet<string>* avoid = nullptr);
+        void validateEdges(uSet<string>* airlines = nullptr);
 
-        void dfs(const string& airportA, const string& airportB, Path currPath, list<Path>& allPaths,
-                 uSet<string>* avoid = nullptr);
+        void dfs(const string& airportA, const string& airportB, Path currPath, list<Path>& allPaths);
         uSet<Airport> dfs(const string& airport, double distance);
 
         list<Airport> bfs(const string& airport, int flights);
