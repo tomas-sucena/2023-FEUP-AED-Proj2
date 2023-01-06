@@ -87,7 +87,7 @@ void AirGraph::bfs(string start, int y){
     }
     for(string airport: visited_airports){
         vertices[airport].visited = false;
-        visited_airports.clear();
     }
+    visited_airports.clear();
 }
 
