@@ -1,20 +1,24 @@
 #ifndef AIRPORTAED_AIRGRAPH_H
 #define AIRPORTAED_AIRGRAPH_H
 
+#include <iostream>
+#include <list>
 #include <set>
 #include <unordered_map>
 #include <unordered_set>
-#include <iostream>
-#include <queue>
 
 #include "data/Airline.h"
 #include "data/Airport.h"
+
+#define uSet unordered_set
+#define uMap unordered_map
+#define Path list<Airport>
 
 class AirGraph {
     private:
         struct Edge {
             Airport dest;
-            unordered_set<Airline> airlines;
+            uSet<Airline> airlines;
             double distance; // weight
 
             Edge(Airport& dest, Airline& airline, double distance) : dest(dest), distance(distance) {
@@ -29,18 +33,14 @@ class AirGraph {
         struct Vertex {
             Airport value;
             set<Edge> adj;
-            bool visited;
+            bool visited = false;
 
             Vertex() = default;
             Vertex(Airport& value) : value(value) {}
         };
 
-        unordered_map<string, Vertex> vertices;
-
-        // for search purposes
-        unordered_map<string, Airline> airlineCodes;
-
-        vector<string> visited_airports;
+        uMap<string, Vertex> vertices;
+        uMap<string, Airline> airlineCodes; // for search purposes
 
     public:
         // constructor
@@ -48,14 +48,24 @@ class AirGraph {
 
         // methods
         bool addVertex(Airport& a);
-        void addEdge(string airportA, string airportB, string airline);
+        void addEdge(const string& airportA, const string& airportB, const string& airline);
         bool addAirline(Airline& a);
-        Airport getAirport(string code);
 
-        void printFlights(string code);
+        Airport getAirport(const string& code);
+        set<Edge> getFlights(const string& code);
+        list<Path> getPaths(const string& airportA, const string& airportB, uSet<string>* avoid = nullptr);
 
-        void dfs(string start);
-        void bfs(string start, int y);
+        void reset();
+        void reset(const list<Airport>& visited_airports);
+        void reset(const list<string>& visited_airports);
+
+        bool validPath(const Edge& e, uSet<string>* avoid = nullptr);
+
+        void dfs(const string& airportA, const string& airportB, Path currPath, list<Path>& allPaths,
+                 uSet<string>* avoid = nullptr);
+        uSet<Airport> dfs(const string& airport, double distance);
+
+        list<Airport> bfs(const string& airport, int flights);
 };
 
 

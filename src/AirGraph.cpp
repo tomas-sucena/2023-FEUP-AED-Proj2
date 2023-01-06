@@ -1,9 +1,16 @@
 #include "AirGraph.h"
 
+#include <list>
+#include <queue>
+#include <unordered_set>
+
 #include "data/Airline.h"
 #include "data/Airport.h"
 
-AirGraph::AirGraph() {}
+#define uSet unordered_set
+#define Path list<Airport>
+
+AirGraph::AirGraph() = default;
 
 /**
  * @brief adds a vertex to the AirGraph
@@ -22,7 +29,7 @@ bool AirGraph::addVertex(Airport &a){
  * @param airportB code of the Airport which is stored in the destination vertex
  * @param airline Airline that establishes the connection between the Airports
  */
-void AirGraph::addEdge(string airportA, string airportB, string airline){
+void AirGraph::addEdge(const string& airportA, const string& airportB, const string& airline){
     Airport& dest = vertices[airportB].value;
     Airline& a = airlineCodes[airline];
     double distance = vertices[airportA].value.getDistance(dest);
@@ -40,54 +47,179 @@ bool AirGraph::addAirline(Airline &a){
     return airlineCodes.insert({a.getCode(), a}).second;
 }
 
-Airport AirGraph::getAirport(string code){
+Airport AirGraph::getAirport(const string& code){
     return vertices[code].value;
 }
 
-void AirGraph::printFlights(string code){
-    for(Edge e: vertices[code].adj){
-        for(auto it = e.airlines.begin(); it!= e.airlines.end(); it++){
-            cout << "From " << vertices[code].value.getName() << " to " << e.dest.getName() << " with " << it->getName() << endl;
-        }
+set<AirGraph::Edge> AirGraph::getFlights(const string& code){
+    return vertices[code].adj;
+}
+
+/**
+ * @brief sets to 'false' the 'visited' parameter of all vertices
+ * @complexity O(|V|)
+ */
+void AirGraph::reset(){
+    for (auto& p : vertices){
+        p.second.visited = false;
     }
 }
 
+/**
+ * @brief sets to 'false' the 'visited' parameter of the vertices whose Airport is in visited_airports
+ * @complexity O(|V|)
+ * @param visited_airports list of the visited Airports
+ */
+void AirGraph::reset(const list<Airport>& visited_airports){
+    for (const Airport& a : visited_airports){
+        vertices[a.getCode()].visited = false;
+    }
+}
+
+/**
+ * @brief sets to 'false' the 'visited' parameter of the vertices whose Airport code is in visited_airports
+ * @complexity O(|V|)
+ * @param visited_airports list of the codes of the visited Airports
+ */
+void AirGraph::reset(const list<string>& visited_airports){
+    for (const string& code : visited_airports){
+        vertices[code].visited = false;
+    }
+}
+
+bool AirGraph::validPath(const Edge& e, uSet<string>* avoid){
+    if (avoid == nullptr) return true;
+
+    for (const Airline& a : e.airlines){
+        if (avoid->find(a.getCode()) == avoid->end()){
+            return true;
+        }
+    }
+
+    return false;
+}
 
 /**
  * @brief
- * @complexity O(|V|+|E|)
+ * @complexity O(|V| + |E|)
  * @param airport code of the Airport that is stored in the initial vertex
  */
-void AirGraph::dfs(string airport){
-    Vertex v = vertices[airport];
-    v.visited = true;
+void AirGraph::dfs(const string& airportA, const string& airportB, Path currPath, list<Path>& allPaths,
+                   uSet<string>* avoid){
+    Vertex& currV = vertices[airportA];
+    currV.visited = true;
 
-    for (Edge e : v.adj){
-        Vertex w = vertices[e.dest.getCode()];
+    currPath.push_back(currV.value);
 
-        if (!w.visited) dfs(w.value.getCode());
+    // target found
+    if (airportA == airportB){
+        bool insert = (allPaths.empty() || currPath.size() <= allPaths.front().size());
+        bool clear = (insert && currPath.size() < allPaths.front().size());
+
+        if (clear){
+            allPaths.clear();
+        }
+
+        if (insert){
+            allPaths.push_back(currPath);
+        }
+
+        currV.visited = false;
+        return;
     }
-}
 
-void AirGraph::bfs(string start, int y){
-    queue<string> q; // queue of unvisited nodes
-    visited_airports.push_back(start);
-    q.push(start);
-    while (!q.empty ()){ // while there are still unprocessed nodes
-        string u = q.front(); q.pop (); // remove first element of q
-        cout << u << " "; // show node order
-        for (auto e : vertices[u].adj) {
-            string w = e.dest.getCode();
-            if (!vertices[w].visited) { // new node!
-                q.push(w);
-                visited_airports.push_back(w);
-                vertices[w].visited = true;
-            }
+    for (const Edge& e : currV.adj){
+        if (!vertices[e.dest.getCode()].visited && validPath(e, avoid)){
+            dfs(e.dest.getCode(), airportB, currPath, allPaths, avoid);
         }
     }
-    for(string airport: visited_airports){
-        vertices[airport].visited = false;
-    }
-    visited_airports.clear();
 }
 
+/**
+ * @brief
+ * @complexity O(|V| + |E|)
+ * @param airport code of the Airport that is stored in the initial vertex
+ * @param distance radius
+ * @return container with all of the reachable Airports
+ */
+uSet<Airport> AirGraph::dfs(const string& airport, double distance){
+    uSet<Airport> reached;
+    if (distance <= 0) return reached;
+
+    vertices[airport].visited = true;
+
+    for (const Edge& e : vertices[airport].adj){
+        if (vertices[e.dest.getCode()].visited){
+            continue;
+        }
+
+        reached.merge(dfs(e.dest.getCode(), distance - e.distance));
+    }
+
+    return reached;
+}
+
+/**
+ * @complexity O(|V| + |E|)
+ * @param airport code of the Airport which constitutes the starting point
+ * @param flights
+ * @return
+ */
+list<Airport> AirGraph::bfs(const string& airport, int flights){
+    list<Airport> res;
+
+    queue<string> unvisitedV; // unvisited vertices
+    unvisitedV.push(airport);
+
+    list<string> visitedV = {airport};
+
+    int currNeighbors = 1, nextNeighbors = 0;
+
+    while (flights > 0 && !unvisitedV.empty()){
+        string currV = unvisitedV.front(); // current vertex
+        unvisitedV.pop ();
+
+        //cout << currV << " "; // show vertex order
+        for (const Edge& e : vertices[currV].adj) {
+            string w = e.dest.getCode();
+
+            if (!vertices[w].visited) { // new vertex!
+                unvisitedV.push(w);
+                visitedV.push_back(w);
+
+                vertices[w].visited = true;
+                res.push_back(vertices[w].value);
+
+                nextNeighbors++;
+            }
+        }
+
+        if (!--currNeighbors){
+            flights--;
+
+            currNeighbors = nextNeighbors;
+            nextNeighbors = 0;
+        }
+    }
+
+    // reset all the visited vertices
+    reset(visitedV);
+
+    return res;
+}
+
+/**
+ * @brief gets all the shortest paths from one Airport to another
+ * @complexity O(|V| + |E|)
+ * @param airportA code of the Airport which constitutes the starting point
+ * @param airportB code of the Airport which constitutes the destination
+ * @return list with the shortest paths
+ */
+list<Path> AirGraph::getPaths(const string& airportA, const string& airportB, uSet<string>* avoid){
+    list<Path> allPaths;
+    Path currPath;
+
+    dfs(airportA, airportB, currPath, allPaths, avoid);
+
+    return allPaths;
+}

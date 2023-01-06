@@ -1,0 +1,237 @@
+\hypertarget{class_helpy}{}\doxysection{Helpy Class Reference}
+\label{class_helpy}\index{Helpy@{Helpy}}
+
+
+{\ttfamily \#include $<$Helpy.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_helpy_aaefe00ace2df4cf41d67541bdcaa1b24}{Helpy}} (\mbox{\hyperlink{class_air_graph}{Air\+Graph}} \&air\+Graph)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_helpy}{Helpy}}\+:\+: \mbox{\hyperlink{class_helpy}{Helpy}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_helpy_aaa754efec4177b0c763859b5847d10d3}{terminal}} ()
+\begin{DoxyCompactList}\small\item\em allows to choose the mode of the UI @complexity O(n$^\wedge$2) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_helpy_a8fa3cfb126e6423475a34637b50d8334}{advanced\+\_\+mode}} ()
+\begin{DoxyCompactList}\small\item\em executes the advanced mode of the UI @complexity O(1) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_helpy_af5932f8789f41f033f894cd659aff329}{guided\+\_\+mode}} ()
+\begin{DoxyCompactList}\small\item\em executes the guided mode of the UI @complexity O(1) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_helpy_ac18c8353d0a7f41c9363433f826988fe}{process\+\_\+command}} (string \&s1, string \&s2, string \&s3)
+\begin{DoxyCompactList}\small\item\em processes the commands that were inputed @complexity O(n$^\wedge$2 $\ast$ log(n)) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_helpy_ababa14751d855f90c112ce9958623f60}{display\+Airport\+Information}} (string \&airport)
+\begin{DoxyCompactList}\small\item\em displays all the flights you can take on a given Airport, as well as the Airlines that make said flights @complexity O(n $\ast$ $\vert$\+E$\vert$) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_helpy_aab6c12ff66f6a5bee4cb872fb65ed5ad}{display\+Reachable\+Airports}} (string \&start, int flights)
+\item 
+void \mbox{\hyperlink{class_helpy_ac96fdcc7fc0c3b0111237b51cae304e7}{get\+Shortest\+Route}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_helpy_aaefe00ace2df4cf41d67541bdcaa1b24}\label{class_helpy_aaefe00ace2df4cf41d67541bdcaa1b24}} 
+\index{Helpy@{Helpy}!Helpy@{Helpy}}
+\index{Helpy@{Helpy}!Helpy@{Helpy}}
+\doxysubsubsection{\texorpdfstring{Helpy()}{Helpy()}}
+{\footnotesize\ttfamily Helpy\+::\+Helpy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_air_graph}{Air\+Graph}} \&}]{airgraph }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{class_helpy}{Helpy}}\+:\+: \mbox{\hyperlink{class_helpy}{Helpy}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em airgraph} & graph that contains all the data regarding Airports, Airlines and flights \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_helpy_a8fa3cfb126e6423475a34637b50d8334}\label{class_helpy_a8fa3cfb126e6423475a34637b50d8334}} 
+\index{Helpy@{Helpy}!advanced\_mode@{advanced\_mode}}
+\index{advanced\_mode@{advanced\_mode}!Helpy@{Helpy}}
+\doxysubsubsection{\texorpdfstring{advanced\_mode()}{advanced\_mode()}}
+{\footnotesize\ttfamily void Helpy\+::advanced\+\_\+mode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+executes the advanced mode of the UI @complexity O(1) 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_helpy_a8fa3cfb126e6423475a34637b50d8334_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_helpy_a8fa3cfb126e6423475a34637b50d8334_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_helpy_ababa14751d855f90c112ce9958623f60}\label{class_helpy_ababa14751d855f90c112ce9958623f60}} 
+\index{Helpy@{Helpy}!displayAirportInformation@{displayAirportInformation}}
+\index{displayAirportInformation@{displayAirportInformation}!Helpy@{Helpy}}
+\doxysubsubsection{\texorpdfstring{displayAirportInformation()}{displayAirportInformation()}}
+{\footnotesize\ttfamily void Helpy\+::display\+Airport\+Information (\begin{DoxyParamCaption}\item[{string \&}]{airport }\end{DoxyParamCaption})}
+
+
+
+displays all the flights you can take on a given Airport, as well as the Airlines that make said flights @complexity O(n $\ast$ $\vert$\+E$\vert$) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em airport} & code of the Airport \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_helpy_ababa14751d855f90c112ce9958623f60_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_helpy_ababa14751d855f90c112ce9958623f60_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_helpy_aab6c12ff66f6a5bee4cb872fb65ed5ad}\label{class_helpy_aab6c12ff66f6a5bee4cb872fb65ed5ad}} 
+\index{Helpy@{Helpy}!displayReachableAirports@{displayReachableAirports}}
+\index{displayReachableAirports@{displayReachableAirports}!Helpy@{Helpy}}
+\doxysubsubsection{\texorpdfstring{displayReachableAirports()}{displayReachableAirports()}}
+{\footnotesize\ttfamily void Helpy\+::display\+Reachable\+Airports (\begin{DoxyParamCaption}\item[{string \&}]{start,  }\item[{int}]{flights }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_helpy_aab6c12ff66f6a5bee4cb872fb65ed5ad_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_helpy_aab6c12ff66f6a5bee4cb872fb65ed5ad_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_helpy_ac96fdcc7fc0c3b0111237b51cae304e7}\label{class_helpy_ac96fdcc7fc0c3b0111237b51cae304e7}} 
+\index{Helpy@{Helpy}!getShortestRoute@{getShortestRoute}}
+\index{getShortestRoute@{getShortestRoute}!Helpy@{Helpy}}
+\doxysubsubsection{\texorpdfstring{getShortestRoute()}{getShortestRoute()}}
+{\footnotesize\ttfamily void Helpy\+::get\+Shortest\+Route (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_helpy_ac96fdcc7fc0c3b0111237b51cae304e7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_helpy_af5932f8789f41f033f894cd659aff329}\label{class_helpy_af5932f8789f41f033f894cd659aff329}} 
+\index{Helpy@{Helpy}!guided\_mode@{guided\_mode}}
+\index{guided\_mode@{guided\_mode}!Helpy@{Helpy}}
+\doxysubsubsection{\texorpdfstring{guided\_mode()}{guided\_mode()}}
+{\footnotesize\ttfamily void Helpy\+::guided\+\_\+mode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+executes the guided mode of the UI @complexity O(1) 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_helpy_af5932f8789f41f033f894cd659aff329_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_helpy_af5932f8789f41f033f894cd659aff329_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_helpy_ac18c8353d0a7f41c9363433f826988fe}\label{class_helpy_ac18c8353d0a7f41c9363433f826988fe}} 
+\index{Helpy@{Helpy}!process\_command@{process\_command}}
+\index{process\_command@{process\_command}!Helpy@{Helpy}}
+\doxysubsubsection{\texorpdfstring{process\_command()}{process\_command()}}
+{\footnotesize\ttfamily bool Helpy\+::process\+\_\+command (\begin{DoxyParamCaption}\item[{string \&}]{s1,  }\item[{string \&}]{s2,  }\item[{string \&}]{s3 }\end{DoxyParamCaption})}
+
+
+
+processes the commands that were inputed @complexity O(n$^\wedge$2 $\ast$ log(n)) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s1} & first word of the command \\
+\hline
+{\em s2} & second word of the command \\
+\hline
+{\em s3} & third word of the command \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the command exists 
+
+false if the command does not exist 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_helpy_ac18c8353d0a7f41c9363433f826988fe_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_helpy_ac18c8353d0a7f41c9363433f826988fe_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_helpy_aaa754efec4177b0c763859b5847d10d3}\label{class_helpy_aaa754efec4177b0c763859b5847d10d3}} 
+\index{Helpy@{Helpy}!terminal@{terminal}}
+\index{terminal@{terminal}!Helpy@{Helpy}}
+\doxysubsubsection{\texorpdfstring{terminal()}{terminal()}}
+{\footnotesize\ttfamily void Helpy\+::terminal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+allows to choose the mode of the UI @complexity O(n$^\wedge$2) 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_helpy_aaa754efec4177b0c763859b5847d10d3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=237pt]{class_helpy_aaa754efec4177b0c763859b5847d10d3_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Bruno\+Drumond/\+Documents/\+Git\+Hub/\+AED\+\_\+\+Airport/src/\mbox{\hyperlink{_helpy_8h}{Helpy.\+h}}\item 
+/\+Users/\+Bruno\+Drumond/\+Documents/\+Git\+Hub/\+AED\+\_\+\+Airport/src/\mbox{\hyperlink{_helpy_8cpp}{Helpy.\+cpp}}\end{DoxyCompactItemize}

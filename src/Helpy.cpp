@@ -2,9 +2,14 @@
 
 #include <fstream>
 #include <iostream>
+#include <list>
 #include <map>
 #include <sstream>
 #include <string>
+
+#include "AirGraph.h"
+
+#define uSet unordered_set
 
 // cores para o output
 #define RESET   "\033[0;m"
@@ -15,12 +20,12 @@
 #define BREAK   "- - - - - - - - - - - - - - - - - - - - -"
 
 map<string, int> Helpy::command = {{"display", 1}, {"print", 1}, {"show", 1}};
-map<string, int> Helpy::target = {{"airport", 6}, {"fastest", 8}};
-map<string, int> Helpy::what = {{"information", 24}, {"flight", 27}};
+map<string, int> Helpy::target = {{"airport", 6}, {"fastest", 8}, {"reachable", 10}};
+map<string, int> Helpy::what = {{"information", 24}, {"flight", 27}, {"flights", 27}, {"airports", 29}};
 
 /**
- * @brief turns the characters of a string all into lowercase or uppercase
- * ;complexity = O(n)
+ * @brief turns all the characters of a string into lowercase or uppercase
+ * @complexity O(n)
  * @param s string to be modified
  * @param uppercase if true turns all the characters of the string to uppercase; if false turns all the characters of the string to lowercase
  */
@@ -32,19 +37,13 @@ void lowercase(string& s, bool uppercase = false){
 
 /**
  * @brief Construct a new Helpy:: Helpy object
- * @param students vector of students
- * @param UCs vector of UCs
- * @param classes vector of classes
- * @param c_blocks map containing the schedule blocks of all the classes
- * @param u_blocks map containing the schedule blocks of all the UCs
+ * @param airgraph graph that contains all the data regarding Airports, Airlines and flights
  */
-Helpy::Helpy(AirGraph airgraph){
-    graph = airgraph;
-}
+Helpy::Helpy(AirGraph& airgraph) : graph(airgraph) {}
 
 /**
  * @brief allows to choose the mode of the UI
- * ;complexity = O(n^2)
+ * @complexity O(n^2)
  */
 void Helpy::terminal(){
 a0: cout << endl << YELLOW << BREAK << RESET << endl << endl;
@@ -81,11 +80,9 @@ a0: cout << endl << YELLOW << BREAK << RESET << endl << endl;
     }       
 }
 
-                                ///         ADVANCED MODE       ///
-
 /**
  * @brief executes the advanced mode of the UI
- * ;complexity = O(1)
+ * @complexity O(1)
  */
 void Helpy::advanced_mode(){
 
@@ -132,11 +129,9 @@ e1: cout << endl << YELLOW << BREAK << RESET << endl << endl;
     cout << "See you next time!" << endl << endl;
 }
 
-                            ///             GUIDED MODE             ////
-
 /**
  * @brief executes the guided mode of the UI
- * ;complexity = O(1)
+ * @complexity O(1)
  */
 void Helpy::guided_mode(){
 
@@ -158,6 +153,7 @@ b2: cout << endl << YELLOW << BREAK << RESET << endl;
         cout << endl << YELLOW << BREAK << RESET << endl << endl;
         cout << "* Airport" << endl;
         cout << "* Fastest" << endl;
+        cout << "* Reachable";
         cout << endl;
     }
     else if (s1 == "quit"){
@@ -180,6 +176,11 @@ b2: cout << endl << YELLOW << BREAK << RESET << endl;
         cout << "* Flight" << endl;
         cout << endl;
     }
+    else if (s2 == "reachable"){
+        cout << endl << YELLOW << BREAK << RESET << endl << endl;
+        cout << "* Airports" << endl;
+        cout << endl;
+    }
     else if (s2 == "quit"){
         goto e2;
     }
@@ -195,7 +196,7 @@ b2: cout << endl << YELLOW << BREAK << RESET << endl;
     }
 
     // processar o comando
-    if(!process_command(s1, s2, s3)){
+    if (!process_command(s1, s2, s3)){
         goto b2;
     }
 
@@ -219,25 +220,41 @@ e2: cout << endl << YELLOW << BREAK << RESET << endl << endl;
 
 /**
  * @brief processes the commands that were inputed
- * ;complexity = O(n^2*log(n))
+ * @complexity O(n^2 * log(n))
  * @param s1 first word of the command
  * @param s2 second word of the command
  * @param s3 third word of the command
  * @return true if the command exists
- * @return false if the command doesnt exist
+ * @return false if the command does not exist
  */
 bool Helpy::process_command(string& s1, string& s2, string& s3){
     switch (command[s1] + target[s2] + what[s3]){
-        case(31) : {
+        case(34) : {
             string airport;
             cout<<"Please type airport code: ";
             cin >> airport;
+            lowercase(airport, true);
             cout<<endl;
             displayAirportInformation(airport);
             break;
         }
         case(36) : {
-            getShortestRoute();
+            //getShortestRoute();
+            break;
+        }
+        case (40) : {
+            string airport;
+            cout<<"Please type airport code: ";
+            cin >> airport;
+            lowercase(airport, true);
+            cout << endl;
+
+            int flights;
+            cout << "Please type number of flights: ";
+            cin >> flights;
+            cout << endl;
+
+            displayReachableAirports(airport, flights);
             break;
         }
         default : {
@@ -250,16 +267,42 @@ bool Helpy::process_command(string& s1, string& s2, string& s3){
     return true;
 }
 
-
 /*-----FUNÇÕES DE IMPRESSÃO-----*/
-void Helpy::displayAirportInformation(string airport){
+/**
+ * @brief displays all the flights you can take on a given Airport, as well as the Airlines that make said flights
+ * @complexity O(n * |E|)
+ * @param airport code of the Airport
+ */
+void Helpy::displayAirportInformation(string& airport){
     Airport a = graph.getAirport(airport);
+
     cout << GREEN << "The airport " << a.getName() << " is situated in " << a.getCity() << ", " << a.getCountry() << endl;
     cout << GREEN << "This airport has the following flights:" << endl;
-    graph.printFlights(airport);
 
+    for (const auto& e : graph.getFlights(airport)){
+        for (const Airline& airline : e.airlines){
+            cout << "From " << a.getName() << " to " << e.dest.getName()
+            << " with " << airline.getName() << endl;
+        }
+    }
 }
-/*-----FUNÇÕES DE DOR E SOFRIMENTO-----*/
-void Helpy::getShortestRoute() const{
 
-};
+void Helpy::displayReachableAirports(string& start, int flights){
+    list<Airport> reached = graph.bfs(start, flights);
+
+    for (const Airport& a : reached){
+        cout << a.getCode() << ' ' << a.getName() << endl;
+    }
+}
+
+/*-----FUNÇÕES DE DOR E SOFRIMENTO-----*/
+void Helpy::getShortestRoutes(const string& airportA, const string& airportB, uSet<string>* avoid){
+    list<Path> allPaths = graph.getPaths(airportA, airportB, avoid);
+
+    for (Path p : allPaths){
+        for (const Airport& a : p){
+            cout << a.getCode() << ' ';
+        }
+        cout << endl;
+    }
+}

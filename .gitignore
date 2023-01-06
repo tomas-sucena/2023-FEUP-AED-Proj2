@@ -3,5 +3,5 @@ cmake-build-debug/
 
 # para os mac users
 .vscode/
-.DS_Store/
 build/
+.DS_Store
