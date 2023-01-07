@@ -169,7 +169,28 @@ uSet<string> Helpy::readUsableAirlines(){
 }
 
 string Helpy::readCoordinates(){
-
+    uMap<double, string> air;
+    string lat;
+    string lon;
+    string rad;
+    string code;
+    double latitude = 0;
+    double longitude = 0;
+    double radius = 0;
+    cout << "Please type your " << BOLD << "Latitude." << RESET << endl;
+    cin >> lat; latitude = stof(lat);
+    cout << "Please type your " << BOLD << "Longitude." << RESET << endl;
+    cin >> lon; longitude = stof(lon); 
+    cout << "Please type the " << BOLD << "radius" << RESET << " in which you are looking for airports";
+    cin >> rad; radius = stof(rad);
+    air = graph.getNearbyAirports(latitude, longitude, radius);
+    cout << "These are the airports near you:" << endl;
+    for(auto it = air.begin(); it != air.end(); it++){
+        cout << GREEN << it->first << " - " << it->second <<endl;
+    }
+    cout << "Please type the " << BOLD << "code" << RESET << " of the airport you are heading to" << endl;
+    cin >> code;
+    return code;
 }
 
 uSet<string> Helpy::readUsableAirports(){
@@ -525,7 +546,7 @@ void Helpy::getShortestRoutes(){
           << "* City" << endl
           << "* Coordinates";
 
-    uSet<string> options = {"airport", "city"};
+    uSet<string> options = {"airport", "city", "coordinates"};
     string start = readInput(instr.str(), options);
 
     if (start == "airport"){
