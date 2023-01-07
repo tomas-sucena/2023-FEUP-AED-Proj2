@@ -98,7 +98,7 @@ string Helpy::readAirport(){
     while (true){
         cout << endl << YELLOW << BREAK << RESET << endl << endl;
         cout << "Please type the " << BOLD << "code" << RESET << " or the " << BOLD << "name" << RESET
-             << "of the airport:" << endl << endl;
+             << " of the airport:" << endl << endl;
 
         string line; getline(cin >> ws, line);
         lowercase(line, true);
