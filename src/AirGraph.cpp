@@ -271,8 +271,6 @@ list<Airport> AirGraph::getReachableAirports(const string& airport, int flights,
     return bfs(airport, flights);
 }
 
-
-
 uMap<double, string> AirGraph::getNearbyAirports(double lat, double lon, double rad){
     uMap<double, string> airports;
     for(auto &[key, val]:vertices){

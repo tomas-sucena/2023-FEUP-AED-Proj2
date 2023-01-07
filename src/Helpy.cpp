@@ -43,13 +43,32 @@ void Helpy::lowercase(string& s, bool uppercase){
  */
 Helpy::Helpy(AirGraph& graph) : graph(graph) {}
 
+/**
+ * @brief adds airports to the Helpy database
+ * @param codes codes of the airports
+ * @param names names of the airports
+ */
 void Helpy::setAirports(const uSet<string>& codes, const uMap<string, string>& names){
     this->airportCodes = codes;
     this->airportNames = names;
 }
 
+/**
+ * @brief adds airlines to the Helpy database
+ * @param codes codes of the airlines
+ */
 void Helpy::setAirlines(const uSet<string>& codes){
     this->airlineCodes = codes;
+}
+
+/**
+ * @brief adds cities and countries to the Helpy database
+ * @param cities names of the cities
+ * @param countries names of the countries
+ */
+void Helpy::setLocations(const uMap<string, string>& cities, const uMap<string, string>& countries){
+    this->cityNames = cities;
+    this->countryNames = countries;
 }
 
 /**
@@ -167,6 +186,10 @@ uSet<string> Helpy::readUsableAirlines(){
     return airlines;
 }
 
+/**
+ * @brief reads coordinates from the console and displays the airports nearest that location
+ * @return the code of the airport the user selects
+ */
 string Helpy::readCoordinates(){
     uMap<double, string> air;
     string lat;
@@ -176,22 +199,26 @@ string Helpy::readCoordinates(){
     double latitude = 0;
     double longitude = 0;
     double radius = 0;
-    cout << "Please type your " << BOLD << "Latitude." << RESET << endl;
+    cout << "Please enter your " << BOLD << "Latitude." << RESET << endl;
     cin >> lat; latitude = stof(lat);
-    cout << "Please type your " << BOLD << "Longitude." << RESET << endl;
+    cout << "Please enter your " << BOLD << "Longitude." << RESET << endl;
     cin >> lon; longitude = stof(lon); 
-    cout << "Please type the " << BOLD << "radius" << RESET << " in which you are looking for airports" << endl;
+    cout << "Please enter the " << BOLD << "radius" << RESET << " in which you are looking for airports" << endl;
     cin >> rad; radius = stof(rad);
     air = graph.getNearbyAirports(latitude, longitude, radius);
     cout << "These are the airports near you:" << endl;
-    for(auto it = air.begin(); it != air.end(); it++){
-        cout << GREEN << it->first << " - " << it->second << RESET << endl;
+    for (const auto& p : air){
+        cout << GREEN << p.first << " - " << p.second << RESET << endl;
     }
     cout << "Please type the " << BOLD << "code" << RESET << " of the airport you are heading to" << endl;
     cin >> code;
     return code;
 }
 
+/**
+ * @brief reads the airports that the user wants to use
+ * @return the codes of the airports the user selects
+ */
 uSet<string> Helpy::readUsableAirports(){
     uSet<string> airports;
 

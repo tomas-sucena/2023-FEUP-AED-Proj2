@@ -139,16 +139,25 @@ Helpy Reader::getHelpy(){
 
     uSet<string> airportCodes;
     uMap<string, string> airportNames;
+    uMap<string, string> cities;
+    uMap<string, string> countries;
 
     for (const auto& p : airports){
         airportCodes.insert(p.first);
 
         string name = p.second.getName(); Helpy::lowercase(name, true);
         airportNames.insert({name, p.first});
+
+        string city = p.second.getCity(); Helpy::lowercase(city);
+        cities.insert({city, p.first});
+
+        string country = p.second.getCountry(); Helpy::lowercase(country);
+        countries.insert({country, p.first});
     }
 
     helpy.setAirports(airportCodes, airportNames);
     helpy.setAirlines(airlineCodes);
+    helpy.setLocations(cities, countries);
 
     return helpy;
 }
