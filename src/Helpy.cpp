@@ -180,12 +180,12 @@ string Helpy::readCoordinates(){
     cin >> lat; latitude = stof(lat);
     cout << "Please type your " << BOLD << "Longitude." << RESET << endl;
     cin >> lon; longitude = stof(lon); 
-    cout << "Please type the " << BOLD << "radius" << RESET << " in which you are looking for airports";
+    cout << "Please type the " << BOLD << "radius" << RESET << " in which you are looking for airports" << endl;
     cin >> rad; radius = stof(rad);
     air = graph.getNearbyAirports(latitude, longitude, radius);
     cout << "These are the airports near you:" << endl;
     for(auto it = air.begin(); it != air.end(); it++){
-        cout << GREEN << it->first << " - " << it->second <<endl;
+        cout << GREEN << it->first << " - " << it->second << RESET << endl;
     }
     cout << "Please type the " << BOLD << "code" << RESET << " of the airport you are heading to" << endl;
     cin >> code;
