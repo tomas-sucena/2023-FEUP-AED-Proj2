@@ -10,20 +10,24 @@
 #include "data/Airline.h"
 #include "data/Airport.h"
 
-#define Path list<Airport>
+#define Path list<const AirGraph::Edge*>
 #define uSet unordered_set
 #define uMap unordered_map
 
 class AirGraph {
     private:
+        friend class Helpy;
+
         struct Edge {
+            Airport src; // used for printing
             Airport dest;
             uSet<Airline> airlines;
             double distance; // weight
             bool valid = true;
 
-            Edge(Airport& dest, Airline& airline, double distance) : dest(dest), distance(distance) {
+            Edge(Airport& src, Airport& dest, Airline& airline) : src(src), dest(dest) {
                 airlines.insert(airline);
+                distance = src.getDistance(dest);
             }
 
             bool operator<(const Edge& e) const{
@@ -55,7 +59,7 @@ class AirGraph {
 
         Airport getAirport(const string& code);
         set<Edge*> getFlights(const string& code);
-        Path getReachableAirports(const string& airport, int flights, uSet<string>* use = nullptr);
+        list<Airport> getReachableAirports(const string& airport, int flights, uSet<string>* use = nullptr);
         list<Path> getPaths(const string& airportA, const string& airportB, uSet<string>* use = nullptr);
 
         void reset();

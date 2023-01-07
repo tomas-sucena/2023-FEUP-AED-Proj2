@@ -7,7 +7,7 @@
 #include "data/Airline.h"
 #include "data/Airport.h"
 
-#define Path list<Airport>
+#define Path list<const AirGraph::Edge*>
 #define uSet unordered_set
 #define uMap unordered_map
 
@@ -31,12 +31,7 @@ bool AirGraph::addVertex(Airport &a){
  * @param airline Airline that establishes the connection between the Airports
  */
 void AirGraph::addEdge(const string& airportA, const string& airportB, const string& airline){
-    Airport& dest = vertices[airportB].value;
-    Airline& a = airlineCodes[airline];
-    double distance = vertices[airportA].value.getDistance(dest);
-
-    // create the edge
-    Edge* e = new Edge(dest, a, distance);
+    Edge* e = new Edge(vertices[airportA].value, vertices[airportB].value, airlineCodes[airline]);
 
     vertices[airportA].adj.insert(e);
     edges.insert(e);
@@ -167,8 +162,6 @@ void AirGraph::dfs(const string& airportA, const string& airportB, Path currPath
     Vertex& currV = vertices[airportA];
     currV.valid = false;
 
-    currPath.push_back(currV.value);
-
     // target found
     if (airportA == airportB){
         bool insert = (allPaths.empty() || currPath.size() <= allPaths.front().size());
@@ -191,6 +184,7 @@ void AirGraph::dfs(const string& airportA, const string& airportB, Path currPath
             continue;
         }
 
+        currPath.push_back(e);
         dfs(e->dest.getCode(), airportB, currPath, allPaths);
     }
 }
@@ -225,8 +219,8 @@ uSet<Airport> AirGraph::dfs(const string& airport, double distance){
  * @param flights
  * @return
  */
-Path AirGraph::bfs(const string& airport, int flights){
-    Path res;
+list<Airport> AirGraph::bfs(const string& airport, int flights){
+    list<Airport> res;
 
     queue<string> unvisitedV; // unvisited vertices
     unvisitedV.push(airport);
@@ -268,7 +262,7 @@ Path AirGraph::bfs(const string& airport, int flights){
     return res;
 }
 
-Path AirGraph::getReachableAirports(const string& airport, int flights, uSet<string>* use){
+list<Airport> AirGraph::getReachableAirports(const string& airport, int flights, uSet<string>* use){
     validate(use);
     if (!vertices[airport].valid){
         return {};

@@ -8,8 +8,9 @@
 #include <string>
 
 #include "AirGraph.h"
+#include "libfort/fort.hpp"
 
-#define Path list<Airport>
+#define Path list<const AirGraph::Edge*>
 #define uSet unordered_set
 #define uMap unordered_map
 
@@ -490,10 +491,19 @@ void Helpy::getShortestRoutes(){
     // calculate paths
     list<Path> allPaths = graph.getPaths(airportA, airportB, readRestrictions());
 
+    fort::char_table table;
+    table << fort::header
+          << "N" << "Airport\n(start)" << "Airport\n(destination)" << "Airlines" << fort::endr;
+
+    int optionNum = 1;
     for (Path p : allPaths){
+        cout << endl << endl << BOLD << "OPTION #" << optionNum++ << RESET << endl << endl;
+
+        int order = 1;
         for (const Airport& a : p){
-            cout << a.getCode() << ' ';
+            table << order++ << a.getName() << "TAP" << fort::endr;
         }
-        cout << endl;
+
+        cout << table.to_string();
     }
 }
