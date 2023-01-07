@@ -4,7 +4,6 @@
 #include <iostream>
 #include <list>
 #include <map>
-#include <sstream>
 #include <string>
 
 #include "AirGraph.h"
@@ -552,6 +551,9 @@ void Helpy::getShortestRoutes(){
     if (start == "airport"){
         airportA = readAirport();
     }
+    else if (start == "coordinates"){
+        airportA = readCoordinates();
+    }
 
     // destination
     instr.clear(); instr.str("");
@@ -565,6 +567,9 @@ void Helpy::getShortestRoutes(){
 
     if (destination == "airport"){
         airportB = readAirport();
+    }
+    else if (destination == "coordinates"){
+        airportB = readCoordinates();
     }
 
     // calculate paths
