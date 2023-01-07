@@ -59,6 +59,7 @@ class AirGraph {
 
         Airport getAirport(const string& code);
         set<Edge*> getFlights(const string& code);
+        uMap<double, string> getNearbyAirports(double lat, double lon, double rad);
         list<Airport> getReachableAirports(const string& airport, int flights, uSet<string>* use = nullptr);
         list<Path> getPaths(const string& airportA, const string& airportB, uSet<string>* use = nullptr);
 

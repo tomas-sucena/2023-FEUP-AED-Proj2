@@ -271,6 +271,19 @@ list<Airport> AirGraph::getReachableAirports(const string& airport, int flights,
     return bfs(airport, flights);
 }
 
+
+
+uMap<double, string> AirGraph::getNearbyAirports(double lat, double lon, double rad){
+    uMap<double, string> airports;
+    for(auto &[key, val]:vertices){
+        double dist = val.value.getDistance(lat, lon);
+        if(dist <= rad){
+            airports.insert({dist, val.value.getCode()});
+        }
+    }
+    return airports;
+}
+
 /**
  * @brief gets all the shortest paths from one Airport to another
  * @complexity O(|V| + |E|)
