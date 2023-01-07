@@ -169,6 +169,15 @@ uSet<string> Helpy::readUsableAirlines(){
 }
 
 string Helpy::readCoordinates(){
+    string lat;
+    string lon;
+    double latitude = 0;
+    double longitude = 0;
+    cout << "Please type your " << BOLD << "Latitude." << endl;
+    cin >> lat; latitude = stof(lat);
+    cin >> lon; longitude = stof(lon);
+    
+    
 
 }
 
