@@ -175,7 +175,7 @@ void AirGraph::dfs(const string& airportA, const string& airportB, Path currPath
             allPaths.push_back(currPath);
         }
 
-        currV.valid = false;
+        currV.valid = true;
         return;
     }
 
@@ -284,6 +284,7 @@ list<Path> AirGraph::getPaths(const string& airportA, const string& airportB, uS
 
     validate(use);
     if (!vertices[airportA].valid || !vertices[airportB].valid){
+        reset();
         return {};
     }
 

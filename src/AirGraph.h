@@ -22,7 +22,7 @@ class AirGraph {
             Airport src; // used for printing
             Airport dest;
             uSet<Airline> airlines;
-            double distance; // weight
+            double distance;
             bool valid = true;
 
             Edge(Airport& src, Airport& dest, Airline& airline) : src(src), dest(dest) {

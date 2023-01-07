@@ -1,11 +1,12 @@
 #include "Helpy.h"
 #include "Reader.h"
 
+#include "libfort/fort.hpp"
+
 int main(){
     Reader reader("../csv");
     reader.readAll();
 
-    // TESTE
     Helpy helpy = reader.getHelpy();
     helpy.terminal();
 }

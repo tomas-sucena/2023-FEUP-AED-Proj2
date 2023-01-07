@@ -35,6 +35,7 @@ class Helpy {
 
         string readInput(const string& instruction, uSet<string>& options);
         string readAirport();
+        string readCoordinates();
         uSet<string> readUsableAirports();
         uSet<string> readUsableAirlines();
         uSet<string>* readRestrictions();

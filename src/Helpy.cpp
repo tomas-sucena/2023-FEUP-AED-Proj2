@@ -40,7 +40,7 @@ void Helpy::lowercase(string& s, bool uppercase){
 
 /**
  * @brief Construct a new Helpy:: Helpy object
- * @param airgraph graph that contains all the data regarding Airports, Airlines and flights
+ * @param graph graph that contains all the data regarding Airports, Airlines and flights
  */
 Helpy::Helpy(AirGraph& graph) : graph(graph) {}
 
@@ -57,7 +57,7 @@ void Helpy::setAirlines(const uSet<string>& codes){
  * @brief reads a line of user input
  * @param instruction
  * @param options
- * @return
+ * @return read input
  */
 string Helpy::readInput(const string& instruction, uSet<string>& options){
     string res;
@@ -88,6 +88,10 @@ string Helpy::readInput(const string& instruction, uSet<string>& options){
     return res;
 }
 
+/**
+ * @brief reads the code/name of an airport from the console
+ * @return the code of the airport
+ */
 string Helpy::readAirport(){
     string airport;
 
@@ -116,6 +120,10 @@ string Helpy::readAirport(){
     return airport;
 }
 
+/**
+ * @brief reads from the console the selection of airlines to use
+ * @return the codes of the selected airlines
+ */
 uSet<string> Helpy::readUsableAirlines(){
     uSet<string> airlines;
 
@@ -157,6 +165,10 @@ uSet<string> Helpy::readUsableAirlines(){
     }
 
     return airlines;
+}
+
+string Helpy::readCoordinates(){
+
 }
 
 uSet<string> Helpy::readUsableAirports(){
@@ -449,7 +461,7 @@ void Helpy::displayReachableAirports(){
     cin >> flights;
     cout << endl;
 
-    Path reached = graph.getReachableAirports(airport, flights, readRestrictions());
+    list<Airport> reached = graph.getReachableAirports(airport, flights, readRestrictions());
 
     for (const Airport& a : reached){
         cout << a.getCode() << ' ' << a.getName() << endl;
@@ -492,16 +504,41 @@ void Helpy::getShortestRoutes(){
     list<Path> allPaths = graph.getPaths(airportA, airportB, readRestrictions());
 
     fort::char_table table;
+    table.set_border_style(FT_NICE_STYLE);
+
+    for (int i = 0; i < 4; i++)
+        table.column(i).set_cell_text_align(fort::text_align::center);
+
     table << fort::header
-          << "N" << "Airport\n(start)" << "Airport\n(destination)" << "Airlines" << fort::endr;
+          << "N" << "Airport (start)" << "Airport (destination)" << "Airlines" << fort::endr;
 
     int optionNum = 1;
     for (Path p : allPaths){
         cout << endl << endl << BOLD << "OPTION #" << optionNum++ << RESET << endl << endl;
 
         int order = 1;
-        for (const Airport& a : p){
-            table << order++ << a.getName() << "TAP" << fort::endr;
+        for (const auto* e : p){
+            const Airport& src = e->src;
+            const Airport& dest = e->dest;
+            auto it = e->airlines.begin();
+
+            table << order++ << src.getName() << dest.getName() << it++->getName() << fort::endr;
+
+            string srcInfo = "(" + src.getCity() + ", " + src.getCountry() + ")";
+            string destInfo = "(" + dest.getCity() + ", " + dest.getCountry() + ")";
+
+            if (it == e->airlines.end()){
+                table << "" << srcInfo << destInfo << "" << fort::endr;
+            }
+            else{
+                table << "" << srcInfo << destInfo << it++->getName() << fort::endr;
+            }
+
+            while (it != e->airlines.end()){
+                table << "" << "" << "" << it++->getName() << fort::endr;
+            }
+
+            table << fort::separator;
         }
 
         cout << table.to_string();
