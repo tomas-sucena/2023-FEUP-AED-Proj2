@@ -29,7 +29,9 @@ class Airport {
         double getLat() const;
         double getLong() const;
 
+        double getDistance(double lat2, double long2) const;
         double getDistance(const Airport& a) const;
+
         bool operator==(const Airport& a) const;
 };
 

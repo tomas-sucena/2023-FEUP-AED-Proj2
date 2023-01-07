@@ -33,25 +33,28 @@ double Airport::getLong() const{
     return longitude;
 }
 
-double Airport::getDistance(const Airport &a) const{
-    double lat1 = latitude, lat2 = a.getLat(),
-           long1 = longitude, long2 = a.getLong();
+double Airport::getDistance(double lat, double lon) const{
+    double latA = latitude, lonA = longitude;
 
-    double dLat = (lat2 - lat1);
-    double dLong = (long2 - long1);
+    double dLat = (lat - latA);
+    double dLong = (lon - lonA);
 
     // convert to radians
-    lat1 *= M_PI / 180;
-    lat2 *= M_PI / 180;
+    latA *= M_PI / 180;
+    lat *= M_PI / 180;
     dLat *= M_PI / 180;
     dLong *= M_PI / 180;
 
     // apply formula
     double haver = pow(sin(dLat / 2), 2) + pow(sin(dLong / 2), 2) *
-                   cos(lat1) * cos(lat2);
+                   cos(latA) * cos(lat);
     double sine = 2 * asin(sqrt(haver));
 
     return 6371 * sine; // 6371 -> Earth's radius
+}
+
+double Airport::getDistance(const Airport &a) const{
+    return getDistance(a.getLat(), a.getLong());
 }
 
 bool Airport::operator==(const Airport& a) const{
