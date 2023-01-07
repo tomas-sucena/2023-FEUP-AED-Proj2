@@ -182,7 +182,7 @@ void AirGraph::dfs(const string& airportA, const string& airportB, Path currPath
             allPaths.push_back(currPath);
         }
 
-        currV.valid = true;
+        currV.valid = false;
         return;
     }
 
