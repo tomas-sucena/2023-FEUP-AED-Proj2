@@ -97,7 +97,8 @@ string Helpy::readAirport(){
 
     while (true){
         cout << endl << YELLOW << BREAK << RESET << endl << endl;
-        cout << "Please type the code or the name of the airport:" << endl << endl;
+        cout << "Please type the " << BOLD << "code" << RESET << " or the " << BOLD << "name" << RESET
+             << "of the airport:" << endl << endl;
 
         string line; getline(cin >> ws, line);
         lowercase(line, true);
@@ -242,6 +243,11 @@ uSet<string>* Helpy::readRestrictions(){
     use[1] = readUsableAirports();
 
     return use;
+}
+
+
+void Helpy::printPath(){
+
 }
 
 /**
@@ -478,7 +484,8 @@ void Helpy::getShortestRoutes(){
     instr << "With which of the following would you like to define the " << BOLD << "starting point"
           << RESET << "?" << endl << endl
           << "* Airport" << endl
-          << "* City";
+          << "* City" << endl
+          << "* Coordinates";
 
     uSet<string> options = {"airport", "city"};
     string start = readInput(instr.str(), options);
@@ -492,7 +499,8 @@ void Helpy::getShortestRoutes(){
     instr << "With which of the following would you like to define the " << BOLD << "destination"
           << RESET << "?" << endl << endl
           << "* Airport" << endl
-          << "* City";
+          << "* City" << endl
+          << "* Coordinates";
 
     string destination = readInput(instr.str(), options);
 

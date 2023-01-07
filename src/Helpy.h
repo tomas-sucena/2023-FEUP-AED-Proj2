@@ -40,6 +40,8 @@ class Helpy {
         uSet<string> readUsableAirlines();
         uSet<string>* readRestrictions();
 
+        void printPath();
+
         void terminal();
         void advanced_mode();
         void guided_mode();
