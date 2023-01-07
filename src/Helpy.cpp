@@ -266,9 +266,47 @@ uSet<string>* Helpy::readRestrictions(){
     return use;
 }
 
+/**
+ *
+ * @param p path to be printed
+ * @param order
+ */
+void Helpy::printPath(const Path& p){
+    fort::char_table table;
+    table.set_border_style(FT_NICE_STYLE);
 
-void Helpy::printPath(){
+    for (int i = 0; i < 4; i++)
+        table.column(i).set_cell_text_align(fort::text_align::center);
 
+    table << fort::header
+          << "N" << "Airport (start)" << "Airport (destination)" << "Airlines" << fort::endr;
+
+    int order = 1;
+    for (const auto* e : p){
+        const Airport& src = e->src;
+        const Airport& dest = e->dest;
+        auto it = e->airlines.begin();
+
+        table << order++ << src.getName() << dest.getName() << it++->getName() << fort::endr;
+
+        string srcInfo = "(" + src.getCity() + ", " + src.getCountry() + ")";
+        string destInfo = "(" + dest.getCity() + ", " + dest.getCountry() + ")";
+
+        if (it == e->airlines.end()){
+            table << "" << srcInfo << destInfo << "" << fort::endr;
+        }
+        else{
+            table << "" << srcInfo << destInfo << it++->getName() << fort::endr;
+        }
+
+        while (it != e->airlines.end()){
+            table << "" << "" << "" << it++->getName() << fort::endr;
+        }
+
+        table << fort::separator;
+    }
+
+    cout << table.to_string();
 }
 
 /**
@@ -532,44 +570,10 @@ void Helpy::getShortestRoutes(){
     // calculate paths
     list<Path> allPaths = graph.getPaths(airportA, airportB, readRestrictions());
 
-    fort::char_table table;
-    table.set_border_style(FT_NICE_STYLE);
-
-    for (int i = 0; i < 4; i++)
-        table.column(i).set_cell_text_align(fort::text_align::center);
-
-    table << fort::header
-          << "N" << "Airport (start)" << "Airport (destination)" << "Airlines" << fort::endr;
-
     int optionNum = 1;
     for (Path p : allPaths){
         cout << endl << endl << BOLD << "OPTION #" << optionNum++ << RESET << endl << endl;
 
-        int order = 1;
-        for (const auto* e : p){
-            const Airport& src = e->src;
-            const Airport& dest = e->dest;
-            auto it = e->airlines.begin();
-
-            table << order++ << src.getName() << dest.getName() << it++->getName() << fort::endr;
-
-            string srcInfo = "(" + src.getCity() + ", " + src.getCountry() + ")";
-            string destInfo = "(" + dest.getCity() + ", " + dest.getCountry() + ")";
-
-            if (it == e->airlines.end()){
-                table << "" << srcInfo << destInfo << "" << fort::endr;
-            }
-            else{
-                table << "" << srcInfo << destInfo << it++->getName() << fort::endr;
-            }
-
-            while (it != e->airlines.end()){
-                table << "" << "" << "" << it++->getName() << fort::endr;
-            }
-
-            table << fort::separator;
-        }
-
-        cout << table.to_string();
+        printPath(p);
     }
 }
