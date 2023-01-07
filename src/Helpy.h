@@ -17,17 +17,26 @@ class Helpy {
         // for search purposes
         uSet<string> airportCodes;
         uMap<string, string> airportNames;
+        uSet<string> airlineCodes;
         
         // maps used to process commands
         static map<string, int> command, target, what;
                
     public:
         // constructor
-        Helpy(AirGraph& airGraph, const uMap<string, Airport>& airports);
+        Helpy(AirGraph& graph);
 
         // methods
-        string readInput(string& instruction, uSet<string>& options);
+        static void lowercase(string& s, bool uppercase = false);
+
+        void setAirports(const uSet<string>& codes, const uMap<string, string>& names);
+        void setAirlines(const uSet<string>& codes);
+        void setLocations();
+
+        string readInput(const string& instruction, uSet<string>& options);
         string readAirport();
+        uSet<string> readAirlines();
+        uSet<string>* readRestrictions();
 
         void terminal();
         void advanced_mode();
@@ -35,7 +44,7 @@ class Helpy {
         bool process_command(string& s1, string& s2, string& s3);
 
         void displayAirportInformation();
-        void displayReachableAirports(string& start, int flights);
+        void displayReachableAirports();
         void getShortestRoutes();
 };
 

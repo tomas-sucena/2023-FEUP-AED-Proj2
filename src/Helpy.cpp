@@ -9,7 +9,9 @@
 
 #include "AirGraph.h"
 
+#define Path list<Airport>
 #define uSet unordered_set
+#define uMap unordered_map
 
 // cores para o output
 #define RESET   "\033[0;m"
@@ -21,7 +23,7 @@
 
 map<string, int> Helpy::command = {{"display", 1}, {"print", 1}, {"show", 1}};
 map<string, int> Helpy::target = {{"airport", 6}, {"fastest", 8}, {"reachable", 10}};
-map<string, int> Helpy::what = {{"information", 24}, {"flight", 27}, {"flights", 27}, {"airports", 29}};
+map<string, int> Helpy::what = {{"information", 24}, {"flight", 27}, {"flights", 27}, {"airport", 29}, {"airports", 29}};
 
 /**
  * @brief turns all the characters of a string into lowercase or uppercase
@@ -29,9 +31,9 @@ map<string, int> Helpy::what = {{"information", 24}, {"flight", 27}, {"flights",
  * @param s string to be modified
  * @param uppercase if true turns all the characters of the string to uppercase; if false turns all the characters of the string to lowercase
  */
-void lowercase(string& s, bool uppercase = false){
+void Helpy::lowercase(string& s, bool uppercase){
     for (char& c : s){
-        c = (uppercase) ? toupper(c) : tolower(c);
+        c = (uppercase) ? (char) toupper(c) : (char) tolower(c);
     }
 }
 
@@ -39,13 +41,15 @@ void lowercase(string& s, bool uppercase = false){
  * @brief Construct a new Helpy:: Helpy object
  * @param airgraph graph that contains all the data regarding Airports, Airlines and flights
  */
-Helpy::Helpy(AirGraph& airgraph, const uMap<string, Airport>& airports) : graph(airgraph) {
-    for (const auto& p : airports){
-        airportCodes.insert(p.first);
+Helpy::Helpy(AirGraph& graph) : graph(graph) {}
 
-        string name = p.second.getName(); lowercase(name, true);
-        airportNames.insert({name, p.first});
-    }
+void Helpy::setAirports(const uSet<string>& codes, const uMap<string, string>& names){
+    this->airportCodes = codes;
+    this->airportNames = names;
+}
+
+void Helpy::setAirlines(const uSet<string>& codes){
+    this->airlineCodes = codes;
 }
 
 /**
@@ -54,7 +58,7 @@ Helpy::Helpy(AirGraph& airgraph, const uMap<string, Airport>& airports) : graph(
  * @param options
  * @return
  */
-string Helpy::readInput(string& instruction, uSet<string>& options){
+string Helpy::readInput(const string& instruction, uSet<string>& options){
     string res;
     bool valid = false;
 
@@ -105,10 +109,77 @@ string Helpy::readAirport(){
         }
 
         cout << endl << YELLOW << BREAK << RESET << endl << endl;
-        cout << RED << "Invalid input! The airport you typed does not exist. Please, try again." << RESET << endl;
+        cout << RED << "Invalid input! The airport you entered does not exist. Please, try again." << RESET << endl;
     }
 
     return airport;
+}
+
+uSet<string> Helpy::readAirlines(){
+    uSet<string> airlines;
+
+    cout << "Please type the codes of the airlines you would like to use, separated by a comma (ex: TAP,RYN,...)\n"
+         << "If there is no airline you would particularly like to use, press Enter.\n\n";
+
+    // airlines to USE
+    string line; getline(cin, line);
+    lowercase(line, true); line += ",";
+
+    istringstream line_(line);
+
+    for (string temp; getline(line_, temp, ',');){
+        if (airlineCodes.find(temp) != airlineCodes.end()){
+            airlines.insert(temp);
+        }
+    }
+
+    if (!airlines.empty()) return airlines;
+
+    // airlines to AVOID
+    airlines = airlineCodes;
+
+    cout << endl << YELLOW << BREAK << RESET << endl << endl;
+    cout << "Please type the codes of the airlines you would like to avoid, separated by a comma (ex: TAP,RYN,...).\n"
+         << "If there is no airline you wish to avoid, simply press Enter.\n\n";
+
+    getline(cin, line);
+    lowercase(line, true); line += ",";
+
+    line_.clear(); line_.str(line);
+
+    for (string temp; getline(line_, temp, ',');){
+        auto it = airlines.find(temp);
+
+        if (it != airlines.end()){
+            airlines.erase(it);
+        }
+    }
+
+    return airlines;
+}
+
+uSet<string>* Helpy::readRestrictions(){
+    auto use = new uSet<string>[3];
+
+    ostringstream instr;
+    instr << "To better meet your requirements, I will now ask you some questions regarding which " << BOLD << "airlines" << RESET
+          << ", " << BOLD << "airports" << RESET << " and " << BOLD << "countries" << RESET << " you would like to use or avoid.\n"
+          << "However, if you do not want to have such restrictions, I can skip this part.\n\n"
+          << "Would you like to answer the questions? (Yes/No)";
+
+    uSet<string> options = {"yes", "no", "y", "n"};
+    string ans = readInput(instr.str(), options);
+
+    if (ans == "no" || ans == "n"){
+        return nullptr;
+    }
+
+    cout << endl << YELLOW << BREAK << RESET << endl << endl;
+    cout << "Very well. Let us start.\n\n";
+
+    use[0] = readAirlines();
+
+    return use;
 }
 
 /**
@@ -156,7 +227,7 @@ b1: cout << endl << YELLOW << BREAK << RESET << endl;
     lowercase(s3);
   
     // processar o comando    
-    if(!process_command(s1, s2, s3)){
+    if (!process_command(s1, s2, s3)){
         goto b1;
     }
 
@@ -287,18 +358,7 @@ bool Helpy::process_command(string& s1, string& s2, string& s3){
             break;
         }
         case (40) : {
-            string airport;
-            cout<<"Please type airport code: ";
-            cin >> airport;
-            lowercase(airport, true);
-            cout << endl;
-
-            int flights;
-            cout << "Please type number of flights: ";
-            cin >> flights;
-            cout << endl;
-
-            displayReachableAirports(airport, flights);
+            displayReachableAirports();
             break;
         }
         default : {
@@ -333,8 +393,15 @@ void Helpy::displayAirportInformation(){
     }
 }
 
-void Helpy::displayReachableAirports(string& start, int flights){
-    list<Airport> reached = graph.bfs(start, flights);
+void Helpy::displayReachableAirports(){
+    string airport = readAirport();
+
+    int flights;
+    cout << "Please type number of flights: ";
+    cin >> flights;
+    cout << endl;
+
+    Path reached = graph.getReachableAirports(airport, flights, readRestrictions());
 
     for (const Airport& a : reached){
         cout << a.getCode() << ' ' << a.getName() << endl;
@@ -349,17 +416,17 @@ void Helpy::getShortestRoutes(){
           << "* Airport" << endl
           << "* City";
 
-    string instruction = instr.str();
     uSet<string> options = {"airport", "city"};
-    string start = readInput(instruction, options);
+    string start = readInput(instr.str(), options);
 
+    string instruction;
     if (start == "airport"){
         instruction = "Please type the code or the name of the airport:";
 
         string airportA = readAirport();
     }
-    /*
-    list<Path> allPaths = graph.getPaths(airportA, airportB, airlines);
+
+    /*list<Path> allPaths = graph.getPaths(airportA, airportB, readRestrictions());
 
     for (Path p : allPaths){
         for (const Airport& a : p){

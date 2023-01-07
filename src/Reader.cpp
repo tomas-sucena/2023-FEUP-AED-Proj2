@@ -50,6 +50,8 @@ void Reader::readAirlines(){
         // add the Airline to the graph
         Airline a(code, name, callSign, country);
         g.addAirline(a);
+
+        airlineCodes.insert(code);
     }
 
     reader.close();
@@ -132,10 +134,21 @@ void Reader::readFlights() {
     reader.clear();
 }
 
-AirGraph Reader::getGraph() const{
-    return g;
-}
+Helpy Reader::getHelpy(){
+    Helpy helpy(g);
 
-uMap<string, Airport> Reader::getAirports() const{
-    return airports;
+    uSet<string> airportCodes;
+    uMap<string, string> airportNames;
+
+    for (const auto& p : airports){
+        airportCodes.insert(p.first);
+
+        string name = p.second.getName(); Helpy::lowercase(name, true);
+        airportNames.insert({name, p.first});
+    }
+
+    helpy.setAirports(airportCodes, airportNames);
+    helpy.setAirlines(airlineCodes);
+
+    return helpy;
 }

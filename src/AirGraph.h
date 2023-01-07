@@ -10,9 +10,9 @@
 #include "data/Airline.h"
 #include "data/Airport.h"
 
+#define Path list<Airport>
 #define uSet unordered_set
 #define uMap unordered_map
-#define Path list<Airport>
 
 class AirGraph {
     private:
@@ -55,13 +55,14 @@ class AirGraph {
 
         Airport getAirport(const string& code);
         set<Edge*> getFlights(const string& code);
-        list<Path> getPaths(const string& airportA, const string& airportB, uSet<string>* airlines = nullptr);
+        Path getReachableAirports(const string& airport, int flights, uSet<string>* use = nullptr);
+        list<Path> getPaths(const string& airportA, const string& airportB, uSet<string>* use = nullptr);
 
         void reset();
         void reset(const list<Airport>& visited_airports);
         void reset(const list<string>& visited_airports);
 
-        void validateEdges(uSet<string>* airlines = nullptr);
+        void validateEdges(uSet<string>* use = nullptr);
 
         void dfs(const string& airportA, const string& airportB, Path currPath, list<Path>& allPaths);
         uSet<Airport> dfs(const string& airport, double distance);

@@ -9,10 +9,12 @@
 #include "AirGraph.h"
 #include "data/Airline.h"
 #include "data/Airport.h"
+#include "Helpy.h"
 
 using namespace std;
 
 #define uMap unordered_map
+#define uSet unordered_set
 
 class Reader {
     private:
@@ -23,6 +25,7 @@ class Reader {
 
         // for search purposes
         uMap<string, Airport> airports;
+        uSet<string> airlineCodes;
 
     public:
         // constructor
@@ -34,8 +37,7 @@ class Reader {
         void readAirports();
         void readFlights();
 
-        AirGraph getGraph() const;
-        uMap<string, Airport> getAirports() const;
+        Helpy getHelpy();
 };
 
 
