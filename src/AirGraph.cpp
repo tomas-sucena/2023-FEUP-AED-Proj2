@@ -66,7 +66,7 @@ set<AirGraph::Edge*> AirGraph::getFlights(const string& code){
  */
 void AirGraph::reset(){
     for (auto& p : vertices){
-        p.second.visited = false;
+        p.second.valid = true;
     }
 
     for (Edge* e : edges){
@@ -81,7 +81,7 @@ void AirGraph::reset(){
  */
 void AirGraph::reset(const list<Airport>& visited_airports){
     for (const Airport& a : visited_airports){
-        vertices[a.getCode()].visited = false;
+        vertices[a.getCode()].valid = true;
     }
 }
 
@@ -92,18 +92,18 @@ void AirGraph::reset(const list<Airport>& visited_airports){
  */
 void AirGraph::reset(const list<string>& visited_airports){
     for (const string& code : visited_airports){
-        vertices[code].visited = false;
+        vertices[code].valid = true;
     }
 }
 
 /**
  * @brief checks if an edge contains at least one Airline that the user wants to use
- * @param airlines codes of the Airlines that the user would like to use
- * @return 'true' if the edge is valid or 'false' otherwise
+ * @param use codes of the Airlines that the user would like to use
+ * @return 'true' if the edge is valid and 'false' otherwise
  */
-void AirGraph::validateEdges(uSet<string>* use){
+void AirGraph::validateEdges(uSet<string> use){
     // no restrictions
-    if (use == nullptr){
+    if (use.empty()){
         for (Edge* e : edges){
             e->valid = true;
         }
@@ -116,12 +116,46 @@ void AirGraph::validateEdges(uSet<string>* use){
 
         for (const Airline& a : e->airlines){
             // if an airline is found
-            if (use[0].find(a.getCode()) != use[0].end()){
+            if (use.find(a.getCode()) != use.end()){
                 e->valid = true;
                 break;
             }
         }
     }
+}
+
+/**
+ * @brief checks if a vertex should be traversed in the search functions
+ * @param use codes of the Airports that the user would like to use
+ * @return 'true' if the vertex is valid and 'false' otherwise
+ */
+void AirGraph::validateVertices(uSet<string> use){
+    // no restrictions
+    if (use.empty()){
+        for (auto& p : vertices){
+            p.second.valid = true;
+        }
+
+        return;
+    }
+
+    for (auto& p : vertices){
+        string code = p.second.value.getCode();
+
+        p.second.valid = (use.find(code) != use.end());
+    }
+}
+
+void AirGraph::validate(uSet<string>* use){
+    if (use == nullptr){
+        validateEdges({});
+        validateVertices({});
+
+        return;
+    }
+
+    validateEdges(use[0]);
+    validateVertices(use[1]);
 }
 
 /**
@@ -131,7 +165,7 @@ void AirGraph::validateEdges(uSet<string>* use){
  */
 void AirGraph::dfs(const string& airportA, const string& airportB, Path currPath, list<Path>& allPaths){
     Vertex& currV = vertices[airportA];
-    currV.visited = true;
+    currV.valid = false;
 
     currPath.push_back(currV.value);
 
@@ -148,12 +182,12 @@ void AirGraph::dfs(const string& airportA, const string& airportB, Path currPath
             allPaths.push_back(currPath);
         }
 
-        currV.visited = false;
+        currV.valid = true;
         return;
     }
 
     for (const Edge* e : currV.adj){
-        if (!e->valid || vertices[e->dest.getCode()].visited){
+        if (!e->valid || !vertices[e->dest.getCode()].valid){
             continue;
         }
 
@@ -172,10 +206,10 @@ uSet<Airport> AirGraph::dfs(const string& airport, double distance){
     uSet<Airport> reached;
     if (distance <= 0) return reached;
 
-    vertices[airport].visited = true;
+    vertices[airport].valid = false;
 
     for (const Edge* e : vertices[airport].adj){
-        if (!e->valid || vertices[e->dest.getCode()].visited){
+        if (!e->valid || !vertices[e->dest.getCode()].valid){
             continue;
         }
 
@@ -207,17 +241,13 @@ Path AirGraph::bfs(const string& airport, int flights){
 
         //cout << currV << " "; // show vertex order
         for (const Edge* e : vertices[currV].adj) {
-            if (!e->valid){
-                continue;
-            }
-
             string w = e->dest.getCode();
 
-            if (!vertices[w].visited) { // new vertex!
+            if (e->valid && vertices[w].valid) { // new vertex!
                 unvisitedV.push(w);
                 visitedV.push_back(w);
 
-                vertices[w].visited = true;
+                vertices[w].valid = false;
                 res.push_back(vertices[w].value);
 
                 nextNeighbors++;
@@ -239,7 +269,11 @@ Path AirGraph::bfs(const string& airport, int flights){
 }
 
 Path AirGraph::getReachableAirports(const string& airport, int flights, uSet<string>* use){
-    validateEdges(use);
+    validate(use);
+    if (!vertices[airport].valid){
+        return {};
+    }
+
     return bfs(airport, flights);
 }
 
@@ -254,7 +288,11 @@ list<Path> AirGraph::getPaths(const string& airportA, const string& airportB, uS
     list<Path> allPaths;
     Path currPath;
 
-    validateEdges(use);
+    validate(use);
+    if (!vertices[airportA].valid || !vertices[airportB].valid){
+        return {};
+    }
+
     dfs(airportA, airportB, currPath, allPaths);
     reset();
 

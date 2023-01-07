@@ -115,7 +115,7 @@ string Helpy::readAirport(){
     return airport;
 }
 
-uSet<string> Helpy::readAirlines(){
+uSet<string> Helpy::readUsableAirlines(){
     uSet<string> airlines;
 
     cout << "Please type the codes of the airlines you would like to use, separated by a comma (ex: TAP,RYN,...)\n"
@@ -158,8 +158,56 @@ uSet<string> Helpy::readAirlines(){
     return airlines;
 }
 
+uSet<string> Helpy::readUsableAirports(){
+    uSet<string> airports;
+
+    cout << endl << YELLOW << BREAK << RESET << endl << endl;
+    cout << "Please type the codes or the names of the airports you would like to use, separated by a comma (ex: OPO,PXO,...)\n"
+         << "If there is no airport you would particularly like to use, press Enter.\n\n";
+
+    // airports to USE
+    string line; getline(cin, line);
+    lowercase(line, true); line += ",";
+
+    istringstream line_(line);
+
+    for (string temp; getline(line_, temp, ',');){
+        if (temp.size() > 3) temp = airportNames[temp];
+
+        if (airportCodes.find(temp) != airlineCodes.end()){
+            airports.insert(temp);
+        }
+    }
+
+    if (!airports.empty()) return airports;
+
+    // airlines to AVOID
+    airports = airportCodes;
+
+    cout << endl << YELLOW << BREAK << RESET << endl << endl;
+    cout << "Please type the codes of the airports you would like to avoid, separated by a comma (ex: OPO,PXO,...).\n"
+         << "If there is no airport you wish to avoid, simply press Enter.\n\n";
+
+    getline(cin, line);
+    lowercase(line, true); line += ",";
+
+    line_.clear(); line_.str(line);
+
+    for (string temp; getline(line_, temp, ',');){
+        if (temp.size() > 3) temp = airportNames[temp];
+
+        auto it = airports.find(temp);
+
+        if (it != airports.end()){
+            airports.erase(it);
+        }
+    }
+
+    return airports;
+}
+
 uSet<string>* Helpy::readRestrictions(){
-    auto use = new uSet<string>[3];
+    auto use = new uSet<string>[2];
 
     ostringstream instr;
     instr << "To better meet your requirements, I will now ask you some questions regarding which " << BOLD << "airlines" << RESET
@@ -177,7 +225,8 @@ uSet<string>* Helpy::readRestrictions(){
     cout << endl << YELLOW << BREAK << RESET << endl << endl;
     cout << "Very well. Let us start.\n\n";
 
-    use[0] = readAirlines();
+    use[0] = readUsableAirlines();
+    use[1] = readUsableAirports();
 
     return use;
 }
@@ -264,8 +313,6 @@ b2: cout << endl << YELLOW << BREAK << RESET << endl;
     cout << endl;
 
     string s1, s2, s3;
-    s3 = "zero";
-
     istringstream s_;
 
     cin >> s1; lowercase(s1);
@@ -410,8 +457,12 @@ void Helpy::displayReachableAirports(){
 
 /*-----FUNÇÕES DE DOR E SOFRIMENTO-----*/
 void Helpy::getShortestRoutes(){
+    string airportA;
+    string airportB;
+
+    // starting point
     ostringstream instr;
-    instr << "Which of the following would you like to use to define the " << BOLD << "starting point"
+    instr << "With which of the following would you like to define the " << BOLD << "starting point"
           << RESET << "?" << endl << endl
           << "* Airport" << endl
           << "* City";
@@ -419,19 +470,30 @@ void Helpy::getShortestRoutes(){
     uSet<string> options = {"airport", "city"};
     string start = readInput(instr.str(), options);
 
-    string instruction;
     if (start == "airport"){
-        instruction = "Please type the code or the name of the airport:";
-
-        string airportA = readAirport();
+        airportA = readAirport();
     }
 
-    /*list<Path> allPaths = graph.getPaths(airportA, airportB, readRestrictions());
+    // destination
+    instr.clear(); instr.str("");
+    instr << "With which of the following would you like to define the " << BOLD << "destination"
+          << RESET << "?" << endl << endl
+          << "* Airport" << endl
+          << "* City";
+
+    string destination = readInput(instr.str(), options);
+
+    if (destination == "airport"){
+        airportB = readAirport();
+    }
+
+    // calculate paths
+    list<Path> allPaths = graph.getPaths(airportA, airportB, readRestrictions());
 
     for (Path p : allPaths){
         for (const Airport& a : p){
             cout << a.getCode() << ' ';
         }
         cout << endl;
-    }*/
+    }
 }

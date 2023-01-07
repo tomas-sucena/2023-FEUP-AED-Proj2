@@ -34,7 +34,7 @@ class AirGraph {
         struct Vertex {
             Airport value;
             set<Edge*> adj;
-            bool visited = false;
+            bool valid = true;
 
             Vertex() = default;
             Vertex(Airport& value) : value(value) {}
@@ -62,7 +62,9 @@ class AirGraph {
         void reset(const list<Airport>& visited_airports);
         void reset(const list<string>& visited_airports);
 
-        void validateEdges(uSet<string>* use = nullptr);
+        void validateEdges(uSet<string> use);
+        void validateVertices(uSet<string> use);
+        void validate(uSet<string>* use = nullptr);
 
         void dfs(const string& airportA, const string& airportB, Path currPath, list<Path>& allPaths);
         uSet<Airport> dfs(const string& airport, double distance);
