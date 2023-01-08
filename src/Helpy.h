@@ -4,7 +4,7 @@
 #include <map>
 #include <string>
 
-#include "data/Airport.h"
+#include "Airport.h"
 #include "AirGraph.h"
 
 #define uMap unordered_map

@@ -8,10 +8,10 @@ include_directories(src)
 add_executable(AirportAED
         src/AirGraph.cpp
         src/AirGraph.h
-        src/data/Airline.cpp
-        src/data/Airline.h
-        src/data/Airport.cpp
-        src/data/Airport.h
+        src/Airline.cpp
+        src/Airline.h
+        src/Airport.cpp
+        src/Airport.h
         src/Helpy.cpp
         src/Helpy.h
         src/main.cpp

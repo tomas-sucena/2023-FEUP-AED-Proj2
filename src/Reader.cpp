@@ -3,8 +3,8 @@
 #include <string>
 
 #include "AirGraph.h"
-#include "data/Airline.h"
-#include "data/Airport.h"
+#include "Airline.h"
+#include "Airport.h"
 
 #define uMap unordered_map
 

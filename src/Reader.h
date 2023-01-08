@@ -7,8 +7,8 @@
 #include <unordered_map>
 
 #include "AirGraph.h"
-#include "data/Airline.h"
-#include "data/Airport.h"
+#include "Airline.h"
+#include "Airport.h"
 #include "Helpy.h"
 
 using namespace std;

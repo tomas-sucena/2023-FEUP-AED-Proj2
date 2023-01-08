@@ -8,8 +8,8 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#include "data/Airline.h"
-#include "data/Airport.h"
+#include "Airline.h"
+#include "Airport.h"
 
 #define Path list<const AirGraph::Edge*>
 #define uSet unordered_set
