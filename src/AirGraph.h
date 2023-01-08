@@ -14,6 +14,19 @@
 #define uSet unordered_set
 #define uMap unordered_map
 
+// taken from https://www.geeksforgeeks.org/how-to-create-an-unordered_map-of-pairs-in-c/
+namespace std {
+    template <typename T, typename U>
+    struct hash<pair<T, U>> {
+        size_t operator()(const pair<string, string>& p) const{
+            auto hash1 = hash<T>{}(p.first);
+            auto hash2 = hash<U>{}(p.second);
+
+            return (hash1 == hash2) ? hash1 : (hash1 ^ hash2);
+        }
+    };
+}
+
 class AirGraph {
     private:
         friend class Helpy;
@@ -28,6 +41,10 @@ class AirGraph {
             Edge(Airport& src, Airport& dest, Airline& airline) : src(src), dest(dest) {
                 airlines.insert(airline);
                 distance = src.getDistance(dest);
+            }
+
+            bool addAirline(Airline& airline){
+                return airlines.insert(airline).second;
             }
 
             bool operator<(const Edge& e) const{
@@ -45,7 +62,7 @@ class AirGraph {
         };
 
         uMap<string, Vertex> vertices;
-        uSet<Edge*> edges;
+        uMap<pair<string, string>, Edge*> edges;
         uMap<string, Airline> airlineCodes; // for search purposes
 
     public:
@@ -64,8 +81,6 @@ class AirGraph {
         list<Path> getPaths(const string& airportA, const string& airportB, uSet<string>* use = nullptr);
 
         void reset();
-        void reset(const list<Airport>& visited_airports);
-        void reset(const list<string>& visited_airports);
 
         void validateEdges(uSet<string> use);
         void validateVertices(uSet<string> use);
@@ -76,6 +91,5 @@ class AirGraph {
 
         list<Airport> bfs(const string& airport, int flights);
 };
-
 
 #endif //AIRPORTAED_AIRGRAPH_H

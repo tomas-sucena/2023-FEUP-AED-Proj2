@@ -31,10 +31,18 @@ bool AirGraph::addVertex(Airport &a){
  * @param airline Airline that establishes the connection between the Airports
  */
 void AirGraph::addEdge(const string& airportA, const string& airportB, const string& airline){
+    auto it = edges.find({airportA, airportB});
+
+    if (it != edges.end()){
+        it->second->addAirline(airlineCodes[airline]);
+        return;
+    }
+
+    // new edge
     Edge* e = new Edge(vertices[airportA].value, vertices[airportB].value, airlineCodes[airline]);
 
     vertices[airportA].adj.insert(e);
-    edges.insert(e);
+    edges[{airportA, airportB}] = e;
 }
 
 /**
@@ -64,30 +72,8 @@ void AirGraph::reset(){
         p.second.valid = true;
     }
 
-    for (Edge* e : edges){
-        e->valid = true;
-    }
-}
-
-/**
- * @brief sets to 'false' the 'visited' parameter of the vertices whose Airport is in visited_airports
- * @complexity O(|V|)
- * @param visited_airports list of the visited Airports
- */
-void AirGraph::reset(const list<Airport>& visited_airports){
-    for (const Airport& a : visited_airports){
-        vertices[a.getCode()].valid = true;
-    }
-}
-
-/**
- * @brief sets to 'false' the 'visited' parameter of the vertices whose Airport code is in visited_airports
- * @complexity O(|V|)
- * @param visited_airports list of the codes of the visited Airports
- */
-void AirGraph::reset(const list<string>& visited_airports){
-    for (const string& code : visited_airports){
-        vertices[code].valid = true;
+    for (auto& p : edges){
+        p.second->valid = true;
     }
 }
 
@@ -99,22 +85,23 @@ void AirGraph::reset(const list<string>& visited_airports){
 void AirGraph::validateEdges(uSet<string> use){
     // no restrictions
     if (use.empty()){
-        for (Edge* e : edges){
-            e->valid = true;
+        for (auto& p : edges){
+            p.second->valid = true;
         }
 
         return;
     }
 
-    for (Edge* e : edges){
+    for (auto& p : edges){
+        Edge* e = p.second;
         e->valid = false;
 
         for (const Airline& a : e->airlines){
+            if (use.find(a.getCode()) == use.end()) continue;
+
             // if an airline is found
-            if (use.find(a.getCode()) != use.end()){
-                e->valid = true;
-                break;
-            }
+            e->valid = true;
+            break;
         }
     }
 }
@@ -186,6 +173,7 @@ void AirGraph::dfs(const string& airportA, const string& airportB, Path currPath
 
         currPath.push_back(e);
         dfs(e->dest.getCode(), airportB, currPath, allPaths);
+        currPath.pop_back();
     }
 }
 
@@ -256,9 +244,6 @@ list<Airport> AirGraph::bfs(const string& airport, int flights){
         }
     }
 
-    // reset all the visited vertices
-    reset(visitedV);
-
     return res;
 }
 
@@ -268,7 +253,10 @@ list<Airport> AirGraph::getReachableAirports(const string& airport, int flights,
         return {};
     }
 
-    return bfs(airport, flights);
+    const list<Airport>& reachable = bfs(airport, flights);
+    reset();
+
+    return reachable;
 }
 
 uMap<double, string> AirGraph::getNearbyAirports(double lat, double lon, double rad){

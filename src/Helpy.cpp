@@ -22,8 +22,9 @@
 #define BREAK   "- - - - - - - - - - - - - - - - - - - - -"
 
 map<string, int> Helpy::command = {{"display", 1}, {"print", 1}, {"show", 1}};
-map<string, int> Helpy::target = {{"airport", 6}, {"fastest", 8}, {"reachable", 10}};
-map<string, int> Helpy::what = {{"information", 24}, {"flight", 27}, {"flights", 27}, {"airport", 29}, {"airports", 29}};
+map<string, int> Helpy::target = {{"airport", 6}, {"shortest", 8}, {"fastest", 8}, {"reachable", 10}};
+map<string, int> Helpy::what = {{"information", 24}, {"route", 27}, {"routes", 27}, {"flight", 27}, {"flights", 27},
+                                {"airport", 29}, {"airports", 29}};
 
 /**
  * @brief turns all the characters of a string into lowercase or uppercase
@@ -256,7 +257,6 @@ string Helpy::readLocation(string instruction){
     }
 
     uSet<string> options = {"airport", "city", "country", "coordinates"};
-
     string choice = readInput(instruction, options);
 
     if (choice == "airport"){
@@ -396,8 +396,43 @@ uSet<string>* Helpy::readRestrictions(){
     return use;
 }
 
+void Helpy::printFlights(const string& airport){
+    fort::char_table table;
+    table.set_border_style(FT_NICE_STYLE);
+
+    for (int i = 0; i < 2; i++)
+        table.column(i).set_cell_text_align(fort::text_align::center);
+
+    table << fort::header
+          << "Airport" << "Airlines" << fort::endr;
+
+    for (const auto e : graph.getFlights(airport)){
+        const Airport& dest = e->dest;
+        auto it = e->airlines.begin();
+
+        table << dest.getName() << it++->getName() << fort::endr;
+
+        string destInfo = '(' + dest.getCity() + ", " + dest.getCountry() + ')';
+
+        if (it == e->airlines.end()){
+            table << destInfo << "" << fort::endr;
+        }
+        else{
+            table << destInfo << it++->getName() << fort::endr;
+        }
+
+        while (it != e->airlines.end()){
+            table << "" << it++->getName() << fort::endr;
+        }
+
+        table << fort::separator;
+    }
+
+    cout << table.to_string();
+}
+
 /**
- *
+ * @brief prints a table with the information of a path
  * @param p path to be printed
  * @param order
  */
@@ -488,7 +523,7 @@ b1: cout << endl << YELLOW << BREAK << RESET << endl;
         goto b1;
     }
 
-t1: cout << endl << YELLOW << BREAK << RESET << endl;
+    cout << endl << YELLOW << BREAK << RESET << endl;
     cout << endl << "Anything else? (Yes/No)" << endl;
 
     s1.clear(); getline(cin >> ws, s1);
@@ -634,18 +669,14 @@ bool Helpy::process_command(string& s1, string& s2, string& s3){
  * @param airport code of the Airport
  */
 void Helpy::displayAirportInformation(){
-    string airport = readLocation();
+    string airport = readAirport();
     const Airport& a = graph.getAirport(airport);
 
-    cout << GREEN << "The airport " << a.getName() << " is situated in " << a.getCity() << ", " << a.getCountry() << endl;
-    cout << GREEN << "This airport has the following flights:" << endl;
+    cout << endl << YELLOW << BREAK << RESET << endl;
+    cout << endl << "The airport " << a.getName() << " (" << a.getCity() << ", " << a.getCountry()
+         << ") has the following flights:" << endl << endl;
 
-    for (const auto e : graph.getFlights(a.getCode())){
-        for (const Airline& airline : e->airlines){
-            cout << "From " << a.getName() << " to " << e->dest.getName()
-            << " with " << airline.getName() << endl;
-        }
-    }
+    printFlights(airport);
 }
 
 void Helpy::displayReachableAirports(){

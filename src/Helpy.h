@@ -45,6 +45,7 @@ class Helpy {
         uSet<string> readUsableAirlines();
         uSet<string>* readRestrictions();
 
+        void printFlights(const string& airport);
         void printPath(const Path& p);
 
         void terminal();
