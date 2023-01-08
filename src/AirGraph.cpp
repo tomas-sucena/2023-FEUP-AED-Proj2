@@ -12,6 +12,10 @@
 #define uSet unordered_set
 #define uMap unordered_map
 
+/**
+ * @brief Construct a new Air Graph:: Air Graph object
+ * 
+ */
 AirGraph::AirGraph() = default;
 
 /**
@@ -56,10 +60,22 @@ bool AirGraph::addAirline(Airline &a){
     return airlineCodes.insert({a.getCode(), a}).second;
 }
 
+/**
+ * @brief 
+ * 
+ * @param code 
+ * @return Airport 
+ */
 Airport AirGraph::getAirport(const string& code){
     return vertices[code].value;
 }
 
+/**
+ * @brief 
+ * 
+ * @param code 
+ * @return set<AirGraph::Edge*> 
+ */
 set<AirGraph::Edge*> AirGraph::getFlights(const string& code){
     return vertices[code].adj;
 }
@@ -129,6 +145,11 @@ void AirGraph::validateVertices(uSet<string> use){
     }
 }
 
+/**
+ * @brief 
+ * 
+ * @param use 
+ */
 void AirGraph::validate(uSet<string>* use){
     if (use == nullptr){
         validateEdges({});
@@ -248,6 +269,14 @@ list<Airport> AirGraph::bfs(const string& airport, int flights){
     return res;
 }
 
+/**
+ * @brief 
+ * 
+ * @param airport 
+ * @param flights 
+ * @param use 
+ * @return list<Airport> 
+ */
 list<Airport> AirGraph::getReachableAirports(const string& airport, int flights, uSet<string>* use){
     validate(use);
     if (!vertices[airport].valid){
@@ -260,6 +289,14 @@ list<Airport> AirGraph::getReachableAirports(const string& airport, int flights,
     return reachable;
 }
 
+/**
+ * @brief 
+ * 
+ * @param lat 
+ * @param lon 
+ * @param rad 
+ * @return map<double, string> 
+ */
 map<double, string> AirGraph::getNearbyAirports(double lat, double lon, double rad){
     map<double, string> airports;
 

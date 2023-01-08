@@ -38,6 +38,11 @@ void Helpy::lowercase(string& s, bool uppercase){
     }
 }
 
+/**
+ * @brief 
+ * 
+ * @param s 
+ */
 void Helpy::properName(string& s){
     string name;
 
@@ -207,6 +212,12 @@ string Helpy::readAirport(){
     return airport;
 }
 
+/**
+ * @brief 
+ * 
+ * @param country 
+ * @return string 
+ */
 string Helpy::readCity(bool country){
     string airport;
     string where = (country) ? "country" : "city";
@@ -501,6 +512,11 @@ uSet<string> Helpy::readUsableAirports(){
     return airports;
 }
 
+/**
+ * @brief 
+ * 
+ * @return uSet<string>* 
+ */
 uSet<string>* Helpy::readRestrictions(){
     auto use = new uSet<string>[2];
 
@@ -526,6 +542,11 @@ uSet<string>* Helpy::readRestrictions(){
     return use;
 }
 
+/**
+ * @brief 
+ * 
+ * @param airport 
+ */
 void Helpy::printFlights(const string& airport){
     fort::char_table table;
     table.set_border_style(FT_NICE_STYLE);
@@ -628,7 +649,9 @@ void Helpy::terminal(){
  */
 void Helpy::advanced_mode(){
 
+
     /*-----LER COMANDOS-----*/
+
 
 b1: cout << endl << YELLOW << BREAK << RESET << endl;
     cout << endl << "How can I be of assistance?" << endl << endl;
@@ -677,7 +700,9 @@ e1: cout << endl << YELLOW << BREAK << RESET << endl << endl;
  */
 void Helpy::guided_mode(){
 
+
     /*-----LER COMANDOS-----*/
+
 
 b2: cout << endl << YELLOW << BREAK << RESET << endl;
     cout << endl << "Hello! How can I be of assistance?" << endl;
@@ -792,7 +817,10 @@ bool Helpy::process_command(string& s1, string& s2, string& s3){
     return true;
 }
 
+
 /*-----FUNÇÕES DE IMPRESSÃO-----*/
+
+
 /**
  * @brief displays all the flights you can take on a given Airport, as well as the Airlines that make said flights
  * @complexity O(n * |E|)
@@ -809,6 +837,10 @@ void Helpy::displayAirportInformation(){
     printFlights(airport);
 }
 
+/**
+ * @brief 
+ * 
+ */
 void Helpy::displayReachableAirports(){
     string airport = readLocation();
     int flights = (int) readNumber("Please type the number of flights you want to take:");
@@ -820,7 +852,14 @@ void Helpy::displayReachableAirports(){
     }
 }
 
+
 /*-----FUNÇÕES DE DOR E SOFRIMENTO-----*/
+
+
+/**
+ * @brief 
+ * 
+ */
 void Helpy::getShortestRoutes(){
     string airportA;
     string airportB;
