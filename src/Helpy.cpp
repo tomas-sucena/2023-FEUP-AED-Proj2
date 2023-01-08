@@ -63,10 +63,10 @@ void Helpy::setAirlines(const uSet<string>& codes){
 
 /**
  * @brief adds cities and countries to the Helpy database
- * @param cities names of the cities
- * @param countries names of the countries
+ * @param cities names of the cities (mapped to the codes of their respective airports)
+ * @param countries names of the countries (mapped to the codes of their respective airports)
  */
-void Helpy::setLocations(const uMap<string, string>& cities, const uMap<string, string>& countries){
+void Helpy::setLocations(const uMap<string, uSet<string>>& cities, const uMap<string, uSet<string>>& countries){
     this->cityNames = cities;
     this->countryNames = countries;
 }

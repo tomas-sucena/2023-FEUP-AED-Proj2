@@ -18,8 +18,8 @@ class Helpy {
         uSet<string> airportCodes;
         uMap<string, string> airportNames;
         uSet<string> airlineCodes;
-        uMap<string, string> cityNames;
-        uMap<string, string> countryNames;
+        uMap<string, uSet<string>> cityNames;
+        uMap<string, uSet<string>> countryNames;
 
         // maps used to process commands
         static map<string, int> command, target, what;
@@ -33,7 +33,7 @@ class Helpy {
 
         void setAirports(const uSet<string>& codes, const uMap<string, string>& names);
         void setAirlines(const uSet<string>& codes);
-        void setLocations(const uMap<string, string>& cities, const uMap<string, string>& countries);
+        void setLocations(const uMap<string, uSet<string>>& cities, const uMap<string, uSet<string>>& countries);
 
         string readInput(const string& instruction, uSet<string>& options);
         string readAirport();
