@@ -37,12 +37,16 @@ class Helpy {
         void setLocations(const uMap<string, uSet<string>>& cities, const uMap<string, uSet<string>>& countries);
 
         string readInput(const string& instruction, uSet<string>& options);
+        double readNumber(const string& instruction);
         string readAirport();
         string readCity(bool country = false);
         string readCoordinates();
         string readLocation(string instruction = "");
-        uSet<string> readUsableAirports();
+
         uSet<string> readUsableAirlines();
+        uSet<string> readUsableCities();
+        uSet<string> readUsableCountries();
+        uSet<string> readUsableAirports();
         uSet<string>* readRestrictions();
 
         void printFlights(const string& airport);

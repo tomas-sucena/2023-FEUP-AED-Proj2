@@ -94,8 +94,8 @@ void Helpy::setLocations(const uMap<string, uSet<string>>& cities, const uMap<st
 
 /**
  * @brief reads a line of user input
- * @param instruction
- * @param options
+ * @param instruction the instruction that will be displayed before prompting the user to type
+ * @param options the options that will be displayed to the user
  * @return read input
  */
 string Helpy::readInput(const string& instruction, uSet<string>& options){
@@ -122,6 +122,46 @@ string Helpy::readInput(const string& instruction, uSet<string>& options){
 
         cout << endl << YELLOW << BREAK << RESET << endl << endl;
         cout << RED << "Invalid command! Please, try again." << RESET << endl;
+    }
+
+    return res;
+}
+
+/**
+ * @brief reads a number from the console
+ * @param instruction the instruction that will be displayed before prompting the user to input the number
+ * @return the number inputted by the user
+ */
+double Helpy::readNumber(const string &instruction){
+    double res;
+    bool valid = false;
+
+    while (true){
+        cout << endl << YELLOW << BREAK << RESET << endl << endl;
+        cout << instruction << endl << endl;
+
+        string line; getline(cin >> ws, line);
+        lowercase(line);
+
+        istringstream line_(line);
+
+        string temp;
+        while (line_ >> temp){
+            try {
+                res = stod(temp);
+            }
+            catch(...){
+                continue;
+            }
+
+            valid = true;
+            break;
+        }
+
+        if (valid) break;
+
+        cout << endl << YELLOW << BREAK << RESET << endl << endl;
+        cout << RED << "Invalid input! Please, try again." << RESET << endl;
     }
 
     return res;
@@ -215,28 +255,35 @@ string Helpy::readCity(bool country){
  * @return the code of the airport the user selects
  */
 string Helpy::readCoordinates(){
-    uMap<double, string> air;
-    string lat;
-    string lon;
-    string rad;
-    string code;
-    double latitude;
-    double longitude;
-    double radius;
-    cout << "Please enter your " << BOLD << "Latitude." << RESET << endl;
-    cin >> lat; latitude = stof(lat);
-    cout << "Please enter your " << BOLD << "Longitude." << RESET << endl;
-    cin >> lon; longitude = stof(lon);
-    cout << "Please enter the " << BOLD << "radius" << RESET << " in which you are looking for airports" << endl;
-    cin >> rad; radius = stof(rad);
-    air = graph.getNearbyAirports(latitude, longitude, radius);
-    cout << "These are the airports near you:" << endl;
+    // read the latitude
+    ostringstream instr;
+    instr << "Please enter your " << BOLD << "latitude" << RESET << ':';
+
+    double latitude = readNumber(instr.str());
+
+    // read the longitude
+    instr.clear(); instr.str("");
+    instr << "Please enter your " << BOLD << "longitude" << RESET << ':';
+
+    double longitude = readNumber(instr.str());
+
+    // read the radius
+    instr.clear(); instr.str("");
+    instr << "Please enter the " << BOLD << "radius" << RESET << " in which you are looking for airports:";
+
+    double radius = readNumber(instr.str());
+
+    // calculate the nearest airports
+    map<double, string> air = graph.getNearbyAirports(latitude, longitude, radius);
+
+    cout << endl << YELLOW << BREAK << RESET << endl << endl;
+    cout << "These are the " << BOLD << "airports" << RESET << " that are nearest your location:" << endl << endl;
+
     for (const auto& p : air){
-        cout << GREEN << p.first << " - " << p.second << RESET << endl;
+        cout << "* " << p.second << " (" << airportNames[p.second] << ") -> " << p.first << " km away" << endl;
     }
-    cout << "Please type the " << BOLD << "code" << RESET << " of the airport you are heading to" << endl;
-    cin >> code;
-    return code;
+
+    return readAirport();
 }
 
 /**
@@ -320,6 +367,66 @@ uSet<string> Helpy::readUsableAirlines(){
 }
 
 /**
+ * @brief reads from the console the selection of airlines to use
+ * @return the codes of the selected airlines
+ */
+uSet<string> Helpy::readUsableCities(){
+    uSet<string> airports;
+
+    cout << endl << YELLOW << BREAK << RESET << endl << endl;
+    cout << "Please type the names of the " << BOLD << "cities" << RESET << " you would like to " << GREEN << "use"
+         << RESET << ", separated by a comma (ex: Porto,Lisbon,...)\n"
+         << "If there is no city you would particularly like to visit, press Enter.\n\n";
+
+    // cities to USE
+    string line; getline(cin, line);
+    lowercase(line, true); line += ",";
+
+    istringstream line_(line);
+
+    for (string temp; getline(line_, temp, ',');){
+        properName(temp);
+
+        if (cityNames.find(temp) == cityNames.end()){
+            continue;
+        }
+
+        for (const string& s : cityNames[temp]){
+            airports.insert(airportNames[s]);
+        }
+    }
+
+    if (!airports.empty()) return airports;
+
+    // cities to AVOID
+    airports = airportCodes;
+
+    cout << endl << YELLOW << BREAK << RESET << endl << endl;
+    cout << "Please type the names of the " << BOLD << "cities" << RESET << " you would like to " << RED << "avoid"
+         << RESET << ", separated by a comma (ex: Porto,Lisbon,...)\n"
+         << "If there is no city you wish to avoid, press Enter.\n\n";
+
+    getline(cin, line);
+    lowercase(line, true); line += ",";
+
+    line_.clear(); line_.str(line);
+
+    for (string temp; getline(line_, temp, ',');){
+        properName(temp);
+
+        if (cityNames.find(temp) == cityNames.end()){
+            continue;
+        }
+
+        for (const string& s : cityNames[temp]){
+            airports.erase(airportNames[s]);
+        }
+    }
+
+    return airports;
+}
+
+/**
  * @brief reads the airports that the user wants to use
  * @return the codes of the airports the user selects
  */
@@ -337,7 +444,13 @@ uSet<string> Helpy::readUsableAirports(){
     istringstream line_(line);
 
     for (string temp; getline(line_, temp, ',');){
-        if (temp.size() > 3) temp = airportNames[temp];
+        if (temp.size() > 3){
+            properName(temp);
+            temp = airportNames[temp];
+        }
+        else{
+            lowercase(temp, true);
+        }
 
         if (airportCodes.find(temp) != airlineCodes.end()){
             airports.insert(temp);
@@ -366,6 +479,22 @@ uSet<string> Helpy::readUsableAirports(){
         if (it != airports.end()){
             airports.erase(it);
         }
+    }
+
+    // read cities and countries to use
+    uSet<string> cityAirports = readUsableCities();
+    //uSet<string> countryAirports = readUsableCities();
+
+    for (auto it = airports.begin(); it != airports.end();){
+        bool foundCity = (cityAirports.find(*it) != cityAirports.end());
+        //bool foundCountry = (countryAirports.find(*it) != countryAirports.end());
+
+        if (foundCity){// && foundCountry){
+            it++;
+            continue;
+        }
+
+        it = airports.erase(it);
     }
 
     return airports;
@@ -562,7 +691,7 @@ b2: cout << endl << YELLOW << BREAK << RESET << endl;
     if (s1 == "display"){
         cout << endl << YELLOW << BREAK << RESET << endl << endl;
         cout << "* Airport" << endl;
-        cout << "* Fastest" << endl;
+        cout << "* Shortest" << endl;
         cout << "* Reachable";
         cout << endl;
     }
@@ -581,9 +710,9 @@ b2: cout << endl << YELLOW << BREAK << RESET << endl;
         cout << "* Information" << endl;
         cout << endl;
     }
-    else if (s2 == "fastest"){
+    else if (s2 == "shortest"){
         cout << endl << YELLOW << BREAK << RESET << endl << endl;
-        cout << "* Flight" << endl;
+        cout << "* Routes" << endl;
         cout << endl;
     }
     else if (s2 == "reachable"){
@@ -681,11 +810,7 @@ void Helpy::displayAirportInformation(){
 
 void Helpy::displayReachableAirports(){
     string airport = readLocation();
-
-    int flights;
-    cout << "Please type number of flights: ";
-    cin >> flights;
-    cout << endl;
+    int flights = (int) readNumber("Please type the number of flights you want to take:");
 
     list<Airport> reached = graph.getReachableAirports(airport, flights, readRestrictions());
 
@@ -717,6 +842,7 @@ void Helpy::getShortestRoutes(){
           << RESET << "?" << endl << endl
           << "* Airport" << endl
           << "* City" << endl
+          << "* Country" << endl
           << "* Coordinates";
 
     instruction = instr.str();
@@ -724,6 +850,9 @@ void Helpy::getShortestRoutes(){
 
     // calculate paths
     list<Path> allPaths = graph.getPaths(airportA, airportB, readRestrictions());
+
+    cout << endl << YELLOW << BREAK << RESET << endl;
+    cout << "These are the results of my search:";
 
     int optionNum = 1;
     for (Path p : allPaths){

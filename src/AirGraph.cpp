@@ -1,6 +1,7 @@
 #include "AirGraph.h"
 
 #include <list>
+#include <map>
 #include <queue>
 #include <unordered_set>
 
@@ -259,14 +260,16 @@ list<Airport> AirGraph::getReachableAirports(const string& airport, int flights,
     return reachable;
 }
 
-uMap<double, string> AirGraph::getNearbyAirports(double lat, double lon, double rad){
-    uMap<double, string> airports;
+map<double, string> AirGraph::getNearbyAirports(double lat, double lon, double rad){
+    map<double, string> airports;
+
     for(auto &[key, val]:vertices){
         double dist = val.value.getDistance(lat, lon);
         if(dist <= rad){
-            airports.insert({dist, val.value.getCode()});
+            airports.insert({dist, val.value.getName()});
         }
     }
+
     return airports;
 }
 
