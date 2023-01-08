@@ -1,0 +1,6 @@
+<map id="Airport::getDistance" name="Airport::getDistance">
+<area shape="rect" id="node1" title="calculates the distance between two Airports @complexity O(1)" coords="5,55,144,80"/>
+<area shape="rect" id="node2" href="$class_airport.html#ab9af990f8a3dce2757c303e41cfa36c9" title="calculates the distance between the Airport and the location defined by the pair (lat,..." coords="192,5,331,31"/>
+<area shape="rect" id="node3" href="$class_airport.html#a68808ea46d6c48819e23989c64488ef9" title="returns the latitude of the Airport" coords="209,55,313,80"/>
+<area shape="rect" id="node4" href="$class_airport.html#a535b1f7705edd96209e5956b78b550b1" title="returns the longitude of the Airport" coords="204,104,319,129"/>
+</map>

@@ -1,9 +1,11 @@
 <map id="Reader::readAll" name="Reader::readAll">
-<area shape="rect" id="node1" title=" " coords="5,55,117,80"/>
-<area shape="rect" id="node2" href="$class_reader.html#af068ec20958e324c4f5a5634297c84a8" title=" " coords="167,5,307,31"/>
-<area shape="rect" id="node4" href="$class_reader.html#a73a93ec23a010e773d42bb0ac96a23f1" title=" " coords="165,55,308,80"/>
-<area shape="rect" id="node6" href="$class_reader.html#a66c9460b5ed5a1969cefebc02b3bed77" title=" " coords="169,104,305,129"/>
+<area shape="rect" id="node1" title="reads all the files" coords="5,55,117,80"/>
+<area shape="rect" id="node2" href="$class_reader.html#af068ec20958e324c4f5a5634297c84a8" title="reads the file which contains information about the Airlines" coords="167,5,307,31"/>
+<area shape="rect" id="node5" href="$class_reader.html#a73a93ec23a010e773d42bb0ac96a23f1" title="reads the file which contains information about the Airports" coords="165,55,308,80"/>
+<area shape="rect" id="node8" href="$class_reader.html#a66c9460b5ed5a1969cefebc02b3bed77" title="reads the file which contains information about the flights" coords="169,104,305,129"/>
 <area shape="rect" id="node3" href="$class_air_graph.html#a6c508d2ce15c4333d46dd1749bef5008" title="adds an Airline to the AirGraph @complexity O(1)" coords="357,5,495,31"/>
-<area shape="rect" id="node5" href="$class_air_graph.html#af7e011d7be89114000fd3b63288c7df7" title="adds a vertex to the AirGraph @complexity O(1)" coords="356,55,496,80"/>
-<area shape="rect" id="node7" href="$class_air_graph.html#a197bd7d2a8d8edf917b659574de3f155" title="adds an edge to a vertex of the AirGraph @complexity O(1)" coords="360,104,492,129"/>
+<area shape="rect" id="node4" href="$class_airline.html#a41ef613d6b390c463821b9ae43d9ec84" title="returns the code of the Airline" coords="545,5,660,31"/>
+<area shape="rect" id="node6" href="$class_air_graph.html#af7e011d7be89114000fd3b63288c7df7" title="adds a vertex to the AirGraph @complexity O(1)" coords="356,55,496,80"/>
+<area shape="rect" id="node7" href="$class_airport.html#ad1369e1d47c87e205f1718b853a66d54" title="returns the code of the Airport" coords="544,55,661,80"/>
+<area shape="rect" id="node9" href="$class_air_graph.html#a54eebb6cc73e5f813a7d76a438d82c8b" title="adds an edge to a vertex of the AirGraph @complexity O(1)" coords="360,104,492,129"/>
 </map>

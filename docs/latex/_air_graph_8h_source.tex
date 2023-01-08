@@ -7,64 +7,96 @@
 \DoxyCodeLine{3 }
 \DoxyCodeLine{4 \textcolor{preprocessor}{\#include <iostream>}}
 \DoxyCodeLine{5 \textcolor{preprocessor}{\#include <list>}}
-\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <set>}}
-\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <unordered\_map>}}
-\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <unordered\_set>}}
-\DoxyCodeLine{9 }
-\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}data/Airline.h"{}}}
-\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}data/Airport.h"{}}}
-\DoxyCodeLine{12 }
-\DoxyCodeLine{13 \textcolor{keyword}{class }\mbox{\hyperlink{class_air_graph}{AirGraph}} \{}
-\DoxyCodeLine{14     \textcolor{keyword}{private}:}
-\DoxyCodeLine{15         \textcolor{keyword}{struct }Edge \{}
-\DoxyCodeLine{16             Airport dest;}
-\DoxyCodeLine{17             unordered\_set<Airline> airlines;}
-\DoxyCodeLine{18             \textcolor{keywordtype}{double} distance; \textcolor{comment}{// weight}}
-\DoxyCodeLine{19 }
-\DoxyCodeLine{20             Edge(Airport\& dest, Airline\& airline, \textcolor{keywordtype}{double} distance) : dest(dest), distance(distance) \{}
-\DoxyCodeLine{21                 airlines.insert(airline);}
-\DoxyCodeLine{22             \}}
-\DoxyCodeLine{23 }
-\DoxyCodeLine{24             \textcolor{keywordtype}{bool} operator<(\textcolor{keyword}{const} Edge\& e)\textcolor{keyword}{ const}\{}
-\DoxyCodeLine{25                 \textcolor{keywordflow}{return} (distance < e.distance);}
-\DoxyCodeLine{26             \}}
-\DoxyCodeLine{27         \};}
-\DoxyCodeLine{28 }
-\DoxyCodeLine{29         \textcolor{keyword}{struct }Vertex \{}
-\DoxyCodeLine{30             Airport value;}
-\DoxyCodeLine{31             set<Edge> adj;}
-\DoxyCodeLine{32             \textcolor{keywordtype}{bool} visited = \textcolor{keyword}{false};}
-\DoxyCodeLine{33 }
-\DoxyCodeLine{34             Vertex() = \textcolor{keywordflow}{default};}
-\DoxyCodeLine{35             Vertex(Airport\& value) : value(value) \{\}}
-\DoxyCodeLine{36         \};}
-\DoxyCodeLine{37 }
-\DoxyCodeLine{38         unordered\_map<string, Vertex> vertices;}
-\DoxyCodeLine{39 }
-\DoxyCodeLine{40         \textcolor{comment}{// for search purposes}}
-\DoxyCodeLine{41         unordered\_map<string, Airline> airlineCodes;}
-\DoxyCodeLine{42 }
-\DoxyCodeLine{43     \textcolor{keyword}{public}:}
-\DoxyCodeLine{44         \textcolor{comment}{// constructor}}
-\DoxyCodeLine{45         \mbox{\hyperlink{class_air_graph_acf275c0cfd8e7e290e267e7209bd91f4}{AirGraph}}();}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <map>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <set>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <unordered\_map>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <unordered\_set>}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_airline_8h}{Airline.h}}"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_airport_8h}{Airport.h}}"{}}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#define Path list<const AirGraph::Edge*>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#define uSet unordered\_set}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define uMap unordered\_map}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{comment}{// taken from https://www.geeksforgeeks.org/how-\/to-\/create-\/an-\/unordered\_map-\/of-\/pairs-\/in-\/c/}}
+\DoxyCodeLine{19 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacestd}{std}} \{}
+\DoxyCodeLine{20     \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} U>}
+\DoxyCodeLine{21     \textcolor{keyword}{struct }hash<pair<T, U>> \{}
+\DoxyCodeLine{22         \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{structstd_1_1hash_3_01pair_3_01_t_00_01_u_01_4_01_4_a8d4480060d88bfa0391705cb13b735ab}{operator()}}(\textcolor{keyword}{const} pair<string, string>\& p)\textcolor{keyword}{ const}\{}
+\DoxyCodeLine{23             \textcolor{keyword}{auto} hash1 = hash<T>\{\}(p.first);}
+\DoxyCodeLine{24             \textcolor{keyword}{auto} hash2 = hash<U>\{\}(p.second);}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26             \textcolor{keywordflow}{return} (hash1 == hash2) ? hash1 : (hash1 \string^ hash2);}
+\DoxyCodeLine{27         \}}
+\DoxyCodeLine{28     \};}
+\DoxyCodeLine{29 \}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{keyword}{class }\mbox{\hyperlink{class_air_graph}{AirGraph}} \{}
+\DoxyCodeLine{32     \textcolor{keyword}{private}:}
+\DoxyCodeLine{33         \textcolor{keyword}{friend} \textcolor{keyword}{class }\mbox{\hyperlink{class_helpy}{Helpy}};}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35         \textcolor{keyword}{struct }Edge \{}
+\DoxyCodeLine{36             \mbox{\hyperlink{class_airport}{Airport}} src; \textcolor{comment}{// used for printing}}
+\DoxyCodeLine{37             \mbox{\hyperlink{class_airport}{Airport}} dest;}
+\DoxyCodeLine{38             uSet<Airline> airlines;}
+\DoxyCodeLine{39             \textcolor{keywordtype}{double} distance;}
+\DoxyCodeLine{40             \textcolor{keywordtype}{bool} valid = \textcolor{keyword}{true};}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42             Edge(\mbox{\hyperlink{class_airport}{Airport}}\& src, \mbox{\hyperlink{class_airport}{Airport}}\& dest, \mbox{\hyperlink{class_airline}{Airline}}\& airline) : src(src), dest(dest) \{}
+\DoxyCodeLine{43                 airlines.insert(airline);}
+\DoxyCodeLine{44                 distance = src.\mbox{\hyperlink{class_airport_ab9af990f8a3dce2757c303e41cfa36c9}{getDistance}}(dest);}
+\DoxyCodeLine{45             \}}
 \DoxyCodeLine{46 }
-\DoxyCodeLine{47         \textcolor{comment}{// methods}}
-\DoxyCodeLine{48         \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_air_graph_af7e011d7be89114000fd3b63288c7df7}{addVertex}}(Airport\& a);}
-\DoxyCodeLine{49         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_air_graph_a197bd7d2a8d8edf917b659574de3f155}{addEdge}}(\textcolor{keywordtype}{string} airportA, \textcolor{keywordtype}{string} airportB, \textcolor{keywordtype}{string} airline);}
-\DoxyCodeLine{50         \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_air_graph_a6c508d2ce15c4333d46dd1749bef5008}{addAirline}}(Airline\& a);}
-\DoxyCodeLine{51 }
-\DoxyCodeLine{52         Airport \mbox{\hyperlink{class_air_graph_a769168714ae9dd7ed5403b5deb2d8a64}{getAirport}}(\textcolor{keyword}{const} \textcolor{keywordtype}{string}\& code);}
-\DoxyCodeLine{53         set<Edge> \mbox{\hyperlink{class_air_graph_a600d6c620828e3cb975ae8d34b95752d}{getFlights}}(\textcolor{keyword}{const} \textcolor{keywordtype}{string}\& code);}
-\DoxyCodeLine{54 }
-\DoxyCodeLine{55         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_air_graph_a32ba540038b3bda18388f4ad5f12f89d}{reset}}();}
-\DoxyCodeLine{56         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_air_graph_a32ba540038b3bda18388f4ad5f12f89d}{reset}}(\textcolor{keyword}{const} list<string>\& visited\_airports);}
-\DoxyCodeLine{57 }
-\DoxyCodeLine{58         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_air_graph_a5fad3ae02f5ebfa0e11a17bb8b4dbb1e}{dfs}}(\textcolor{keywordtype}{string}\& start);}
-\DoxyCodeLine{59 }
-\DoxyCodeLine{60         list<Airport> \mbox{\hyperlink{class_air_graph_a839ce60c3449b38e0eddc46ff305891d}{bfs}}(\textcolor{keywordtype}{string}\& airport, \textcolor{keywordtype}{int} flights);}
-\DoxyCodeLine{61 \};}
-\DoxyCodeLine{62 }
-\DoxyCodeLine{63 }
-\DoxyCodeLine{64 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//AIRPORTAED\_AIRGRAPH\_H}}
+\DoxyCodeLine{47             \textcolor{keywordtype}{bool} addAirline(\mbox{\hyperlink{class_airline}{Airline}}\& airline)\{}
+\DoxyCodeLine{48                 \textcolor{keywordflow}{return} airlines.insert(airline).second;}
+\DoxyCodeLine{49             \}}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51             \textcolor{keywordtype}{bool} operator<(\textcolor{keyword}{const} Edge\& e)\textcolor{keyword}{ const}\{}
+\DoxyCodeLine{52                 \textcolor{keywordflow}{return} (distance < e.distance);}
+\DoxyCodeLine{53             \}}
+\DoxyCodeLine{54         \};}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56         \textcolor{keyword}{struct }Vertex \{}
+\DoxyCodeLine{57             \mbox{\hyperlink{class_airport}{Airport}} value;}
+\DoxyCodeLine{58             set<Edge*> adj;}
+\DoxyCodeLine{59             \textcolor{keywordtype}{bool} valid = \textcolor{keyword}{true};}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61             Vertex() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{62             Vertex(\mbox{\hyperlink{class_airport}{Airport}}\& value) : value(value) \{\}}
+\DoxyCodeLine{63         \};}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65         uMap<string, Vertex> vertices;}
+\DoxyCodeLine{66         uMap<pair<string, string>, Edge*> edges;}
+\DoxyCodeLine{67         uMap<string, Airline> airlineCodes; \textcolor{comment}{// for search purposes}}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69     \textcolor{keyword}{public}:}
+\DoxyCodeLine{70         \textcolor{comment}{// constructor}}
+\DoxyCodeLine{71         \mbox{\hyperlink{class_air_graph_acf275c0cfd8e7e290e267e7209bd91f4}{AirGraph}}();}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73         \textcolor{comment}{// methods}}
+\DoxyCodeLine{74         \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_air_graph_af7e011d7be89114000fd3b63288c7df7}{addVertex}}(\mbox{\hyperlink{class_airport}{Airport}}\& a);}
+\DoxyCodeLine{75         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_air_graph_a54eebb6cc73e5f813a7d76a438d82c8b}{addEdge}}(\textcolor{keyword}{const} \textcolor{keywordtype}{string}\& airportA, \textcolor{keyword}{const} \textcolor{keywordtype}{string}\& airportB, \textcolor{keyword}{const} \textcolor{keywordtype}{string}\& airline);}
+\DoxyCodeLine{76         \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_air_graph_a6c508d2ce15c4333d46dd1749bef5008}{addAirline}}(\mbox{\hyperlink{class_airline}{Airline}}\& a);}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78         \mbox{\hyperlink{class_airport}{Airport}} \mbox{\hyperlink{class_air_graph_a769168714ae9dd7ed5403b5deb2d8a64}{getAirport}}(\textcolor{keyword}{const} \textcolor{keywordtype}{string}\& code);}
+\DoxyCodeLine{79         set<Edge*> \mbox{\hyperlink{class_air_graph_ac523e3f5214410ee31368d07eed2e0a1}{getFlights}}(\textcolor{keyword}{const} \textcolor{keywordtype}{string}\& code);}
+\DoxyCodeLine{80         map<double, string> \mbox{\hyperlink{class_air_graph_a4893275d263f5d39b6c38e26d465a24a}{getNearbyAirports}}(\textcolor{keywordtype}{double} lat, \textcolor{keywordtype}{double} lon, \textcolor{keywordtype}{double} rad);}
+\DoxyCodeLine{81         list<Airport> \mbox{\hyperlink{class_air_graph_a7e7e60224e445a7b861319312f257955}{getReachableAirports}}(\textcolor{keyword}{const} \textcolor{keywordtype}{string}\& airport, \textcolor{keywordtype}{int} flights, uSet<string>* use = \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{82         list<Path> \mbox{\hyperlink{class_air_graph_ad65e26b3d20d6d77976d9280a5cc5b34}{getPaths}}(\textcolor{keyword}{const} \textcolor{keywordtype}{string}\& airportA, \textcolor{keyword}{const} \textcolor{keywordtype}{string}\& airportB, uSet<string>* use = \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_air_graph_a32ba540038b3bda18388f4ad5f12f89d}{reset}}();}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_air_graph_aa620f24c5ec6942c068d65c5298671d3}{validateEdges}}(uSet<string> use);}
+\DoxyCodeLine{87         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_air_graph_a5bb3526b5868f5643b63b42824245845}{validateVertices}}(uSet<string> use);}
+\DoxyCodeLine{88         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_air_graph_a65c76b3fe1e64fca3b2ea5a3addae74a}{validate}}(uSet<string>* use = \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{90         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_air_graph_af730e68b52d53af9c8a73741078a5a07}{dfs}}(\textcolor{keyword}{const} \textcolor{keywordtype}{string}\& airportA, \textcolor{keyword}{const} \textcolor{keywordtype}{string}\& airportB, \mbox{\hyperlink{_air_graph_8h_a9a4b261ee74f577bbd57315cb754f607}{Path}} currPath, list<Path>\& allPaths);}
+\DoxyCodeLine{91         uSet<Airport> \mbox{\hyperlink{class_air_graph_af730e68b52d53af9c8a73741078a5a07}{dfs}}(\textcolor{keyword}{const} \textcolor{keywordtype}{string}\& airport, \textcolor{keywordtype}{double} distance);}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93         list<Airport> \mbox{\hyperlink{class_air_graph_a8ee9baedc765a3487da56030713f074a}{bfs}}(\textcolor{keyword}{const} \textcolor{keywordtype}{string}\& airport, \textcolor{keywordtype}{int} flights);}
+\DoxyCodeLine{94 \};}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//AIRPORTAED\_AIRGRAPH\_H}}
 
 \end{DoxyCode}

@@ -1,0 +1,6 @@
+<map id="Reader::getHelpy" name="Reader::getHelpy">
+<area shape="rect" id="node1" title="creates a Helpy object, passes it the read information and returns it" coords="5,55,129,80"/>
+<area shape="rect" id="node2" href="$class_helpy.html#a6b9cb10dea4b1b85857734da2aa817c2" title="adds airlines to the Helpy database" coords="184,5,309,31"/>
+<area shape="rect" id="node3" href="$class_helpy.html#a98e53a8c8b800386dc84a1067720c087" title="adds airports to the Helpy database" coords="183,55,310,80"/>
+<area shape="rect" id="node4" href="$class_helpy.html#a04e2c04c68f35405947d45be31e7e164" title="adds cities and countries to the Helpy database" coords="177,104,316,129"/>
+</map>

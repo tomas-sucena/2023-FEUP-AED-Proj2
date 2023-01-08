@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['yellow_0',['YELLOW',['../_helpy_8cpp.html#abf681265909adf3d3e8116c93c0ba179',1,'Helpy.cpp']]]
+  ['red_0',['RED',['../_helpy_8cpp.html#a8d23feea868a983c8c2b661e1e16972f',1,'Helpy.cpp']]],
+  ['reset_1',['RESET',['../_helpy_8cpp.html#ab702106cf3b3e96750b6845ded4e0299',1,'Helpy.cpp']]]
 ];

@@ -1,0 +1,4 @@
+<map id="AirGraph::addAirline" name="AirGraph::addAirline">
+<area shape="rect" id="node1" title="adds an Airline to the AirGraph @complexity O(1)" coords="5,5,144,31"/>
+<area shape="rect" id="node2" href="$class_airline.html#a41ef613d6b390c463821b9ae43d9ec84" title="returns the code of the Airline" coords="192,5,307,31"/>
+</map>

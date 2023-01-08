@@ -1,0 +1,4 @@
+<map id="AirGraph::validateEdges" name="AirGraph::validateEdges">
+<area shape="rect" id="node1" title="checks if an edge contains at least one Airline that the user wants to use @complexity O(|E|)" coords="5,5,168,31"/>
+<area shape="rect" id="node2" href="$class_airline.html#a41ef613d6b390c463821b9ae43d9ec84" title="returns the code of the Airline" coords="216,5,331,31"/>
+</map>

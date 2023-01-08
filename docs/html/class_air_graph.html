@@ -72,6 +72,7 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="class_air_graph-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">AirGraph Class Reference</div></div>
 </div><!--header-->
@@ -82,31 +83,58 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:acf275c0cfd8e7e290e267e7209bd91f4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_air_graph.html#acf275c0cfd8e7e290e267e7209bd91f4">AirGraph</a> ()</td></tr>
+<tr class="memdesc:acf275c0cfd8e7e290e267e7209bd91f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Air Graph:: Air Graph object.  <a href="class_air_graph.html#acf275c0cfd8e7e290e267e7209bd91f4">More...</a><br /></td></tr>
 <tr class="separator:acf275c0cfd8e7e290e267e7209bd91f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af7e011d7be89114000fd3b63288c7df7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_air_graph.html#af7e011d7be89114000fd3b63288c7df7">addVertex</a> (Airport &amp;a)</td></tr>
+<tr class="memitem:af7e011d7be89114000fd3b63288c7df7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_air_graph.html#af7e011d7be89114000fd3b63288c7df7">addVertex</a> (<a class="el" href="class_airport.html">Airport</a> &amp;a)</td></tr>
 <tr class="memdesc:af7e011d7be89114000fd3b63288c7df7"><td class="mdescLeft">&#160;</td><td class="mdescRight">adds a vertex to the <a class="el" href="class_air_graph.html">AirGraph</a> @complexity O(1)  <a href="class_air_graph.html#af7e011d7be89114000fd3b63288c7df7">More...</a><br /></td></tr>
 <tr class="separator:af7e011d7be89114000fd3b63288c7df7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a197bd7d2a8d8edf917b659574de3f155"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_air_graph.html#a197bd7d2a8d8edf917b659574de3f155">addEdge</a> (string airportA, string airportB, string airline)</td></tr>
-<tr class="memdesc:a197bd7d2a8d8edf917b659574de3f155"><td class="mdescLeft">&#160;</td><td class="mdescRight">adds an edge to a vertex of the <a class="el" href="class_air_graph.html">AirGraph</a> @complexity O(1)  <a href="class_air_graph.html#a197bd7d2a8d8edf917b659574de3f155">More...</a><br /></td></tr>
-<tr class="separator:a197bd7d2a8d8edf917b659574de3f155"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6c508d2ce15c4333d46dd1749bef5008"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_air_graph.html#a6c508d2ce15c4333d46dd1749bef5008">addAirline</a> (Airline &amp;a)</td></tr>
-<tr class="memdesc:a6c508d2ce15c4333d46dd1749bef5008"><td class="mdescLeft">&#160;</td><td class="mdescRight">adds an Airline to the <a class="el" href="class_air_graph.html">AirGraph</a> @complexity O(1)  <a href="class_air_graph.html#a6c508d2ce15c4333d46dd1749bef5008">More...</a><br /></td></tr>
+<tr class="memitem:a54eebb6cc73e5f813a7d76a438d82c8b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_air_graph.html#a54eebb6cc73e5f813a7d76a438d82c8b">addEdge</a> (const string &amp;airportA, const string &amp;airportB, const string &amp;airline)</td></tr>
+<tr class="memdesc:a54eebb6cc73e5f813a7d76a438d82c8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">adds an edge to a vertex of the <a class="el" href="class_air_graph.html">AirGraph</a> @complexity O(1)  <a href="class_air_graph.html#a54eebb6cc73e5f813a7d76a438d82c8b">More...</a><br /></td></tr>
+<tr class="separator:a54eebb6cc73e5f813a7d76a438d82c8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c508d2ce15c4333d46dd1749bef5008"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_air_graph.html#a6c508d2ce15c4333d46dd1749bef5008">addAirline</a> (<a class="el" href="class_airline.html">Airline</a> &amp;a)</td></tr>
+<tr class="memdesc:a6c508d2ce15c4333d46dd1749bef5008"><td class="mdescLeft">&#160;</td><td class="mdescRight">adds an <a class="el" href="class_airline.html">Airline</a> to the <a class="el" href="class_air_graph.html">AirGraph</a> @complexity O(1)  <a href="class_air_graph.html#a6c508d2ce15c4333d46dd1749bef5008">More...</a><br /></td></tr>
 <tr class="separator:a6c508d2ce15c4333d46dd1749bef5008"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a769168714ae9dd7ed5403b5deb2d8a64"><td class="memItemLeft" align="right" valign="top">Airport&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_air_graph.html#a769168714ae9dd7ed5403b5deb2d8a64">getAirport</a> (const string &amp;code)</td></tr>
+<tr class="memitem:a769168714ae9dd7ed5403b5deb2d8a64"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_airport.html">Airport</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_air_graph.html#a769168714ae9dd7ed5403b5deb2d8a64">getAirport</a> (const string &amp;code)</td></tr>
+<tr class="memdesc:a769168714ae9dd7ed5403b5deb2d8a64"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the <a class="el" href="class_airport.html">Airport</a> whose code is passed as an argument  <a href="class_air_graph.html#a769168714ae9dd7ed5403b5deb2d8a64">More...</a><br /></td></tr>
 <tr class="separator:a769168714ae9dd7ed5403b5deb2d8a64"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a600d6c620828e3cb975ae8d34b95752d"><td class="memItemLeft" align="right" valign="top">set&lt; Edge &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_air_graph.html#a600d6c620828e3cb975ae8d34b95752d">getFlights</a> (const string &amp;code)</td></tr>
-<tr class="separator:a600d6c620828e3cb975ae8d34b95752d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac523e3f5214410ee31368d07eed2e0a1"><td class="memItemLeft" align="right" valign="top">set&lt; Edge * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_air_graph.html#ac523e3f5214410ee31368d07eed2e0a1">getFlights</a> (const string &amp;code)</td></tr>
+<tr class="memdesc:ac523e3f5214410ee31368d07eed2e0a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the flights you can take in an <a class="el" href="class_airport.html">Airport</a>  <a href="class_air_graph.html#ac523e3f5214410ee31368d07eed2e0a1">More...</a><br /></td></tr>
+<tr class="separator:ac523e3f5214410ee31368d07eed2e0a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4893275d263f5d39b6c38e26d465a24a"><td class="memItemLeft" align="right" valign="top">map&lt; double, string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_air_graph.html#a4893275d263f5d39b6c38e26d465a24a">getNearbyAirports</a> (double lat, double lon, double rad)</td></tr>
+<tr class="memdesc:a4893275d263f5d39b6c38e26d465a24a"><td class="mdescLeft">&#160;</td><td class="mdescRight">gets the Airports nearest the location defined by the pair (lat, lon) @complexity O(|V|)  <a href="class_air_graph.html#a4893275d263f5d39b6c38e26d465a24a">More...</a><br /></td></tr>
+<tr class="separator:a4893275d263f5d39b6c38e26d465a24a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e7e60224e445a7b861319312f257955"><td class="memItemLeft" align="right" valign="top">list&lt; <a class="el" href="class_airport.html">Airport</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_air_graph.html#a7e7e60224e445a7b861319312f257955">getReachableAirports</a> (const string &amp;airport, int flights, <a class="el" href="_air_graph_8h.html#a8d94c3afa699ded58e5c186792d1eb9e">uSet</a>&lt; string &gt; *use=nullptr)</td></tr>
+<tr class="memdesc:a7e7e60224e445a7b861319312f257955"><td class="mdescLeft">&#160;</td><td class="mdescRight">performs a Breadth-First Search to get the Airports you can reach in a certain number of flights @complexity O(|V| + |E|)  <a href="class_air_graph.html#a7e7e60224e445a7b861319312f257955">More...</a><br /></td></tr>
+<tr class="separator:a7e7e60224e445a7b861319312f257955"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad65e26b3d20d6d77976d9280a5cc5b34"><td class="memItemLeft" align="right" valign="top">list&lt; <a class="el" href="_air_graph_8h.html#a9a4b261ee74f577bbd57315cb754f607">Path</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_air_graph.html#ad65e26b3d20d6d77976d9280a5cc5b34">getPaths</a> (const string &amp;airportA, const string &amp;airportB, <a class="el" href="_air_graph_8h.html#a8d94c3afa699ded58e5c186792d1eb9e">uSet</a>&lt; string &gt; *use=nullptr)</td></tr>
+<tr class="memdesc:ad65e26b3d20d6d77976d9280a5cc5b34"><td class="mdescLeft">&#160;</td><td class="mdescRight">gets all the shortest paths from one <a class="el" href="class_airport.html">Airport</a> to another @complexity O(|V| + |E|)  <a href="class_air_graph.html#ad65e26b3d20d6d77976d9280a5cc5b34">More...</a><br /></td></tr>
+<tr class="separator:ad65e26b3d20d6d77976d9280a5cc5b34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a32ba540038b3bda18388f4ad5f12f89d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_air_graph.html#a32ba540038b3bda18388f4ad5f12f89d">reset</a> ()</td></tr>
-<tr class="memdesc:a32ba540038b3bda18388f4ad5f12f89d"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets to 'false' the 'visited' parameter of all vertices @complexity O(|V|)  <a href="class_air_graph.html#a32ba540038b3bda18388f4ad5f12f89d">More...</a><br /></td></tr>
+<tr class="memdesc:a32ba540038b3bda18388f4ad5f12f89d"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets to 'false' the 'visited' parameter of all vertices @complexity O(|V| + |E|)  <a href="class_air_graph.html#a32ba540038b3bda18388f4ad5f12f89d">More...</a><br /></td></tr>
 <tr class="separator:a32ba540038b3bda18388f4ad5f12f89d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab98d2f507e4c5363235a6441963cd7b8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_air_graph.html#ab98d2f507e4c5363235a6441963cd7b8">reset</a> (const list&lt; string &gt; &amp;visited_airports)</td></tr>
-<tr class="memdesc:ab98d2f507e4c5363235a6441963cd7b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets to 'false' the 'visited' parameter of some vertices @complexity O(|V|)  <a href="class_air_graph.html#ab98d2f507e4c5363235a6441963cd7b8">More...</a><br /></td></tr>
-<tr class="separator:ab98d2f507e4c5363235a6441963cd7b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5fad3ae02f5ebfa0e11a17bb8b4dbb1e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_air_graph.html#a5fad3ae02f5ebfa0e11a17bb8b4dbb1e">dfs</a> (string &amp;start)</td></tr>
-<tr class="memdesc:a5fad3ae02f5ebfa0e11a17bb8b4dbb1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">@complexity O(|V| + |E|)  <a href="class_air_graph.html#a5fad3ae02f5ebfa0e11a17bb8b4dbb1e">More...</a><br /></td></tr>
-<tr class="separator:a5fad3ae02f5ebfa0e11a17bb8b4dbb1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a839ce60c3449b38e0eddc46ff305891d"><td class="memItemLeft" align="right" valign="top">list&lt; Airport &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_air_graph.html#a839ce60c3449b38e0eddc46ff305891d">bfs</a> (string &amp;airport, int flights)</td></tr>
-<tr class="separator:a839ce60c3449b38e0eddc46ff305891d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa620f24c5ec6942c068d65c5298671d3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_air_graph.html#aa620f24c5ec6942c068d65c5298671d3">validateEdges</a> (<a class="el" href="_air_graph_8h.html#a8d94c3afa699ded58e5c186792d1eb9e">uSet</a>&lt; string &gt; use)</td></tr>
+<tr class="memdesc:aa620f24c5ec6942c068d65c5298671d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks if an edge contains at least one <a class="el" href="class_airline.html">Airline</a> that the user wants to use @complexity O(|E|)  <a href="class_air_graph.html#aa620f24c5ec6942c068d65c5298671d3">More...</a><br /></td></tr>
+<tr class="separator:aa620f24c5ec6942c068d65c5298671d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bb3526b5868f5643b63b42824245845"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_air_graph.html#a5bb3526b5868f5643b63b42824245845">validateVertices</a> (<a class="el" href="_air_graph_8h.html#a8d94c3afa699ded58e5c186792d1eb9e">uSet</a>&lt; string &gt; use)</td></tr>
+<tr class="memdesc:a5bb3526b5868f5643b63b42824245845"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks if a vertex should be traversed in the search functions @complexity O(|V|)  <a href="class_air_graph.html#a5bb3526b5868f5643b63b42824245845">More...</a><br /></td></tr>
+<tr class="separator:a5bb3526b5868f5643b63b42824245845"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65c76b3fe1e64fca3b2ea5a3addae74a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_air_graph.html#a65c76b3fe1e64fca3b2ea5a3addae74a">validate</a> (<a class="el" href="_air_graph_8h.html#a8d94c3afa699ded58e5c186792d1eb9e">uSet</a>&lt; string &gt; *use=nullptr)</td></tr>
+<tr class="memdesc:a65c76b3fe1e64fca3b2ea5a3addae74a"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks which vertices and edges are valid @complexity O(|V| + |E|)  <a href="class_air_graph.html#a65c76b3fe1e64fca3b2ea5a3addae74a">More...</a><br /></td></tr>
+<tr class="separator:a65c76b3fe1e64fca3b2ea5a3addae74a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af730e68b52d53af9c8a73741078a5a07"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_air_graph.html#af730e68b52d53af9c8a73741078a5a07">dfs</a> (const string &amp;airportA, const string &amp;airportB, <a class="el" href="_air_graph_8h.html#a9a4b261ee74f577bbd57315cb754f607">Path</a> currPath, list&lt; <a class="el" href="_air_graph_8h.html#a9a4b261ee74f577bbd57315cb754f607">Path</a> &gt; &amp;allPaths)</td></tr>
+<tr class="memdesc:af730e68b52d53af9c8a73741078a5a07"><td class="mdescLeft">&#160;</td><td class="mdescRight">implementation of the Depth-First Search algorithm, which iterates through all the vertices and edges @complexity O(|V| + |E|)  <a href="class_air_graph.html#af730e68b52d53af9c8a73741078a5a07">More...</a><br /></td></tr>
+<tr class="separator:af730e68b52d53af9c8a73741078a5a07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3041b4d3f5de423e3b4facb3a507528"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_air_graph_8h.html#a8d94c3afa699ded58e5c186792d1eb9e">uSet</a>&lt; <a class="el" href="class_airport.html">Airport</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_air_graph.html#ad3041b4d3f5de423e3b4facb3a507528">dfs</a> (const string &amp;airport, double distance)</td></tr>
+<tr class="memdesc:ad3041b4d3f5de423e3b4facb3a507528"><td class="mdescLeft">&#160;</td><td class="mdescRight">implementation of the Depth-First Search algorithm, which iterates through all the vertices and edges @complexity O(|V| + |E|)  <a href="class_air_graph.html#ad3041b4d3f5de423e3b4facb3a507528">More...</a><br /></td></tr>
+<tr class="separator:ad3041b4d3f5de423e3b4facb3a507528"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ee9baedc765a3487da56030713f074a"><td class="memItemLeft" align="right" valign="top">list&lt; <a class="el" href="class_airport.html">Airport</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_air_graph.html#a8ee9baedc765a3487da56030713f074a">bfs</a> (const string &amp;airport, int flights)</td></tr>
+<tr class="memdesc:a8ee9baedc765a3487da56030713f074a"><td class="mdescLeft">&#160;</td><td class="mdescRight">implementation of the Breadth-First Search algorithm, which iterates through all the vertices and edges @complexity O(|V| + |E|)  <a href="class_air_graph.html#a8ee9baedc765a3487da56030713f074a">More...</a><br /></td></tr>
+<tr class="separator:a8ee9baedc765a3487da56030713f074a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:afa7adfde61b53d32c5a1e49ceeca451b"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_air_graph.html#afa7adfde61b53d32c5a1e49ceeca451b">Helpy</a></td></tr>
+<tr class="separator:afa7adfde61b53d32c5a1e49ceeca451b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="acf275c0cfd8e7e290e267e7209bd91f4" name="acf275c0cfd8e7e290e267e7209bd91f4"></a>
@@ -114,6 +142,9 @@ Public Member Functions</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">AirGraph::AirGraph </td>
@@ -122,7 +153,14 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+
+<p>Construct a new Air Graph:: Air Graph object. </p>
 
 </div>
 </div>
@@ -136,37 +174,46 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">bool AirGraph::addAirline </td>
           <td>(</td>
-          <td class="paramtype">Airline &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="class_airline.html">Airline</a> &amp;&#160;</td>
           <td class="paramname"><em>a</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>adds an Airline to the <a class="el" href="class_air_graph.html">AirGraph</a> @complexity O(1) </p>
+<p>adds an <a class="el" href="class_airline.html">Airline</a> to the <a class="el" href="class_air_graph.html">AirGraph</a> @complexity O(1) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">a</td><td>Airline that will be added </td></tr>
+    <tr><td class="paramname">a</td><td><a class="el" href="class_airline.html">Airline</a> that will be added </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if insertion occurs, otherwise false </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_air_graph_a6c508d2ce15c4333d46dd1749bef5008_cgraph.png" border="0" usemap="#aclass_air_graph_a6c508d2ce15c4333d46dd1749bef5008_cgraph" alt=""/></div>
+<map name="aclass_air_graph_a6c508d2ce15c4333d46dd1749bef5008_cgraph" id="aclass_air_graph_a6c508d2ce15c4333d46dd1749bef5008_cgraph">
+<area shape="rect" title="adds an Airline to the AirGraph @complexity O(1)" coords="5,5,144,31"/>
+<area shape="rect" href="class_airline.html#a41ef613d6b390c463821b9ae43d9ec84" title="returns the code of the Airline" coords="192,5,307,31"/>
+</map>
+</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_air_graph_a6c508d2ce15c4333d46dd1749bef5008_icgraph.png" border="0" usemap="#aclass_air_graph_a6c508d2ce15c4333d46dd1749bef5008_icgraph" alt=""/></div>
 <map name="aclass_air_graph_a6c508d2ce15c4333d46dd1749bef5008_icgraph" id="aclass_air_graph_a6c508d2ce15c4333d46dd1749bef5008_icgraph">
 <area shape="rect" title="adds an Airline to the AirGraph @complexity O(1)" coords="452,5,591,31"/>
-<area shape="rect" href="class_reader.html#af068ec20958e324c4f5a5634297c84a8" title=" " coords="264,5,404,31"/>
-<area shape="rect" href="class_reader.html#a5726b5e70d0d528c323a4f3b4fe3d12f" title=" " coords="104,5,216,31"/>
+<area shape="rect" href="class_reader.html#af068ec20958e324c4f5a5634297c84a8" title="reads the file which contains information about the Airlines" coords="264,5,404,31"/>
+<area shape="rect" href="class_reader.html#a5726b5e70d0d528c323a4f3b4fe3d12f" title="reads all the files" coords="104,5,216,31"/>
 <area shape="rect" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " coords="5,5,56,31"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="a197bd7d2a8d8edf917b659574de3f155" name="a197bd7d2a8d8edf917b659574de3f155"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a197bd7d2a8d8edf917b659574de3f155">&#9670;&#160;</a></span>addEdge()</h2>
+<a id="a54eebb6cc73e5f813a7d76a438d82c8b" name="a54eebb6cc73e5f813a7d76a438d82c8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54eebb6cc73e5f813a7d76a438d82c8b">&#9670;&#160;</a></span>addEdge()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -174,19 +221,19 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">void AirGraph::addEdge </td>
           <td>(</td>
-          <td class="paramtype">string&#160;</td>
+          <td class="paramtype">const string &amp;&#160;</td>
           <td class="paramname"><em>airportA</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">string&#160;</td>
+          <td class="paramtype">const string &amp;&#160;</td>
           <td class="paramname"><em>airportB</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">string&#160;</td>
+          <td class="paramtype">const string &amp;&#160;</td>
           <td class="paramname"><em>airline</em>&#160;</td>
         </tr>
         <tr>
@@ -200,20 +247,20 @@ Here is the caller graph for this function:</div>
 <p>adds an edge to a vertex of the <a class="el" href="class_air_graph.html">AirGraph</a> @complexity O(1) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">airportA</td><td>code of the Airport which is stored in the source vertex </td></tr>
-    <tr><td class="paramname">airportB</td><td>code of the Airport which is stored in the destination vertex </td></tr>
-    <tr><td class="paramname">airline</td><td>Airline that establishes the connection between the Airports </td></tr>
+    <tr><td class="paramname">airportA</td><td>code of the <a class="el" href="class_airport.html">Airport</a> which is stored in the source vertex </td></tr>
+    <tr><td class="paramname">airportB</td><td>code of the <a class="el" href="class_airport.html">Airport</a> which is stored in the destination vertex </td></tr>
+    <tr><td class="paramname">airline</td><td><a class="el" href="class_airline.html">Airline</a> that establishes the connection between the Airports </td></tr>
   </table>
   </dd>
 </dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_air_graph_a197bd7d2a8d8edf917b659574de3f155_icgraph.png" border="0" usemap="#aclass_air_graph_a197bd7d2a8d8edf917b659574de3f155_icgraph" alt=""/></div>
-<map name="aclass_air_graph_a197bd7d2a8d8edf917b659574de3f155_icgraph" id="aclass_air_graph_a197bd7d2a8d8edf917b659574de3f155_icgraph">
+<div class="center"><img src="class_air_graph_a54eebb6cc73e5f813a7d76a438d82c8b_icgraph.png" border="0" usemap="#aclass_air_graph_a54eebb6cc73e5f813a7d76a438d82c8b_icgraph" alt=""/></div>
+<map name="aclass_air_graph_a54eebb6cc73e5f813a7d76a438d82c8b_icgraph" id="aclass_air_graph_a54eebb6cc73e5f813a7d76a438d82c8b_icgraph">
 <area shape="rect" title="adds an edge to a vertex of the AirGraph @complexity O(1)" coords="448,5,580,31"/>
-<area shape="rect" href="class_reader.html#a66c9460b5ed5a1969cefebc02b3bed77" title=" " coords="264,5,400,31"/>
-<area shape="rect" href="class_reader.html#a5726b5e70d0d528c323a4f3b4fe3d12f" title=" " coords="104,5,216,31"/>
+<area shape="rect" href="class_reader.html#a66c9460b5ed5a1969cefebc02b3bed77" title="reads the file which contains information about the flights" coords="264,5,400,31"/>
+<area shape="rect" href="class_reader.html#a5726b5e70d0d528c323a4f3b4fe3d12f" title="reads all the files" coords="104,5,216,31"/>
 <area shape="rect" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " coords="5,5,56,31"/>
 </map>
 </div>
@@ -229,7 +276,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">bool AirGraph::addVertex </td>
           <td>(</td>
-          <td class="paramtype">Airport &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="class_airport.html">Airport</a> &amp;&#160;</td>
           <td class="paramname"><em>a</em></td><td>)</td>
           <td></td>
         </tr>
@@ -239,35 +286,44 @@ Here is the caller graph for this function:</div>
 <p>adds a vertex to the <a class="el" href="class_air_graph.html">AirGraph</a> @complexity O(1) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">a</td><td>Airport that will be stored in the vertex </td></tr>
+    <tr><td class="paramname">a</td><td><a class="el" href="class_airport.html">Airport</a> that will be stored in the vertex </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true if insertion occurs, otherwise false </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>'true' if insertion occurs, otherwise 'false' </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_air_graph_af7e011d7be89114000fd3b63288c7df7_cgraph.png" border="0" usemap="#aclass_air_graph_af7e011d7be89114000fd3b63288c7df7_cgraph" alt=""/></div>
+<map name="aclass_air_graph_af7e011d7be89114000fd3b63288c7df7_cgraph" id="aclass_air_graph_af7e011d7be89114000fd3b63288c7df7_cgraph">
+<area shape="rect" title="adds a vertex to the AirGraph @complexity O(1)" coords="5,5,145,31"/>
+<area shape="rect" href="class_airport.html#ad1369e1d47c87e205f1718b853a66d54" title="returns the code of the Airport" coords="193,5,311,31"/>
+</map>
+</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_air_graph_af7e011d7be89114000fd3b63288c7df7_icgraph.png" border="0" usemap="#aclass_air_graph_af7e011d7be89114000fd3b63288c7df7_icgraph" alt=""/></div>
 <map name="aclass_air_graph_af7e011d7be89114000fd3b63288c7df7_icgraph" id="aclass_air_graph_af7e011d7be89114000fd3b63288c7df7_icgraph">
 <area shape="rect" title="adds a vertex to the AirGraph @complexity O(1)" coords="455,5,595,31"/>
-<area shape="rect" href="class_reader.html#a73a93ec23a010e773d42bb0ac96a23f1" title=" " coords="264,5,407,31"/>
-<area shape="rect" href="class_reader.html#a5726b5e70d0d528c323a4f3b4fe3d12f" title=" " coords="104,5,216,31"/>
+<area shape="rect" href="class_reader.html#a73a93ec23a010e773d42bb0ac96a23f1" title="reads the file which contains information about the Airports" coords="264,5,407,31"/>
+<area shape="rect" href="class_reader.html#a5726b5e70d0d528c323a4f3b4fe3d12f" title="reads all the files" coords="104,5,216,31"/>
 <area shape="rect" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " coords="5,5,56,31"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="a839ce60c3449b38e0eddc46ff305891d" name="a839ce60c3449b38e0eddc46ff305891d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a839ce60c3449b38e0eddc46ff305891d">&#9670;&#160;</a></span>bfs()</h2>
+<a id="a8ee9baedc765a3487da56030713f074a" name="a8ee9baedc765a3487da56030713f074a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ee9baedc765a3487da56030713f074a">&#9670;&#160;</a></span>bfs()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">list&lt; Airport &gt; AirGraph::bfs </td>
+          <td class="memname">list&lt; <a class="el" href="class_airport.html">Airport</a> &gt; AirGraph::bfs </td>
           <td>(</td>
-          <td class="paramtype">string &amp;&#160;</td>
+          <td class="paramtype">const string &amp;&#160;</td>
           <td class="paramname"><em>airport</em>, </td>
         </tr>
         <tr>
@@ -283,42 +339,83 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >@complexity O(|V| + |E|) </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>implementation of the Breadth-First Search algorithm, which iterates through all the vertices and edges @complexity O(|V| + |E|) </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">airport</td><td>code of the Airport that is stored in the initial vertex </td></tr>
-    <tr><td class="paramname">flights</td><td></td></tr>
+    <tr><td class="paramname">airport</td><td>code of the <a class="el" href="class_airport.html">Airport</a> which constitutes the starting point </td></tr>
+    <tr><td class="paramname">flights</td><td>number of flights </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_air_graph_a839ce60c3449b38e0eddc46ff305891d_cgraph.png" border="0" usemap="#aclass_air_graph_a839ce60c3449b38e0eddc46ff305891d_cgraph" alt=""/></div>
-<map name="aclass_air_graph_a839ce60c3449b38e0eddc46ff305891d_cgraph" id="aclass_air_graph_a839ce60c3449b38e0eddc46ff305891d_cgraph">
-<area shape="rect" title=" " coords="5,5,104,31"/>
-<area shape="rect" href="class_air_graph.html#a32ba540038b3bda18388f4ad5f12f89d" title="sets to &#39;false&#39; the &#39;visited&#39; parameter of all vertices @complexity O(|V|)" coords="152,5,263,31"/>
-</map>
-</div>
+<dl class="section return"><dt>Returns</dt><dd>list&lt;Airport&gt; with the reachable Airports </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_air_graph_a839ce60c3449b38e0eddc46ff305891d_icgraph.png" border="0" usemap="#aclass_air_graph_a839ce60c3449b38e0eddc46ff305891d_icgraph" alt=""/></div>
-<map name="aclass_air_graph_a839ce60c3449b38e0eddc46ff305891d_icgraph" id="aclass_air_graph_a839ce60c3449b38e0eddc46ff305891d_icgraph">
-<area shape="rect" title=" " coords="952,31,1051,56"/>
-<area shape="rect" href="class_helpy.html#aab6c12ff66f6a5bee4cb872fb65ed5ad" title=" " coords="692,31,904,56"/>
-<area shape="rect" href="class_helpy.html#ac18c8353d0a7f41c9363433f826988fe" title="processes the commands that were inputed @complexity O(n^2 * log(n))" coords="469,31,644,56"/>
+<div class="center"><img src="class_air_graph_a8ee9baedc765a3487da56030713f074a_icgraph.png" border="0" usemap="#aclass_air_graph_a8ee9baedc765a3487da56030713f074a_icgraph" alt=""/></div>
+<map name="aclass_air_graph_a8ee9baedc765a3487da56030713f074a_icgraph" id="aclass_air_graph_a8ee9baedc765a3487da56030713f074a_icgraph">
+<area shape="rect" title="implementation of the Breadth&#45;First Search algorithm, which iterates through all the vertices and edg..." coords="1207,31,1305,56"/>
+<area shape="rect" href="class_air_graph.html#a7e7e60224e445a7b861319312f257955" title="performs a Breadth&#45;First Search to get the Airports you can reach in a certain number of flights @com..." coords="952,31,1159,56"/>
+<area shape="rect" href="class_helpy.html#a7052e9a5e346e41892c26da08cf9c06e" title="displays all the Airports you can reach from a starting point in a certain number of flights @complex..." coords="692,31,904,56"/>
+<area shape="rect" href="class_helpy.html#ac18c8353d0a7f41c9363433f826988fe" title="processes the commands that were inputted @complexity O(n^2 * log(n))" coords="469,31,644,56"/>
 <area shape="rect" href="class_helpy.html#a8fa3cfb126e6423475a34637b50d8334" title="executes the advanced mode of the UI @complexity O(1)" coords="263,5,421,31"/>
 <area shape="rect" href="class_helpy.html#af5932f8789f41f033f894cd659aff329" title="executes the guided mode of the UI @complexity O(1)" coords="271,55,413,80"/>
-<area shape="rect" href="class_helpy.html#aaa754efec4177b0c763859b5847d10d3" title="allows to choose the mode of the UI @complexity O(n^2)" coords="104,31,215,56"/>
+<area shape="rect" href="class_helpy.html#aaa754efec4177b0c763859b5847d10d3" title="allows the user to choose the mode of the UI @complexity O(n^2)" coords="104,31,215,56"/>
 <area shape="rect" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " coords="5,31,56,56"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="a5fad3ae02f5ebfa0e11a17bb8b4dbb1e" name="a5fad3ae02f5ebfa0e11a17bb8b4dbb1e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5fad3ae02f5ebfa0e11a17bb8b4dbb1e">&#9670;&#160;</a></span>dfs()</h2>
+<a id="ad3041b4d3f5de423e3b4facb3a507528" name="ad3041b4d3f5de423e3b4facb3a507528"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3041b4d3f5de423e3b4facb3a507528">&#9670;&#160;</a></span>dfs() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_air_graph_8h.html#a8d94c3afa699ded58e5c186792d1eb9e">uSet</a>&lt; <a class="el" href="class_airport.html">Airport</a> &gt; AirGraph::dfs </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>airport</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>distance</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>implementation of the Depth-First Search algorithm, which iterates through all the vertices and edges @complexity O(|V| + |E|) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">airport</td><td>code of the <a class="el" href="class_airport.html">Airport</a> that is stored in the initial vertex </td></tr>
+    <tr><td class="paramname">distance</td><td>radius </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>container with all of the reachable Airports </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_air_graph_ad3041b4d3f5de423e3b4facb3a507528_cgraph.png" border="0" usemap="#aclass_air_graph_ad3041b4d3f5de423e3b4facb3a507528_cgraph" alt=""/></div>
+<map name="aclass_air_graph_ad3041b4d3f5de423e3b4facb3a507528_cgraph" id="aclass_air_graph_ad3041b4d3f5de423e3b4facb3a507528_cgraph">
+<area shape="rect" title="implementation of the Depth&#45;First Search algorithm, which iterates through all the vertices and edges..." coords="5,29,104,55"/>
+<area shape="rect" href="class_air_graph.html#af730e68b52d53af9c8a73741078a5a07" title="implementation of the Depth&#45;First Search algorithm, which iterates through all the vertices and edges..." coords="152,29,251,55"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af730e68b52d53af9c8a73741078a5a07" name="af730e68b52d53af9c8a73741078a5a07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af730e68b52d53af9c8a73741078a5a07">&#9670;&#160;</a></span>dfs() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -326,27 +423,63 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">void AirGraph::dfs </td>
           <td>(</td>
-          <td class="paramtype">string &amp;&#160;</td>
-          <td class="paramname"><em>airport</em></td><td>)</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>airportA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>airportB</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_air_graph_8h.html#a9a4b261ee74f577bbd57315cb754f607">Path</a>&#160;</td>
+          <td class="paramname"><em>currPath</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">list&lt; <a class="el" href="_air_graph_8h.html#a9a4b261ee74f577bbd57315cb754f607">Path</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>allPaths</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>@complexity O(|V| + |E|) </p>
+<p>implementation of the Depth-First Search algorithm, which iterates through all the vertices and edges @complexity O(|V| + |E|) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">airport</td><td>code of the Airport that is stored in the initial vertex </td></tr>
+    <tr><td class="paramname">airport</td><td>code of the <a class="el" href="class_airport.html">Airport</a> that is stored in the initial vertex </td></tr>
   </table>
   </dd>
 </dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_air_graph_a5fad3ae02f5ebfa0e11a17bb8b4dbb1e_cgraph.png" border="0" usemap="#aclass_air_graph_a5fad3ae02f5ebfa0e11a17bb8b4dbb1e_cgraph" alt=""/></div>
-<map name="aclass_air_graph_a5fad3ae02f5ebfa0e11a17bb8b4dbb1e_cgraph" id="aclass_air_graph_a5fad3ae02f5ebfa0e11a17bb8b4dbb1e_cgraph">
-<area shape="rect" title="@complexity O(|V| + |E|)" coords="5,5,104,31"/>
-<area shape="rect" href="class_air_graph.html#a32ba540038b3bda18388f4ad5f12f89d" title="sets to &#39;false&#39; the &#39;visited&#39; parameter of all vertices @complexity O(|V|)" coords="152,5,263,31"/>
+<div class="center"><img src="class_air_graph_af730e68b52d53af9c8a73741078a5a07_cgraph.png" border="0" usemap="#aclass_air_graph_af730e68b52d53af9c8a73741078a5a07_cgraph" alt=""/></div>
+<map name="aclass_air_graph_af730e68b52d53af9c8a73741078a5a07_cgraph" id="aclass_air_graph_af730e68b52d53af9c8a73741078a5a07_cgraph">
+<area shape="rect" title="implementation of the Depth&#45;First Search algorithm, which iterates through all the vertices and edges..." coords="5,29,104,55"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_air_graph_af730e68b52d53af9c8a73741078a5a07_icgraph.png" border="0" usemap="#aclass_air_graph_af730e68b52d53af9c8a73741078a5a07_icgraph" alt=""/></div>
+<map name="aclass_air_graph_af730e68b52d53af9c8a73741078a5a07_icgraph" id="aclass_air_graph_af730e68b52d53af9c8a73741078a5a07_icgraph">
+<area shape="rect" title="implementation of the Depth&#45;First Search algorithm, which iterates through all the vertices and edges..." coords="1117,31,1216,56"/>
+<area shape="rect" href="class_air_graph.html#ad65e26b3d20d6d77976d9280a5cc5b34" title="gets all the shortest paths from one Airport to another @complexity O(|V| + |E|)" coords="936,31,1069,56"/>
+<area shape="rect" href="class_helpy.html#a55726343e5f6dac4150ca434cd445e70" title="displays the shortest routes you can take from an Airport to another @complexity O(n^2 + |V| + |E|)" coords="692,31,888,56"/>
+<area shape="rect" href="class_helpy.html#ac18c8353d0a7f41c9363433f826988fe" title="processes the commands that were inputted @complexity O(n^2 * log(n))" coords="469,31,644,56"/>
+<area shape="rect" href="class_helpy.html#a8fa3cfb126e6423475a34637b50d8334" title="executes the advanced mode of the UI @complexity O(1)" coords="263,5,421,31"/>
+<area shape="rect" href="class_helpy.html#af5932f8789f41f033f894cd659aff329" title="executes the guided mode of the UI @complexity O(1)" coords="271,55,413,80"/>
+<area shape="rect" href="class_helpy.html#aaa754efec4177b0c763859b5847d10d3" title="allows the user to choose the mode of the UI @complexity O(n^2)" coords="104,31,215,56"/>
+<area shape="rect" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " coords="5,31,56,56"/>
 </map>
 </div>
 
@@ -359,7 +492,7 @@ Here is the call graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Airport AirGraph::getAirport </td>
+          <td class="memname"><a class="el" href="class_airport.html">Airport</a> AirGraph::getAirport </td>
           <td>(</td>
           <td class="paramtype">const string &amp;&#160;</td>
           <td class="paramname"><em>code</em></td><td>)</td>
@@ -367,31 +500,40 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>returns the <a class="el" href="class_airport.html">Airport</a> whose code is passed as an argument </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">code</td><td>code of the <a class="el" href="class_airport.html">Airport</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_airport.html">Airport</a> </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_air_graph_a769168714ae9dd7ed5403b5deb2d8a64_icgraph.png" border="0" usemap="#aclass_air_graph_a769168714ae9dd7ed5403b5deb2d8a64_icgraph" alt=""/></div>
 <map name="aclass_air_graph_a769168714ae9dd7ed5403b5deb2d8a64_icgraph" id="aclass_air_graph_a769168714ae9dd7ed5403b5deb2d8a64_icgraph">
-<area shape="rect" title=" " coords="948,31,1085,56"/>
-<area shape="rect" href="class_helpy.html#ababa14751d855f90c112ce9958623f60" title="displays all the flights you can take on a given Airport, as well as the Airlines that make said flig..." coords="692,31,900,56"/>
-<area shape="rect" href="class_helpy.html#ac18c8353d0a7f41c9363433f826988fe" title="processes the commands that were inputed @complexity O(n^2 * log(n))" coords="469,31,644,56"/>
+<area shape="rect" title="returns the Airport whose code is passed as an argument" coords="948,31,1085,56"/>
+<area shape="rect" href="class_helpy.html#aa0039898fad6ba25654635123abe404b" title="displays all the flights you can take on a given Airport, as well as the Airlines that make said flig..." coords="692,31,900,56"/>
+<area shape="rect" href="class_helpy.html#ac18c8353d0a7f41c9363433f826988fe" title="processes the commands that were inputted @complexity O(n^2 * log(n))" coords="469,31,644,56"/>
 <area shape="rect" href="class_helpy.html#a8fa3cfb126e6423475a34637b50d8334" title="executes the advanced mode of the UI @complexity O(1)" coords="263,5,421,31"/>
 <area shape="rect" href="class_helpy.html#af5932f8789f41f033f894cd659aff329" title="executes the guided mode of the UI @complexity O(1)" coords="271,55,413,80"/>
-<area shape="rect" href="class_helpy.html#aaa754efec4177b0c763859b5847d10d3" title="allows to choose the mode of the UI @complexity O(n^2)" coords="104,31,215,56"/>
+<area shape="rect" href="class_helpy.html#aaa754efec4177b0c763859b5847d10d3" title="allows the user to choose the mode of the UI @complexity O(n^2)" coords="104,31,215,56"/>
 <area shape="rect" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " coords="5,31,56,56"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="a600d6c620828e3cb975ae8d34b95752d" name="a600d6c620828e3cb975ae8d34b95752d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a600d6c620828e3cb975ae8d34b95752d">&#9670;&#160;</a></span>getFlights()</h2>
+<a id="ac523e3f5214410ee31368d07eed2e0a1" name="ac523e3f5214410ee31368d07eed2e0a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac523e3f5214410ee31368d07eed2e0a1">&#9670;&#160;</a></span>getFlights()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">set&lt; AirGraph::Edge &gt; AirGraph::getFlights </td>
+          <td class="memname">set&lt; AirGraph::Edge * &gt; AirGraph::getFlights </td>
           <td>(</td>
           <td class="paramtype">const string &amp;&#160;</td>
           <td class="paramname"><em>code</em></td><td>)</td>
@@ -399,17 +541,234 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>returns the flights you can take in an <a class="el" href="class_airport.html">Airport</a> </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">code</td><td>code of the <a class="el" href="class_airport.html">Airport</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>set&lt;AirGraph::Edge*&gt; with the edges (flights) of the <a class="el" href="class_airport.html">Airport</a> </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_air_graph_a600d6c620828e3cb975ae8d34b95752d_icgraph.png" border="0" usemap="#aclass_air_graph_a600d6c620828e3cb975ae8d34b95752d_icgraph" alt=""/></div>
-<map name="aclass_air_graph_a600d6c620828e3cb975ae8d34b95752d_icgraph" id="aclass_air_graph_a600d6c620828e3cb975ae8d34b95752d_icgraph">
-<area shape="rect" title=" " coords="948,31,1087,56"/>
-<area shape="rect" href="class_helpy.html#ababa14751d855f90c112ce9958623f60" title="displays all the flights you can take on a given Airport, as well as the Airlines that make said flig..." coords="692,31,900,56"/>
-<area shape="rect" href="class_helpy.html#ac18c8353d0a7f41c9363433f826988fe" title="processes the commands that were inputed @complexity O(n^2 * log(n))" coords="469,31,644,56"/>
+<div class="center"><img src="class_air_graph_ac523e3f5214410ee31368d07eed2e0a1_icgraph.png" border="0" usemap="#aclass_air_graph_ac523e3f5214410ee31368d07eed2e0a1_icgraph" alt=""/></div>
+<map name="aclass_air_graph_ac523e3f5214410ee31368d07eed2e0a1_icgraph" id="aclass_air_graph_ac523e3f5214410ee31368d07eed2e0a1_icgraph">
+<area shape="rect" title="returns the flights you can take in an Airport" coords="1124,31,1263,56"/>
+<area shape="rect" href="class_helpy.html#a6c78b649974b1d7d3285874a39a6ef3b" title="prints all the flights of an Airport in a table @complexity O(n * |E|)" coords="948,31,1076,56"/>
+<area shape="rect" href="class_helpy.html#aa0039898fad6ba25654635123abe404b" title="displays all the flights you can take on a given Airport, as well as the Airlines that make said flig..." coords="692,31,900,56"/>
+<area shape="rect" href="class_helpy.html#ac18c8353d0a7f41c9363433f826988fe" title="processes the commands that were inputted @complexity O(n^2 * log(n))" coords="469,31,644,56"/>
 <area shape="rect" href="class_helpy.html#a8fa3cfb126e6423475a34637b50d8334" title="executes the advanced mode of the UI @complexity O(1)" coords="263,5,421,31"/>
 <area shape="rect" href="class_helpy.html#af5932f8789f41f033f894cd659aff329" title="executes the guided mode of the UI @complexity O(1)" coords="271,55,413,80"/>
-<area shape="rect" href="class_helpy.html#aaa754efec4177b0c763859b5847d10d3" title="allows to choose the mode of the UI @complexity O(n^2)" coords="104,31,215,56"/>
+<area shape="rect" href="class_helpy.html#aaa754efec4177b0c763859b5847d10d3" title="allows the user to choose the mode of the UI @complexity O(n^2)" coords="104,31,215,56"/>
+<area shape="rect" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " coords="5,31,56,56"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a4893275d263f5d39b6c38e26d465a24a" name="a4893275d263f5d39b6c38e26d465a24a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4893275d263f5d39b6c38e26d465a24a">&#9670;&#160;</a></span>getNearbyAirports()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">map&lt; double, string &gt; AirGraph::getNearbyAirports </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>lat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>lon</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>rad</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>gets the Airports nearest the location defined by the pair (lat, lon) @complexity O(|V|) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lat</td><td>latitude </td></tr>
+    <tr><td class="paramname">lon</td><td>longitude </td></tr>
+    <tr><td class="paramname">rad</td><td>radius of search </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>map&lt;double, string&gt; containing Airports and their corresponding distance to the specified location </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_air_graph_a4893275d263f5d39b6c38e26d465a24a_icgraph.png" border="0" usemap="#aclass_air_graph_a4893275d263f5d39b6c38e26d465a24a_icgraph" alt=""/></div>
+<map name="aclass_air_graph_a4893275d263f5d39b6c38e26d465a24a_icgraph" id="aclass_air_graph_a4893275d263f5d39b6c38e26d465a24a_icgraph">
+<area shape="rect" title="gets the Airports nearest the location defined by the pair (lat, lon) @complexity O(|V|)" coords="1345,31,1532,56"/>
+<area shape="rect" href="class_helpy.html#af162325450bc145f1936f2d926afe45c" title="reads coordinates from the console and displays the airports nearest that location @complexity O(n^2)" coords="1139,31,1297,56"/>
+<area shape="rect" href="class_helpy.html#a4423bd1450df0994030a055598d6bd16" title="reads a location based on an airport OR a city OR a country OR coordinates @complexity O(n^2)" coords="952,31,1091,56"/>
+<area shape="rect" href="class_helpy.html#a7052e9a5e346e41892c26da08cf9c06e" title="displays all the Airports you can reach from a starting point in a certain number of flights @complex..." coords="692,5,904,31"/>
+<area shape="rect" href="class_helpy.html#a55726343e5f6dac4150ca434cd445e70" title="displays the shortest routes you can take from an Airport to another @complexity O(n^2 + |V| + |E|)" coords="700,55,896,80"/>
+<area shape="rect" href="class_helpy.html#ac18c8353d0a7f41c9363433f826988fe" title="processes the commands that were inputted @complexity O(n^2 * log(n))" coords="469,31,644,56"/>
+<area shape="rect" href="class_helpy.html#a8fa3cfb126e6423475a34637b50d8334" title="executes the advanced mode of the UI @complexity O(1)" coords="263,5,421,31"/>
+<area shape="rect" href="class_helpy.html#af5932f8789f41f033f894cd659aff329" title="executes the guided mode of the UI @complexity O(1)" coords="271,55,413,80"/>
+<area shape="rect" href="class_helpy.html#aaa754efec4177b0c763859b5847d10d3" title="allows the user to choose the mode of the UI @complexity O(n^2)" coords="104,31,215,56"/>
+<area shape="rect" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " coords="5,31,56,56"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad65e26b3d20d6d77976d9280a5cc5b34" name="ad65e26b3d20d6d77976d9280a5cc5b34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad65e26b3d20d6d77976d9280a5cc5b34">&#9670;&#160;</a></span>getPaths()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">list&lt; <a class="el" href="_air_graph_8h.html#a9a4b261ee74f577bbd57315cb754f607">Path</a> &gt; AirGraph::getPaths </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>airportA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>airportB</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_air_graph_8h.html#a8d94c3afa699ded58e5c186792d1eb9e">uSet</a>&lt; string &gt; *&#160;</td>
+          <td class="paramname"><em>use</em> = <code>nullptr</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>gets all the shortest paths from one <a class="el" href="class_airport.html">Airport</a> to another @complexity O(|V| + |E|) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">airportA</td><td>code of the <a class="el" href="class_airport.html">Airport</a> which constitutes the starting point </td></tr>
+    <tr><td class="paramname">airportB</td><td>code of the <a class="el" href="class_airport.html">Airport</a> which constitutes the destination </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>list&lt;Path&gt; with the shortest paths </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_air_graph_ad65e26b3d20d6d77976d9280a5cc5b34_cgraph.png" border="0" usemap="#aclass_air_graph_ad65e26b3d20d6d77976d9280a5cc5b34_cgraph" alt=""/></div>
+<map name="aclass_air_graph_ad65e26b3d20d6d77976d9280a5cc5b34_cgraph" id="aclass_air_graph_ad65e26b3d20d6d77976d9280a5cc5b34_cgraph">
+<area shape="rect" title="gets all the shortest paths from one Airport to another @complexity O(|V| + |E|)" coords="5,79,139,104"/>
+<area shape="rect" href="class_air_graph.html#af730e68b52d53af9c8a73741078a5a07" title="implementation of the Depth&#45;First Search algorithm, which iterates through all the vertices and edges..." coords="201,29,299,55"/>
+<area shape="rect" href="class_air_graph.html#a32ba540038b3bda18388f4ad5f12f89d" title="sets to &#39;false&#39; the &#39;visited&#39; parameter of all vertices @complexity O(|V| + |E|)" coords="195,79,305,104"/>
+<area shape="rect" href="class_air_graph.html#a65c76b3fe1e64fca3b2ea5a3addae74a" title="checks which vertices and edges are valid @complexity O(|V| + |E|)" coords="187,128,313,153"/>
+<area shape="rect" href="class_air_graph.html#aa620f24c5ec6942c068d65c5298671d3" title="checks if an edge contains at least one Airline that the user wants to use @complexity O(|E|)" coords="367,103,530,128"/>
+<area shape="rect" href="class_air_graph.html#a5bb3526b5868f5643b63b42824245845" title="checks if a vertex should be traversed in the search functions @complexity O(|V|)" coords="361,152,536,177"/>
+<area shape="rect" href="class_airline.html#a41ef613d6b390c463821b9ae43d9ec84" title="returns the code of the Airline" coords="584,103,699,128"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_air_graph_ad65e26b3d20d6d77976d9280a5cc5b34_icgraph.png" border="0" usemap="#aclass_air_graph_ad65e26b3d20d6d77976d9280a5cc5b34_icgraph" alt=""/></div>
+<map name="aclass_air_graph_ad65e26b3d20d6d77976d9280a5cc5b34_icgraph" id="aclass_air_graph_ad65e26b3d20d6d77976d9280a5cc5b34_icgraph">
+<area shape="rect" title="gets all the shortest paths from one Airport to another @complexity O(|V| + |E|)" coords="936,31,1069,56"/>
+<area shape="rect" href="class_helpy.html#a55726343e5f6dac4150ca434cd445e70" title="displays the shortest routes you can take from an Airport to another @complexity O(n^2 + |V| + |E|)" coords="692,31,888,56"/>
+<area shape="rect" href="class_helpy.html#ac18c8353d0a7f41c9363433f826988fe" title="processes the commands that were inputted @complexity O(n^2 * log(n))" coords="469,31,644,56"/>
+<area shape="rect" href="class_helpy.html#a8fa3cfb126e6423475a34637b50d8334" title="executes the advanced mode of the UI @complexity O(1)" coords="263,5,421,31"/>
+<area shape="rect" href="class_helpy.html#af5932f8789f41f033f894cd659aff329" title="executes the guided mode of the UI @complexity O(1)" coords="271,55,413,80"/>
+<area shape="rect" href="class_helpy.html#aaa754efec4177b0c763859b5847d10d3" title="allows the user to choose the mode of the UI @complexity O(n^2)" coords="104,31,215,56"/>
+<area shape="rect" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " coords="5,31,56,56"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7e7e60224e445a7b861319312f257955" name="a7e7e60224e445a7b861319312f257955"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e7e60224e445a7b861319312f257955">&#9670;&#160;</a></span>getReachableAirports()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">list&lt; <a class="el" href="class_airport.html">Airport</a> &gt; AirGraph::getReachableAirports </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>airport</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>flights</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_air_graph_8h.html#a8d94c3afa699ded58e5c186792d1eb9e">uSet</a>&lt; string &gt; *&#160;</td>
+          <td class="paramname"><em>use</em> = <code>nullptr</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>performs a Breadth-First Search to get the Airports you can reach in a certain number of flights @complexity O(|V| + |E|) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">airport</td><td>code of the <a class="el" href="class_airport.html">Airport</a> which constitutes the starting point </td></tr>
+    <tr><td class="paramname">flights</td><td>number of flights </td></tr>
+    <tr><td class="paramname">use</td><td>set of Airlines and Airports that the user would like to use </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>list&lt;Airport&gt; with the reachable Airports </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_air_graph_a7e7e60224e445a7b861319312f257955_cgraph.png" border="0" usemap="#aclass_air_graph_a7e7e60224e445a7b861319312f257955_cgraph" alt=""/></div>
+<map name="aclass_air_graph_a7e7e60224e445a7b861319312f257955_cgraph" id="aclass_air_graph_a7e7e60224e445a7b861319312f257955_cgraph">
+<area shape="rect" title="performs a Breadth&#45;First Search to get the Airports you can reach in a certain number of flights @com..." coords="5,55,212,80"/>
+<area shape="rect" href="class_air_graph.html#a8ee9baedc765a3487da56030713f074a" title="implementation of the Breadth&#45;First Search algorithm, which iterates through all the vertices and edg..." coords="274,5,373,31"/>
+<area shape="rect" href="class_air_graph.html#a32ba540038b3bda18388f4ad5f12f89d" title="sets to &#39;false&#39; the &#39;visited&#39; parameter of all vertices @complexity O(|V| + |E|)" coords="268,55,379,80"/>
+<area shape="rect" href="class_air_graph.html#a65c76b3fe1e64fca3b2ea5a3addae74a" title="checks which vertices and edges are valid @complexity O(|V| + |E|)" coords="260,104,387,129"/>
+<area shape="rect" href="class_air_graph.html#aa620f24c5ec6942c068d65c5298671d3" title="checks if an edge contains at least one Airline that the user wants to use @complexity O(|E|)" coords="441,79,603,104"/>
+<area shape="rect" href="class_air_graph.html#a5bb3526b5868f5643b63b42824245845" title="checks if a vertex should be traversed in the search functions @complexity O(|V|)" coords="435,128,609,153"/>
+<area shape="rect" href="class_airline.html#a41ef613d6b390c463821b9ae43d9ec84" title="returns the code of the Airline" coords="657,79,772,104"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_air_graph_a7e7e60224e445a7b861319312f257955_icgraph.png" border="0" usemap="#aclass_air_graph_a7e7e60224e445a7b861319312f257955_icgraph" alt=""/></div>
+<map name="aclass_air_graph_a7e7e60224e445a7b861319312f257955_icgraph" id="aclass_air_graph_a7e7e60224e445a7b861319312f257955_icgraph">
+<area shape="rect" title="performs a Breadth&#45;First Search to get the Airports you can reach in a certain number of flights @com..." coords="952,31,1159,56"/>
+<area shape="rect" href="class_helpy.html#a7052e9a5e346e41892c26da08cf9c06e" title="displays all the Airports you can reach from a starting point in a certain number of flights @complex..." coords="692,31,904,56"/>
+<area shape="rect" href="class_helpy.html#ac18c8353d0a7f41c9363433f826988fe" title="processes the commands that were inputted @complexity O(n^2 * log(n))" coords="469,31,644,56"/>
+<area shape="rect" href="class_helpy.html#a8fa3cfb126e6423475a34637b50d8334" title="executes the advanced mode of the UI @complexity O(1)" coords="263,5,421,31"/>
+<area shape="rect" href="class_helpy.html#af5932f8789f41f033f894cd659aff329" title="executes the guided mode of the UI @complexity O(1)" coords="271,55,413,80"/>
+<area shape="rect" href="class_helpy.html#aaa754efec4177b0c763859b5847d10d3" title="allows the user to choose the mode of the UI @complexity O(n^2)" coords="104,31,215,56"/>
 <area shape="rect" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " coords="5,31,56,56"/>
 </map>
 </div>
@@ -417,7 +776,7 @@ Here is the caller graph for this function:</div>
 </div>
 </div>
 <a id="a32ba540038b3bda18388f4ad5f12f89d" name="a32ba540038b3bda18388f4ad5f12f89d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a32ba540038b3bda18388f4ad5f12f89d">&#9670;&#160;</a></span>reset() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a32ba540038b3bda18388f4ad5f12f89d">&#9670;&#160;</a></span>reset()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -431,49 +790,200 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>sets to 'false' the 'visited' parameter of all vertices @complexity O(|V|) </p>
+<p>sets to 'false' the 'visited' parameter of all vertices @complexity O(|V| + |E|) </p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_air_graph_a32ba540038b3bda18388f4ad5f12f89d_icgraph.png" border="0" usemap="#aclass_air_graph_a32ba540038b3bda18388f4ad5f12f89d_icgraph" alt=""/></div>
 <map name="aclass_air_graph_a32ba540038b3bda18388f4ad5f12f89d_icgraph" id="aclass_air_graph_a32ba540038b3bda18388f4ad5f12f89d_icgraph">
-<area shape="rect" title="sets to &#39;false&#39; the &#39;visited&#39; parameter of all vertices @complexity O(|V|)" coords="1099,56,1209,81"/>
-<area shape="rect" href="class_air_graph.html#a839ce60c3449b38e0eddc46ff305891d" title=" " coords="952,31,1051,56"/>
-<area shape="rect" href="class_air_graph.html#a5fad3ae02f5ebfa0e11a17bb8b4dbb1e" title="@complexity O(|V| + |E|)" coords="952,80,1051,105"/>
-<area shape="rect" href="class_helpy.html#aab6c12ff66f6a5bee4cb872fb65ed5ad" title=" " coords="692,31,904,56"/>
-<area shape="rect" href="class_helpy.html#ac18c8353d0a7f41c9363433f826988fe" title="processes the commands that were inputed @complexity O(n^2 * log(n))" coords="469,31,644,56"/>
+<area shape="rect" title="sets to &#39;false&#39; the &#39;visited&#39; parameter of all vertices @complexity O(|V| + |E|)" coords="1207,31,1317,56"/>
+<area shape="rect" href="class_air_graph.html#ad65e26b3d20d6d77976d9280a5cc5b34" title="gets all the shortest paths from one Airport to another @complexity O(|V| + |E|)" coords="989,5,1122,31"/>
+<area shape="rect" href="class_air_graph.html#a7e7e60224e445a7b861319312f257955" title="performs a Breadth&#45;First Search to get the Airports you can reach in a certain number of flights @com..." coords="952,55,1159,80"/>
+<area shape="rect" href="class_helpy.html#a55726343e5f6dac4150ca434cd445e70" title="displays the shortest routes you can take from an Airport to another @complexity O(n^2 + |V| + |E|)" coords="700,5,896,31"/>
+<area shape="rect" href="class_helpy.html#ac18c8353d0a7f41c9363433f826988fe" title="processes the commands that were inputted @complexity O(n^2 * log(n))" coords="469,31,644,56"/>
 <area shape="rect" href="class_helpy.html#a8fa3cfb126e6423475a34637b50d8334" title="executes the advanced mode of the UI @complexity O(1)" coords="263,5,421,31"/>
 <area shape="rect" href="class_helpy.html#af5932f8789f41f033f894cd659aff329" title="executes the guided mode of the UI @complexity O(1)" coords="271,55,413,80"/>
-<area shape="rect" href="class_helpy.html#aaa754efec4177b0c763859b5847d10d3" title="allows to choose the mode of the UI @complexity O(n^2)" coords="104,31,215,56"/>
+<area shape="rect" href="class_helpy.html#aaa754efec4177b0c763859b5847d10d3" title="allows the user to choose the mode of the UI @complexity O(n^2)" coords="104,31,215,56"/>
 <area shape="rect" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " coords="5,31,56,56"/>
+<area shape="rect" href="class_helpy.html#a7052e9a5e346e41892c26da08cf9c06e" title="displays all the Airports you can reach from a starting point in a certain number of flights @complex..." coords="692,55,904,80"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="ab98d2f507e4c5363235a6441963cd7b8" name="ab98d2f507e4c5363235a6441963cd7b8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab98d2f507e4c5363235a6441963cd7b8">&#9670;&#160;</a></span>reset() <span class="overload">[2/2]</span></h2>
+<a id="a65c76b3fe1e64fca3b2ea5a3addae74a" name="a65c76b3fe1e64fca3b2ea5a3addae74a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65c76b3fe1e64fca3b2ea5a3addae74a">&#9670;&#160;</a></span>validate()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void AirGraph::reset </td>
+          <td class="memname">void AirGraph::validate </td>
           <td>(</td>
-          <td class="paramtype">const list&lt; string &gt; &amp;&#160;</td>
-          <td class="paramname"><em>visited_airports</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="_air_graph_8h.html#a8d94c3afa699ded58e5c186792d1eb9e">uSet</a>&lt; string &gt; *&#160;</td>
+          <td class="paramname"><em>use</em> = <code>nullptr</code></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>sets to 'false' the 'visited' parameter of some vertices @complexity O(|V|) </p>
+<p>checks which vertices and edges are valid @complexity O(|V| + |E|) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">visited_airports</td><td>list of the codes of the visited Airports </td></tr>
+    <tr><td class="paramname">use</td><td>array of two unordered_sets, both containing codes (of Airlines and Airports, respectively) </td></tr>
   </table>
   </dd>
 </dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_air_graph_a65c76b3fe1e64fca3b2ea5a3addae74a_cgraph.png" border="0" usemap="#aclass_air_graph_a65c76b3fe1e64fca3b2ea5a3addae74a_cgraph" alt=""/></div>
+<map name="aclass_air_graph_a65c76b3fe1e64fca3b2ea5a3addae74a_cgraph" id="aclass_air_graph_a65c76b3fe1e64fca3b2ea5a3addae74a_cgraph">
+<area shape="rect" title="checks which vertices and edges are valid @complexity O(|V| + |E|)" coords="5,31,132,56"/>
+<area shape="rect" href="class_air_graph.html#aa620f24c5ec6942c068d65c5298671d3" title="checks if an edge contains at least one Airline that the user wants to use @complexity O(|E|)" coords="186,5,349,31"/>
+<area shape="rect" href="class_air_graph.html#a5bb3526b5868f5643b63b42824245845" title="checks if a vertex should be traversed in the search functions @complexity O(|V|)" coords="180,55,355,80"/>
+<area shape="rect" href="class_airline.html#a41ef613d6b390c463821b9ae43d9ec84" title="returns the code of the Airline" coords="403,5,517,31"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_air_graph_a65c76b3fe1e64fca3b2ea5a3addae74a_icgraph.png" border="0" usemap="#aclass_air_graph_a65c76b3fe1e64fca3b2ea5a3addae74a_icgraph" alt=""/></div>
+<map name="aclass_air_graph_a65c76b3fe1e64fca3b2ea5a3addae74a_icgraph" id="aclass_air_graph_a65c76b3fe1e64fca3b2ea5a3addae74a_icgraph">
+<area shape="rect" title="checks which vertices and edges are valid @complexity O(|V| + |E|)" coords="1207,31,1333,56"/>
+<area shape="rect" href="class_air_graph.html#ad65e26b3d20d6d77976d9280a5cc5b34" title="gets all the shortest paths from one Airport to another @complexity O(|V| + |E|)" coords="989,5,1122,31"/>
+<area shape="rect" href="class_air_graph.html#a7e7e60224e445a7b861319312f257955" title="performs a Breadth&#45;First Search to get the Airports you can reach in a certain number of flights @com..." coords="952,55,1159,80"/>
+<area shape="rect" href="class_helpy.html#a55726343e5f6dac4150ca434cd445e70" title="displays the shortest routes you can take from an Airport to another @complexity O(n^2 + |V| + |E|)" coords="700,5,896,31"/>
+<area shape="rect" href="class_helpy.html#ac18c8353d0a7f41c9363433f826988fe" title="processes the commands that were inputted @complexity O(n^2 * log(n))" coords="469,31,644,56"/>
+<area shape="rect" href="class_helpy.html#a8fa3cfb126e6423475a34637b50d8334" title="executes the advanced mode of the UI @complexity O(1)" coords="263,5,421,31"/>
+<area shape="rect" href="class_helpy.html#af5932f8789f41f033f894cd659aff329" title="executes the guided mode of the UI @complexity O(1)" coords="271,55,413,80"/>
+<area shape="rect" href="class_helpy.html#aaa754efec4177b0c763859b5847d10d3" title="allows the user to choose the mode of the UI @complexity O(n^2)" coords="104,31,215,56"/>
+<area shape="rect" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " coords="5,31,56,56"/>
+<area shape="rect" href="class_helpy.html#a7052e9a5e346e41892c26da08cf9c06e" title="displays all the Airports you can reach from a starting point in a certain number of flights @complex..." coords="692,55,904,80"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa620f24c5ec6942c068d65c5298671d3" name="aa620f24c5ec6942c068d65c5298671d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa620f24c5ec6942c068d65c5298671d3">&#9670;&#160;</a></span>validateEdges()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AirGraph::validateEdges </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_air_graph_8h.html#a8d94c3afa699ded58e5c186792d1eb9e">uSet</a>&lt; string &gt;&#160;</td>
+          <td class="paramname"><em>use</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>checks if an edge contains at least one <a class="el" href="class_airline.html">Airline</a> that the user wants to use @complexity O(|E|) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">use</td><td>codes of the Airlines that the user would like to use </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>'true' if the edge is valid and 'false' otherwise </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_air_graph_aa620f24c5ec6942c068d65c5298671d3_cgraph.png" border="0" usemap="#aclass_air_graph_aa620f24c5ec6942c068d65c5298671d3_cgraph" alt=""/></div>
+<map name="aclass_air_graph_aa620f24c5ec6942c068d65c5298671d3_cgraph" id="aclass_air_graph_aa620f24c5ec6942c068d65c5298671d3_cgraph">
+<area shape="rect" title="checks if an edge contains at least one Airline that the user wants to use @complexity O(|E|)" coords="5,5,168,31"/>
+<area shape="rect" href="class_airline.html#a41ef613d6b390c463821b9ae43d9ec84" title="returns the code of the Airline" coords="216,5,331,31"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_air_graph_aa620f24c5ec6942c068d65c5298671d3_icgraph.png" border="0" usemap="#aclass_air_graph_aa620f24c5ec6942c068d65c5298671d3_icgraph" alt=""/></div>
+<map name="aclass_air_graph_aa620f24c5ec6942c068d65c5298671d3_icgraph" id="aclass_air_graph_aa620f24c5ec6942c068d65c5298671d3_icgraph">
+<area shape="rect" title="checks if an edge contains at least one Airline that the user wants to use @complexity O(|E|)" coords="1381,31,1544,56"/>
+<area shape="rect" href="class_air_graph.html#a65c76b3fe1e64fca3b2ea5a3addae74a" title="checks which vertices and edges are valid @complexity O(|V| + |E|)" coords="1207,31,1333,56"/>
+<area shape="rect" href="class_air_graph.html#ad65e26b3d20d6d77976d9280a5cc5b34" title="gets all the shortest paths from one Airport to another @complexity O(|V| + |E|)" coords="989,5,1122,31"/>
+<area shape="rect" href="class_air_graph.html#a7e7e60224e445a7b861319312f257955" title="performs a Breadth&#45;First Search to get the Airports you can reach in a certain number of flights @com..." coords="952,55,1159,80"/>
+<area shape="rect" href="class_helpy.html#a55726343e5f6dac4150ca434cd445e70" title="displays the shortest routes you can take from an Airport to another @complexity O(n^2 + |V| + |E|)" coords="700,5,896,31"/>
+<area shape="rect" href="class_helpy.html#ac18c8353d0a7f41c9363433f826988fe" title="processes the commands that were inputted @complexity O(n^2 * log(n))" coords="469,31,644,56"/>
+<area shape="rect" href="class_helpy.html#a8fa3cfb126e6423475a34637b50d8334" title="executes the advanced mode of the UI @complexity O(1)" coords="263,5,421,31"/>
+<area shape="rect" href="class_helpy.html#af5932f8789f41f033f894cd659aff329" title="executes the guided mode of the UI @complexity O(1)" coords="271,55,413,80"/>
+<area shape="rect" href="class_helpy.html#aaa754efec4177b0c763859b5847d10d3" title="allows the user to choose the mode of the UI @complexity O(n^2)" coords="104,31,215,56"/>
+<area shape="rect" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " coords="5,31,56,56"/>
+<area shape="rect" href="class_helpy.html#a7052e9a5e346e41892c26da08cf9c06e" title="displays all the Airports you can reach from a starting point in a certain number of flights @complex..." coords="692,55,904,80"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a5bb3526b5868f5643b63b42824245845" name="a5bb3526b5868f5643b63b42824245845"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5bb3526b5868f5643b63b42824245845">&#9670;&#160;</a></span>validateVertices()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AirGraph::validateVertices </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_air_graph_8h.html#a8d94c3afa699ded58e5c186792d1eb9e">uSet</a>&lt; string &gt;&#160;</td>
+          <td class="paramname"><em>use</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>checks if a vertex should be traversed in the search functions @complexity O(|V|) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">use</td><td>codes of the Airports that the user would like to use </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>'true' if the vertex is valid and 'false' otherwise </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_air_graph_a5bb3526b5868f5643b63b42824245845_icgraph.png" border="0" usemap="#aclass_air_graph_a5bb3526b5868f5643b63b42824245845_icgraph" alt=""/></div>
+<map name="aclass_air_graph_a5bb3526b5868f5643b63b42824245845_icgraph" id="aclass_air_graph_a5bb3526b5868f5643b63b42824245845_icgraph">
+<area shape="rect" title="checks if a vertex should be traversed in the search functions @complexity O(|V|)" coords="1381,31,1556,56"/>
+<area shape="rect" href="class_air_graph.html#a65c76b3fe1e64fca3b2ea5a3addae74a" title="checks which vertices and edges are valid @complexity O(|V| + |E|)" coords="1207,31,1333,56"/>
+<area shape="rect" href="class_air_graph.html#ad65e26b3d20d6d77976d9280a5cc5b34" title="gets all the shortest paths from one Airport to another @complexity O(|V| + |E|)" coords="989,5,1122,31"/>
+<area shape="rect" href="class_air_graph.html#a7e7e60224e445a7b861319312f257955" title="performs a Breadth&#45;First Search to get the Airports you can reach in a certain number of flights @com..." coords="952,55,1159,80"/>
+<area shape="rect" href="class_helpy.html#a55726343e5f6dac4150ca434cd445e70" title="displays the shortest routes you can take from an Airport to another @complexity O(n^2 + |V| + |E|)" coords="700,5,896,31"/>
+<area shape="rect" href="class_helpy.html#ac18c8353d0a7f41c9363433f826988fe" title="processes the commands that were inputted @complexity O(n^2 * log(n))" coords="469,31,644,56"/>
+<area shape="rect" href="class_helpy.html#a8fa3cfb126e6423475a34637b50d8334" title="executes the advanced mode of the UI @complexity O(1)" coords="263,5,421,31"/>
+<area shape="rect" href="class_helpy.html#af5932f8789f41f033f894cd659aff329" title="executes the guided mode of the UI @complexity O(1)" coords="271,55,413,80"/>
+<area shape="rect" href="class_helpy.html#aaa754efec4177b0c763859b5847d10d3" title="allows the user to choose the mode of the UI @complexity O(n^2)" coords="104,31,215,56"/>
+<area shape="rect" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " coords="5,31,56,56"/>
+<area shape="rect" href="class_helpy.html#a7052e9a5e346e41892c26da08cf9c06e" title="displays all the Airports you can reach from a starting point in a certain number of flights @complex..." coords="692,55,904,80"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="afa7adfde61b53d32c5a1e49ceeca451b" name="afa7adfde61b53d32c5a1e49ceeca451b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa7adfde61b53d32c5a1e49ceeca451b">&#9670;&#160;</a></span>Helpy</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="class_helpy.html">Helpy</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
