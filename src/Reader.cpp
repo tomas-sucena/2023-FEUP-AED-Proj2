@@ -145,14 +145,14 @@ Helpy Reader::getHelpy(){
     for (const auto& p : airports){
         airportCodes.insert(p.first);
 
-        string name = p.second.getName(); Helpy::lowercase(name, true);
+        string name = p.second.getName();
         airportNames.insert({name, p.first});
 
-        string city = p.second.getCity(); Helpy::lowercase(city);
-        cities[city].insert(p.first);
+        string city = p.second.getCity();
+        cities[city].insert(name);
 
-        string country = p.second.getCountry(); Helpy::lowercase(country);
-        countries[country].insert(p.first);
+        string country = p.second.getCountry();
+        countries[country].insert(name);
     }
 
     helpy.setAirports(airportCodes, airportNames);

@@ -30,6 +30,7 @@ class Helpy {
 
         // methods
         static void lowercase(string& s, bool uppercase = false);
+        static void properName(string& s);
 
         void setAirports(const uSet<string>& codes, const uMap<string, string>& names);
         void setAirlines(const uSet<string>& codes);
@@ -37,7 +38,9 @@ class Helpy {
 
         string readInput(const string& instruction, uSet<string>& options);
         string readAirport();
+        string readCity(bool country = false);
         string readCoordinates();
+        string readLocation(string instruction = "");
         uSet<string> readUsableAirports();
         uSet<string> readUsableAirlines();
         uSet<string>* readRestrictions();
