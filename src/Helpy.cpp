@@ -347,7 +347,8 @@ uSet<string> Helpy::readUsableAirlines(){
     airlines = airlineCodes;
 
     cout << endl << YELLOW << BREAK << RESET << endl << endl;
-    cout << "Please type the codes of the airlines you would like to avoid, separated by a comma (ex: TAP,RYN,...).\n"
+    cout << "Please type the " << BOLD << "codes" << RESET << " of the " << YELLOW << "airlines" << RESET
+         << " you would like to avoid, separated by a comma (ex: TAP,RYN,...).\n"
          << "If there is no airline you wish to avoid, simply press Enter.\n\n";
 
     getline(cin, line);
@@ -646,8 +647,8 @@ b1: cout << endl << YELLOW << BREAK << RESET << endl;
 
     cin >> s3;
     lowercase(s3);
-  
-    // processar o comando    
+
+    // processar o comando
     if (!process_command(s1, s2, s3)){
         goto b1;
     }
@@ -729,7 +730,7 @@ b2: cout << endl << YELLOW << BREAK << RESET << endl;
     }
 
     cin >> s3; lowercase(s3);
-    
+
     if (s3 == "quit"){
         goto e2;
     }
