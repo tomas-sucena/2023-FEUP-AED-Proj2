@@ -14,7 +14,6 @@
 
 /**
  * @brief Construct a new Air Graph:: Air Graph object
- * 
  */
 AirGraph::AirGraph() = default;
 
@@ -22,7 +21,7 @@ AirGraph::AirGraph() = default;
  * @brief adds a vertex to the AirGraph
  * @complexity O(1)
  * @param a Airport that will be stored in the vertex
- * @return true if insertion occurs, otherwise false
+ * @return 'true' if insertion occurs, otherwise 'false'
  */
 bool AirGraph::addVertex(Airport &a){
     return vertices.insert({a.getCode(), a}).second;
@@ -61,20 +60,18 @@ bool AirGraph::addAirline(Airline &a){
 }
 
 /**
- * @brief 
- * 
- * @param code 
- * @return Airport 
+ * @brief returns the Airport whose code is passed as an argument
+ * @param code code of the Airport
+ * @return Airport
  */
 Airport AirGraph::getAirport(const string& code){
     return vertices[code].value;
 }
 
 /**
- * @brief 
- * 
- * @param code 
- * @return set<AirGraph::Edge*> 
+ * @brief returns the flights you can take in an Airport
+ * @param code code of the Airport
+ * @return set<AirGraph::Edge*> with the edges (flights) of the Airport
  */
 set<AirGraph::Edge*> AirGraph::getFlights(const string& code){
     return vertices[code].adj;
@@ -82,7 +79,7 @@ set<AirGraph::Edge*> AirGraph::getFlights(const string& code){
 
 /**
  * @brief sets to 'false' the 'visited' parameter of all vertices
- * @complexity O(|V|)
+ * @complexity O(|V| + |E|)
  */
 void AirGraph::reset(){
     for (auto& p : vertices){
@@ -96,6 +93,7 @@ void AirGraph::reset(){
 
 /**
  * @brief checks if an edge contains at least one Airline that the user wants to use
+ * @complexity O(|E|)
  * @param use codes of the Airlines that the user would like to use
  * @return 'true' if the edge is valid and 'false' otherwise
  */
@@ -125,6 +123,7 @@ void AirGraph::validateEdges(uSet<string> use){
 
 /**
  * @brief checks if a vertex should be traversed in the search functions
+ * @complexity O(|V|)
  * @param use codes of the Airports that the user would like to use
  * @return 'true' if the vertex is valid and 'false' otherwise
  */
@@ -146,9 +145,9 @@ void AirGraph::validateVertices(uSet<string> use){
 }
 
 /**
- * @brief 
- * 
- * @param use 
+ * @brief checks which vertices and edges are valid
+ * @complexity O(|V| + |E|)
+ * @param use array of two unordered_sets, both containing codes (of Airlines and Airports, respectively)
  */
 void AirGraph::validate(uSet<string>* use){
     if (use == nullptr){
@@ -163,7 +162,7 @@ void AirGraph::validate(uSet<string>* use){
 }
 
 /**
- * @brief
+ * @brief implementation of the Depth-First Search algorithm, which iterates through all the vertices and edges
  * @complexity O(|V| + |E|)
  * @param airport code of the Airport that is stored in the initial vertex
  */
@@ -200,7 +199,7 @@ void AirGraph::dfs(const string& airportA, const string& airportB, Path currPath
 }
 
 /**
- * @brief
+ * @brief implementation of the Depth-First Search algorithm, which iterates through all the vertices and edges
  * @complexity O(|V| + |E|)
  * @param airport code of the Airport that is stored in the initial vertex
  * @param distance radius
@@ -224,10 +223,11 @@ uSet<Airport> AirGraph::dfs(const string& airport, double distance){
 }
 
 /**
+ * @brief implementation of the Breadth-First Search algorithm, which iterates through all the vertices and edges
  * @complexity O(|V| + |E|)
  * @param airport code of the Airport which constitutes the starting point
- * @param flights
- * @return
+ * @param flights number of flights
+ * @return list<Airport> with the reachable Airports
  */
 list<Airport> AirGraph::bfs(const string& airport, int flights){
     list<Airport> res;
@@ -270,12 +270,12 @@ list<Airport> AirGraph::bfs(const string& airport, int flights){
 }
 
 /**
- * @brief 
- * 
- * @param airport 
- * @param flights 
- * @param use 
- * @return list<Airport> 
+ * @brief performs a Breadth-First Search to get the Airports you can reach in a certain number of flights
+ * @complexity O(|V| + |E|)
+ * @param airport code of the Airport which constitutes the starting point
+ * @param flights number of flights
+ * @param use set of Airlines and Airports that the user would like to use
+ * @return list<Airport> with the reachable Airports
  */
 list<Airport> AirGraph::getReachableAirports(const string& airport, int flights, uSet<string>* use){
     validate(use);
@@ -290,12 +290,12 @@ list<Airport> AirGraph::getReachableAirports(const string& airport, int flights,
 }
 
 /**
- * @brief 
- * 
- * @param lat 
- * @param lon 
- * @param rad 
- * @return map<double, string> 
+ * @brief gets the Airports nearest the location defined by the pair (lat, lon)
+ * @complexity O(|V|)
+ * @param lat latitude
+ * @param lon longitude
+ * @param rad radius of search
+ * @return map<double, string> containing Airports and their corresponding distance to the specified location
  */
 map<double, string> AirGraph::getNearbyAirports(double lat, double lon, double rad){
     map<double, string> airports;
@@ -315,7 +315,7 @@ map<double, string> AirGraph::getNearbyAirports(double lat, double lon, double r
  * @complexity O(|V| + |E|)
  * @param airportA code of the Airport which constitutes the starting point
  * @param airportB code of the Airport which constitutes the destination
- * @return list with the shortest paths
+ * @return list<Path> with the shortest paths
  */
 list<Path> AirGraph::getPaths(const string& airportA, const string& airportB, uSet<string>* use){
     list<Path> allPaths;

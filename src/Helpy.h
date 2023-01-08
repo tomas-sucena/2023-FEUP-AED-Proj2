@@ -59,7 +59,7 @@ class Helpy {
 
         void displayAirportInformation();
         void displayReachableAirports();
-        void getShortestRoutes();
+        void displayShortestRoutes();
 };
 
 #endif

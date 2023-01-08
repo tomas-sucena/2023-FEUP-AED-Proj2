@@ -15,7 +15,7 @@ class Airline {
     public:
         // constructors
         Airline();
-        Airline(string code, string name, string callSign, string country);
+        Airline(const string& code, const string& name, const string& callSign, const string& country);
         Airline(const Airline& a);
 
         // methods

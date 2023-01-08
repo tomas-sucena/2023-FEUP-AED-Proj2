@@ -2,92 +2,83 @@
 
 /**
  * @brief Construct a new Airport:: Airport object
- * 
  */
 Airport::Airport() {}
 
 /**
  * @brief Construct a new Airport:: Airport object
- * 
- * @param code 
- * @param name 
- * @param city 
- * @param country 
- * @param latitude 
- * @param longitude 
+ * @param code code of the Airport
+ * @param name name of the Airport
+ * @param city city of the Airport
+ * @param country country of the Airport
+ * @param latitude latitude of the Airport
+ * @param longitude longitude of the Airport
  */
 Airport::Airport(string code, string name, string city, string country, double latitude, double longitude) :
     code(code), name(name), city(city), country(country), latitude(latitude), longitude(longitude) {}
 
 /**
- * @brief Construct a new Airport:: Airport object
- * 
- * @param a 
+ * @brief Copy constructor of Airport
+ * @param a Airport whose values will be copied
  */
 Airport::Airport(const Airport &a) :
     code(a.getCode()), name(a.getName()), city(a.getCity()), country(a.getCountry()),
     latitude(a.getLat()), longitude(a.getLong()) {}
 
 /**
- * @brief 
- * 
- * @return string 
+ * @brief returns the code of the Airport
+ * @return code of the Airport
  */
 string Airport::getCode() const{
     return code;
 }
 
 /**
- * @brief 
- * 
- * @return string 
+ * @brief returns the name of the Airport
+ * @return name of the Airport
  */
 string Airport::getName() const{
     return name;
 }
 
 /**
- * @brief 
- * 
- * @return string 
+ * @brief returns the city of the Airport
+ * @return city of the Airport
  */
 string Airport::getCity() const{
     return city;
 }
 
 /**
- * @brief 
- * 
- * @return string 
+ * @brief returns the country of the Airport
+ * @return country of the Airport
  */
 string Airport::getCountry() const{
     return country;
 }
 
 /**
- * @brief 
- * 
- * @return double 
+ * @brief returns the latitude of the Airport
+ * @return latitude of the Airport
  */
 double Airport::getLat() const{
     return latitude;
 }
 
 /**
- * @brief 
- * 
- * @return double 
+ * @brief returns the longitude of the Airport
+ * @return longitude of the Airport
  */
 double Airport::getLong() const{
     return longitude;
 }
 
 /**
- * @brief 
- * 
- * @param lat 
- * @param lon 
- * @return double 
+ * @brief calculates the distance between the Airport and the location defined by the pair (lat, lon)
+ * @complexity O(1)
+ * @param lat latitude
+ * @param lon longitude
+ * @return calculated distance
  */
 double Airport::getDistance(double lat, double lon) const{
     double latA = latitude, lonA = longitude;
@@ -110,21 +101,20 @@ double Airport::getDistance(double lat, double lon) const{
 }
 
 /**
- * @brief 
- * 
- * @param a 
- * @return double 
+ * @brief calculates the distance between two Airports
+ * @complexity O(1)
+ * @param a second Airport
+ * @return calculated distance
  */
 double Airport::getDistance(const Airport &a) const{
     return getDistance(a.getLat(), a.getLong());
 }
 
 /**
- * @brief 
- * 
- * @param a 
- * @return true 
- * @return false 
+ * @brief compares two Airports and verifies if they are the same
+ * @complexity O(1)
+ * @param a right side of the comparison operation
+ * @return 'true' if the Airports are equal, 'false' otherwise
  */
 bool Airport::operator==(const Airport& a) const{
     return (code == a.getCode());

@@ -8,6 +8,10 @@
 
 #define uMap unordered_map
 
+/**
+ * @brief creates a Reader object
+ * @param path the path wherein the files to be read are
+ */
 Reader::Reader(string path){
     if (path[path.size() - 1] != '/'){
         path += '/';
@@ -16,12 +20,18 @@ Reader::Reader(string path){
     this->path = path;
 }
 
+/**
+ * @brief reads all the files
+ */
 void Reader::readAll(){
     readAirlines();
     readAirports();
     readFlights();
 }
 
+/**
+ * @brief reads the file which contains information about the Airlines
+ */
 void Reader::readAirlines(){
     reader.open(path + "airlines.csv");
 
@@ -58,6 +68,9 @@ void Reader::readAirlines(){
     reader.clear();
 }
 
+/**
+ * @brief reads the file which contains information about the Airports
+ */
 void Reader::readAirports() {
     reader.open(path + "airports.csv");
 
@@ -106,6 +119,9 @@ void Reader::readAirports() {
     reader.clear();
 }
 
+/**
+ * @brief reads the file which contains information about the flights
+ */
 void Reader::readFlights() {
     reader.open(path + "flights.csv");
 
@@ -134,6 +150,10 @@ void Reader::readFlights() {
     reader.clear();
 }
 
+/**
+ * @brief creates a Helpy object, passes it the read information and returns it
+ * @return a Helpy object
+ */
 Helpy Reader::getHelpy(){
     Helpy helpy(g);
 

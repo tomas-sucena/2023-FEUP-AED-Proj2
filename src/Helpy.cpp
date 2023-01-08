@@ -39,9 +39,9 @@ void Helpy::lowercase(string& s, bool uppercase){
 }
 
 /**
- * @brief 
- * 
- * @param s 
+ * @brief takes a user inputted string and modifies it so that it becomes well-written
+ * @complexity O(n)
+ * @param s string to be modified
  */
 void Helpy::properName(string& s){
     string name;
@@ -99,6 +99,7 @@ void Helpy::setLocations(const uMap<string, uSet<string>>& cities, const uMap<st
 
 /**
  * @brief reads a line of user input
+ * @complexity O(n^2)
  * @param instruction the instruction that will be displayed before prompting the user to type
  * @param options the options that will be displayed to the user
  * @return read input
@@ -134,6 +135,7 @@ string Helpy::readInput(const string& instruction, uSet<string>& options){
 
 /**
  * @brief reads a number from the console
+ * @complexity O(n^2)
  * @param instruction the instruction that will be displayed before prompting the user to input the number
  * @return the number inputted by the user
  */
@@ -174,6 +176,7 @@ double Helpy::readNumber(const string &instruction){
 
 /**
  * @brief reads the code/name of an airport from the console
+ * @complexity O(n)
  * @return the code of the airport
  */
 string Helpy::readAirport(){
@@ -213,10 +216,10 @@ string Helpy::readAirport(){
 }
 
 /**
- * @brief 
- * 
- * @param country 
- * @return string 
+ * @brief reads the name of a city/country from the console
+ * @complexity O(n^2)
+ * @param country bool that establishes if the user will input the name of a city or a country
+ * @return the code of the airport the user selects
  */
 string Helpy::readCity(bool country){
     string airport;
@@ -263,6 +266,7 @@ string Helpy::readCity(bool country){
 
 /**
  * @brief reads coordinates from the console and displays the airports nearest that location
+ * @complexity O(n^2)
  * @return the code of the airport the user selects
  */
 string Helpy::readCoordinates(){
@@ -299,6 +303,7 @@ string Helpy::readCoordinates(){
 
 /**
  * @brief reads a location based on an airport OR a city OR a country OR coordinates
+ * @complexity O(n^2)
  * @return the code of the airport situated in said location
  */
 string Helpy::readLocation(string instruction){
@@ -332,6 +337,7 @@ string Helpy::readLocation(string instruction){
 
 /**
  * @brief reads from the console the selection of airlines to use
+ * @complexity O(n)
  * @return the codes of the selected airlines
  */
 uSet<string> Helpy::readUsableAirlines(){
@@ -380,6 +386,7 @@ uSet<string> Helpy::readUsableAirlines(){
 
 /**
  * @brief reads from the console the selection of airlines to use
+ * @complexity O(n^2)
  * @return the codes of the selected airlines
  */
 uSet<string> Helpy::readUsableCities(){
@@ -440,13 +447,15 @@ uSet<string> Helpy::readUsableCities(){
 
 /**
  * @brief reads the airports that the user wants to use
+ * @complexity O(n^2)
  * @return the codes of the airports the user selects
  */
 uSet<string> Helpy::readUsableAirports(){
     uSet<string> airports;
 
     cout << endl << YELLOW << BREAK << RESET << endl << endl;
-    cout << "Please type the codes or the names of the airports you would like to use, separated by a comma (ex: OPO,PXO,...)\n"
+    cout << "Please type the codes of the " << BOLD << "airports" << RESET << " you would like to "
+         << GREEN << "use" << RESET << ", separated by a comma (ex: OPO,PXO,...).\n"
          << "If there is no airport you would particularly like to use, press Enter.\n\n";
 
     // airports to USE
@@ -475,7 +484,8 @@ uSet<string> Helpy::readUsableAirports(){
     airports = airportCodes;
 
     cout << endl << YELLOW << BREAK << RESET << endl << endl;
-    cout << "Please type the codes of the airports you would like to avoid, separated by a comma (ex: OPO,PXO,...).\n"
+    cout << "Please type the codes of the " << BOLD << "airports" << RESET << " you would like to "
+         << RED << "avoid" << RESET << ", separated by a comma (ex: OPO,PXO,...).\n"
          << "If there is no airport you wish to avoid, simply press Enter.\n\n";
 
     getline(cin, line);
@@ -513,9 +523,9 @@ uSet<string> Helpy::readUsableAirports(){
 }
 
 /**
- * @brief 
- * 
- * @return uSet<string>* 
+ * @brief reads the Airlines and the Airports the user would like to use
+ * @complexity O(n^2)
+ * @return array of two unordered_sets of strings, both of which containing codes (of Airlines and Airports, respectively)
  */
 uSet<string>* Helpy::readRestrictions(){
     auto use = new uSet<string>[2];
@@ -543,9 +553,9 @@ uSet<string>* Helpy::readRestrictions(){
 }
 
 /**
- * @brief 
- * 
- * @param airport 
+ * @brief prints all the flights of an Airport in a table
+ * @complexity O(n * |E|)
+ * @param airport the code of the Airport whose flights will be printed
  */
 void Helpy::printFlights(const string& airport){
     fort::char_table table;
@@ -584,8 +594,8 @@ void Helpy::printFlights(const string& airport){
 
 /**
  * @brief prints a table with the information of a path
+ * @complexity O(n * |E|), being 'n' the number of Airlines of the edge
  * @param p path to be printed
- * @param order
  */
 void Helpy::printPath(const Path& p){
     fort::char_table table;
@@ -626,7 +636,7 @@ void Helpy::printPath(const Path& p){
 }
 
 /**
- * @brief allows to choose the mode of the UI
+ * @brief allows the user to choose the mode of the UI
  * @complexity O(n^2)
  */
 void Helpy::terminal(){
@@ -648,11 +658,6 @@ void Helpy::terminal(){
  * @complexity O(1)
  */
 void Helpy::advanced_mode(){
-
-
-    /*-----LER COMANDOS-----*/
-
-
 b1: cout << endl << YELLOW << BREAK << RESET << endl;
     cout << endl << "How can I be of assistance?" << endl << endl;
 
@@ -699,11 +704,6 @@ e1: cout << endl << YELLOW << BREAK << RESET << endl << endl;
  * @complexity O(1)
  */
 void Helpy::guided_mode(){
-
-
-    /*-----LER COMANDOS-----*/
-
-
 b2: cout << endl << YELLOW << BREAK << RESET << endl;
     cout << endl << "Hello! How can I be of assistance?" << endl;
     cout << endl;
@@ -784,13 +784,12 @@ e2: cout << endl << YELLOW << BREAK << RESET << endl << endl;
 }
 
 /**
- * @brief processes the commands that were inputed
+ * @brief processes the commands that were inputted
  * @complexity O(n^2 * log(n))
  * @param s1 first word of the command
  * @param s2 second word of the command
  * @param s3 third word of the command
- * @return true if the command exists
- * @return false if the command does not exist
+ * @return 'true' if the command exists, 'false' otherwise
  */
 bool Helpy::process_command(string& s1, string& s2, string& s3){
     switch (command[s1] + target[s2] + what[s3]){
@@ -799,7 +798,7 @@ bool Helpy::process_command(string& s1, string& s2, string& s3){
             break;
         }
         case(36) : {
-            getShortestRoutes();
+            displayShortestRoutes();
             break;
         }
         case (40) : {
@@ -816,10 +815,6 @@ bool Helpy::process_command(string& s1, string& s2, string& s3){
 
     return true;
 }
-
-
-/*-----FUNÇÕES DE IMPRESSÃO-----*/
-
 
 /**
  * @brief displays all the flights you can take on a given Airport, as well as the Airlines that make said flights
@@ -838,8 +833,8 @@ void Helpy::displayAirportInformation(){
 }
 
 /**
- * @brief 
- * 
+ * @brief displays all the Airports you can reach from a starting point in a certain number of flights
+ * @complexity O(n^2 + |V| + |E|)
  */
 void Helpy::displayReachableAirports(){
     string airport = readLocation();
@@ -852,15 +847,11 @@ void Helpy::displayReachableAirports(){
     }
 }
 
-
-/*-----FUNÇÕES DE DOR E SOFRIMENTO-----*/
-
-
 /**
- * @brief 
- * 
+ * @brief displays the shortest routes you can take from an Airport to another
+ * @complexity O(n^2 + |V| + |E|)
  */
-void Helpy::getShortestRoutes(){
+void Helpy::displayShortestRoutes(){
     string airportA;
     string airportB;
 
