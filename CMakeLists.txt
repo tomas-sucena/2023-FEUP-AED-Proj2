@@ -14,6 +14,8 @@ add_executable(AirportAED
         src/Airport.h
         src/Helpy.cpp
         src/Helpy.h
+        src/libfort/fort.c
+        src/libfort/fort.h
         src/main.cpp
         src/Reader.cpp
-        src/Reader.h src/libfort/fort.c src/libfort/fort.h)
+        src/Reader.h)

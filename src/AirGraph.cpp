@@ -196,6 +196,8 @@ void AirGraph::dfs(const string& airportA, const string& airportB, Path currPath
         dfs(e->dest.getCode(), airportB, currPath, allPaths);
         currPath.pop_back();
     }
+
+    currV.valid = true;
 }
 
 /**
