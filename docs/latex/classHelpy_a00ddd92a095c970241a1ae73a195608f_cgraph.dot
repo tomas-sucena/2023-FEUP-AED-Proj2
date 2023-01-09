@@ -1,0 +1,28 @@
+digraph "Helpy::readRestrictions"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="Helpy::readRestrictions",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="reads the Airlines and the Airports the user would like to use @complexity O(n^2)"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="Helpy::readInput",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classHelpy.html#aebbc6852064a21221d3fb054e97aaec3",tooltip="reads a line of user input @complexity O(n^2)"];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="Helpy::lowercase",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classHelpy.html#a555c23037bdcba9c140448908cb67c34",tooltip="turns all the characters of a string into lowercase or uppercase @complexity O(n)"];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="Helpy::readUsableAirlines",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classHelpy.html#ac96f8c02e2d55ed557a221b879d57d43",tooltip="reads from the console the selection of airlines to use @complexity O(n)"];
+  Node4 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="Helpy::readUsableAirports",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classHelpy.html#a50f67ed10ca5d7255237c81b5098924a",tooltip="reads the airports that the user wants to use @complexity O(n^2)"];
+  Node5 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node5 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="Helpy::properName",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classHelpy.html#ada23e5d42122289d1fa0d21ba080ec54",tooltip="takes a user inputted string and modifies it so that it becomes well-written @complexity O(n)"];
+  Node5 -> Node7 [color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="Helpy::readUsableCities",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classHelpy.html#a6101fe619f9ad4a830253790e6c70d0c",tooltip="reads from the console the selection of cities to consider @complexity O(n^2)"];
+  Node7 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node7 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
+  Node5 -> Node8 [color="midnightblue",fontsize="10",style="solid"];
+  Node8 [label="Helpy::readUsableCountries",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classHelpy.html#a4cfecf6a7a1a86dabca06048a7c49274",tooltip="reads from the console the selection of countries to consider @complexity O(n^2)"];
+  Node8 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node8 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
+}

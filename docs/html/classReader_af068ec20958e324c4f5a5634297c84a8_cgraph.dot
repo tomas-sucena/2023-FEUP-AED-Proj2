@@ -1,0 +1,12 @@
+digraph "Reader::readAirlines"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="Reader::readAirlines",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="reads the file which contains information about the Airlines"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="AirGraph::addAirline",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classAirGraph.html#a6c508d2ce15c4333d46dd1749bef5008",tooltip="adds an Airline to the AirGraph @complexity O(1)"];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="Airline::getCode",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classAirline.html#a41ef613d6b390c463821b9ae43d9ec84",tooltip="returns the code of the Airline"];
+}

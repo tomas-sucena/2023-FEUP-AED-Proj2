@@ -1,0 +1,19 @@
+digraph "Helpy::readCoordinates"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="Helpy::readCoordinates",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="reads coordinates from the console and displays the airports nearest that location @complexity O(n^2)"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="AirGraph::getNearbyAirports",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classAirGraph.html#a4893275d263f5d39b6c38e26d465a24a",tooltip="gets the Airports nearest the location defined by the pair (lat, lon) @complexity O(|V|)"];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="Helpy::readAirport",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classHelpy.html#a07cfd0c52c5be6cea63f5c39161ddaea",tooltip="reads the code/name of an airport from the console @complexity O(n)"];
+  Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="Helpy::lowercase",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classHelpy.html#a555c23037bdcba9c140448908cb67c34",tooltip="turns all the characters of a string into lowercase or uppercase @complexity O(n)"];
+  Node3 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="Helpy::properName",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classHelpy.html#ada23e5d42122289d1fa0d21ba080ec54",tooltip="takes a user inputted string and modifies it so that it becomes well-written @complexity O(n)"];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="Helpy::readNumber",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classHelpy.html#ab7d64ab16c804e5e5ecaa87246bc82a6",tooltip="reads a number from the console @complexity O(n^2)"];
+  Node6 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

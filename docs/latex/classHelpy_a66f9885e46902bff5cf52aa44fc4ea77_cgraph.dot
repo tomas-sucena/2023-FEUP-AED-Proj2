@@ -1,0 +1,15 @@
+digraph "Helpy::readCity"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="Helpy::readCity",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="reads the name of a city/country from the console @complexity O(n^2)"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="Helpy::properName",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classHelpy.html#ada23e5d42122289d1fa0d21ba080ec54",tooltip="takes a user inputted string and modifies it so that it becomes well-written @complexity O(n)"];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="Helpy::readAirport",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classHelpy.html#a07cfd0c52c5be6cea63f5c39161ddaea",tooltip="reads the code/name of an airport from the console @complexity O(n)"];
+  Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="Helpy::lowercase",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classHelpy.html#a555c23037bdcba9c140448908cb67c34",tooltip="turns all the characters of a string into lowercase or uppercase @complexity O(n)"];
+  Node3 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+}

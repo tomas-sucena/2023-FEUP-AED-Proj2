@@ -1,0 +1,29 @@
+digraph "Helpy::readLocation"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="Helpy::readLocation",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="reads a location based on an airport OR a city OR a country OR coordinates @complexity O(n^2)"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="Helpy::readAirport",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classHelpy.html#a07cfd0c52c5be6cea63f5c39161ddaea",tooltip="reads the code/name of an airport from the console @complexity O(n)"];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="Helpy::lowercase",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classHelpy.html#a555c23037bdcba9c140448908cb67c34",tooltip="turns all the characters of a string into lowercase or uppercase @complexity O(n)"];
+  Node2 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="Helpy::properName",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classHelpy.html#ada23e5d42122289d1fa0d21ba080ec54",tooltip="takes a user inputted string and modifies it so that it becomes well-written @complexity O(n)"];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="Helpy::readCity",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classHelpy.html#a66f9885e46902bff5cf52aa44fc4ea77",tooltip="reads the name of a city/country from the console @complexity O(n^2)"];
+  Node5 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node5 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="Helpy::readCoordinates",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classHelpy.html#af162325450bc145f1936f2d926afe45c",tooltip="reads coordinates from the console and displays the airports nearest that location @complexity O(n^2)"];
+  Node6 -> Node7 [color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="AirGraph::getNearbyAirports",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classAirGraph.html#a4893275d263f5d39b6c38e26d465a24a",tooltip="gets the Airports nearest the location defined by the pair (lat, lon) @complexity O(|V|)"];
+  Node6 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node6 -> Node8 [color="midnightblue",fontsize="10",style="solid"];
+  Node8 [label="Helpy::readNumber",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classHelpy.html#ab7d64ab16c804e5e5ecaa87246bc82a6",tooltip="reads a number from the console @complexity O(n^2)"];
+  Node8 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node9 [color="midnightblue",fontsize="10",style="solid"];
+  Node9 [label="Helpy::readInput",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classHelpy.html#aebbc6852064a21221d3fb054e97aaec3",tooltip="reads a line of user input @complexity O(n^2)"];
+  Node9 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+}

@@ -1,4 +1,0 @@
-<map id="Reader::readFlights" name="Reader::readFlights">
-<area shape="rect" id="node1" title="reads the file which contains information about the flights" coords="5,5,141,31"/>
-<area shape="rect" id="node2" href="$class_air_graph.html#a54eebb6cc73e5f813a7d76a438d82c8b" title="adds an edge to a vertex of the AirGraph @complexity O(1)" coords="189,5,321,31"/>
-</map>

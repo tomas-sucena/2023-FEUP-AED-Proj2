@@ -1,5 +1,0 @@
-<map id="Helpy::displayAirportInformation" name="Helpy::displayAirportInformation">
-<area shape="rect" id="node1" title="displays all the flights you can take on a given Airport, as well as the Airlines that make said flig..." coords="5,31,213,56"/>
-<area shape="rect" id="node2" href="$class_air_graph.html#a769168714ae9dd7ed5403b5deb2d8a64" title=" " coords="262,5,399,31"/>
-<area shape="rect" id="node3" href="$class_air_graph.html#a600d6c620828e3cb975ae8d34b95752d" title=" " coords="261,55,400,80"/>
-</map>

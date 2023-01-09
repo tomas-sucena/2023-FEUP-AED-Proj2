@@ -1,5 +1,0 @@
-<map id="Reader::readAirlines" name="Reader::readAirlines">
-<area shape="rect" id="node1" title="reads the file which contains information about the Airlines" coords="5,5,145,31"/>
-<area shape="rect" id="node2" href="$class_air_graph.html#a6c508d2ce15c4333d46dd1749bef5008" title="adds an Airline to the AirGraph @complexity O(1)" coords="193,5,332,31"/>
-<area shape="rect" id="node3" href="$class_airline.html#a41ef613d6b390c463821b9ae43d9ec84" title="returns the code of the Airline" coords="380,5,495,31"/>
-</map>

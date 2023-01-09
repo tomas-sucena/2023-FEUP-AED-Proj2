@@ -1,0 +1,14 @@
+digraph "AirGraph::addVertex"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="AirGraph::addVertex",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="adds a vertex to the AirGraph @complexity O(1)"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="Reader::readAirports",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classReader.html#a73a93ec23a010e773d42bb0ac96a23f1",tooltip="reads the file which contains information about the Airports"];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="Reader::readAll",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classReader.html#a5726b5e70d0d528c323a4f3b4fe3d12f",tooltip="reads all the files"];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="main",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4",tooltip=" "];
+}

@@ -1,5 +1,0 @@
-<map id="Helpy::guided_mode" name="Helpy::guided_mode">
-<area shape="rect" id="node1" title="executes the guided mode of the UI @complexity O(1)" coords="263,5,404,31"/>
-<area shape="rect" id="node2" href="$class_helpy.html#aaa754efec4177b0c763859b5847d10d3" title="allows the user to choose the mode of the UI @complexity O(n^2)" coords="104,5,215,31"/>
-<area shape="rect" id="node3" href="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " coords="5,5,56,31"/>
-</map>

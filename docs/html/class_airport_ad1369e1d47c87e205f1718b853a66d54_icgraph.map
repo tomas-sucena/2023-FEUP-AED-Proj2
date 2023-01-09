@@ -1,9 +1,0 @@
-<map id="Airport::getCode" name="Airport::getCode">
-<area shape="rect" id="node1" title="returns the code of the Airport" coords="643,63,760,88"/>
-<area shape="rect" id="node2" href="$class_air_graph.html#af7e011d7be89114000fd3b63288c7df7" title="adds a vertex to the AirGraph @complexity O(1)" coords="455,5,595,31"/>
-<area shape="rect" id="node6" href="$structstd_1_1hash_3_01_airport_01_4.html#a3b9f50174e75f658b66160dc82997b35" title=" " coords="462,55,587,95"/>
-<area shape="rect" id="node7" href="$class_airport.html#a56e32d1259b6771e91573b7bbb5a7228" title="compares two Airports and verifies if they are the same @complexity O(1)" coords="459,120,590,145"/>
-<area shape="rect" id="node3" href="$class_reader.html#a73a93ec23a010e773d42bb0ac96a23f1" title="reads the file which contains information about the Airports" coords="264,5,407,31"/>
-<area shape="rect" id="node4" href="$class_reader.html#a5726b5e70d0d528c323a4f3b4fe3d12f" title="reads all the files" coords="104,5,216,31"/>
-<area shape="rect" id="node5" href="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " coords="5,5,56,31"/>
-</map>

@@ -1,0 +1,90 @@
+\hypertarget{Helpy_8cpp}{}\doxysection{/home/sucena/\+A\+E\+D\+\_\+\+Airport/src/\+Helpy.cpp File Reference}
+\label{Helpy_8cpp}\index{/home/sucena/AED\_Airport/src/Helpy.cpp@{/home/sucena/AED\_Airport/src/Helpy.cpp}}
+{\ttfamily \#include \char`\"{}Helpy.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$list$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include \char`\"{}Air\+Graph.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}libfort/fort.\+hpp\char`\"{}}\newline
+Include dependency graph for Helpy.\+cpp\+:
+% FIG 0
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{Helpy_8cpp_a9a4b261ee74f577bbd57315cb754f607}{Path}}~list$<$const Air\+Graph\+::\+Edge$\ast$$>$
+\item 
+\#define \mbox{\hyperlink{Helpy_8cpp_a8d94c3afa699ded58e5c186792d1eb9e}{u\+Set}}~unordered\+\_\+set
+\item 
+\#define \mbox{\hyperlink{Helpy_8cpp_a3e24a9c1e149bc7a4071669c6e1cab0c}{u\+Map}}~unordered\+\_\+map
+\item 
+\#define \mbox{\hyperlink{Helpy_8cpp_ab702106cf3b3e96750b6845ded4e0299}{R\+E\+S\+ET}}~\char`\"{}\textbackslash{}033\mbox{[}0;m\char`\"{}
+\item 
+\#define \mbox{\hyperlink{Helpy_8cpp_a8d23feea868a983c8c2b661e1e16972f}{R\+ED}}~\char`\"{}\textbackslash{}033\mbox{[}1;31m\char`\"{}
+\item 
+\#define \mbox{\hyperlink{Helpy_8cpp_abf681265909adf3d3e8116c93c0ba179}{Y\+E\+L\+L\+OW}}~\char`\"{}\textbackslash{}033\mbox{[}33m\char`\"{}
+\item 
+\#define \mbox{\hyperlink{Helpy_8cpp_acfbc006ea433ad708fdee3e82996e721}{G\+R\+E\+EN}}~\char`\"{}\textbackslash{}033\mbox{[}32m\char`\"{}
+\item 
+\#define \mbox{\hyperlink{Helpy_8cpp_a26cdbb1a00213c810caccf21cd33a631}{B\+O\+LD}}~\char`\"{}\textbackslash{}033\mbox{[}1m\char`\"{}
+\item 
+\#define \mbox{\hyperlink{Helpy_8cpp_abe022c8f09db1f0680a92293523f25dd}{B\+R\+E\+AK}}~\char`\"{}-\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{Helpy_8cpp_a26cdbb1a00213c810caccf21cd33a631}\label{Helpy_8cpp_a26cdbb1a00213c810caccf21cd33a631}} 
+\index{Helpy.cpp@{Helpy.cpp}!BOLD@{BOLD}}
+\index{BOLD@{BOLD}!Helpy.cpp@{Helpy.cpp}}
+\doxysubsubsection{\texorpdfstring{BOLD}{BOLD}}
+{\footnotesize\ttfamily \#define B\+O\+LD~\char`\"{}\textbackslash{}033\mbox{[}1m\char`\"{}}
+
+\mbox{\Hypertarget{Helpy_8cpp_abe022c8f09db1f0680a92293523f25dd}\label{Helpy_8cpp_abe022c8f09db1f0680a92293523f25dd}} 
+\index{Helpy.cpp@{Helpy.cpp}!BREAK@{BREAK}}
+\index{BREAK@{BREAK}!Helpy.cpp@{Helpy.cpp}}
+\doxysubsubsection{\texorpdfstring{BREAK}{BREAK}}
+{\footnotesize\ttfamily \#define B\+R\+E\+AK~\char`\"{}-\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/\char`\"{}}
+
+\mbox{\Hypertarget{Helpy_8cpp_acfbc006ea433ad708fdee3e82996e721}\label{Helpy_8cpp_acfbc006ea433ad708fdee3e82996e721}} 
+\index{Helpy.cpp@{Helpy.cpp}!GREEN@{GREEN}}
+\index{GREEN@{GREEN}!Helpy.cpp@{Helpy.cpp}}
+\doxysubsubsection{\texorpdfstring{GREEN}{GREEN}}
+{\footnotesize\ttfamily \#define G\+R\+E\+EN~\char`\"{}\textbackslash{}033\mbox{[}32m\char`\"{}}
+
+\mbox{\Hypertarget{Helpy_8cpp_a9a4b261ee74f577bbd57315cb754f607}\label{Helpy_8cpp_a9a4b261ee74f577bbd57315cb754f607}} 
+\index{Helpy.cpp@{Helpy.cpp}!Path@{Path}}
+\index{Path@{Path}!Helpy.cpp@{Helpy.cpp}}
+\doxysubsubsection{\texorpdfstring{Path}{Path}}
+{\footnotesize\ttfamily \#define Path~list$<$const Air\+Graph\+::\+Edge$\ast$$>$}
+
+\mbox{\Hypertarget{Helpy_8cpp_a8d23feea868a983c8c2b661e1e16972f}\label{Helpy_8cpp_a8d23feea868a983c8c2b661e1e16972f}} 
+\index{Helpy.cpp@{Helpy.cpp}!RED@{RED}}
+\index{RED@{RED}!Helpy.cpp@{Helpy.cpp}}
+\doxysubsubsection{\texorpdfstring{RED}{RED}}
+{\footnotesize\ttfamily \#define R\+ED~\char`\"{}\textbackslash{}033\mbox{[}1;31m\char`\"{}}
+
+\mbox{\Hypertarget{Helpy_8cpp_ab702106cf3b3e96750b6845ded4e0299}\label{Helpy_8cpp_ab702106cf3b3e96750b6845ded4e0299}} 
+\index{Helpy.cpp@{Helpy.cpp}!RESET@{RESET}}
+\index{RESET@{RESET}!Helpy.cpp@{Helpy.cpp}}
+\doxysubsubsection{\texorpdfstring{RESET}{RESET}}
+{\footnotesize\ttfamily \#define R\+E\+S\+ET~\char`\"{}\textbackslash{}033\mbox{[}0;m\char`\"{}}
+
+\mbox{\Hypertarget{Helpy_8cpp_a3e24a9c1e149bc7a4071669c6e1cab0c}\label{Helpy_8cpp_a3e24a9c1e149bc7a4071669c6e1cab0c}} 
+\index{Helpy.cpp@{Helpy.cpp}!uMap@{uMap}}
+\index{uMap@{uMap}!Helpy.cpp@{Helpy.cpp}}
+\doxysubsubsection{\texorpdfstring{uMap}{uMap}}
+{\footnotesize\ttfamily \#define u\+Map~unordered\+\_\+map}
+
+\mbox{\Hypertarget{Helpy_8cpp_a8d94c3afa699ded58e5c186792d1eb9e}\label{Helpy_8cpp_a8d94c3afa699ded58e5c186792d1eb9e}} 
+\index{Helpy.cpp@{Helpy.cpp}!uSet@{uSet}}
+\index{uSet@{uSet}!Helpy.cpp@{Helpy.cpp}}
+\doxysubsubsection{\texorpdfstring{uSet}{uSet}}
+{\footnotesize\ttfamily \#define u\+Set~unordered\+\_\+set}
+
+\mbox{\Hypertarget{Helpy_8cpp_abf681265909adf3d3e8116c93c0ba179}\label{Helpy_8cpp_abf681265909adf3d3e8116c93c0ba179}} 
+\index{Helpy.cpp@{Helpy.cpp}!YELLOW@{YELLOW}}
+\index{YELLOW@{YELLOW}!Helpy.cpp@{Helpy.cpp}}
+\doxysubsubsection{\texorpdfstring{YELLOW}{YELLOW}}
+{\footnotesize\ttfamily \#define Y\+E\+L\+L\+OW~\char`\"{}\textbackslash{}033\mbox{[}33m\char`\"{}}
+

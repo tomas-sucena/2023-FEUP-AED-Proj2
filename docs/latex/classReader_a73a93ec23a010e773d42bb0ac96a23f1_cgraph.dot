@@ -1,0 +1,12 @@
+digraph "Reader::readAirports"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="Reader::readAirports",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="reads the file which contains information about the Airports"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="AirGraph::addVertex",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classAirGraph.html#af7e011d7be89114000fd3b63288c7df7",tooltip="adds a vertex to the AirGraph @complexity O(1)"];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="Airport::getCode",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classAirport.html#ad1369e1d47c87e205f1718b853a66d54",tooltip="returns the code of the Airport"];
+}

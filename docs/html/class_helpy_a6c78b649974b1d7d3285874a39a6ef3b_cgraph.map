@@ -1,7 +1,0 @@
-<map id="Helpy::printFlights" name="Helpy::printFlights">
-<area shape="rect" id="node1" title="prints all the flights of an Airport in a table @complexity O(n * |E|)" coords="5,80,133,105"/>
-<area shape="rect" id="node2" href="$class_airport.html#adff088d0536ead7d1c060c385da03f32" title="returns the city of the Airport" coords="195,5,306,31"/>
-<area shape="rect" id="node3" href="$class_airport.html#ac0ce4ad3ce71653f13b96e5d40648588" title="returns the country of the Airport" coords="185,55,317,80"/>
-<area shape="rect" id="node4" href="$class_air_graph.html#ac523e3f5214410ee31368d07eed2e0a1" title="returns the flights you can take in an Airport" coords="181,104,320,129"/>
-<area shape="rect" id="node5" href="$class_airport.html#a93efcd09328d24469d97a81e8048b776" title="returns the name of the Airport" coords="190,153,311,179"/>
-</map>

@@ -1,4 +1,0 @@
-<map id="Airline::operator==" name="Airline::operator==">
-<area shape="rect" id="node1" title="compares two Airports and verifies if they are the same @complexity O(1)" coords="5,5,135,31"/>
-<area shape="rect" id="node2" href="$class_airline.html#a41ef613d6b390c463821b9ae43d9ec84" title="returns the code of the Airline" coords="183,5,297,31"/>
-</map>
