@@ -170,6 +170,8 @@ void AirGraph::validate(uSet<string>* use){
  */
 uSet<Airport> AirGraph::dfs(const string& airport, double distance){
     uSet<Airport> reached;
+    reached.insert(vertices[airport].value);
+
     if (distance <= 0) return reached;
 
     vertices[airport].valid = false;
@@ -305,6 +307,26 @@ list<Airport> AirGraph::getReachableAirports(const string& airport, int flights,
     reset();
 
     return reachable;
+}
+
+/**
+ * @brief performs a Breadth-First Search to get the Airports you can reach within a certain flight distance
+ * @complexity O(|V| + |E|)
+ * @param airport code of the Airport which constitutes the starting point
+ * @param distance flight distance
+ * @param use set of Airlines and Airports that the user would like to use
+ * @return list<Airport> with the reachable Airports
+ */
+list<Airport> AirGraph::getReachableAirports(const string& airport, double distance, uSet<string>* use){
+    validate(use);
+    if (!vertices[airport].valid){
+        return {};
+    }
+
+    const uSet<Airport>& reachable = dfs(airport, distance);
+    reset();
+
+    return {reachable.begin(), reachable.end()};
 }
 
 /**

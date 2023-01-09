@@ -14,7 +14,7 @@ Airport::Airport() {}
  * @param latitude latitude of the Airport
  * @param longitude longitude of the Airport
  */
-Airport::Airport(string code, string name, string city, string country, double latitude, double longitude) :
+Airport::Airport(string& code, string& name, string& city, string& country, double latitude, double longitude) :
     code(code), name(name), city(city), country(country), latitude(latitude), longitude(longitude) {}
 
 /**
