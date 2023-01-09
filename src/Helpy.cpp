@@ -24,7 +24,7 @@
 map<string, int> Helpy::command = {{"display", 1}, {"print", 1}, {"show", 1}};
 map<string, int> Helpy::target = {{"airport", 6}, {"shortest", 8}, {"fastest", 8}, {"reachable", 10}};
 map<string, int> Helpy::what = {{"information", 24}, {"route", 27}, {"routes", 27}, {"flight", 27}, {"flights", 27},
-                                {"airport", 29}, {"airports", 29}};
+                                {"path", 27}, {"paths", 27}, {"airport", 29}, {"airports", 29}};
 
 /**
  * @brief turns all the characters of a string into lowercase or uppercase
@@ -343,7 +343,8 @@ string Helpy::readLocation(string instruction){
 uSet<string> Helpy::readUsableAirlines(){
     uSet<string> airlines;
 
-    cout << "Please type the codes of the airlines you would like to use, separated by a comma (ex: TAP,RYN,...)\n"
+    cout << "Please type the " << BOLD << "codes" << RESET << " of the " << YELLOW << "airlines" << RESET
+         << " you would like to " << GREEN << "use" << RESET << ", separated by a comma (ex: TAP,RYN,...)\n"
          << "If there is no airline you would particularly like to use, press Enter.\n\n";
 
     // airlines to USE
@@ -531,8 +532,8 @@ uSet<string>* Helpy::readRestrictions(){
     auto use = new uSet<string>[2];
 
     ostringstream instr;
-    instr << "To better meet your requirements, I will now ask you some questions regarding which " << BOLD << "airlines" << RESET
-          << ", " << BOLD << "airports" << RESET << " and " << BOLD << "countries" << RESET << " you would like to use or avoid.\n"
+    instr << "To better meet your requirements, I will now ask you some questions regarding which " << YELLOW << "airlines" << RESET
+          << ", " << YELLOW << "airports" << RESET << " and " << YELLOW << "countries" << RESET << " you would like to use or avoid.\n"
           << "However, if you do not want to have such restrictions, I can skip this part.\n\n"
           << "Would you like to answer the questions? (Yes/No)";
 
