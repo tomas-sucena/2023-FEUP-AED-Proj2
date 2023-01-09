@@ -165,45 +165,6 @@ void AirGraph::validate(uSet<string>* use){
  * @brief implementation of the Depth-First Search algorithm, which iterates through all the vertices and edges
  * @complexity O(|V| + |E|)
  * @param airport code of the Airport that is stored in the initial vertex
- */
-void AirGraph::dfs(const string& airportA, const string& airportB, Path currPath, list<Path>& allPaths){
-    Vertex& currV = vertices[airportA];
-    currV.valid = false;
-
-    // target found
-    if (airportA == airportB){
-        bool insert = (allPaths.empty() || currPath.size() <= allPaths.front().size());
-        bool clear = (insert && currPath.size() < allPaths.front().size());
-
-        if (clear){
-            allPaths.clear();
-        }
-
-        if (insert){
-            allPaths.push_back(currPath);
-        }
-
-        currV.valid = true;
-        return;
-    }
-
-    for (const Edge* e : currV.adj){
-        if (!e->valid || !vertices[e->dest.getCode()].valid){
-            continue;
-        }
-
-        currPath.push_back(e);
-        dfs(e->dest.getCode(), airportB, currPath, allPaths);
-        currPath.pop_back();
-    }
-
-    currV.valid = true;
-}
-
-/**
- * @brief implementation of the Depth-First Search algorithm, which iterates through all the vertices and edges
- * @complexity O(|V| + |E|)
- * @param airport code of the Airport that is stored in the initial vertex
  * @param distance radius
  * @return container with all of the reachable Airports
  */
@@ -222,6 +183,56 @@ uSet<Airport> AirGraph::dfs(const string& airport, double distance){
     }
 
     return reached;
+}
+
+
+list<Path> AirGraph::bfs(const string& airportA, const string& airportB){
+    list<Path> allPaths = {{}};
+
+    queue<string> unvisitedV; // unvisited vertices
+    unvisitedV.push(airportA);
+
+    while (!unvisitedV.empty()){
+        string code = unvisitedV.front();
+        unvisitedV.pop();
+
+        // target found
+        if (code == airportB) break;
+
+        Vertex& currV = vertices[code];
+        currV.valid = false;
+
+        Path currPath = allPaths.front();
+
+        for (const Edge* e : currV.adj){
+            if (!e->valid || !vertices[e->dest.getCode()].valid){
+                continue;
+            }
+
+            unvisitedV.push(e->dest.getCode());
+
+            currPath.push_back(e);
+            allPaths.push_back(currPath);
+            currPath.pop_back();
+        }
+
+        allPaths.pop_front();
+    }
+
+    // eliminate all undesirable paths
+    auto it = allPaths.begin();
+    int minPathSize = it++->size();
+
+    while (it != allPaths.end()){
+        if (it->size() > minPathSize || it->back()->dest.getCode() != airportB){
+            it = allPaths.erase(it);
+            continue;
+        }
+
+        it++;
+    }
+
+    return allPaths;
 }
 
 /**
@@ -320,16 +331,13 @@ map<double, string> AirGraph::getNearbyAirports(double lat, double lon, double r
  * @return list<Path> with the shortest paths
  */
 list<Path> AirGraph::getPaths(const string& airportA, const string& airportB, uSet<string>* use){
-    list<Path> allPaths;
-    Path currPath;
-
     validate(use);
     if (!vertices[airportA].valid || !vertices[airportB].valid){
         reset();
         return {};
     }
 
-    dfs(airportA, airportB, currPath, allPaths);
+    list<Path> allPaths = bfs(airportA, airportB);
     reset();
 
     return allPaths;

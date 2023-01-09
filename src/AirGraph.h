@@ -87,9 +87,9 @@ class AirGraph {
         void validateVertices(uSet<string> use);
         void validate(uSet<string>* use = nullptr);
 
-        void dfs(const string& airportA, const string& airportB, Path currPath, list<Path>& allPaths);
         uSet<Airport> dfs(const string& airport, double distance);
 
+        list<Path> bfs(const string& airportA, const string& airportB);
         list<Airport> bfs(const string& airport, int flights);
 };
 
