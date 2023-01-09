@@ -4,7 +4,7 @@
 <area shape="rect" id="node9" href="$class_helpy.html#a4423bd1450df0994030a055598d6bd16" title="reads a location based on an airport OR a city OR a country OR coordinates @complexity O(n^2)" coords="299,256,438,281"/>
 <area shape="rect" id="node16" href="$class_helpy.html#ab7d64ab16c804e5e5ecaa87246bc82a6" title="reads a number from the console @complexity O(n^2)" coords="769,304,903,329"/>
 <area shape="rect" id="node18" href="$class_helpy.html#a00ddd92a095c970241a1ae73a195608f" title="reads the Airlines and the Airports the user would like to use @complexity O(n^2)" coords="289,429,448,455"/>
-<area shape="rect" id="node3" href="$class_air_graph.html#a8ee9baedc765a3487da56030713f074a" title="implementation of the Breadth&#45;First Search algorithm, which iterates through all the vertices and edg..." coords="558,5,657,31"/>
+<area shape="rect" id="node3" href="$class_air_graph.html#af716d2cfb5177959c3011881f9b4ae81" title=" " coords="558,5,657,31"/>
 <area shape="rect" id="node4" href="$class_air_graph.html#a32ba540038b3bda18388f4ad5f12f89d" title="sets to &#39;false&#39; the &#39;visited&#39; parameter of all vertices @complexity O(|V| + |E|)" coords="552,55,663,80"/>
 <area shape="rect" id="node5" href="$class_air_graph.html#a65c76b3fe1e64fca3b2ea5a3addae74a" title="checks which vertices and edges are valid @complexity O(|V| + |E|)" coords="544,104,671,129"/>
 <area shape="rect" id="node6" href="$class_air_graph.html#aa620f24c5ec6942c068d65c5298671d3" title="checks if an edge contains at least one Airline that the user wants to use @complexity O(|E|)" coords="755,104,917,129"/>

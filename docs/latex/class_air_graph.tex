@@ -33,10 +33,10 @@ void \mbox{\hyperlink{class_air_graph_a5bb3526b5868f5643b63b42824245845}{validat
 \begin{DoxyCompactList}\small\item\em checks if a vertex should be traversed in the search functions @complexity O($\vert$\+V$\vert$) \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_air_graph_a65c76b3fe1e64fca3b2ea5a3addae74a}{validate}} (\mbox{\hyperlink{_air_graph_8h_a8d94c3afa699ded58e5c186792d1eb9e}{u\+Set}}$<$ string $>$ $\ast$use=nullptr)
 \begin{DoxyCompactList}\small\item\em checks which vertices and edges are valid @complexity O($\vert$\+V$\vert$ + $\vert$\+E$\vert$) \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_air_graph_af730e68b52d53af9c8a73741078a5a07}{dfs}} (const string \&airportA, const string \&airportB, \mbox{\hyperlink{_air_graph_8h_a9a4b261ee74f577bbd57315cb754f607}{Path}} curr\+Path, list$<$ \mbox{\hyperlink{_air_graph_8h_a9a4b261ee74f577bbd57315cb754f607}{Path}} $>$ \&all\+Paths)
-\begin{DoxyCompactList}\small\item\em implementation of the Depth-\/\+First Search algorithm, which iterates through all the vertices and edges @complexity O($\vert$\+V$\vert$ + $\vert$\+E$\vert$) \end{DoxyCompactList}\item 
 \mbox{\hyperlink{_air_graph_8h_a8d94c3afa699ded58e5c186792d1eb9e}{u\+Set}}$<$ \mbox{\hyperlink{class_airport}{Airport}} $>$ \mbox{\hyperlink{class_air_graph_ad3041b4d3f5de423e3b4facb3a507528}{dfs}} (const string \&airport, double distance)
 \begin{DoxyCompactList}\small\item\em implementation of the Depth-\/\+First Search algorithm, which iterates through all the vertices and edges @complexity O($\vert$\+V$\vert$ + $\vert$\+E$\vert$) \end{DoxyCompactList}\item 
+list$<$ \mbox{\hyperlink{_air_graph_8h_a9a4b261ee74f577bbd57315cb754f607}{Path}} $>$ \mbox{\hyperlink{class_air_graph_af716d2cfb5177959c3011881f9b4ae81}{bfs}} (const string \&airportA, const string \&airportB)
+\item 
 list$<$ \mbox{\hyperlink{class_airport}{Airport}} $>$ \mbox{\hyperlink{class_air_graph_a8ee9baedc765a3487da56030713f074a}{bfs}} (const string \&airport, int flights)
 \begin{DoxyCompactList}\small\item\em implementation of the Breadth-\/\+First Search algorithm, which iterates through all the vertices and edges @complexity O($\vert$\+V$\vert$ + $\vert$\+E$\vert$) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Friends}
@@ -78,8 +78,7 @@ adds an \mbox{\hyperlink{class_airline}{Airline}} to the \mbox{\hyperlink{class_
 \begin{DoxyReturn}{Returns}
 true if insertion occurs, otherwise false 
 \end{DoxyReturn}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -137,8 +136,7 @@ adds a vertex to the \mbox{\hyperlink{class_air_graph}{Air\+Graph}} @complexity 
 \begin{DoxyReturn}{Returns}
 \textquotesingle{}true\textquotesingle{} if insertion occurs, otherwise \textquotesingle{}false\textquotesingle{} 
 \end{DoxyReturn}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -155,7 +153,7 @@ Here is the caller graph for this function\+:\nopagebreak
 \mbox{\Hypertarget{class_air_graph_a8ee9baedc765a3487da56030713f074a}\label{class_air_graph_a8ee9baedc765a3487da56030713f074a}} 
 \index{AirGraph@{AirGraph}!bfs@{bfs}}
 \index{bfs@{bfs}!AirGraph@{AirGraph}}
-\doxysubsubsection{\texorpdfstring{bfs()}{bfs()}}
+\doxysubsubsection{\texorpdfstring{bfs()}{bfs()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily list$<$ \mbox{\hyperlink{class_airport}{Airport}} $>$ Air\+Graph\+::bfs (\begin{DoxyParamCaption}\item[{const string \&}]{airport,  }\item[{int}]{flights }\end{DoxyParamCaption})}
 
 
@@ -172,17 +170,24 @@ implementation of the Breadth-\/\+First Search algorithm, which iterates through
 \begin{DoxyReturn}{Returns}
 list$<$\+Airport$>$ with the reachable Airports 
 \end{DoxyReturn}
-Here is the caller graph for this function\+:\nopagebreak
+\mbox{\Hypertarget{class_air_graph_af716d2cfb5177959c3011881f9b4ae81}\label{class_air_graph_af716d2cfb5177959c3011881f9b4ae81}} 
+\index{AirGraph@{AirGraph}!bfs@{bfs}}
+\index{bfs@{bfs}!AirGraph@{AirGraph}}
+\doxysubsubsection{\texorpdfstring{bfs()}{bfs()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily list$<$ \mbox{\hyperlink{_air_graph_8h_a9a4b261ee74f577bbd57315cb754f607}{Path}} $>$ Air\+Graph\+::bfs (\begin{DoxyParamCaption}\item[{const string \&}]{airportA,  }\item[{const string \&}]{airportB }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{class_air_graph_a8ee9baedc765a3487da56030713f074a_icgraph}
+\includegraphics[width=350pt]{class_air_graph_af716d2cfb5177959c3011881f9b4ae81_icgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{class_air_graph_ad3041b4d3f5de423e3b4facb3a507528}\label{class_air_graph_ad3041b4d3f5de423e3b4facb3a507528}} 
 \index{AirGraph@{AirGraph}!dfs@{dfs}}
 \index{dfs@{dfs}!AirGraph@{AirGraph}}
-\doxysubsubsection{\texorpdfstring{dfs()}{dfs()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{dfs()}{dfs()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{_air_graph_8h_a8d94c3afa699ded58e5c186792d1eb9e}{u\+Set}}$<$ \mbox{\hyperlink{class_airport}{Airport}} $>$ Air\+Graph\+::dfs (\begin{DoxyParamCaption}\item[{const string \&}]{airport,  }\item[{double}]{distance }\end{DoxyParamCaption})}
 
 
@@ -199,40 +204,20 @@ implementation of the Depth-\/\+First Search algorithm, which iterates through a
 \begin{DoxyReturn}{Returns}
 container with all of the reachable Airports 
 \end{DoxyReturn}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=264pt]{class_air_graph_ad3041b4d3f5de423e3b4facb3a507528_cgraph}
+\includegraphics[width=154pt]{class_air_graph_ad3041b4d3f5de423e3b4facb3a507528_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{class_air_graph_af730e68b52d53af9c8a73741078a5a07}\label{class_air_graph_af730e68b52d53af9c8a73741078a5a07}} 
-\index{AirGraph@{AirGraph}!dfs@{dfs}}
-\index{dfs@{dfs}!AirGraph@{AirGraph}}
-\doxysubsubsection{\texorpdfstring{dfs()}{dfs()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily void Air\+Graph\+::dfs (\begin{DoxyParamCaption}\item[{const string \&}]{airportA,  }\item[{const string \&}]{airportB,  }\item[{\mbox{\hyperlink{_air_graph_8h_a9a4b261ee74f577bbd57315cb754f607}{Path}}}]{curr\+Path,  }\item[{list$<$ \mbox{\hyperlink{_air_graph_8h_a9a4b261ee74f577bbd57315cb754f607}{Path}} $>$ \&}]{all\+Paths }\end{DoxyParamCaption})}
-
-
-
-implementation of the Depth-\/\+First Search algorithm, which iterates through all the vertices and edges @complexity O($\vert$\+V$\vert$ + $\vert$\+E$\vert$) 
-
-
-\begin{DoxyParams}{Parameters}
-{\em airport} & code of the \mbox{\hyperlink{class_airport}{Airport}} that is stored in the initial vertex \\
-\hline
-\end{DoxyParams}
-Here is the call graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=154pt]{class_air_graph_af730e68b52d53af9c8a73741078a5a07_cgraph}
-\end{center}
-\end{figure}
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{class_air_graph_af730e68b52d53af9c8a73741078a5a07_icgraph}
+\includegraphics[width=154pt]{class_air_graph_ad3041b4d3f5de423e3b4facb3a507528_icgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{class_air_graph_a769168714ae9dd7ed5403b5deb2d8a64}\label{class_air_graph_a769168714ae9dd7ed5403b5deb2d8a64}} 
@@ -418,8 +403,7 @@ checks which vertices and edges are valid @complexity O($\vert$\+V$\vert$ + $\ve
 {\em use} & array of two unordered\+\_\+sets, both containing codes (of Airlines and Airports, respectively) \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -451,8 +435,7 @@ checks if an edge contains at least one \mbox{\hyperlink{class_airline}{Airline}
 \begin{DoxyReturn}{Returns}
 \textquotesingle{}true\textquotesingle{} if the edge is valid and \textquotesingle{}false\textquotesingle{} otherwise 
 \end{DoxyReturn}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
