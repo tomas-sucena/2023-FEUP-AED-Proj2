@@ -185,7 +185,12 @@ uSet<Airport> AirGraph::dfs(const string& airport, double distance){
     return reached;
 }
 
-
+/**
+ * @brief implementation of the Breadth-First Search algorithm that returns the shortest paths (in terms of flights) from an Airport to another
+ * @param airportA code of the Airport which constitutes the starting point
+ * @param airportB code of the Airport which constitutes the destination
+ * @return list<Path> with the shortest paths
+ */
 list<Path> AirGraph::bfs(const string& airportA, const string& airportB){
     list<Path> allPaths = {{}};
 
@@ -221,7 +226,7 @@ list<Path> AirGraph::bfs(const string& airportA, const string& airportB){
 
     // eliminate all undesirable paths
     auto it = allPaths.begin();
-    int minPathSize = it++->size();
+    int minPathSize = (int) it++->size();
 
     while (it != allPaths.end()){
         if (it->size() > minPathSize || it->back()->dest.getCode() != airportB){

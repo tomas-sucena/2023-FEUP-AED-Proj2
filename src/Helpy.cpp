@@ -386,9 +386,9 @@ uSet<string> Helpy::readUsableAirlines(){
 }
 
 /**
- * @brief reads from the console the selection of airlines to use
+ * @brief reads from the console the selection of cities to consider
  * @complexity O(n^2)
- * @return the codes of the selected airlines
+ * @return the codes of the airports that are in the considered cities
  */
 uSet<string> Helpy::readUsableCities(){
     uSet<string> airports;
@@ -422,8 +422,8 @@ uSet<string> Helpy::readUsableCities(){
     airports = airportCodes;
 
     cout << endl << YELLOW << BREAK << RESET << endl << endl;
-    cout << "Please type the names of the " << BOLD << "cities" << RESET << " you would like to " << RED << "avoid"
-         << RESET << ", separated by a comma (ex: Porto,Lisbon,...)\n"
+    cout << "Please type the " << BOLD << "names" << RESET << " of the " << BOLD << "cities" << RESET
+         << " you would like to " << RED << "avoid" << RESET << ", separated by a comma (ex: Porto,Lisbon,...)\n"
          << "If there is no city you wish to avoid, press Enter.\n\n";
 
     getline(cin, line);
@@ -439,6 +439,67 @@ uSet<string> Helpy::readUsableCities(){
         }
 
         for (const string& s : cityNames[temp]){
+            airports.erase(airportNames[s]);
+        }
+    }
+
+    return airports;
+}
+
+/**
+ * @brief reads from the console the selection of countries to consider
+ * @complexity O(n^2)
+ * @return the codes of the airports that are in the considered countries
+ */
+uSet<string> Helpy::readUsableCountries(){
+    uSet<string> airports;
+
+    cout << endl << YELLOW << BREAK << RESET << endl << endl;
+    cout << "Please type the names of the " << BOLD << "countries" << RESET << " you would like to " << GREEN << "use"
+         << RESET << ", separated by a comma (ex: Portugal,Spain,...)\n"
+         << "If there is no country you would particularly like to visit, press Enter.\n\n";
+
+    // countries to USE
+    string line; getline(cin, line);
+    lowercase(line, true); line += ",";
+
+    istringstream line_(line);
+
+    for (string temp; getline(line_, temp, ',');){
+        properName(temp);
+
+        if (countryNames.find(temp) == countryNames.end()){
+            continue;
+        }
+
+        for (const string& s : countryNames[temp]){
+            airports.insert(airportNames[s]);
+        }
+    }
+
+    if (!airports.empty()) return airports;
+
+    // countries to AVOID
+    airports = airportCodes;
+
+    cout << endl << YELLOW << BREAK << RESET << endl << endl;
+    cout << "Please type the " << BOLD << "names" << RESET << " of the " << YELLOW << "countries" << RESET
+         << " you would like to " << RED << "avoid" << RESET << ", separated by a comma (ex: Brazil,Mexico,...)\n"
+         << "If there is no country you wish to avoid, press Enter.\n\n";
+
+    getline(cin, line);
+    lowercase(line, true); line += ",";
+
+    line_.clear(); line_.str(line);
+
+    for (string temp; getline(line_, temp, ',');){
+        properName(temp);
+
+        if (countryNames.find(temp) == countryNames.end()){
+            continue;
+        }
+
+        for (const string& s : countryNames[temp]){
             airports.erase(airportNames[s]);
         }
     }
@@ -506,13 +567,13 @@ uSet<string> Helpy::readUsableAirports(){
 
     // read cities and countries to use
     uSet<string> cityAirports = readUsableCities();
-    //uSet<string> countryAirports = readUsableCities();
+    uSet<string> countryAirports = readUsableCountries();
 
     for (auto it = airports.begin(); it != airports.end();){
         bool foundCity = (cityAirports.find(*it) != cityAirports.end());
-        //bool foundCountry = (countryAirports.find(*it) != countryAirports.end());
+        bool foundCountry = (countryAirports.find(*it) != countryAirports.end());
 
-        if (foundCity){// && foundCountry){
+        if (foundCity && foundCountry){
             it++;
             continue;
         }
@@ -884,7 +945,13 @@ void Helpy::displayShortestRoutes(){
     list<Path> allPaths = graph.getPaths(airportA, airportB, readRestrictions());
 
     cout << endl << YELLOW << BREAK << RESET << endl;
-    cout << "These are the results of my search:";
+
+    if (allPaths.empty()){
+        cout << endl << "It appears there are no results that match your request..." << endl;
+        return;
+    }
+
+    cout << endl << "These are the results of my search:";
 
     int optionNum = 1;
     for (Path p : allPaths){
