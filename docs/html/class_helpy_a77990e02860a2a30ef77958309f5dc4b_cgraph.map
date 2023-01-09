@@ -1,0 +1,6 @@
+<map id="Helpy::printPath" name="Helpy::printPath">
+<area shape="rect" id="node1" title="prints a table with the information of a path @complexity O(n * |E|), being &#39;n&#39; the number of Airline..." coords="5,55,121,80"/>
+<area shape="rect" id="node2" href="$class_airport.html#adff088d0536ead7d1c060c385da03f32" title="returns the city of the Airport" coords="180,5,291,31"/>
+<area shape="rect" id="node3" href="$class_airport.html#ac0ce4ad3ce71653f13b96e5d40648588" title="returns the country of the Airport" coords="169,55,301,80"/>
+<area shape="rect" id="node4" href="$class_airport.html#a93efcd09328d24469d97a81e8048b776" title="returns the name of the Airport" coords="175,104,296,129"/>
+</map>

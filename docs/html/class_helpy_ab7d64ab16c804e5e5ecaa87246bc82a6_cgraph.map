@@ -1,0 +1,4 @@
+<map id="Helpy::readNumber" name="Helpy::readNumber">
+<area shape="rect" id="node1" title="reads a number from the console @complexity O(n^2)" coords="5,5,140,31"/>
+<area shape="rect" id="node2" href="$class_helpy.html#a555c23037bdcba9c140448908cb67c34" title="turns all the characters of a string into lowercase or uppercase @complexity O(n)" coords="188,5,311,31"/>
+</map>

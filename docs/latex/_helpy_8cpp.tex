@@ -5,8 +5,9 @@
 {\ttfamily \#include $<$iostream$>$}\newline
 {\ttfamily \#include $<$list$>$}\newline
 {\ttfamily \#include $<$map$>$}\newline
-{\ttfamily \#include $<$sstream$>$}\newline
 {\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include \char`\"{}Air\+Graph.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}libfort/fort.\+hpp\char`\"{}}\newline
 Include dependency graph for Helpy.\+cpp\+:
 \nopagebreak
 \begin{figure}[H]
@@ -17,6 +18,12 @@ Include dependency graph for Helpy.\+cpp\+:
 \end{figure}
 \doxysubsection*{Macros}
 \begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_helpy_8cpp_a9a4b261ee74f577bbd57315cb754f607}{Path}}~list$<$const Air\+Graph\+::\+Edge$\ast$$>$
+\item 
+\#define \mbox{\hyperlink{_helpy_8cpp_a8d94c3afa699ded58e5c186792d1eb9e}{u\+Set}}~unordered\+\_\+set
+\item 
+\#define \mbox{\hyperlink{_helpy_8cpp_a3e24a9c1e149bc7a4071669c6e1cab0c}{u\+Map}}~unordered\+\_\+map
 \item 
 \#define \mbox{\hyperlink{_helpy_8cpp_ab702106cf3b3e96750b6845ded4e0299}{RESET}}~\char`\"{}\textbackslash{}033\mbox{[}0;m\char`\"{}
 \item 
@@ -30,11 +37,6 @@ Include dependency graph for Helpy.\+cpp\+:
 \item 
 \#define \mbox{\hyperlink{_helpy_8cpp_abe022c8f09db1f0680a92293523f25dd}{BREAK}}~\char`\"{}-\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/\char`\"{}
 \end{DoxyCompactItemize}
-\doxysubsection*{Functions}
-\begin{DoxyCompactItemize}
-\item 
-void \mbox{\hyperlink{_helpy_8cpp_a4eddeb335ef24008e9d59ed69c70cdf1}{lowercase}} (string \&s, bool uppercase=false)
-\begin{DoxyCompactList}\small\item\em turns the characters of a string all into lowercase or uppercase ;complexity = O(n) \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Macro Definition Documentation}
@@ -56,6 +58,12 @@ void \mbox{\hyperlink{_helpy_8cpp_a4eddeb335ef24008e9d59ed69c70cdf1}{lowercase}}
 \doxysubsubsection{\texorpdfstring{GREEN}{GREEN}}
 {\footnotesize\ttfamily \#define GREEN~\char`\"{}\textbackslash{}033\mbox{[}32m\char`\"{}}
 
+\mbox{\Hypertarget{_helpy_8cpp_a9a4b261ee74f577bbd57315cb754f607}\label{_helpy_8cpp_a9a4b261ee74f577bbd57315cb754f607}} 
+\index{Helpy.cpp@{Helpy.cpp}!Path@{Path}}
+\index{Path@{Path}!Helpy.cpp@{Helpy.cpp}}
+\doxysubsubsection{\texorpdfstring{Path}{Path}}
+{\footnotesize\ttfamily \#define Path~list$<$const Air\+Graph\+::\+Edge$\ast$$>$}
+
 \mbox{\Hypertarget{_helpy_8cpp_a8d23feea868a983c8c2b661e1e16972f}\label{_helpy_8cpp_a8d23feea868a983c8c2b661e1e16972f}} 
 \index{Helpy.cpp@{Helpy.cpp}!RED@{RED}}
 \index{RED@{RED}!Helpy.cpp@{Helpy.cpp}}
@@ -68,37 +76,21 @@ void \mbox{\hyperlink{_helpy_8cpp_a4eddeb335ef24008e9d59ed69c70cdf1}{lowercase}}
 \doxysubsubsection{\texorpdfstring{RESET}{RESET}}
 {\footnotesize\ttfamily \#define RESET~\char`\"{}\textbackslash{}033\mbox{[}0;m\char`\"{}}
 
+\mbox{\Hypertarget{_helpy_8cpp_a3e24a9c1e149bc7a4071669c6e1cab0c}\label{_helpy_8cpp_a3e24a9c1e149bc7a4071669c6e1cab0c}} 
+\index{Helpy.cpp@{Helpy.cpp}!uMap@{uMap}}
+\index{uMap@{uMap}!Helpy.cpp@{Helpy.cpp}}
+\doxysubsubsection{\texorpdfstring{uMap}{uMap}}
+{\footnotesize\ttfamily \#define u\+Map~unordered\+\_\+map}
+
+\mbox{\Hypertarget{_helpy_8cpp_a8d94c3afa699ded58e5c186792d1eb9e}\label{_helpy_8cpp_a8d94c3afa699ded58e5c186792d1eb9e}} 
+\index{Helpy.cpp@{Helpy.cpp}!uSet@{uSet}}
+\index{uSet@{uSet}!Helpy.cpp@{Helpy.cpp}}
+\doxysubsubsection{\texorpdfstring{uSet}{uSet}}
+{\footnotesize\ttfamily \#define u\+Set~unordered\+\_\+set}
+
 \mbox{\Hypertarget{_helpy_8cpp_abf681265909adf3d3e8116c93c0ba179}\label{_helpy_8cpp_abf681265909adf3d3e8116c93c0ba179}} 
 \index{Helpy.cpp@{Helpy.cpp}!YELLOW@{YELLOW}}
 \index{YELLOW@{YELLOW}!Helpy.cpp@{Helpy.cpp}}
 \doxysubsubsection{\texorpdfstring{YELLOW}{YELLOW}}
 {\footnotesize\ttfamily \#define YELLOW~\char`\"{}\textbackslash{}033\mbox{[}33m\char`\"{}}
 
-
-
-\doxysubsection{Function Documentation}
-\mbox{\Hypertarget{_helpy_8cpp_a4eddeb335ef24008e9d59ed69c70cdf1}\label{_helpy_8cpp_a4eddeb335ef24008e9d59ed69c70cdf1}} 
-\index{Helpy.cpp@{Helpy.cpp}!lowercase@{lowercase}}
-\index{lowercase@{lowercase}!Helpy.cpp@{Helpy.cpp}}
-\doxysubsubsection{\texorpdfstring{lowercase()}{lowercase()}}
-{\footnotesize\ttfamily void lowercase (\begin{DoxyParamCaption}\item[{string \&}]{s,  }\item[{bool}]{uppercase = {\ttfamily false} }\end{DoxyParamCaption})}
-
-
-
-turns the characters of a string all into lowercase or uppercase ;complexity = O(n) 
-
-
-\begin{DoxyParams}{Parameters}
-{\em s} & string to be modified \\
-\hline
-{\em uppercase} & if true turns all the characters of the string to uppercase; if false turns all the characters of the string to lowercase \\
-\hline
-\end{DoxyParams}
-Here is the caller graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{_helpy_8cpp_a4eddeb335ef24008e9d59ed69c70cdf1_icgraph}
-\end{center}
-\end{figure}

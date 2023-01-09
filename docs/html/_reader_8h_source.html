@@ -85,48 +85,54 @@ $(function() {
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="_air_graph_8h.html">AirGraph.h</a>&quot;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;data/Airline.h&quot;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;data/Airport.h&quot;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">using namespace </span>std;</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="class_reader.html">   15</a></span><span class="keyword">class </span><a class="code hl_class" href="class_reader.html">Reader</a> {</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        <span class="keywordtype">string</span> path;</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        ifstream reader;</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <a class="code hl_class" href="class_air_graph.html">AirGraph</a> g;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <span class="comment">// for search purposes</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        unordered_map&lt;string, Airport&gt; airportCodes;</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <span class="comment">// constructor</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="keyword">explicit</span> <a class="code hl_class" href="class_reader.html">Reader</a>(<span class="keywordtype">string</span> path);</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="comment">// methods</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_reader.html#a5726b5e70d0d528c323a4f3b4fe3d12f">readAll</a>();</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_reader.html#af068ec20958e324c4f5a5634297c84a8">readAirlines</a>();</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_reader.html#a73a93ec23a010e773d42bb0ac96a23f1">readAirports</a>();</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_reader.html#a66c9460b5ed5a1969cefebc02b3bed77">readFlights</a>();</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="class_reader.html#ac575373a3aa2d8093d3816c356343bcc">   35</a></span>        unordered_set&lt;Airline&gt; <a class="code hl_function" href="class_reader.html#ac575373a3aa2d8093d3816c356343bcc">getAirlines</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="class_reader.html#a60f0c5882b1ba30cf08a4e7ce375ccef">   36</a></span>        unordered_map&lt;Airport, int&gt; <a class="code hl_function" href="class_reader.html#a60f0c5882b1ba30cf08a4e7ce375ccef">getAirports</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <a class="code hl_class" href="class_air_graph.html">AirGraph</a> <a class="code hl_function" href="class_reader.html#a982a7afbab30702ca88685e419ff37cf">getGraph</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>};</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="_airline_8h.html">Airline.h</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="_airport_8h.html">Airport.h</a>&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="_helpy_8h.html">Helpy.h</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespacestd.html">std</a>;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="_reader_8h.html#a3e24a9c1e149bc7a4071669c6e1cab0c">   16</a></span><span class="preprocessor">#define uMap unordered_map</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="_reader_8h.html#a8d94c3afa699ded58e5c186792d1eb9e">   17</a></span><span class="preprocessor">#define uSet unordered_set</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="class_reader.html">   19</a></span><span class="keyword">class </span><a class="code hl_class" href="class_reader.html">Reader</a> {</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <span class="keywordtype">string</span> path;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        ifstream reader;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <a class="code hl_class" href="class_air_graph.html">AirGraph</a> g;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <span class="comment">// for search purposes</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        uMap&lt;string, Airport&gt; airports;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        uSet&lt;string&gt; airlineCodes;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="comment">// constructor</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keyword">explicit</span> <a class="code hl_class" href="class_reader.html">Reader</a>(<span class="keywordtype">string</span> path);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="comment">// methods</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_reader.html#a5726b5e70d0d528c323a4f3b4fe3d12f">readAll</a>();</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_reader.html#af068ec20958e324c4f5a5634297c84a8">readAirlines</a>();</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_reader.html#a73a93ec23a010e773d42bb0ac96a23f1">readAirports</a>();</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_reader.html#a66c9460b5ed5a1969cefebc02b3bed77">readFlights</a>();</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#endif </span><span class="comment">//AIRPORTAED_READER_H</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <a class="code hl_class" href="class_helpy.html">Helpy</a> <a class="code hl_function" href="class_reader.html#ad9f1bd8495dfcf5772691a7aeea20c2c">getHelpy</a>();</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>};</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#endif </span><span class="comment">//AIRPORTAED_READER_H</span></div>
 <div class="ttc" id="a_air_graph_8h_html"><div class="ttname"><a href="_air_graph_8h.html">AirGraph.h</a></div></div>
-<div class="ttc" id="aclass_air_graph_html"><div class="ttname"><a href="class_air_graph.html">AirGraph</a></div><div class="ttdef"><b>Definition:</b> AirGraph.h:13</div></div>
-<div class="ttc" id="aclass_reader_html"><div class="ttname"><a href="class_reader.html">Reader</a></div><div class="ttdef"><b>Definition:</b> Reader.h:15</div></div>
-<div class="ttc" id="aclass_reader_html_a5726b5e70d0d528c323a4f3b4fe3d12f"><div class="ttname"><a href="class_reader.html#a5726b5e70d0d528c323a4f3b4fe3d12f">Reader::readAll</a></div><div class="ttdeci">void readAll()</div><div class="ttdef"><b>Definition:</b> Reader.cpp:17</div></div>
-<div class="ttc" id="aclass_reader_html_a60f0c5882b1ba30cf08a4e7ce375ccef"><div class="ttname"><a href="class_reader.html#a60f0c5882b1ba30cf08a4e7ce375ccef">Reader::getAirports</a></div><div class="ttdeci">unordered_map&lt; Airport, int &gt; getAirports() const</div></div>
-<div class="ttc" id="aclass_reader_html_a66c9460b5ed5a1969cefebc02b3bed77"><div class="ttname"><a href="class_reader.html#a66c9460b5ed5a1969cefebc02b3bed77">Reader::readFlights</a></div><div class="ttdeci">void readFlights()</div><div class="ttdef"><b>Definition:</b> Reader.cpp:106</div></div>
-<div class="ttc" id="aclass_reader_html_a73a93ec23a010e773d42bb0ac96a23f1"><div class="ttname"><a href="class_reader.html#a73a93ec23a010e773d42bb0ac96a23f1">Reader::readAirports</a></div><div class="ttdeci">void readAirports()</div><div class="ttdef"><b>Definition:</b> Reader.cpp:57</div></div>
-<div class="ttc" id="aclass_reader_html_a982a7afbab30702ca88685e419ff37cf"><div class="ttname"><a href="class_reader.html#a982a7afbab30702ca88685e419ff37cf">Reader::getGraph</a></div><div class="ttdeci">AirGraph getGraph() const</div><div class="ttdef"><b>Definition:</b> Reader.cpp:134</div></div>
-<div class="ttc" id="aclass_reader_html_ac575373a3aa2d8093d3816c356343bcc"><div class="ttname"><a href="class_reader.html#ac575373a3aa2d8093d3816c356343bcc">Reader::getAirlines</a></div><div class="ttdeci">unordered_set&lt; Airline &gt; getAirlines() const</div></div>
-<div class="ttc" id="aclass_reader_html_af068ec20958e324c4f5a5634297c84a8"><div class="ttname"><a href="class_reader.html#af068ec20958e324c4f5a5634297c84a8">Reader::readAirlines</a></div><div class="ttdeci">void readAirlines()</div><div class="ttdef"><b>Definition:</b> Reader.cpp:23</div></div>
+<div class="ttc" id="a_airline_8h_html"><div class="ttname"><a href="_airline_8h.html">Airline.h</a></div></div>
+<div class="ttc" id="a_airport_8h_html"><div class="ttname"><a href="_airport_8h.html">Airport.h</a></div></div>
+<div class="ttc" id="a_helpy_8h_html"><div class="ttname"><a href="_helpy_8h.html">Helpy.h</a></div></div>
+<div class="ttc" id="aclass_air_graph_html"><div class="ttname"><a href="class_air_graph.html">AirGraph</a></div><div class="ttdef"><b>Definition:</b> AirGraph.h:31</div></div>
+<div class="ttc" id="aclass_helpy_html"><div class="ttname"><a href="class_helpy.html">Helpy</a></div><div class="ttdef"><b>Definition:</b> Helpy.h:13</div></div>
+<div class="ttc" id="aclass_reader_html"><div class="ttname"><a href="class_reader.html">Reader</a></div><div class="ttdef"><b>Definition:</b> Reader.h:19</div></div>
+<div class="ttc" id="aclass_reader_html_a5726b5e70d0d528c323a4f3b4fe3d12f"><div class="ttname"><a href="class_reader.html#a5726b5e70d0d528c323a4f3b4fe3d12f">Reader::readAll</a></div><div class="ttdeci">void readAll()</div><div class="ttdoc">reads all the files</div><div class="ttdef"><b>Definition:</b> Reader.cpp:26</div></div>
+<div class="ttc" id="aclass_reader_html_a66c9460b5ed5a1969cefebc02b3bed77"><div class="ttname"><a href="class_reader.html#a66c9460b5ed5a1969cefebc02b3bed77">Reader::readFlights</a></div><div class="ttdeci">void readFlights()</div><div class="ttdoc">reads the file which contains information about the flights</div><div class="ttdef"><b>Definition:</b> Reader.cpp:125</div></div>
+<div class="ttc" id="aclass_reader_html_a73a93ec23a010e773d42bb0ac96a23f1"><div class="ttname"><a href="class_reader.html#a73a93ec23a010e773d42bb0ac96a23f1">Reader::readAirports</a></div><div class="ttdeci">void readAirports()</div><div class="ttdoc">reads the file which contains information about the Airports</div><div class="ttdef"><b>Definition:</b> Reader.cpp:74</div></div>
+<div class="ttc" id="aclass_reader_html_ad9f1bd8495dfcf5772691a7aeea20c2c"><div class="ttname"><a href="class_reader.html#ad9f1bd8495dfcf5772691a7aeea20c2c">Reader::getHelpy</a></div><div class="ttdeci">Helpy getHelpy()</div><div class="ttdoc">creates a Helpy object, passes it the read information and returns it</div><div class="ttdef"><b>Definition:</b> Reader.cpp:157</div></div>
+<div class="ttc" id="aclass_reader_html_af068ec20958e324c4f5a5634297c84a8"><div class="ttname"><a href="class_reader.html#af068ec20958e324c4f5a5634297c84a8">Reader::readAirlines</a></div><div class="ttdeci">void readAirlines()</div><div class="ttdoc">reads the file which contains information about the Airlines</div><div class="ttdef"><b>Definition:</b> Reader.cpp:35</div></div>
+<div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdef"><b>Definition:</b> AirGraph.h:19</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

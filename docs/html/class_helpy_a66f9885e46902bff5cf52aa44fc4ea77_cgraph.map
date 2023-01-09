@@ -1,0 +1,6 @@
+<map id="Helpy::readCity" name="Helpy::readCity">
+<area shape="rect" id="node1" title="reads the name of a city/country from the console @complexity O(n^2)" coords="5,29,119,55"/>
+<area shape="rect" id="node2" href="$class_helpy.html#ada23e5d42122289d1fa0d21ba080ec54" title="takes a user inputted string and modifies it so that it becomes well&#45;written @complexity O(n)" coords="341,5,476,31"/>
+<area shape="rect" id="node3" href="$class_helpy.html#a07cfd0c52c5be6cea63f5c39161ddaea" title="reads the code/name of an airport from the console @complexity O(n)" coords="167,55,293,80"/>
+<area shape="rect" id="node4" href="$class_helpy.html#a555c23037bdcba9c140448908cb67c34" title="turns all the characters of a string into lowercase or uppercase @complexity O(n)" coords="347,55,470,80"/>
+</map>

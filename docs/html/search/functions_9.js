@@ -1,4 +1,20 @@
 var searchData=
 [
-  ['terminal_0',['terminal',['../class_helpy.html#aaa754efec4177b0c763859b5847d10d3',1,'Helpy']]]
+  ['readairlines_0',['readAirlines',['../class_reader.html#af068ec20958e324c4f5a5634297c84a8',1,'Reader']]],
+  ['readairport_1',['readAirport',['../class_helpy.html#a07cfd0c52c5be6cea63f5c39161ddaea',1,'Helpy']]],
+  ['readairports_2',['readAirports',['../class_reader.html#a73a93ec23a010e773d42bb0ac96a23f1',1,'Reader']]],
+  ['readall_3',['readAll',['../class_reader.html#a5726b5e70d0d528c323a4f3b4fe3d12f',1,'Reader']]],
+  ['readcity_4',['readCity',['../class_helpy.html#a66f9885e46902bff5cf52aa44fc4ea77',1,'Helpy']]],
+  ['readcoordinates_5',['readCoordinates',['../class_helpy.html#af162325450bc145f1936f2d926afe45c',1,'Helpy']]],
+  ['reader_6',['Reader',['../class_reader.html#a14cb95421e4589df27de8315e807eed0',1,'Reader']]],
+  ['readflights_7',['readFlights',['../class_reader.html#a66c9460b5ed5a1969cefebc02b3bed77',1,'Reader']]],
+  ['readinput_8',['readInput',['../class_helpy.html#aebbc6852064a21221d3fb054e97aaec3',1,'Helpy']]],
+  ['readlocation_9',['readLocation',['../class_helpy.html#a4423bd1450df0994030a055598d6bd16',1,'Helpy']]],
+  ['readnumber_10',['readNumber',['../class_helpy.html#ab7d64ab16c804e5e5ecaa87246bc82a6',1,'Helpy']]],
+  ['readrestrictions_11',['readRestrictions',['../class_helpy.html#a00ddd92a095c970241a1ae73a195608f',1,'Helpy']]],
+  ['readusableairlines_12',['readUsableAirlines',['../class_helpy.html#ac96f8c02e2d55ed557a221b879d57d43',1,'Helpy']]],
+  ['readusableairports_13',['readUsableAirports',['../class_helpy.html#a50f67ed10ca5d7255237c81b5098924a',1,'Helpy']]],
+  ['readusablecities_14',['readUsableCities',['../class_helpy.html#a6101fe619f9ad4a830253790e6c70d0c',1,'Helpy']]],
+  ['readusablecountries_15',['readUsableCountries',['../class_helpy.html#a4cfecf6a7a1a86dabca06048a7c49274',1,'Helpy']]],
+  ['reset_16',['reset',['../class_air_graph.html#a32ba540038b3bda18388f4ad5f12f89d',1,'AirGraph']]]
 ];

@@ -1,0 +1,5 @@
+<map id="Helpy::setAirports" name="Helpy::setAirports">
+<area shape="rect" id="node1" title="adds airports to the Helpy database" coords="276,5,403,31"/>
+<area shape="rect" id="node2" href="$class_reader.html#ad9f1bd8495dfcf5772691a7aeea20c2c" title="creates a Helpy object, passes it the read information and returns it" coords="104,5,228,31"/>
+<area shape="rect" id="node3" href="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " coords="5,5,56,31"/>
+</map>
