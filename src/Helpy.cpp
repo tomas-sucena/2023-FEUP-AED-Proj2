@@ -629,6 +629,8 @@ void Helpy::printFlights(const string& airport){
     table << fort::header
           << "Airport" << "Airlines" << fort::endr;
 
+    int citiesReached = 0;
+
     for (const auto e : graph.getFlights(airport)){
         const Airport& dest = e->dest;
         auto it = e->airlines.begin();
@@ -651,7 +653,11 @@ void Helpy::printFlights(const string& airport){
         table << fort::separator;
     }
 
-    cout << table.to_string();
+    cout << table.to_string() << endl;
+
+    cout << endl << "In total:" << endl
+         << "Cities reached: " << endl
+         << "Countries reached: " << endl;
 }
 
 /**
