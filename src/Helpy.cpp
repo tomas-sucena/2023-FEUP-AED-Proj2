@@ -394,7 +394,7 @@ uSet<string> Helpy::readUsableCities(){
     uSet<string> airports;
 
     cout << endl << YELLOW << BREAK << RESET << endl << endl;
-    cout << "Please type the names of the " << BOLD << "cities" << RESET << " you would like to " << GREEN << "use"
+    cout << "Please type the " << BOLD << "names" << RESET << " of the " << YELLOW << "cities" << RESET << " you would like to " << GREEN << "use"
          << RESET << ", separated by a comma (ex: Porto,Lisbon,...).\n"
          << "If there is no city you would particularly like to visit, press Enter.\n\n";
 
@@ -422,8 +422,8 @@ uSet<string> Helpy::readUsableCities(){
     airports = airportCodes;
 
     cout << endl << YELLOW << BREAK << RESET << endl << endl;
-    cout << "Please type the " << BOLD << "names" << RESET << " of the " << BOLD << "cities" << RESET
-         << " you would like to " << RED << "avoid" << RESET << ", separated by a comma (ex: Porto,Lisbon,...)\n"
+    cout << "Please type the " << BOLD << "names" << RESET << " of the " << YELLOW << "cities" << RESET
+         << " you would like to " << RED << "avoid" << RESET << ", separated by a comma (ex: Porto,Lisbon,...).\n"
          << "If there is no city you wish to avoid, press Enter.\n\n";
 
     getline(cin, line);
@@ -455,8 +455,8 @@ uSet<string> Helpy::readUsableCountries(){
     uSet<string> airports;
 
     cout << endl << YELLOW << BREAK << RESET << endl << endl;
-    cout << "Please type the names of the " << BOLD << "countries" << RESET << " you would like to " << GREEN << "use"
-         << RESET << ", separated by a comma (ex: Portugal,Spain,...)\n"
+    cout << "Please type the " << BOLD << "names" << RESET << " of the " << YELLOW << "countries" << RESET << " you would like to " << GREEN << "use"
+         << RESET << ", separated by a comma (ex: Portugal,Spain,...).\n"
          << "If there is no country you would particularly like to visit, press Enter.\n\n";
 
     // countries to USE
@@ -484,7 +484,7 @@ uSet<string> Helpy::readUsableCountries(){
 
     cout << endl << YELLOW << BREAK << RESET << endl << endl;
     cout << "Please type the " << BOLD << "names" << RESET << " of the " << YELLOW << "countries" << RESET
-         << " you would like to " << RED << "avoid" << RESET << ", separated by a comma (ex: Brazil,Mexico,...)\n"
+         << " you would like to " << RED << "avoid" << RESET << ", separated by a comma (ex: Brazil,Mexico,...).\n"
          << "If there is no country you wish to avoid, press Enter.\n\n";
 
     getline(cin, line);
@@ -516,7 +516,7 @@ uSet<string> Helpy::readUsableAirports(){
     uSet<string> airports;
 
     cout << endl << YELLOW << BREAK << RESET << endl << endl;
-    cout << "Please type the codes of the " << BOLD << "airports" << RESET << " you would like to "
+    cout << "Please type the " << BOLD << "codes" << RESET << " of the " << YELLOW << "airports" << RESET << " you would like to "
          << GREEN << "use" << RESET << ", separated by a comma (ex: OPO,PXO,...).\n"
          << "If there is no airport you would particularly like to use, press Enter.\n\n";
 
@@ -546,7 +546,7 @@ uSet<string> Helpy::readUsableAirports(){
     airports = airportCodes;
 
     cout << endl << YELLOW << BREAK << RESET << endl << endl;
-    cout << "Please type the codes of the " << BOLD << "airports" << RESET << " you would like to "
+    cout << "Please type the " << BOLD << "codes" << RESET << " of the " << YELLOW << "airports" << RESET << " you would like to "
          << RED << "avoid" << RESET << ", separated by a comma (ex: OPO,PXO,...).\n"
          << "If there is no airport you wish to avoid, simply press Enter.\n\n";
 

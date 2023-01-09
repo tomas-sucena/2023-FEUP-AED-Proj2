@@ -1,5 +1,5 @@
-<map id="Helpy::readUsableCities" name="Helpy::readUsableCities">
-<area shape="rect" id="node1" title="reads from the console the selection of cities to consider @complexity O(n^2)" coords="1381,31,1545,56"/>
+<map id="Helpy::readUsableCountries" name="Helpy::readUsableCountries">
+<area shape="rect" id="node1" title="reads from the console the selection of countries to consider @complexity O(n^2)" coords="1381,31,1568,56"/>
 <area shape="rect" id="node2" href="$class_helpy.html#a50f67ed10ca5d7255237c81b5098924a" title="reads the airports that the user wants to use @complexity O(n^2)" coords="1159,31,1333,56"/>
 <area shape="rect" id="node3" href="$class_helpy.html#a00ddd92a095c970241a1ae73a195608f" title="reads the Airlines and the Airports the user would like to use @complexity O(n^2)" coords="952,31,1111,56"/>
 <area shape="rect" id="node4" href="$class_helpy.html#a7052e9a5e346e41892c26da08cf9c06e" title="displays all the Airports you can reach from a starting point in a certain number of flights @complex..." coords="692,5,904,31"/>

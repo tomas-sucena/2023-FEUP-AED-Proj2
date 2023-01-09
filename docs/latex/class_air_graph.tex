@@ -36,7 +36,7 @@ void \mbox{\hyperlink{class_air_graph_a65c76b3fe1e64fca3b2ea5a3addae74a}{validat
 \mbox{\hyperlink{_air_graph_8h_a8d94c3afa699ded58e5c186792d1eb9e}{u\+Set}}$<$ \mbox{\hyperlink{class_airport}{Airport}} $>$ \mbox{\hyperlink{class_air_graph_ad3041b4d3f5de423e3b4facb3a507528}{dfs}} (const string \&airport, double distance)
 \begin{DoxyCompactList}\small\item\em implementation of the Depth-\/\+First Search algorithm, which iterates through all the vertices and edges @complexity O($\vert$\+V$\vert$ + $\vert$\+E$\vert$) \end{DoxyCompactList}\item 
 list$<$ \mbox{\hyperlink{_air_graph_8h_a9a4b261ee74f577bbd57315cb754f607}{Path}} $>$ \mbox{\hyperlink{class_air_graph_af716d2cfb5177959c3011881f9b4ae81}{bfs}} (const string \&airportA, const string \&airportB)
-\item 
+\begin{DoxyCompactList}\small\item\em implementation of the Breadth-\/\+First Search algorithm that returns the shortest paths (in terms of flights) from an \mbox{\hyperlink{class_airport}{Airport}} to another \end{DoxyCompactList}\item 
 list$<$ \mbox{\hyperlink{class_airport}{Airport}} $>$ \mbox{\hyperlink{class_air_graph_a8ee9baedc765a3487da56030713f074a}{bfs}} (const string \&airport, int flights)
 \begin{DoxyCompactList}\small\item\em implementation of the Breadth-\/\+First Search algorithm, which iterates through all the vertices and edges @complexity O($\vert$\+V$\vert$ + $\vert$\+E$\vert$) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Friends}
@@ -176,8 +176,21 @@ list$<$\+Airport$>$ with the reachable Airports
 \doxysubsubsection{\texorpdfstring{bfs()}{bfs()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily list$<$ \mbox{\hyperlink{_air_graph_8h_a9a4b261ee74f577bbd57315cb754f607}{Path}} $>$ Air\+Graph\+::bfs (\begin{DoxyParamCaption}\item[{const string \&}]{airportA,  }\item[{const string \&}]{airportB }\end{DoxyParamCaption})}
 
-Here is the caller graph for this function\+:
-\nopagebreak
+
+
+implementation of the Breadth-\/\+First Search algorithm that returns the shortest paths (in terms of flights) from an \mbox{\hyperlink{class_airport}{Airport}} to another 
+
+
+\begin{DoxyParams}{Parameters}
+{\em airportA} & code of the \mbox{\hyperlink{class_airport}{Airport}} which constitutes the starting point \\
+\hline
+{\em airportB} & code of the \mbox{\hyperlink{class_airport}{Airport}} which constitutes the destination \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+list$<$\+Path$>$ with the shortest paths 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -204,16 +217,14 @@ implementation of the Depth-\/\+First Search algorithm, which iterates through a
 \begin{DoxyReturn}{Returns}
 container with all of the reachable Airports 
 \end{DoxyReturn}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=154pt]{class_air_graph_ad3041b4d3f5de423e3b4facb3a507528_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -319,8 +330,7 @@ gets all the shortest paths from one \mbox{\hyperlink{class_airport}{Airport}} t
 \begin{DoxyReturn}{Returns}
 list$<$\+Path$>$ with the shortest paths 
 \end{DoxyReturn}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -356,8 +366,7 @@ performs a Breadth-\/\+First Search to get the Airports you can reach in a certa
 \begin{DoxyReturn}{Returns}
 list$<$\+Airport$>$ with the reachable Airports 
 \end{DoxyReturn}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

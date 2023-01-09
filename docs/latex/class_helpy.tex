@@ -30,9 +30,9 @@ string \mbox{\hyperlink{class_helpy_a4423bd1450df0994030a055598d6bd16}{read\+Loc
 \mbox{\hyperlink{_helpy_8h_a8d94c3afa699ded58e5c186792d1eb9e}{u\+Set}}$<$ string $>$ \mbox{\hyperlink{class_helpy_ac96f8c02e2d55ed557a221b879d57d43}{read\+Usable\+Airlines}} ()
 \begin{DoxyCompactList}\small\item\em reads from the console the selection of airlines to use @complexity O(n) \end{DoxyCompactList}\item 
 \mbox{\hyperlink{_helpy_8h_a8d94c3afa699ded58e5c186792d1eb9e}{u\+Set}}$<$ string $>$ \mbox{\hyperlink{class_helpy_a6101fe619f9ad4a830253790e6c70d0c}{read\+Usable\+Cities}} ()
-\begin{DoxyCompactList}\small\item\em reads from the console the selection of airlines to use @complexity O(n$^\wedge$2) \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em reads from the console the selection of cities to consider @complexity O(n$^\wedge$2) \end{DoxyCompactList}\item 
 \mbox{\hyperlink{_helpy_8h_a8d94c3afa699ded58e5c186792d1eb9e}{u\+Set}}$<$ string $>$ \mbox{\hyperlink{class_helpy_a4cfecf6a7a1a86dabca06048a7c49274}{read\+Usable\+Countries}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em reads from the console the selection of countries to consider @complexity O(n$^\wedge$2) \end{DoxyCompactList}\item 
 \mbox{\hyperlink{_helpy_8h_a8d94c3afa699ded58e5c186792d1eb9e}{u\+Set}}$<$ string $>$ \mbox{\hyperlink{class_helpy_a50f67ed10ca5d7255237c81b5098924a}{read\+Usable\+Airports}} ()
 \begin{DoxyCompactList}\small\item\em reads the airports that the user wants to use @complexity O(n$^\wedge$2) \end{DoxyCompactList}\item 
 \mbox{\hyperlink{_helpy_8h_a8d94c3afa699ded58e5c186792d1eb9e}{u\+Set}}$<$ string $>$ $\ast$ \mbox{\hyperlink{class_helpy_a00ddd92a095c970241a1ae73a195608f}{read\+Restrictions}} ()
@@ -93,8 +93,7 @@ Construct a new \mbox{\hyperlink{class_helpy}{Helpy}}\+:\+: \mbox{\hyperlink{cla
 
 executes the advanced mode of the UI @complexity O(1) 
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -147,8 +146,7 @@ Here is the caller graph for this function\+:\nopagebreak
 
 displays all the Airports you can reach from a starting point in a certain number of flights @complexity O(n$^\wedge$2 + $\vert$\+V$\vert$ + $\vert$\+E$\vert$) 
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -172,8 +170,7 @@ Here is the caller graph for this function\+:\nopagebreak
 
 displays the shortest routes you can take from an \mbox{\hyperlink{class_airport}{Airport}} to another @complexity O(n$^\wedge$2 + $\vert$\+V$\vert$ + $\vert$\+E$\vert$) 
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -197,8 +194,7 @@ Here is the caller graph for this function\+:\nopagebreak
 
 executes the guided mode of the UI @complexity O(1) 
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -316,8 +312,7 @@ processes the commands that were inputted @complexity O(n$^\wedge$2 $\ast$ log(n
 \begin{DoxyReturn}{Returns}
 \textquotesingle{}true\textquotesingle{} if the command exists, \textquotesingle{}false\textquotesingle{} otherwise 
 \end{DoxyReturn}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -621,10 +616,10 @@ Here is the caller graph for this function\+:\nopagebreak
 
 
 
-reads from the console the selection of airlines to use @complexity O(n$^\wedge$2) 
+reads from the console the selection of cities to consider @complexity O(n$^\wedge$2) 
 
 \begin{DoxyReturn}{Returns}
-the codes of the selected airlines 
+the codes of the airports that are in the considered cities 
 \end{DoxyReturn}
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
@@ -646,6 +641,27 @@ Here is the caller graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{readUsableCountries()}{readUsableCountries()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{_helpy_8h_a8d94c3afa699ded58e5c186792d1eb9e}{u\+Set}}$<$ string $>$ Helpy\+::read\+Usable\+Countries (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+reads from the console the selection of countries to consider @complexity O(n$^\wedge$2) 
+
+\begin{DoxyReturn}{Returns}
+the codes of the airports that are in the considered countries 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_helpy_a4cfecf6a7a1a86dabca06048a7c49274_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_helpy_a4cfecf6a7a1a86dabca06048a7c49274_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{class_helpy_a6b9cb10dea4b1b85857734da2aa817c2}\label{class_helpy_a6b9cb10dea4b1b85857734da2aa817c2}} 
 \index{Helpy@{Helpy}!setAirlines@{setAirlines}}
 \index{setAirlines@{setAirlines}!Helpy@{Helpy}}
@@ -726,8 +742,7 @@ Here is the caller graph for this function\+:\nopagebreak
 
 allows the user to choose the mode of the UI @complexity O(n$^\wedge$2) 
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

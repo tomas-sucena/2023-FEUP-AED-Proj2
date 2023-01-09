@@ -1,5 +1,5 @@
 <map id="Helpy::readUsableCities" name="Helpy::readUsableCities">
-<area shape="rect" id="node1" title="reads from the console the selection of airlines to use @complexity O(n^2)" coords="5,31,169,56"/>
+<area shape="rect" id="node1" title="reads from the console the selection of cities to consider @complexity O(n^2)" coords="5,31,169,56"/>
 <area shape="rect" id="node2" href="$class_helpy.html#a555c23037bdcba9c140448908cb67c34" title="turns all the characters of a string into lowercase or uppercase @complexity O(n)" coords="223,5,346,31"/>
 <area shape="rect" id="node3" href="$class_helpy.html#ada23e5d42122289d1fa0d21ba080ec54" title="takes a user inputted string and modifies it so that it becomes well&#45;written @complexity O(n)" coords="217,55,352,80"/>
 </map>

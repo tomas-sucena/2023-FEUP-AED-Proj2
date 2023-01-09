@@ -1,6 +1,6 @@
 <map id="AirGraph::getReachableAirports" name="AirGraph::getReachableAirports">
 <area shape="rect" id="node1" title="performs a Breadth&#45;First Search to get the Airports you can reach in a certain number of flights @com..." coords="5,55,212,80"/>
-<area shape="rect" id="node2" href="$class_air_graph.html#af716d2cfb5177959c3011881f9b4ae81" title=" " coords="274,5,373,31"/>
+<area shape="rect" id="node2" href="$class_air_graph.html#af716d2cfb5177959c3011881f9b4ae81" title="implementation of the Breadth&#45;First Search algorithm that returns the shortest paths (in terms of fli..." coords="274,5,373,31"/>
 <area shape="rect" id="node3" href="$class_air_graph.html#a32ba540038b3bda18388f4ad5f12f89d" title="sets to &#39;false&#39; the &#39;visited&#39; parameter of all vertices @complexity O(|V| + |E|)" coords="268,55,379,80"/>
 <area shape="rect" id="node4" href="$class_air_graph.html#a65c76b3fe1e64fca3b2ea5a3addae74a" title="checks which vertices and edges are valid @complexity O(|V| + |E|)" coords="260,104,387,129"/>
 <area shape="rect" id="node5" href="$class_air_graph.html#aa620f24c5ec6942c068d65c5298671d3" title="checks if an edge contains at least one Airline that the user wants to use @complexity O(|E|)" coords="441,79,603,104"/>

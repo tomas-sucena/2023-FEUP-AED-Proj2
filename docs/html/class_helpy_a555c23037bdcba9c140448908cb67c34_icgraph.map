@@ -1,21 +1,22 @@
 <map id="Helpy::lowercase" name="Helpy::lowercase">
-<area shape="rect" id="node1" title="turns all the characters of a string into lowercase or uppercase @complexity O(n)" coords="1652,270,1775,295"/>
-<area shape="rect" id="node2" href="$class_helpy.html#a8fa3cfb126e6423475a34637b50d8334" title="executes the advanced mode of the UI @complexity O(1)" coords="263,219,421,245"/>
-<area shape="rect" id="node5" href="$class_helpy.html#af5932f8789f41f033f894cd659aff329" title="executes the guided mode of the UI @complexity O(1)" coords="271,294,413,319"/>
-<area shape="rect" id="node6" href="$class_helpy.html#a07cfd0c52c5be6cea63f5c39161ddaea" title="reads the code/name of an airport from the console @complexity O(n)" coords="1454,145,1581,170"/>
-<area shape="rect" id="node14" href="$class_helpy.html#aebbc6852064a21221d3fb054e97aaec3" title="reads a line of user input @complexity O(n^2)" coords="1236,395,1355,421"/>
-<area shape="rect" id="node16" href="$class_helpy.html#ab7d64ab16c804e5e5ecaa87246bc82a6" title="reads a number from the console @complexity O(n^2)" coords="1450,195,1585,221"/>
-<area shape="rect" id="node17" href="$class_helpy.html#ac96f8c02e2d55ed557a221b879d57d43" title="reads from the console the selection of airlines to use @complexity O(n)" coords="1431,245,1604,270"/>
-<area shape="rect" id="node18" href="$class_helpy.html#a50f67ed10ca5d7255237c81b5098924a" title="reads the airports that the user wants to use @complexity O(n^2)" coords="1208,346,1383,371"/>
-<area shape="rect" id="node19" href="$class_helpy.html#a6101fe619f9ad4a830253790e6c70d0c" title="reads from the console the selection of airlines to use @complexity O(n^2)" coords="1435,294,1599,319"/>
-<area shape="rect" id="node3" href="$class_helpy.html#aaa754efec4177b0c763859b5847d10d3" title="allows the user to choose the mode of the UI @complexity O(n^2)" coords="104,294,215,319"/>
-<area shape="rect" id="node4" href="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " coords="5,294,56,319"/>
+<area shape="rect" id="node1" title="turns all the characters of a string into lowercase or uppercase @complexity O(n)" coords="1665,294,1788,319"/>
+<area shape="rect" id="node2" href="$class_helpy.html#a8fa3cfb126e6423475a34637b50d8334" title="executes the advanced mode of the UI @complexity O(1)" coords="263,222,421,247"/>
+<area shape="rect" id="node5" href="$class_helpy.html#af5932f8789f41f033f894cd659aff329" title="executes the guided mode of the UI @complexity O(1)" coords="271,346,413,371"/>
+<area shape="rect" id="node6" href="$class_helpy.html#a07cfd0c52c5be6cea63f5c39161ddaea" title="reads the code/name of an airport from the console @complexity O(n)" coords="1461,145,1587,170"/>
+<area shape="rect" id="node14" href="$class_helpy.html#aebbc6852064a21221d3fb054e97aaec3" title="reads a line of user input @complexity O(n^2)" coords="1236,347,1355,373"/>
+<area shape="rect" id="node16" href="$class_helpy.html#ab7d64ab16c804e5e5ecaa87246bc82a6" title="reads a number from the console @complexity O(n^2)" coords="1457,194,1591,219"/>
+<area shape="rect" id="node17" href="$class_helpy.html#ac96f8c02e2d55ed557a221b879d57d43" title="reads from the console the selection of airlines to use @complexity O(n)" coords="1437,243,1611,269"/>
+<area shape="rect" id="node18" href="$class_helpy.html#a50f67ed10ca5d7255237c81b5098924a" title="reads the airports that the user wants to use @complexity O(n^2)" coords="1208,397,1383,422"/>
+<area shape="rect" id="node19" href="$class_helpy.html#a6101fe619f9ad4a830253790e6c70d0c" title="reads from the console the selection of cities to consider @complexity O(n^2)" coords="1442,446,1606,471"/>
+<area shape="rect" id="node20" href="$class_helpy.html#a4cfecf6a7a1a86dabca06048a7c49274" title="reads from the console the selection of countries to consider @complexity O(n^2)" coords="1431,345,1617,370"/>
+<area shape="rect" id="node3" href="$class_helpy.html#aaa754efec4177b0c763859b5847d10d3" title="allows the user to choose the mode of the UI @complexity O(n^2)" coords="104,346,215,371"/>
+<area shape="rect" id="node4" href="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " coords="5,346,56,371"/>
 <area shape="rect" id="node7" href="$class_helpy.html#aa0039898fad6ba25654635123abe404b" title="displays all the flights you can take on a given Airport, as well as the Airlines that make said flig..." coords="952,69,1160,94"/>
-<area shape="rect" id="node9" href="$class_helpy.html#a66f9885e46902bff5cf52aa44fc4ea77" title="reads the name of a city/country from the console @complexity O(n^2)" coords="1239,145,1352,170"/>
-<area shape="rect" id="node10" href="$class_helpy.html#a4423bd1450df0994030a055598d6bd16" title="reads a location based on an airport OR a city OR a country OR coordinates @complexity O(n^2)" coords="987,194,1125,219"/>
-<area shape="rect" id="node13" href="$class_helpy.html#af162325450bc145f1936f2d926afe45c" title="reads coordinates from the console and displays the airports nearest that location @complexity O(n^2)" coords="1216,194,1375,219"/>
-<area shape="rect" id="node8" href="$class_helpy.html#ac18c8353d0a7f41c9363433f826988fe" title="processes the commands that were inputted @complexity O(n^2 * log(n))" coords="469,219,644,245"/>
-<area shape="rect" id="node11" href="$class_helpy.html#a7052e9a5e346e41892c26da08cf9c06e" title="displays all the Airports you can reach from a starting point in a certain number of flights @complex..." coords="692,245,904,270"/>
-<area shape="rect" id="node12" href="$class_helpy.html#a55726343e5f6dac4150ca434cd445e70" title="displays the shortest routes you can take from an Airport to another @complexity O(n^2 + |V| + |E|)" coords="700,195,896,221"/>
-<area shape="rect" id="node15" href="$class_helpy.html#a00ddd92a095c970241a1ae73a195608f" title="reads the Airlines and the Airports the user would like to use @complexity O(n^2)" coords="977,295,1135,321"/>
+<area shape="rect" id="node9" href="$class_helpy.html#a66f9885e46902bff5cf52aa44fc4ea77" title="reads the name of a city/country from the console @complexity O(n^2)" coords="1239,94,1352,119"/>
+<area shape="rect" id="node10" href="$class_helpy.html#a4423bd1450df0994030a055598d6bd16" title="reads a location based on an airport OR a city OR a country OR coordinates @complexity O(n^2)" coords="987,195,1125,221"/>
+<area shape="rect" id="node13" href="$class_helpy.html#af162325450bc145f1936f2d926afe45c" title="reads coordinates from the console and displays the airports nearest that location @complexity O(n^2)" coords="1216,195,1375,221"/>
+<area shape="rect" id="node8" href="$class_helpy.html#ac18c8353d0a7f41c9363433f826988fe" title="processes the commands that were inputted @complexity O(n^2 * log(n))" coords="469,222,644,247"/>
+<area shape="rect" id="node11" href="$class_helpy.html#a7052e9a5e346e41892c26da08cf9c06e" title="displays all the Airports you can reach from a starting point in a certain number of flights @complex..." coords="692,246,904,271"/>
+<area shape="rect" id="node12" href="$class_helpy.html#a55726343e5f6dac4150ca434cd445e70" title="displays the shortest routes you can take from an Airport to another @complexity O(n^2 + |V| + |E|)" coords="700,197,896,222"/>
+<area shape="rect" id="node15" href="$class_helpy.html#a00ddd92a095c970241a1ae73a195608f" title="reads the Airlines and the Airports the user would like to use @complexity O(n^2)" coords="977,297,1135,322"/>
 </map>
