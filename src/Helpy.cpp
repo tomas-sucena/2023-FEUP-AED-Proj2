@@ -626,21 +626,39 @@ uSet<string>* Helpy::readRestrictions(){
 /**
  * @brief prints in a table the name, city and country of the Airports in the argument list
  * @complexity O(n)
- * @param airports list of Airports whose information will be printed
+ * @param airports container with the Airports whose information will be printed
+ * @param columnNames list with the names of each table column
  */
-void Helpy::printAirports(const list<Airport>& airports){
+template <typename T>
+void Helpy::printAirports(T airports, const list<string>& columnNames){
+    cout << endl << YELLOW << BREAK << RESET << endl;
+
+    if (airports.empty()){
+        cout << endl << "It appears there are no results that match your request..." << endl;
+        return;
+    }
+
+    cout << endl << "These are the results of my search:" << endl << endl;
+
     fort::char_table table;
     table.set_border_style(FT_NICE_STYLE);
 
-    table.column(0).set_cell_text_align(fort::text_align::center);
+    table << fort::header;
 
-    table << fort::header
-          << "Airport" << fort::endr;
+    auto namesIt = columnNames.begin();
+    for (int i = 0; i < (int) columnNames.size(); i++){
+        table << *namesIt++;
+        table.column(i).set_cell_text_align(fort::text_align::center);
+    }
+
+    table << fort::endr;
 
     uSet<string> citiesReached, countriesReached;
 
-    for (const Airport& a : airports){
-        table << a.getName() << fort::endr;
+    for (const auto& p : airports){
+        const Airport& a = p.first;
+
+        table << a.getName() << p.second << fort::endr;
 
         string airportInfo = '(' + a.getCity() + ", " + a.getCountry() + ')';
 
@@ -952,7 +970,7 @@ void Helpy::displayAirportInformation(){
 }
 
 /**
- * @brief displays all the Airports you can reach from a starting point in a certain number of flights
+ * @brief displays all the Airports you can reach from a starting point, given either a number of flights or a flight distance
  * @complexity O(n^2 + |V| + |E|)
  */
 void Helpy::displayReachableAirports(){
@@ -967,27 +985,21 @@ void Helpy::displayReachableAirports(){
     string choice = readInput(instr.str(), options);
 
     // calculate reachable airports
-    list<Airport> reached;
+    list<string> columnNames = {"Airport"};
 
     if (choice == "distance"){
         double distance = readNumber("Please type the flight distance you would like to consider:");
-        reached = graph.getReachableAirports(airport, distance, readRestrictions());
-    }
-    else{
-        int flights = (int) readNumber("Please type the number of flights you want to take:");
-        reached = graph.getReachableAirports(airport, flights, readRestrictions());
-    }
+        columnNames.push_back("Distance (km)");
 
-    cout << endl << YELLOW << BREAK << RESET << endl;
+        printAirports(graph.getReachableAirports(airport, distance, readRestrictions()), columnNames);
 
-    if (reached.empty()){
-        cout << endl << "It appears there are no results that match your request..." << endl;
         return;
     }
 
-    cout << endl << "These are the results of my search:" << endl << endl;
+    int flights = (int) readNumber("Please type the number of flights you want to take:");
+    columnNames.push_back("Flights");
 
-    printAirports(reached);
+    printAirports(graph.getReachableAirports(airport, flights, readRestrictions()), columnNames);
 }
 
 /**

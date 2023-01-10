@@ -49,7 +49,8 @@ class Helpy {
         uSet<string> readUsableAirports();
         uSet<string>* readRestrictions();
 
-        void printAirports(const list<Airport>& airports);
+        template <typename T>
+        void printAirports(T airports, const list<string>& columnNames);
         void printFlights(const string& airport);
         void printPath(const Path& p);
 

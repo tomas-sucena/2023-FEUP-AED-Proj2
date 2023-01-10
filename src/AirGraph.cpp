@@ -78,6 +78,27 @@ set<AirGraph::Edge*> AirGraph::getFlights(const string& code){
 }
 
 /**
+ * @brief gets the Airports nearest the location defined by the pair (lat, lon)
+ * @complexity O(|V|)
+ * @param lat latitude
+ * @param lon longitude
+ * @param rad radius of search
+ * @return map<double, string> containing Airports and their corresponding distance to the specified location
+ */
+map<double, string> AirGraph::getNearbyAirports(double lat, double lon, double rad){
+    map<double, string> airports;
+
+    for(auto &[key, val]:vertices){
+        double dist = val.value.getDistance(lat, lon);
+        if (dist <= rad){
+            airports.insert({dist, val.value.getName()});
+        }
+    }
+
+    return airports;
+}
+
+/**
  * @brief sets to 'false' the 'visited' parameter of all vertices
  * @complexity O(|V| + |E|)
  */
@@ -165,15 +186,15 @@ void AirGraph::validate(uSet<string>* use){
  * @brief implementation of the Depth-First Search algorithm, which iterates through all the vertices and edges
  * @complexity O(|V| + |E|)
  * @param airport code of the Airport that is stored in the initial vertex
- * @param distance radius
+ * @param distance flight distance (in km)
+ * @param travelled number of kilometers travelled
  * @return container with all of the reachable Airports
  */
-uSet<Airport> AirGraph::dfs(const string& airport, double distance){
-    uSet<Airport> reached;
-    reached.insert(vertices[airport].value);
-
+uMap<Airport, double> AirGraph::dfs(const string& airport, double distance, double travelled){
+    uMap<Airport, double> reached;
     if (distance <= 0) return reached;
 
+    reached.insert({vertices[airport].value, travelled});
     vertices[airport].valid = false;
 
     for (const Edge* e : vertices[airport].adj){
@@ -181,7 +202,7 @@ uSet<Airport> AirGraph::dfs(const string& airport, double distance){
             continue;
         }
 
-        reached.merge(dfs(e->dest.getCode(), distance - e->distance));
+        reached.merge(dfs(e->dest.getCode(), distance - e->distance, e->distance));
     }
 
     return reached;
@@ -249,8 +270,8 @@ list<Path> AirGraph::bfs(const string& airportA, const string& airportB){
  * @param flights number of flights
  * @return list<Airport> with the reachable Airports
  */
-list<Airport> AirGraph::bfs(const string& airport, int flights){
-    list<Airport> res;
+list<pair<Airport, int>> AirGraph::bfs(const string& airport, int flights){
+    list<pair<Airport, int>> res;
 
     queue<string> unvisitedV; // unvisited vertices
     unvisitedV.push(airport);
@@ -258,12 +279,12 @@ list<Airport> AirGraph::bfs(const string& airport, int flights){
     list<string> visitedV = {airport};
 
     int currNeighbors = 1, nextNeighbors = 0;
+    int currFlight = 1;
 
     while (flights > 0 && !unvisitedV.empty()){
         string currV = unvisitedV.front(); // current vertex
         unvisitedV.pop ();
 
-        //cout << currV << " "; // show vertex order
         for (const Edge* e : vertices[currV].adj) {
             string w = e->dest.getCode();
 
@@ -272,7 +293,7 @@ list<Airport> AirGraph::bfs(const string& airport, int flights){
                 visitedV.push_back(w);
 
                 vertices[w].valid = false;
-                res.push_back(vertices[w].value);
+                res.push_back({vertices[w].value, currFlight});
 
                 nextNeighbors++;
             }
@@ -280,6 +301,7 @@ list<Airport> AirGraph::bfs(const string& airport, int flights){
 
         if (!--currNeighbors){
             flights--;
+            currFlight++;
 
             currNeighbors = nextNeighbors;
             nextNeighbors = 0;
@@ -297,13 +319,13 @@ list<Airport> AirGraph::bfs(const string& airport, int flights){
  * @param use set of Airlines and Airports that the user would like to use
  * @return list<Airport> with the reachable Airports
  */
-list<Airport> AirGraph::getReachableAirports(const string& airport, int flights, uSet<string>* use){
+list<pair<Airport, int>> AirGraph::getReachableAirports(const string& airport, int flights, uSet<string>* use){
     validate(use);
     if (!vertices[airport].valid){
         return {};
     }
 
-    const list<Airport>& reachable = bfs(airport, flights);
+    const list<pair<Airport, int>>& reachable = bfs(airport, flights);
     reset();
 
     return reachable;
@@ -317,37 +339,16 @@ list<Airport> AirGraph::getReachableAirports(const string& airport, int flights,
  * @param use set of Airlines and Airports that the user would like to use
  * @return list<Airport> with the reachable Airports
  */
-list<Airport> AirGraph::getReachableAirports(const string& airport, double distance, uSet<string>* use){
+uMap<Airport, double> AirGraph::getReachableAirports(const string& airport, double distance, uSet<string>* use){
     validate(use);
     if (!vertices[airport].valid){
         return {};
     }
 
-    const uSet<Airport>& reachable = dfs(airport, distance);
+    const uMap<Airport, double>& reachable = dfs(airport, distance);
     reset();
 
-    return {reachable.begin(), reachable.end()};
-}
-
-/**
- * @brief gets the Airports nearest the location defined by the pair (lat, lon)
- * @complexity O(|V|)
- * @param lat latitude
- * @param lon longitude
- * @param rad radius of search
- * @return map<double, string> containing Airports and their corresponding distance to the specified location
- */
-map<double, string> AirGraph::getNearbyAirports(double lat, double lon, double rad){
-    map<double, string> airports;
-
-    for(auto &[key, val]:vertices){
-        double dist = val.value.getDistance(lat, lon);
-        if(dist <= rad){
-            airports.insert({dist, val.value.getName()});
-        }
-    }
-
-    return airports;
+    return reachable;
 }
 
 /**
