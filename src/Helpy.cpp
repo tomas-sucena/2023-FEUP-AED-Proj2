@@ -640,9 +640,12 @@ void Helpy::printAirports(T airports, const list<string>& columnNames){
 
     cout << endl << "These are the results of my search:" << endl << endl;
 
+    // setting up the table
     fort::char_table table;
     table.set_border_style(FT_NICE_STYLE);
 
+    table.row(0).set_cell_content_text_style(fort::text_style::bold);
+    table.row(0).set_cell_content_fg_color(fort::color::yellow);
     table << fort::header;
 
     auto namesIt = columnNames.begin();
@@ -653,6 +656,7 @@ void Helpy::printAirports(T airports, const list<string>& columnNames){
 
     table << fort::endr;
 
+    // filling the table with data
     uSet<string> citiesReached, countriesReached;
 
     for (const auto& p : airports){
@@ -683,15 +687,19 @@ void Helpy::printAirports(T airports, const list<string>& columnNames){
  * @param airport the code of the Airport whose flights will be printed
  */
 void Helpy::printFlights(const string& airport){
+    // setting up the table
     fort::char_table table;
     table.set_border_style(FT_NICE_STYLE);
 
     for (int i = 0; i < 2; i++)
         table.column(i).set_cell_text_align(fort::text_align::center);
 
+    table.row(0).set_cell_content_text_style(fort::text_style::bold);
+    table.row(0).set_cell_content_fg_color(fort::color::yellow);
     table << fort::header
           << "Airport" << "Airlines" << fort::endr;
 
+    // filling the table with data
     int flightNum = 0;
     uSet<string> citiesReached, countriesReached;
 
@@ -735,15 +743,19 @@ void Helpy::printFlights(const string& airport){
  * @param p path to be printed
  */
 void Helpy::printPath(const Path& p){
+    // setting up the table
     fort::char_table table;
     table.set_border_style(FT_NICE_STYLE);
 
+    table.row(0).set_cell_content_text_style(fort::text_style::bold);
+    table.row(0).set_cell_content_fg_color(fort::color::yellow);
     for (int i = 0; i < 4; i++)
         table.column(i).set_cell_text_align(fort::text_align::center);
 
     table << fort::header
           << "N" << "Airport (start)" << "Airport (destination)" << "Airlines" << fort::endr;
 
+    // filling the table with data
     int order = 1;
     for (const auto* e : p){
         const Airport& src = e->src;
