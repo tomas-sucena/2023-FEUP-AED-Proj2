@@ -270,26 +270,35 @@ string Helpy::readCity(bool country){
  * @return the code of the airport the user selects
  */
 string Helpy::readCoordinates(){
-    // read the latitude
-    ostringstream instr;
-    instr << "Please type your " << BOLD << "latitude" << RESET << ':';
+    map<double, string> air;
 
-    double latitude = readNumber(instr.str());
+    while (true){
+        // read the latitude
+        ostringstream instr;
+        instr << "Please type your " << BOLD << "latitude" << RESET << ':';
 
-    // read the longitude
-    instr.clear(); instr.str("");
-    instr << "Please type your " << BOLD << "longitude" << RESET << ':';
+        double latitude = readNumber(instr.str());
 
-    double longitude = readNumber(instr.str());
+        // read the longitude
+        instr.clear(); instr.str("");
+        instr << "Please type your " << BOLD << "longitude" << RESET << ':';
 
-    // read the radius
-    instr.clear(); instr.str("");
-    instr << "Please type the " << BOLD << "radius" << RESET << " in which you are looking for " << YELLOW << "airports" << RESET << ":";
+        double longitude = readNumber(instr.str());
 
-    double radius = readNumber(instr.str());
+        // read the radius
+        instr.clear(); instr.str("");
+        instr << "Please type the " << BOLD << "radius" << RESET << " in which you are looking for " << YELLOW << "airports" << RESET << ":";
 
-    // calculate the nearest airports
-    map<double, string> air = graph.getNearbyAirports(latitude, longitude, radius);
+        double radius = readNumber(instr.str());
+
+        // calculate the nearest airports
+        air = graph.getNearbyAirports(latitude, longitude, radius);
+
+        if (!air.empty()) break;
+
+        cout << endl << YELLOW << BREAK << RESET << endl << endl;
+        cout << RED << "Error! No airports were found near that location. Please, try again." << RESET << endl;
+    }
 
     cout << endl << YELLOW << BREAK << RESET << endl << endl;
     cout << "These are the " << BOLD << "airports" << RESET << " that are nearest your location:" << endl << endl;
