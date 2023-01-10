@@ -819,7 +819,7 @@ b1: cout << endl << YELLOW << BREAK << RESET << endl;
     }
 
     cout << endl << YELLOW << BREAK << RESET << endl;
-    cout << endl << "Anything else? (Yes/No)" << endl;
+    cout << endl << "Anything else? (Yes/No)" << endl << endl;
 
     s1.clear(); getline(cin >> ws, s1);
     lowercase(s1);
