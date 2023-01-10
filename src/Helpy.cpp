@@ -976,7 +976,7 @@ void Helpy::displayReachableAirports(){
         return;
     }
 
-    cout << endl << "These are the results of my search:";
+    cout << endl << "These are the results of my search:" << endl << endl;
 
     printAirports(reached);
 }
