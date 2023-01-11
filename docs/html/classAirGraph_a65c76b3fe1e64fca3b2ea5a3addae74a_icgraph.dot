@@ -21,8 +21,8 @@ digraph "AirGraph::validate"
   Node8 [label="Helpy::guided_mode",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classHelpy.html#af5932f8789f41f033f894cd659aff329",tooltip="executes the guided mode of the UI @complexity O(1)"];
   Node8 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node1 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node9 [label="AirGraph::getReachableAirports",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classAirGraph.html#a7e7e60224e445a7b861319312f257955",tooltip="performs a Breadth-First Search to get the Airports you can reach in a certain number of flights @com..."];
+  Node9 [label="AirGraph::getReachableAirports",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classAirGraph.html#a619ccbafe33c129ed69d2ae51d452a5b",tooltip="performs a Breadth-First Search to get the Airports you can reach within a certain flight distance @c..."];
   Node9 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node10 [label="Helpy::displayReachableAirports",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classHelpy.html#a7052e9a5e346e41892c26da08cf9c06e",tooltip="displays all the Airports you can reach from a starting point in a certain number of flights @complex..."];
+  Node10 [label="Helpy::displayReachableAirports",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classHelpy.html#a7052e9a5e346e41892c26da08cf9c06e",tooltip="displays all the Airports you can reach from a starting point, given either a number of flights or a ..."];
   Node10 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
 }

@@ -37,7 +37,7 @@ string \mbox{\hyperlink{classHelpy_a4423bd1450df0994030a055598d6bd16}{read\+Loca
 \begin{DoxyCompactList}\small\item\em reads the airports that the user wants to use @complexity O(n$^\wedge$2) \end{DoxyCompactList}\item 
 \mbox{\hyperlink{Reader_8h_a8d94c3afa699ded58e5c186792d1eb9e}{u\+Set}}$<$ string $>$ $\ast$ \mbox{\hyperlink{classHelpy_a00ddd92a095c970241a1ae73a195608f}{read\+Restrictions}} ()
 \begin{DoxyCompactList}\small\item\em reads the Airlines and the Airports the user would like to use @complexity O(n$^\wedge$2) \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classHelpy_a0761afdb62981b5448230a2a1bc98ae3}{print\+Airports}} (const list$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ \&airports)
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{classHelpy_adef1ad0e92eebc04d44ea4ddb6428518}{print\+Airports}} (T airports, const list$<$ string $>$ \&column\+Names)
 \begin{DoxyCompactList}\small\item\em prints in a table the name, city and country of the Airports in the argument list @complexity O(n) \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classHelpy_a6c78b649974b1d7d3285874a39a6ef3b}{print\+Flights}} (const string \&airport)
 \begin{DoxyCompactList}\small\item\em prints all the flights of an \mbox{\hyperlink{classAirport}{Airport}} in a table @complexity O(n $\ast$ $\vert$\+E$\vert$) \end{DoxyCompactList}\item 
@@ -54,7 +54,7 @@ bool \mbox{\hyperlink{classHelpy_ac18c8353d0a7f41c9363433f826988fe}{process\+\_\
 void \mbox{\hyperlink{classHelpy_aa0039898fad6ba25654635123abe404b}{display\+Airport\+Information}} ()
 \begin{DoxyCompactList}\small\item\em displays all the flights you can take on a given \mbox{\hyperlink{classAirport}{Airport}}, as well as the Airlines that make said flights @complexity O(n $\ast$ $\vert$\+E$\vert$) \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classHelpy_a7052e9a5e346e41892c26da08cf9c06e}{display\+Reachable\+Airports}} ()
-\begin{DoxyCompactList}\small\item\em displays all the Airports you can reach from a starting point in a certain number of flights @complexity O(n$^\wedge$2 + $\vert$\+V$\vert$ + $\vert$\+E$\vert$) \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em displays all the Airports you can reach from a starting point, given either a number of flights or a flight distance @complexity O(n$^\wedge$2 + $\vert$\+V$\vert$ + $\vert$\+E$\vert$) \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classHelpy_a55726343e5f6dac4150ca434cd445e70}{display\+Shortest\+Routes}} ()
 \begin{DoxyCompactList}\small\item\em displays the shortest routes you can take from an \mbox{\hyperlink{classAirport}{Airport}} to another @complexity O(n$^\wedge$2 + $\vert$\+V$\vert$ + $\vert$\+E$\vert$) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
@@ -126,7 +126,7 @@ Here is the caller graph for this function\+:
 
 
 
-displays all the Airports you can reach from a starting point in a certain number of flights @complexity O(n$^\wedge$2 + $\vert$\+V$\vert$ + $\vert$\+E$\vert$) 
+displays all the Airports you can reach from a starting point, given either a number of flights or a flight distance @complexity O(n$^\wedge$2 + $\vert$\+V$\vert$ + $\vert$\+E$\vert$) 
 
 Here is the call graph for this function\+:
 % FIG 4
@@ -179,11 +179,12 @@ turns all the characters of a string into lowercase or uppercase @complexity O(n
 \end{DoxyParams}
 Here is the caller graph for this function\+:
 % FIG 10
-\mbox{\Hypertarget{classHelpy_a0761afdb62981b5448230a2a1bc98ae3}\label{classHelpy_a0761afdb62981b5448230a2a1bc98ae3}} 
+\mbox{\Hypertarget{classHelpy_adef1ad0e92eebc04d44ea4ddb6428518}\label{classHelpy_adef1ad0e92eebc04d44ea4ddb6428518}} 
 \index{Helpy@{Helpy}!printAirports@{printAirports}}
 \index{printAirports@{printAirports}!Helpy@{Helpy}}
 \doxysubsubsection{\texorpdfstring{printAirports()}{printAirports()}}
-{\footnotesize\ttfamily void Helpy\+::print\+Airports (\begin{DoxyParamCaption}\item[{const list$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ \&}]{airports }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void Helpy\+::print\+Airports (\begin{DoxyParamCaption}\item[{T}]{airports,  }\item[{const list$<$ string $>$ \&}]{column\+Names }\end{DoxyParamCaption})}
 
 
 
@@ -191,11 +192,15 @@ prints in a table the name, city and country of the Airports in the argument lis
 
 
 \begin{DoxyParams}{Parameters}
-{\em airports} & list of Airports whose information will be printed \\
+{\em airports} & container with the Airports whose information will be printed \\
+\hline
+{\em column\+Names} & list with the names of each table column \\
 \hline
 \end{DoxyParams}
-Here is the caller graph for this function\+:
+Here is the call graph for this function\+:
 % FIG 11
+Here is the caller graph for this function\+:
+% FIG 12
 \mbox{\Hypertarget{classHelpy_a6c78b649974b1d7d3285874a39a6ef3b}\label{classHelpy_a6c78b649974b1d7d3285874a39a6ef3b}} 
 \index{Helpy@{Helpy}!printFlights@{printFlights}}
 \index{printFlights@{printFlights}!Helpy@{Helpy}}
@@ -212,9 +217,9 @@ prints all the flights of an \mbox{\hyperlink{classAirport}{Airport}} in a table
 \hline
 \end{DoxyParams}
 Here is the call graph for this function\+:
-% FIG 12
-Here is the caller graph for this function\+:
 % FIG 13
+Here is the caller graph for this function\+:
+% FIG 14
 \mbox{\Hypertarget{classHelpy_a77990e02860a2a30ef77958309f5dc4b}\label{classHelpy_a77990e02860a2a30ef77958309f5dc4b}} 
 \index{Helpy@{Helpy}!printPath@{printPath}}
 \index{printPath@{printPath}!Helpy@{Helpy}}
@@ -231,9 +236,9 @@ prints a table with the information of a path @complexity O(n $\ast$ $\vert$\+E$
 \hline
 \end{DoxyParams}
 Here is the call graph for this function\+:
-% FIG 14
-Here is the caller graph for this function\+:
 % FIG 15
+Here is the caller graph for this function\+:
+% FIG 16
 \mbox{\Hypertarget{classHelpy_ac18c8353d0a7f41c9363433f826988fe}\label{classHelpy_ac18c8353d0a7f41c9363433f826988fe}} 
 \index{Helpy@{Helpy}!process\_command@{process\_command}}
 \index{process\_command@{process\_command}!Helpy@{Helpy}}
@@ -257,9 +262,9 @@ processes the commands that were inputted @complexity O(n$^\wedge$2 $\ast$ log(n
 \textquotesingle{}true\textquotesingle{} if the command exists, \textquotesingle{}false\textquotesingle{} otherwise 
 \end{DoxyReturn}
 Here is the call graph for this function\+:
-% FIG 16
-Here is the caller graph for this function\+:
 % FIG 17
+Here is the caller graph for this function\+:
+% FIG 18
 \mbox{\Hypertarget{classHelpy_ada23e5d42122289d1fa0d21ba080ec54}\label{classHelpy_ada23e5d42122289d1fa0d21ba080ec54}} 
 \index{Helpy@{Helpy}!properName@{properName}}
 \index{properName@{properName}!Helpy@{Helpy}}
@@ -276,7 +281,7 @@ takes a user inputted string and modifies it so that it becomes well-\/written @
 \hline
 \end{DoxyParams}
 Here is the caller graph for this function\+:
-% FIG 18
+% FIG 19
 \mbox{\Hypertarget{classHelpy_a07cfd0c52c5be6cea63f5c39161ddaea}\label{classHelpy_a07cfd0c52c5be6cea63f5c39161ddaea}} 
 \index{Helpy@{Helpy}!readAirport@{readAirport}}
 \index{readAirport@{readAirport}!Helpy@{Helpy}}
@@ -291,9 +296,9 @@ reads the code/name of an airport from the console @complexity O(n)
 the code of the airport 
 \end{DoxyReturn}
 Here is the call graph for this function\+:
-% FIG 19
-Here is the caller graph for this function\+:
 % FIG 20
+Here is the caller graph for this function\+:
+% FIG 21
 \mbox{\Hypertarget{classHelpy_a66f9885e46902bff5cf52aa44fc4ea77}\label{classHelpy_a66f9885e46902bff5cf52aa44fc4ea77}} 
 \index{Helpy@{Helpy}!readCity@{readCity}}
 \index{readCity@{readCity}!Helpy@{Helpy}}
@@ -313,9 +318,9 @@ reads the name of a city/country from the console @complexity O(n$^\wedge$2)
 the code of the airport the user selects 
 \end{DoxyReturn}
 Here is the call graph for this function\+:
-% FIG 21
-Here is the caller graph for this function\+:
 % FIG 22
+Here is the caller graph for this function\+:
+% FIG 23
 \mbox{\Hypertarget{classHelpy_af162325450bc145f1936f2d926afe45c}\label{classHelpy_af162325450bc145f1936f2d926afe45c}} 
 \index{Helpy@{Helpy}!readCoordinates@{readCoordinates}}
 \index{readCoordinates@{readCoordinates}!Helpy@{Helpy}}
@@ -330,9 +335,9 @@ reads coordinates from the console and displays the airports nearest that locati
 the code of the airport the user selects 
 \end{DoxyReturn}
 Here is the call graph for this function\+:
-% FIG 23
-Here is the caller graph for this function\+:
 % FIG 24
+Here is the caller graph for this function\+:
+% FIG 25
 \mbox{\Hypertarget{classHelpy_aebbc6852064a21221d3fb054e97aaec3}\label{classHelpy_aebbc6852064a21221d3fb054e97aaec3}} 
 \index{Helpy@{Helpy}!readInput@{readInput}}
 \index{readInput@{readInput}!Helpy@{Helpy}}
@@ -354,9 +359,9 @@ reads a line of user input @complexity O(n$^\wedge$2)
 read input 
 \end{DoxyReturn}
 Here is the call graph for this function\+:
-% FIG 25
-Here is the caller graph for this function\+:
 % FIG 26
+Here is the caller graph for this function\+:
+% FIG 27
 \mbox{\Hypertarget{classHelpy_a4423bd1450df0994030a055598d6bd16}\label{classHelpy_a4423bd1450df0994030a055598d6bd16}} 
 \index{Helpy@{Helpy}!readLocation@{readLocation}}
 \index{readLocation@{readLocation}!Helpy@{Helpy}}
@@ -371,9 +376,9 @@ reads a location based on an airport OR a city OR a country OR coordinates @comp
 the code of the airport situated in said location 
 \end{DoxyReturn}
 Here is the call graph for this function\+:
-% FIG 27
-Here is the caller graph for this function\+:
 % FIG 28
+Here is the caller graph for this function\+:
+% FIG 29
 \mbox{\Hypertarget{classHelpy_ab7d64ab16c804e5e5ecaa87246bc82a6}\label{classHelpy_ab7d64ab16c804e5e5ecaa87246bc82a6}} 
 \index{Helpy@{Helpy}!readNumber@{readNumber}}
 \index{readNumber@{readNumber}!Helpy@{Helpy}}
@@ -393,9 +398,9 @@ reads a number from the console @complexity O(n$^\wedge$2)
 the number inputted by the user 
 \end{DoxyReturn}
 Here is the call graph for this function\+:
-% FIG 29
-Here is the caller graph for this function\+:
 % FIG 30
+Here is the caller graph for this function\+:
+% FIG 31
 \mbox{\Hypertarget{classHelpy_a00ddd92a095c970241a1ae73a195608f}\label{classHelpy_a00ddd92a095c970241a1ae73a195608f}} 
 \index{Helpy@{Helpy}!readRestrictions@{readRestrictions}}
 \index{readRestrictions@{readRestrictions}!Helpy@{Helpy}}
@@ -410,9 +415,9 @@ reads the Airlines and the Airports the user would like to use @complexity O(n$^
 array of two unordered\+\_\+sets of strings, both of which containing codes (of Airlines and Airports, respectively) 
 \end{DoxyReturn}
 Here is the call graph for this function\+:
-% FIG 31
-Here is the caller graph for this function\+:
 % FIG 32
+Here is the caller graph for this function\+:
+% FIG 33
 \mbox{\Hypertarget{classHelpy_ac96f8c02e2d55ed557a221b879d57d43}\label{classHelpy_ac96f8c02e2d55ed557a221b879d57d43}} 
 \index{Helpy@{Helpy}!readUsableAirlines@{readUsableAirlines}}
 \index{readUsableAirlines@{readUsableAirlines}!Helpy@{Helpy}}
@@ -427,9 +432,9 @@ reads from the console the selection of airlines to use @complexity O(n)
 the codes of the selected airlines 
 \end{DoxyReturn}
 Here is the call graph for this function\+:
-% FIG 33
-Here is the caller graph for this function\+:
 % FIG 34
+Here is the caller graph for this function\+:
+% FIG 35
 \mbox{\Hypertarget{classHelpy_a50f67ed10ca5d7255237c81b5098924a}\label{classHelpy_a50f67ed10ca5d7255237c81b5098924a}} 
 \index{Helpy@{Helpy}!readUsableAirports@{readUsableAirports}}
 \index{readUsableAirports@{readUsableAirports}!Helpy@{Helpy}}
@@ -444,9 +449,9 @@ reads the airports that the user wants to use @complexity O(n$^\wedge$2)
 the codes of the airports the user selects 
 \end{DoxyReturn}
 Here is the call graph for this function\+:
-% FIG 35
-Here is the caller graph for this function\+:
 % FIG 36
+Here is the caller graph for this function\+:
+% FIG 37
 \mbox{\Hypertarget{classHelpy_a6101fe619f9ad4a830253790e6c70d0c}\label{classHelpy_a6101fe619f9ad4a830253790e6c70d0c}} 
 \index{Helpy@{Helpy}!readUsableCities@{readUsableCities}}
 \index{readUsableCities@{readUsableCities}!Helpy@{Helpy}}
@@ -461,9 +466,9 @@ reads from the console the selection of cities to consider @complexity O(n$^\wed
 the codes of the airports that are in the considered cities 
 \end{DoxyReturn}
 Here is the call graph for this function\+:
-% FIG 37
-Here is the caller graph for this function\+:
 % FIG 38
+Here is the caller graph for this function\+:
+% FIG 39
 \mbox{\Hypertarget{classHelpy_a4cfecf6a7a1a86dabca06048a7c49274}\label{classHelpy_a4cfecf6a7a1a86dabca06048a7c49274}} 
 \index{Helpy@{Helpy}!readUsableCountries@{readUsableCountries}}
 \index{readUsableCountries@{readUsableCountries}!Helpy@{Helpy}}
@@ -478,9 +483,9 @@ reads from the console the selection of countries to consider @complexity O(n$^\
 the codes of the airports that are in the considered countries 
 \end{DoxyReturn}
 Here is the call graph for this function\+:
-% FIG 39
-Here is the caller graph for this function\+:
 % FIG 40
+Here is the caller graph for this function\+:
+% FIG 41
 \mbox{\Hypertarget{classHelpy_a6b9cb10dea4b1b85857734da2aa817c2}\label{classHelpy_a6b9cb10dea4b1b85857734da2aa817c2}} 
 \index{Helpy@{Helpy}!setAirlines@{setAirlines}}
 \index{setAirlines@{setAirlines}!Helpy@{Helpy}}
@@ -497,7 +502,7 @@ adds airlines to the \mbox{\hyperlink{classHelpy}{Helpy}} database
 \hline
 \end{DoxyParams}
 Here is the caller graph for this function\+:
-% FIG 41
+% FIG 42
 \mbox{\Hypertarget{classHelpy_a98e53a8c8b800386dc84a1067720c087}\label{classHelpy_a98e53a8c8b800386dc84a1067720c087}} 
 \index{Helpy@{Helpy}!setAirports@{setAirports}}
 \index{setAirports@{setAirports}!Helpy@{Helpy}}
@@ -516,7 +521,7 @@ adds airports to the \mbox{\hyperlink{classHelpy}{Helpy}} database
 \hline
 \end{DoxyParams}
 Here is the caller graph for this function\+:
-% FIG 42
+% FIG 43
 \mbox{\Hypertarget{classHelpy_a51c763913805f63e64b1e9197617a3cc}\label{classHelpy_a51c763913805f63e64b1e9197617a3cc}} 
 \index{Helpy@{Helpy}!setLocations@{setLocations}}
 \index{setLocations@{setLocations}!Helpy@{Helpy}}
@@ -535,7 +540,7 @@ adds cities and countries to the \mbox{\hyperlink{classHelpy}{Helpy}} database
 \hline
 \end{DoxyParams}
 Here is the caller graph for this function\+:
-% FIG 43
+% FIG 44
 \mbox{\Hypertarget{classHelpy_aaa754efec4177b0c763859b5847d10d3}\label{classHelpy_aaa754efec4177b0c763859b5847d10d3}} 
 \index{Helpy@{Helpy}!terminal@{terminal}}
 \index{terminal@{terminal}!Helpy@{Helpy}}
@@ -547,9 +552,9 @@ Here is the caller graph for this function\+:
 allows the user to choose the mode of the UI @complexity O(n$^\wedge$2) 
 
 Here is the call graph for this function\+:
-% FIG 44
-Here is the caller graph for this function\+:
 % FIG 45
+Here is the caller graph for this function\+:
+% FIG 46
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

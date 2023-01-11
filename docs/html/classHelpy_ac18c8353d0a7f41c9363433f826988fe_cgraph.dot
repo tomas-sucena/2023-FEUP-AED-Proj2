@@ -29,9 +29,9 @@ digraph "Helpy::process_command"
   Node9 -> Node11 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node11 [label="Helpy::properName",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classHelpy.html#ada23e5d42122289d1fa0d21ba080ec54",tooltip="takes a user inputted string and modifies it so that it becomes well-written @complexity O(n)"];
   Node1 -> Node12 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node12 [label="Helpy::displayReachableAirports",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classHelpy.html#a7052e9a5e346e41892c26da08cf9c06e",tooltip="displays all the Airports you can reach from a starting point in a certain number of flights @complex..."];
+  Node12 [label="Helpy::displayReachableAirports",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classHelpy.html#a7052e9a5e346e41892c26da08cf9c06e",tooltip="displays all the Airports you can reach from a starting point, given either a number of flights or a ..."];
   Node12 -> Node13 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node13 [label="AirGraph::getReachableAirports",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classAirGraph.html#a7e7e60224e445a7b861319312f257955",tooltip="performs a Breadth-First Search to get the Airports you can reach in a certain number of flights @com..."];
+  Node13 [label="AirGraph::getReachableAirports",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classAirGraph.html#a619ccbafe33c129ed69d2ae51d452a5b",tooltip="performs a Breadth-First Search to get the Airports you can reach within a certain flight distance @c..."];
   Node13 -> Node14 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node14 [label="AirGraph::bfs",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classAirGraph.html#af716d2cfb5177959c3011881f9b4ae81",tooltip="implementation of the Breadth-First Search algorithm that returns the shortest paths (in terms of fli..."];
   Node13 -> Node15 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
@@ -45,7 +45,10 @@ digraph "Helpy::process_command"
   Node16 -> Node19 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node19 [label="AirGraph::validateVertices",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classAirGraph.html#a5bb3526b5868f5643b63b42824245845",tooltip="checks if a vertex should be traversed in the search functions @complexity O(|V|)"];
   Node12 -> Node20 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node20 [label="Helpy::printAirports",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classHelpy.html#a0761afdb62981b5448230a2a1bc98ae3",tooltip="prints in a table the name, city and country of the Airports in the argument list @complexity O(n)"];
+  Node20 [label="Helpy::printAirports",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classHelpy.html#adef1ad0e92eebc04d44ea4ddb6428518",tooltip="prints in a table the name, city and country of the Airports in the argument list @complexity O(n)"];
+  Node20 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node20 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node20 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node12 -> Node21 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node21 [label="Helpy::readInput",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classHelpy.html#aebbc6852064a21221d3fb054e97aaec3",tooltip="reads a line of user input @complexity O(n^2)"];
   Node21 -> Node10 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];

@@ -85,13 +85,13 @@ class AirGraph {
         void validateVertices(uSet<string> use);
         void validate(uSet<string>* use = nullptr);
 
-        uMap<Airport, double> dfs(const string& airport, double distance, double travelled = 0);
         list<Path> bfs(const string& airportA, const string& airportB);
+        uMap<Airport, double> bfs(const string& airport, double distance);
         list<pair<Airport, int>> bfs(const string& airport, int flights);
 
-        list<pair<Airport, int>> getReachableAirports(const string& airport, int flights, uSet<string>* use = nullptr);
-        uMap<Airport, double> getReachableAirports(const string& airport, double distance, uSet<string>* use = nullptr);
         list<Path> getPaths(const string& airportA, const string& airportB, uSet<string>* use = nullptr);
+        uMap<Airport, double> getReachableAirports(const string& airport, double distance, uSet<string>* use = nullptr);
+        list<pair<Airport, int>> getReachableAirports(const string& airport, int flights, uSet<string>* use = nullptr);
 };
 
 #endif //AIRPORTAED_AIRGRAPH_H

@@ -183,32 +183,6 @@ void AirGraph::validate(uSet<string>* use){
 }
 
 /**
- * @brief implementation of the Depth-First Search algorithm, which iterates through all the vertices and edges
- * @complexity O(|V| + |E|)
- * @param airport code of the Airport that is stored in the initial vertex
- * @param distance flight distance (in km)
- * @param travelled number of kilometers travelled
- * @return container with all of the reachable Airports
- */
-uMap<Airport, double> AirGraph::dfs(const string& airport, double distance, double travelled){
-    uMap<Airport, double> reached;
-    if (distance <= 0) return reached;
-
-    reached.insert({vertices[airport].value, travelled});
-    vertices[airport].valid = false;
-
-    for (const Edge* e : vertices[airport].adj){
-        if (!e->valid || !vertices[e->dest.getCode()].valid){
-            continue;
-        }
-
-        reached.merge(dfs(e->dest.getCode(), distance - e->distance, e->distance));
-    }
-
-    return reached;
-}
-
-/**
  * @brief implementation of the Breadth-First Search algorithm that returns the shortest paths (in terms of flights) from an Airport to another
  * @param airportA code of the Airport which constitutes the starting point
  * @param airportB code of the Airport which constitutes the destination
@@ -264,11 +238,55 @@ list<Path> AirGraph::bfs(const string& airportA, const string& airportB){
 }
 
 /**
- * @brief implementation of the Breadth-First Search algorithm, which iterates through all the vertices and edges
+ * @brief implementation of the Breadth-First Search algorithm that returns the reachable Airports in a given flight distance
+ * @complexity O(|V| + |E|)
+ * @param airport code of the Airport that is stored in the initial vertex
+ * @param distance flight distance (in km)
+ * @param travelled number of kilometers travelled
+ * @return container with all of the reachable Airports and their respective flight distance from the starting point
+ */
+uMap<Airport, double> AirGraph::bfs(const string& airport, double distance){
+    uMap<Airport, double> reached;
+
+    queue<string> unvisitedV; // unvisited vertices
+    unvisitedV.push(airport);
+
+    queue<double> travelled;
+    travelled.push(0);
+
+    while (!unvisitedV.empty()){
+        Vertex& currV = vertices[unvisitedV.front()];
+        unvisitedV.pop();
+
+        currV.valid = false;
+
+        double currDist = travelled.front();
+        reached.insert({currV.value, currDist});
+
+        for (const Edge* e : currV.adj){
+            bool validPath = e->valid && vertices[e->dest.getCode()].valid;
+            bool validDistance = currDist + e->distance <= distance;
+
+            if (!validPath || !validDistance){
+                continue;
+            }
+
+            unvisitedV.push(e->dest.getCode());
+            travelled.push(currDist + e->distance);
+        }
+
+        travelled.pop();
+    }
+
+    return reached;
+}
+
+/**
+ * @brief implementation of the Breadth-First Search algorithm that returns the reachable Airports in a given number of flights
  * @complexity O(|V| + |E|)
  * @param airport code of the Airport which constitutes the starting point
  * @param flights number of flights
- * @return list<Airport> with the reachable Airports
+ * @return container with the reachable Airports and the number of flights it took to reach them
  */
 list<pair<Airport, int>> AirGraph::bfs(const string& airport, int flights){
     list<pair<Airport, int>> res;
@@ -312,46 +330,6 @@ list<pair<Airport, int>> AirGraph::bfs(const string& airport, int flights){
 }
 
 /**
- * @brief performs a Breadth-First Search to get the Airports you can reach in a certain number of flights
- * @complexity O(|V| + |E|)
- * @param airport code of the Airport which constitutes the starting point
- * @param flights number of flights
- * @param use set of Airlines and Airports that the user would like to use
- * @return list<Airport> with the reachable Airports
- */
-list<pair<Airport, int>> AirGraph::getReachableAirports(const string& airport, int flights, uSet<string>* use){
-    validate(use);
-    if (!vertices[airport].valid){
-        return {};
-    }
-
-    const list<pair<Airport, int>>& reachable = bfs(airport, flights);
-    reset();
-
-    return reachable;
-}
-
-/**
- * @brief performs a Breadth-First Search to get the Airports you can reach within a certain flight distance
- * @complexity O(|V| + |E|)
- * @param airport code of the Airport which constitutes the starting point
- * @param distance flight distance
- * @param use set of Airlines and Airports that the user would like to use
- * @return list<Airport> with the reachable Airports
- */
-uMap<Airport, double> AirGraph::getReachableAirports(const string& airport, double distance, uSet<string>* use){
-    validate(use);
-    if (!vertices[airport].valid){
-        return {};
-    }
-
-    const uMap<Airport, double>& reachable = dfs(airport, distance);
-    reset();
-
-    return reachable;
-}
-
-/**
  * @brief gets all the shortest paths from one Airport to another
  * @complexity O(|V| + |E|)
  * @param airportA code of the Airport which constitutes the starting point
@@ -369,4 +347,44 @@ list<Path> AirGraph::getPaths(const string& airportA, const string& airportB, uS
     reset();
 
     return allPaths;
+}
+
+/**
+ * @brief performs a Breadth-First Search to get the Airports you can reach within a certain flight distance
+ * @complexity O(|V| + |E|)
+ * @param airport code of the Airport which constitutes the starting point
+ * @param distance flight distance
+ * @param use set of Airlines and Airports that the user would like to use
+ * @return list<Airport> with the reachable Airports
+ */
+uMap<Airport, double> AirGraph::getReachableAirports(const string& airport, double distance, uSet<string>* use){
+    validate(use);
+    if (!vertices[airport].valid){
+        return {};
+    }
+
+    const uMap<Airport, double>& reachable = bfs(airport, distance);
+    reset();
+
+    return reachable;
+}
+
+/**
+ * @brief performs a Breadth-First Search to get the Airports you can reach in a certain number of flights
+ * @complexity O(|V| + |E|)
+ * @param airport code of the Airport which constitutes the starting point
+ * @param flights number of flights
+ * @param use set of Airlines and Airports that the user would like to use
+ * @return list<Airport> with the reachable Airports
+ */
+list<pair<Airport, int>> AirGraph::getReachableAirports(const string& airport, int flights, uSet<string>* use){
+    validate(use);
+    if (!vertices[airport].valid){
+        return {};
+    }
+
+    const list<pair<Airport, int>>& reachable = bfs(airport, flights);
+    reset();
+
+    return reachable;
 }

@@ -21,12 +21,6 @@ set$<$ Edge $\ast$ $>$ \mbox{\hyperlink{classAirGraph_ac523e3f5214410ee31368d07e
 \begin{DoxyCompactList}\small\item\em returns the flights you can take in an \mbox{\hyperlink{classAirport}{Airport}} \end{DoxyCompactList}\item 
 map$<$ double, string $>$ \mbox{\hyperlink{classAirGraph_a4893275d263f5d39b6c38e26d465a24a}{get\+Nearby\+Airports}} (double lat, double lon, double rad)
 \begin{DoxyCompactList}\small\item\em gets the Airports nearest the location defined by the pair (lat, lon) @complexity O($\vert$\+V$\vert$) \end{DoxyCompactList}\item 
-list$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ \mbox{\hyperlink{classAirGraph_a7e7e60224e445a7b861319312f257955}{get\+Reachable\+Airports}} (const string \&airport, int flights, \mbox{\hyperlink{Reader_8h_a8d94c3afa699ded58e5c186792d1eb9e}{u\+Set}}$<$ string $>$ $\ast$use=nullptr)
-\begin{DoxyCompactList}\small\item\em performs a Breadth-\/\+First Search to get the Airports you can reach in a certain number of flights @complexity O($\vert$\+V$\vert$ + $\vert$\+E$\vert$) \end{DoxyCompactList}\item 
-list$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ \mbox{\hyperlink{classAirGraph_a028d01ff43c13820c7010f96eacc9f5f}{get\+Reachable\+Airports}} (const string \&airport, double distance, \mbox{\hyperlink{Reader_8h_a8d94c3afa699ded58e5c186792d1eb9e}{u\+Set}}$<$ string $>$ $\ast$use=nullptr)
-\begin{DoxyCompactList}\small\item\em performs a Breadth-\/\+First Search to get the Airports you can reach within a certain flight distance @complexity O($\vert$\+V$\vert$ + $\vert$\+E$\vert$) \end{DoxyCompactList}\item 
-list$<$ \mbox{\hyperlink{Helpy_8cpp_a9a4b261ee74f577bbd57315cb754f607}{Path}} $>$ \mbox{\hyperlink{classAirGraph_ad65e26b3d20d6d77976d9280a5cc5b34}{get\+Paths}} (const string \&airportA, const string \&airportB, \mbox{\hyperlink{Reader_8h_a8d94c3afa699ded58e5c186792d1eb9e}{u\+Set}}$<$ string $>$ $\ast$use=nullptr)
-\begin{DoxyCompactList}\small\item\em gets all the shortest paths from one \mbox{\hyperlink{classAirport}{Airport}} to another @complexity O($\vert$\+V$\vert$ + $\vert$\+E$\vert$) \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classAirGraph_a32ba540038b3bda18388f4ad5f12f89d}{reset}} ()
 \begin{DoxyCompactList}\small\item\em sets to \textquotesingle{}false\textquotesingle{} the \textquotesingle{}visited\textquotesingle{} parameter of all vertices @complexity O($\vert$\+V$\vert$ + $\vert$\+E$\vert$) \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classAirGraph_aa620f24c5ec6942c068d65c5298671d3}{validate\+Edges}} (\mbox{\hyperlink{Reader_8h_a8d94c3afa699ded58e5c186792d1eb9e}{u\+Set}}$<$ string $>$ use)
@@ -35,12 +29,18 @@ void \mbox{\hyperlink{classAirGraph_a5bb3526b5868f5643b63b42824245845}{validate\
 \begin{DoxyCompactList}\small\item\em checks if a vertex should be traversed in the search functions @complexity O($\vert$\+V$\vert$) \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classAirGraph_a65c76b3fe1e64fca3b2ea5a3addae74a}{validate}} (\mbox{\hyperlink{Reader_8h_a8d94c3afa699ded58e5c186792d1eb9e}{u\+Set}}$<$ string $>$ $\ast$use=nullptr)
 \begin{DoxyCompactList}\small\item\em checks which vertices and edges are valid @complexity O($\vert$\+V$\vert$ + $\vert$\+E$\vert$) \end{DoxyCompactList}\item 
-\mbox{\hyperlink{Reader_8h_a8d94c3afa699ded58e5c186792d1eb9e}{u\+Set}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ \mbox{\hyperlink{classAirGraph_ad3041b4d3f5de423e3b4facb3a507528}{dfs}} (const string \&airport, double distance)
-\begin{DoxyCompactList}\small\item\em implementation of the Depth-\/\+First Search algorithm, which iterates through all the vertices and edges @complexity O($\vert$\+V$\vert$ + $\vert$\+E$\vert$) \end{DoxyCompactList}\item 
 list$<$ \mbox{\hyperlink{Helpy_8cpp_a9a4b261ee74f577bbd57315cb754f607}{Path}} $>$ \mbox{\hyperlink{classAirGraph_af716d2cfb5177959c3011881f9b4ae81}{bfs}} (const string \&airportA, const string \&airportB)
 \begin{DoxyCompactList}\small\item\em implementation of the Breadth-\/\+First Search algorithm that returns the shortest paths (in terms of flights) from an \mbox{\hyperlink{classAirport}{Airport}} to another \end{DoxyCompactList}\item 
-list$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ \mbox{\hyperlink{classAirGraph_a8ee9baedc765a3487da56030713f074a}{bfs}} (const string \&airport, int flights)
-\begin{DoxyCompactList}\small\item\em implementation of the Breadth-\/\+First Search algorithm, which iterates through all the vertices and edges @complexity O($\vert$\+V$\vert$ + $\vert$\+E$\vert$) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\mbox{\hyperlink{Reader_8h_a3e24a9c1e149bc7a4071669c6e1cab0c}{u\+Map}}$<$ \mbox{\hyperlink{classAirport}{Airport}}, double $>$ \mbox{\hyperlink{classAirGraph_a7fe977097435103d9f6ff7b1ff6c6cc0}{bfs}} (const string \&airport, double distance)
+\begin{DoxyCompactList}\small\item\em implementation of the Breadth-\/\+First Search algorithm that returns the reachable Airports in a given flight distance @complexity O($\vert$\+V$\vert$ + $\vert$\+E$\vert$) \end{DoxyCompactList}\item 
+list$<$ pair$<$ \mbox{\hyperlink{classAirport}{Airport}}, int $>$ $>$ \mbox{\hyperlink{classAirGraph_a8cc280fce6980100b5e73014334009ff}{bfs}} (const string \&airport, int flights)
+\begin{DoxyCompactList}\small\item\em implementation of the Breadth-\/\+First Search algorithm that returns the reachable Airports in a given number of flights @complexity O($\vert$\+V$\vert$ + $\vert$\+E$\vert$) \end{DoxyCompactList}\item 
+list$<$ \mbox{\hyperlink{Helpy_8cpp_a9a4b261ee74f577bbd57315cb754f607}{Path}} $>$ \mbox{\hyperlink{classAirGraph_ad65e26b3d20d6d77976d9280a5cc5b34}{get\+Paths}} (const string \&airportA, const string \&airportB, \mbox{\hyperlink{Reader_8h_a8d94c3afa699ded58e5c186792d1eb9e}{u\+Set}}$<$ string $>$ $\ast$use=nullptr)
+\begin{DoxyCompactList}\small\item\em gets all the shortest paths from one \mbox{\hyperlink{classAirport}{Airport}} to another @complexity O($\vert$\+V$\vert$ + $\vert$\+E$\vert$) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Reader_8h_a3e24a9c1e149bc7a4071669c6e1cab0c}{u\+Map}}$<$ \mbox{\hyperlink{classAirport}{Airport}}, double $>$ \mbox{\hyperlink{classAirGraph_a619ccbafe33c129ed69d2ae51d452a5b}{get\+Reachable\+Airports}} (const string \&airport, double distance, \mbox{\hyperlink{Reader_8h_a8d94c3afa699ded58e5c186792d1eb9e}{u\+Set}}$<$ string $>$ $\ast$use=nullptr)
+\begin{DoxyCompactList}\small\item\em performs a Breadth-\/\+First Search to get the Airports you can reach within a certain flight distance @complexity O($\vert$\+V$\vert$ + $\vert$\+E$\vert$) \end{DoxyCompactList}\item 
+list$<$ pair$<$ \mbox{\hyperlink{classAirport}{Airport}}, int $>$ $>$ \mbox{\hyperlink{classAirGraph_a96db457b1e9368378aed47c784a6c477}{get\+Reachable\+Airports}} (const string \&airport, int flights, \mbox{\hyperlink{Reader_8h_a8d94c3afa699ded58e5c186792d1eb9e}{u\+Set}}$<$ string $>$ $\ast$use=nullptr)
+\begin{DoxyCompactList}\small\item\em performs a Breadth-\/\+First Search to get the Airports you can reach in a certain number of flights @complexity O($\vert$\+V$\vert$ + $\vert$\+E$\vert$) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
@@ -127,15 +127,37 @@ Here is the call graph for this function\+:
 % FIG 3
 Here is the caller graph for this function\+:
 % FIG 4
-\mbox{\Hypertarget{classAirGraph_a8ee9baedc765a3487da56030713f074a}\label{classAirGraph_a8ee9baedc765a3487da56030713f074a}} 
+\mbox{\Hypertarget{classAirGraph_a7fe977097435103d9f6ff7b1ff6c6cc0}\label{classAirGraph_a7fe977097435103d9f6ff7b1ff6c6cc0}} 
 \index{AirGraph@{AirGraph}!bfs@{bfs}}
 \index{bfs@{bfs}!AirGraph@{AirGraph}}
-\doxysubsubsection{\texorpdfstring{bfs()}{bfs()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily list$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ Air\+Graph\+::bfs (\begin{DoxyParamCaption}\item[{const string \&}]{airport,  }\item[{int}]{flights }\end{DoxyParamCaption})}
+\doxysubsubsection{\texorpdfstring{bfs()}{bfs()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Reader_8h_a3e24a9c1e149bc7a4071669c6e1cab0c}{u\+Map}}$<$ \mbox{\hyperlink{classAirport}{Airport}}, double $>$ Air\+Graph\+::bfs (\begin{DoxyParamCaption}\item[{const string \&}]{airport,  }\item[{double}]{distance }\end{DoxyParamCaption})}
 
 
 
-implementation of the Breadth-\/\+First Search algorithm, which iterates through all the vertices and edges @complexity O($\vert$\+V$\vert$ + $\vert$\+E$\vert$) 
+implementation of the Breadth-\/\+First Search algorithm that returns the reachable Airports in a given flight distance @complexity O($\vert$\+V$\vert$ + $\vert$\+E$\vert$) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em airport} & code of the \mbox{\hyperlink{classAirport}{Airport}} that is stored in the initial vertex \\
+\hline
+{\em distance} & flight distance (in km) \\
+\hline
+{\em travelled} & number of kilometers travelled \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+container with all of the reachable Airports and their respective flight distance from the starting point 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classAirGraph_a8cc280fce6980100b5e73014334009ff}\label{classAirGraph_a8cc280fce6980100b5e73014334009ff}} 
+\index{AirGraph@{AirGraph}!bfs@{bfs}}
+\index{bfs@{bfs}!AirGraph@{AirGraph}}
+\doxysubsubsection{\texorpdfstring{bfs()}{bfs()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily list$<$ pair$<$ \mbox{\hyperlink{classAirport}{Airport}}, int $>$ $>$ Air\+Graph\+::bfs (\begin{DoxyParamCaption}\item[{const string \&}]{airport,  }\item[{int}]{flights }\end{DoxyParamCaption})}
+
+
+
+implementation of the Breadth-\/\+First Search algorithm that returns the reachable Airports in a given number of flights @complexity O($\vert$\+V$\vert$ + $\vert$\+E$\vert$) 
 
 
 \begin{DoxyParams}{Parameters}
@@ -145,12 +167,12 @@ implementation of the Breadth-\/\+First Search algorithm, which iterates through
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-list$<$\+Airport$>$ with the reachable Airports 
+container with the reachable Airports and the number of flights it took to reach them 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classAirGraph_af716d2cfb5177959c3011881f9b4ae81}\label{classAirGraph_af716d2cfb5177959c3011881f9b4ae81}} 
 \index{AirGraph@{AirGraph}!bfs@{bfs}}
 \index{bfs@{bfs}!AirGraph@{AirGraph}}
-\doxysubsubsection{\texorpdfstring{bfs()}{bfs()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+\doxysubsubsection{\texorpdfstring{bfs()}{bfs()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
 {\footnotesize\ttfamily list$<$ \mbox{\hyperlink{Helpy_8cpp_a9a4b261ee74f577bbd57315cb754f607}{Path}} $>$ Air\+Graph\+::bfs (\begin{DoxyParamCaption}\item[{const string \&}]{airportA,  }\item[{const string \&}]{airportB }\end{DoxyParamCaption})}
 
 
@@ -169,28 +191,6 @@ list$<$\+Path$>$ with the shortest paths
 \end{DoxyReturn}
 Here is the caller graph for this function\+:
 % FIG 5
-\mbox{\Hypertarget{classAirGraph_ad3041b4d3f5de423e3b4facb3a507528}\label{classAirGraph_ad3041b4d3f5de423e3b4facb3a507528}} 
-\index{AirGraph@{AirGraph}!dfs@{dfs}}
-\index{dfs@{dfs}!AirGraph@{AirGraph}}
-\doxysubsubsection{\texorpdfstring{dfs()}{dfs()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{Reader_8h_a8d94c3afa699ded58e5c186792d1eb9e}{u\+Set}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ Air\+Graph\+::dfs (\begin{DoxyParamCaption}\item[{const string \&}]{airport,  }\item[{double}]{distance }\end{DoxyParamCaption})}
-
-
-
-implementation of the Depth-\/\+First Search algorithm, which iterates through all the vertices and edges @complexity O($\vert$\+V$\vert$ + $\vert$\+E$\vert$) 
-
-
-\begin{DoxyParams}{Parameters}
-{\em airport} & code of the \mbox{\hyperlink{classAirport}{Airport}} that is stored in the initial vertex \\
-\hline
-{\em distance} & radius \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-container with all of the reachable Airports 
-\end{DoxyReturn}
-Here is the caller graph for this function\+:
-% FIG 6
 \mbox{\Hypertarget{classAirGraph_a769168714ae9dd7ed5403b5deb2d8a64}\label{classAirGraph_a769168714ae9dd7ed5403b5deb2d8a64}} 
 \index{AirGraph@{AirGraph}!getAirport@{getAirport}}
 \index{getAirport@{getAirport}!AirGraph@{AirGraph}}
@@ -210,7 +210,7 @@ returns the \mbox{\hyperlink{classAirport}{Airport}} whose code is passed as an 
 \mbox{\hyperlink{classAirport}{Airport}} 
 \end{DoxyReturn}
 Here is the caller graph for this function\+:
-% FIG 7
+% FIG 6
 \mbox{\Hypertarget{classAirGraph_ac523e3f5214410ee31368d07eed2e0a1}\label{classAirGraph_ac523e3f5214410ee31368d07eed2e0a1}} 
 \index{AirGraph@{AirGraph}!getFlights@{getFlights}}
 \index{getFlights@{getFlights}!AirGraph@{AirGraph}}
@@ -230,7 +230,7 @@ returns the flights you can take in an \mbox{\hyperlink{classAirport}{Airport}}
 set$<$\+Air\+Graph\+::\+Edge$\ast$$>$ with the edges (flights) of the \mbox{\hyperlink{classAirport}{Airport}} 
 \end{DoxyReturn}
 Here is the caller graph for this function\+:
-% FIG 8
+% FIG 7
 \mbox{\Hypertarget{classAirGraph_a4893275d263f5d39b6c38e26d465a24a}\label{classAirGraph_a4893275d263f5d39b6c38e26d465a24a}} 
 \index{AirGraph@{AirGraph}!getNearbyAirports@{getNearbyAirports}}
 \index{getNearbyAirports@{getNearbyAirports}!AirGraph@{AirGraph}}
@@ -254,7 +254,7 @@ gets the Airports nearest the location defined by the pair (lat, lon) @complexit
 map$<$double, string$>$ containing Airports and their corresponding distance to the specified location 
 \end{DoxyReturn}
 Here is the caller graph for this function\+:
-% FIG 9
+% FIG 8
 \mbox{\Hypertarget{classAirGraph_ad65e26b3d20d6d77976d9280a5cc5b34}\label{classAirGraph_ad65e26b3d20d6d77976d9280a5cc5b34}} 
 \index{AirGraph@{AirGraph}!getPaths@{getPaths}}
 \index{getPaths@{getPaths}!AirGraph@{AirGraph}}
@@ -276,14 +276,14 @@ gets all the shortest paths from one \mbox{\hyperlink{classAirport}{Airport}} to
 list$<$\+Path$>$ with the shortest paths 
 \end{DoxyReturn}
 Here is the call graph for this function\+:
-% FIG 10
+% FIG 9
 Here is the caller graph for this function\+:
-% FIG 11
-\mbox{\Hypertarget{classAirGraph_a028d01ff43c13820c7010f96eacc9f5f}\label{classAirGraph_a028d01ff43c13820c7010f96eacc9f5f}} 
+% FIG 10
+\mbox{\Hypertarget{classAirGraph_a619ccbafe33c129ed69d2ae51d452a5b}\label{classAirGraph_a619ccbafe33c129ed69d2ae51d452a5b}} 
 \index{AirGraph@{AirGraph}!getReachableAirports@{getReachableAirports}}
 \index{getReachableAirports@{getReachableAirports}!AirGraph@{AirGraph}}
 \doxysubsubsection{\texorpdfstring{getReachableAirports()}{getReachableAirports()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily list$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ Air\+Graph\+::get\+Reachable\+Airports (\begin{DoxyParamCaption}\item[{const string \&}]{airport,  }\item[{double}]{distance,  }\item[{\mbox{\hyperlink{Reader_8h_a8d94c3afa699ded58e5c186792d1eb9e}{u\+Set}}$<$ string $>$ $\ast$}]{use = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{Reader_8h_a3e24a9c1e149bc7a4071669c6e1cab0c}{u\+Map}}$<$ \mbox{\hyperlink{classAirport}{Airport}}, double $>$ Air\+Graph\+::get\+Reachable\+Airports (\begin{DoxyParamCaption}\item[{const string \&}]{airport,  }\item[{double}]{distance,  }\item[{\mbox{\hyperlink{Reader_8h_a8d94c3afa699ded58e5c186792d1eb9e}{u\+Set}}$<$ string $>$ $\ast$}]{use = {\ttfamily nullptr} }\end{DoxyParamCaption})}
 
 
 
@@ -302,12 +302,14 @@ performs a Breadth-\/\+First Search to get the Airports you can reach within a c
 list$<$\+Airport$>$ with the reachable Airports 
 \end{DoxyReturn}
 Here is the call graph for this function\+:
+% FIG 11
+Here is the caller graph for this function\+:
 % FIG 12
-\mbox{\Hypertarget{classAirGraph_a7e7e60224e445a7b861319312f257955}\label{classAirGraph_a7e7e60224e445a7b861319312f257955}} 
+\mbox{\Hypertarget{classAirGraph_a96db457b1e9368378aed47c784a6c477}\label{classAirGraph_a96db457b1e9368378aed47c784a6c477}} 
 \index{AirGraph@{AirGraph}!getReachableAirports@{getReachableAirports}}
 \index{getReachableAirports@{getReachableAirports}!AirGraph@{AirGraph}}
 \doxysubsubsection{\texorpdfstring{getReachableAirports()}{getReachableAirports()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily list$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ Air\+Graph\+::get\+Reachable\+Airports (\begin{DoxyParamCaption}\item[{const string \&}]{airport,  }\item[{int}]{flights,  }\item[{\mbox{\hyperlink{Reader_8h_a8d94c3afa699ded58e5c186792d1eb9e}{u\+Set}}$<$ string $>$ $\ast$}]{use = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily list$<$ pair$<$ \mbox{\hyperlink{classAirport}{Airport}}, int $>$ $>$ Air\+Graph\+::get\+Reachable\+Airports (\begin{DoxyParamCaption}\item[{const string \&}]{airport,  }\item[{int}]{flights,  }\item[{\mbox{\hyperlink{Reader_8h_a8d94c3afa699ded58e5c186792d1eb9e}{u\+Set}}$<$ string $>$ $\ast$}]{use = {\ttfamily nullptr} }\end{DoxyParamCaption})}
 
 
 
@@ -327,8 +329,6 @@ list$<$\+Airport$>$ with the reachable Airports
 \end{DoxyReturn}
 Here is the call graph for this function\+:
 % FIG 13
-Here is the caller graph for this function\+:
-% FIG 14
 \mbox{\Hypertarget{classAirGraph_a32ba540038b3bda18388f4ad5f12f89d}\label{classAirGraph_a32ba540038b3bda18388f4ad5f12f89d}} 
 \index{AirGraph@{AirGraph}!reset@{reset}}
 \index{reset@{reset}!AirGraph@{AirGraph}}
@@ -340,7 +340,7 @@ Here is the caller graph for this function\+:
 sets to \textquotesingle{}false\textquotesingle{} the \textquotesingle{}visited\textquotesingle{} parameter of all vertices @complexity O($\vert$\+V$\vert$ + $\vert$\+E$\vert$) 
 
 Here is the caller graph for this function\+:
-% FIG 15
+% FIG 14
 \mbox{\Hypertarget{classAirGraph_a65c76b3fe1e64fca3b2ea5a3addae74a}\label{classAirGraph_a65c76b3fe1e64fca3b2ea5a3addae74a}} 
 \index{AirGraph@{AirGraph}!validate@{validate}}
 \index{validate@{validate}!AirGraph@{AirGraph}}
@@ -357,9 +357,9 @@ checks which vertices and edges are valid @complexity O($\vert$\+V$\vert$ + $\ve
 \hline
 \end{DoxyParams}
 Here is the call graph for this function\+:
-% FIG 16
+% FIG 15
 Here is the caller graph for this function\+:
-% FIG 17
+% FIG 16
 \mbox{\Hypertarget{classAirGraph_aa620f24c5ec6942c068d65c5298671d3}\label{classAirGraph_aa620f24c5ec6942c068d65c5298671d3}} 
 \index{AirGraph@{AirGraph}!validateEdges@{validateEdges}}
 \index{validateEdges@{validateEdges}!AirGraph@{AirGraph}}
@@ -379,9 +379,9 @@ checks if an edge contains at least one \mbox{\hyperlink{classAirline}{Airline}}
 \textquotesingle{}true\textquotesingle{} if the edge is valid and \textquotesingle{}false\textquotesingle{} otherwise 
 \end{DoxyReturn}
 Here is the call graph for this function\+:
-% FIG 18
+% FIG 17
 Here is the caller graph for this function\+:
-% FIG 19
+% FIG 18
 \mbox{\Hypertarget{classAirGraph_a5bb3526b5868f5643b63b42824245845}\label{classAirGraph_a5bb3526b5868f5643b63b42824245845}} 
 \index{AirGraph@{AirGraph}!validateVertices@{validateVertices}}
 \index{validateVertices@{validateVertices}!AirGraph@{AirGraph}}
@@ -401,7 +401,7 @@ checks if a vertex should be traversed in the search functions @complexity O($\v
 \textquotesingle{}true\textquotesingle{} if the vertex is valid and \textquotesingle{}false\textquotesingle{} otherwise 
 \end{DoxyReturn}
 Here is the caller graph for this function\+:
-% FIG 20
+% FIG 19
 
 
 \doxysubsection{Friends And Related Function Documentation}

@@ -1,0 +1,20 @@
+digraph "AirGraph::getReachableAirports"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="AirGraph::getReachableAirports",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="performs a Breadth-First Search to get the Airports you can reach within a certain flight distance @c..."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="AirGraph::bfs",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classAirGraph.html#af716d2cfb5177959c3011881f9b4ae81",tooltip="implementation of the Breadth-First Search algorithm that returns the shortest paths (in terms of fli..."];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="AirGraph::reset",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classAirGraph.html#a32ba540038b3bda18388f4ad5f12f89d",tooltip="sets to 'false' the 'visited' parameter of all vertices @complexity O(|V| + |E|)"];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="AirGraph::validate",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classAirGraph.html#a65c76b3fe1e64fca3b2ea5a3addae74a",tooltip="checks which vertices and edges are valid @complexity O(|V| + |E|)"];
+  Node4 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="AirGraph::validateEdges",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classAirGraph.html#aa620f24c5ec6942c068d65c5298671d3",tooltip="checks if an edge contains at least one Airline that the user wants to use @complexity O(|E|)"];
+  Node5 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="Airline::getCode",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classAirline.html#a41ef613d6b390c463821b9ae43d9ec84",tooltip="returns the code of the Airline"];
+  Node4 -> Node7 [color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="AirGraph::validateVertices",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classAirGraph.html#a5bb3526b5868f5643b63b42824245845",tooltip="checks if a vertex should be traversed in the search functions @complexity O(|V|)"];
+}

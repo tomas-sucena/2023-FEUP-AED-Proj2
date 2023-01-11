@@ -8,7 +8,7 @@ digraph "Helpy::readUsableAirports"
   Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node2 [label="Helpy::readRestrictions",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classHelpy.html#a00ddd92a095c970241a1ae73a195608f",tooltip="reads the Airlines and the Airports the user would like to use @complexity O(n^2)"];
   Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node3 [label="Helpy::displayReachableAirports",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classHelpy.html#a7052e9a5e346e41892c26da08cf9c06e",tooltip="displays all the Airports you can reach from a starting point in a certain number of flights @complex..."];
+  Node3 [label="Helpy::displayReachableAirports",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classHelpy.html#a7052e9a5e346e41892c26da08cf9c06e",tooltip="displays all the Airports you can reach from a starting point, given either a number of flights or a ..."];
   Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node4 [label="Helpy::process_command",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classHelpy.html#ac18c8353d0a7f41c9363433f826988fe",tooltip="processes the commands that were inputted @complexity O(n^2 * log(n))"];
   Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
