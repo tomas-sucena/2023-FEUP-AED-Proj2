@@ -289,12 +289,11 @@ uMap<Airport, double> AirGraph::bfs(const string& airport, double distance){
  * @return container with the reachable Airports and the number of flights it took to reach them
  */
 list<pair<Airport, int>> AirGraph::bfs(const string& airport, int flights){
-    list<pair<Airport, int>> res;
+    list<pair<Airport, int>> res = {{vertices[airport].value, 0}};
+    vertices[airport].valid = false;
 
     queue<string> unvisitedV; // unvisited vertices
     unvisitedV.push(airport);
-
-    list<string> visitedV = {airport};
 
     int currNeighbors = 1, nextNeighbors = 0;
     int currFlight = 1;
@@ -308,7 +307,6 @@ list<pair<Airport, int>> AirGraph::bfs(const string& airport, int flights){
 
             if (e->valid && vertices[w].valid) { // new vertex!
                 unvisitedV.push(w);
-                visitedV.push_back(w);
 
                 vertices[w].valid = false;
                 res.push_back({vertices[w].value, currFlight});
